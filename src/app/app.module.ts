@@ -31,19 +31,22 @@ import { ViewUserComponent } from './admin/components/view-user/view-user.compon
 import { AddProductComponent } from './admin/components/add-product/add-product.component';
 import { SearchComponent } from './components/dashboard/search/search.component';
 import { ChartComponent } from './admin/components/chart/chart.component';
-import { DashWrapperComponent } from './components/dashboard/dash-wrapper/dash-wrapper.component';
 import { DashboardNavbarComponent } from './components/dashboard/dashboard-navbar/dashboard-navbar.component';
 import { DashboardCategoriesComponent } from './components/dashboard/dashboard-categories/dashboard-categories.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { SettingItemComponent } from './components/dashboard/setting-item/setting-item.component';
 import { AddItemComponent } from './components/dashboard/add-item/add-item.component';
 import { ItemsWrapperComponent } from './components/dashboard/items-wrapper/items-wrapper.component';
-import { OrdersComponent } from './components/dashboard/orders/orders.component';
 import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
 import { ContactsComponent } from './website/components/contacts/contacts.component';
 import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
 import { ControlPanelIconComponent } from './components/dashboard/control-panel/control-panel-icon/control-panel-icon.component';
 import { RecievedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/recieved-orders/recieved-orders.component';
+import { AllOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/all-orders/all-orders.component';
+import { OrdersComponent } from './components/dashboard/control-panel/contro-panel-route/orders/orders.component';
+import { CancelleOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/cancelle-orders/cancelle-orders.component';
+import { FinishedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/finished-orders/finished-orders.component';
+import { PreparingStageOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/preparing-stage-orders/preparing-stage-orders.component';
 
 @NgModule({
   declarations: [
@@ -74,19 +77,22 @@ import { RecievedOrdersComponent } from './components/dashboard/control-panel/co
     AddProductComponent,
     SearchComponent,
     ChartComponent,
-    DashWrapperComponent,
     DashboardNavbarComponent,
     DashboardCategoriesComponent,
     SettingsComponent,
     SettingItemComponent,
     AddItemComponent,
     ItemsWrapperComponent,
-    OrdersComponent,
     ControlPanelComponent,
     ContactsComponent,
     SiteSettingsComponent,
     ControlPanelIconComponent,
-    RecievedOrdersComponent
+    RecievedOrdersComponent,
+    AllOrdersComponent,
+    OrdersComponent,
+    CancelleOrdersComponent,
+    FinishedOrdersComponent,
+    PreparingStageOrdersComponent
   ],
 
 imports: [

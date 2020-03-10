@@ -20,11 +20,22 @@ import { ChartComponent } from './admin/components/chart/chart.component';
 import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
 import { MembersComponent } from './components/dashboard/members/members.component';
 import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
+import { RecievedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/recieved-orders/recieved-orders.component';
+import { AllOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/all-orders/all-orders.component';
+import { FinishedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/finished-orders/finished-orders.component';
+import { PreparingStageOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/preparing-stage-orders/preparing-stage-orders.component';
+import { CancelleOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/cancelle-orders/cancelle-orders.component';
 
 const routes: Routes = [
 
     { path: 'dashboard', component:  DashboardComponent, children: [
-      { path: '', component: ControlPanelComponent },
+      { path: '', component: ControlPanelComponent},
+      { path: 'received-orders', component: RecievedOrdersComponent },
+      { path: 'all-orders', component: AllOrdersComponent },
+      { path: 'finished-orders', component: FinishedOrdersComponent },
+      { path: 'preparing-stage-orders', component: PreparingStageOrdersComponent },
+      { path: 'cancelled-orders', component: CancelleOrdersComponent },
+
       { path: 'categories', component: DashboardCategoriesComponent },
       { path: 'products', component: ViewProductsComponent },
       { path: 'management', component: MembersComponent },
