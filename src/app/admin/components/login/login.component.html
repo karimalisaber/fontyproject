@@ -1,0 +1,41 @@
+<section class="login d-flex justify-content-center align-items-center">
+  <div class="login-form text-center">
+    <h3 class="mb-30">تسجيل الدخول</h3>
+    <form #form="ngForm" (ngSubmit)="login(form)">
+      <div class="form-group">
+        <i class="fas fa-envelope icon"></i>
+        <input
+          ngModel
+          name="email"
+          #email="ngModel"
+          class="form-control"
+          type="email"
+          placeholder="البريد الالكترونى"
+          required
+          email
+        >
+      </div>
+      <div class="msg text-right">
+        <span *ngIf="email.touched && email.errors?.required">البريد الالكترونى مطلوب</span>
+        <span *ngIf="email.touched && email.errors?.email">الرجاء ادخال البريد الالكترونى بطريقة صحيحة</span>
+      </div>
+      <div class="form-group">
+        <i class="fas fa-unlock-alt icon"></i>
+        <input
+          ngModel
+          name="password"
+          #password="ngModel"
+          class="form-control" type="password"
+          placeholder="كلمة السر"
+          required
+          minlength="6"
+        >
+      </div>
+      <div class="msg text-right">
+        <span *ngIf="password.touched && password.errors?.required">كلمة السر مطلوبة</span>
+        <span *ngIf="password.touched && password.errors?.minlength">كلمة السر لا تقل عن 6 ارقام</span>
+      </div>
+      <input type="submit" value="تسجيل الدخول" [disabled]="form.invalid">
+    </form>
+  </div>
+</section>

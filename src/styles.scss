@@ -1,0 +1,265 @@
+/* You can add global styles to this file, and also import other style files */
+@import "variables";
+@import 'mixin';
+@import 'responsive';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+
+/* - 1 - fonts-load - start
+==================================================================================================== */
+@import url('https://fonts.googleapis.com/css?family=Tajawal:400,500,700&display=swap');
+/* - 1 - fonts-load - end
+==================================================================================================== */
+
+/*  2 - global style - start
+================================================*/
+
+body {
+    font-family: $mainFont;
+    position: relative;
+}
+
+.container-fluid {
+  width: 95%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    li {
+        margin: 0 10px;
+        a {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+a {
+    color: #000;
+    &:hover {
+        text-decoration: none;
+        color: #000;
+    }
+}
+
+.pt-120 {padding-top: 120px !important;}
+.pt-170 {padding-top: 170px;}
+.ptx-170 {padding-top: 170px !important}
+.pt-100 {padding-top: 100px;}
+.pt-120 {padding-top: 120px;}
+.pt-40 {padding-top: 40px;}
+.ptb-100 {padding: 100px 0;}
+.ptb-20 {padding: 20px 0;}
+.ptb-40 {padding: 40px 0;}
+.ptb-30 {padding: 30px 0;}
+.p-50 {padding: 50px;}
+.pb-50 {padding-bottom: 50px}
+.pb-30 {padding-bottom: 30px}
+.mb-50 {margin-bottom: 50px;}
+.mb-40 {margin-bottom: 40px;}
+.mb-30 {margin-bottom: 30px;}
+.mt-50 {margin-top: 50px;}
+.mt-30 {margin-top: 30px;}
+.mLabel {margin: 0 4px 0 29px;}
+.slider-arrow-left, .slider-arrow-right {
+    position: absolute;
+    top: calc(50% - 10%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    background-color: $mainColor;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 30px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.slider-arrow-left {left: -55px}
+.slider-arrow-right {right: -55px}
+
+.show {
+    visibility: visible !important;
+}
+
+.table {
+    .thead-dark {
+        th {
+            background-color: $secondColor;
+            color: $mainColor;
+        }
+    }
+}
+
+.services-details .table {
+    .thead-dark {
+        th {
+            &:first-of-type {
+                width: 150px;
+            }
+        }
+    }
+}
+
+.pages-img {
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+
+.bg-black {
+    background-color: $secondColor;
+}
+
+.item-color {
+    background-color: $mainColor;
+}
+
+
+.item-color-white {
+    background-color: #fff;
+}
+
+.item-color-main {
+    background-color: $mainColor;
+}
+
+input[type=text],
+input[type=password] {
+  padding: 20px 10px;
+}
+
+.form-control::placeholder {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #fff !important;
+}
+
+.form-control::-ms-input-placeholder {
+  color: #fff !important;
+}
+
+.btn-main {
+  padding: 8px 30px;
+  background-color: $mainColor;
+  border: none;
+  color: $secondColor;
+  border-radius: 4px;
+}
+
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+  content: "تحميل الصورة";
+  font-size: 16.5px;
+  width: 100%;
+  text-align: center;
+  height: auto;
+}
+
+.custom-file {
+  width: 100%;
+}
+
+.table .thead-dark th {
+  border-color: transparent;
+}
+
+
+.table .thead-dark  th:first-child{
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.table .thead-dark  th:last-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+
+/*  2 - global style - end
+================================================*/
+
+@include exsmallMedia {
+  .ptb-100 {
+      padding: 50px 0;
+  }
+  .pt-100 {
+      padding-top: 50px;
+  }
+  .ptx-170 {
+      padding-top: 50px !important;
+  }
+  .pt-170 {
+      padding-top: 50px !important;
+  }
+  .carousel {
+      height: 275px !important;
+      .carousel-indicators {
+          margin-right: 0;
+      }
+  }
+  .slider-arrow-left {
+      left: 0;
+  }
+  .slider-arrow-right {
+      right: 0;
+  }
+  .about {
+      .about-content {
+          margin-bottom: 50px;
+          font-size: 15px;
+      }
+  }
+  .footer-logo {
+      height: 112px;
+      img {
+          max-width: 35%;
+      }
+  }
+  .copyright {
+      text-align: center;
+      font-size: 12px;
+  }
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 1px solid #ddd;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+input:active , input:focus , button:active , button:focus{
+  outline: 0 !important;
+  text-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}

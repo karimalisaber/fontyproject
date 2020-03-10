@@ -1,0 +1,14 @@
+@import "variables";
+@import 'global';
+@import 'mixin';
+@import 'responsive';
+
+.not-found {
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-height: 100%;
+  }
+}

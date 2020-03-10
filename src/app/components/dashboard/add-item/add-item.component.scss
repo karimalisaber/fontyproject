@@ -1,0 +1,32 @@
+@import "variables";
+
+.add-cat{
+  width: 80px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: $mainColor;
+
+  span{
+    font-family: CodecPro;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: calc(60px / 2);
+  }
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.form-group{
+  padding-top: 15px;
+  input{
+    width: 92%;
+    height: 66px;
+  border-radius: 10px;
+  border: solid 1px #707070;
+  }
+
+  small{
+    margin-top: 7px;
+  }
+}

@@ -1,0 +1,20 @@
+@import "variables";
+
+.branches__view--items {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-top-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+  padding: 10px;
+  text-align: center;
+  background-color: $mainColor;
+  .branches-title {
+    padding: 10px 0;
+  }
+  .branches-control {
+    padding: 10px 0;
+    button {
+      margin: 0 10px;
+    }
+  }
+}

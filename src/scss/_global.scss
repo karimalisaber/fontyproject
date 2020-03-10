@@ -1,0 +1,145 @@
+/* - 1 - fonts-load - start
+==================================================================================================== */
+@import url('https://fonts.googleapis.com/css?family=Tajawal:400,500,700&display=swap');
+/* - 1 - fonts-load - end
+==================================================================================================== */
+
+/*  2 - global style - start
+================================================*/
+
+body {
+    font-family: $mainFont;
+    position: relative;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    li {
+        margin: 0 10px;
+        a {
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+a {
+    color: #000;
+    &:hover {
+        text-decoration: none;
+        color: #000;
+    }
+}
+
+.ptb-100 {padding: 100px 0;}
+.ptb-20 {padding: 20px 0;}
+.pt-100 {padding-top: 100px;}
+.pb-50 {padding-bottom: 50px}
+.pt-170 {padding-top: 170px;}
+.ptx-170 {padding-top: 170px !important}
+.mb-50 {margin-bottom: 50px;}
+.mb-40 {margin-bottom: 40px;}
+.mb-30 {margin-bottom: 30px;}
+.mt-50 {margin-top: 50px;}
+
+
+.h-800 {
+  height: 800px;
+}
+
+
+.slider-arrow-left, .slider-arrow-right {
+    position: absolute;
+    top: calc(50% - 10%);
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    background-color: $mainColor;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 30px;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.slider-arrow-left {left: -55px}
+.slider-arrow-right {right: -55px}
+
+.show {
+    visibility: visible !important;
+}
+
+.table {
+    .thead-dark {
+        th {
+            background-color: $secondColor;
+            color: $mainColor;
+        }
+    }
+}
+
+.services-details .table {
+    .thead-dark {
+        th {
+            &:first-of-type {
+                width: 150px;
+            }
+        }
+    }
+}
+
+.pages-img {
+    width: 100%;
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+
+.bg-black {
+    background-color: $secondColor;
+}
+
+.item-color {
+    background-color: $mainColor;
+}
+
+
+.item-color-white {
+    background-color: #fff;
+}
+
+.item-color-main {
+    background-color: $mainColor;
+}
+
+input[type=text],
+input[type=password] {
+  padding: 20px 10px;
+  margin-bottom: 20px;
+}
+
+.form-control::placeholder {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #fff !important;
+}
+
+.form-control::-ms-input-placeholder {
+  color: #fff !important;
+}
+
+
+/*  2 - global style - end
+================================================*/

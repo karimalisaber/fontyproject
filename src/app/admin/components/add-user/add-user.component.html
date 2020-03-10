@@ -1,0 +1,37 @@
+<section class="add-user p-50 pt-120">
+  <div class="title-section text-justify">
+    <h2>اضافة مستخدم</h2>
+  </div>
+  <div class="add-user-form">
+    <form>
+      <div class="form-group">
+        <label for="name" class="text-justify w-100">الاسم</label>
+        <input class="form-control" type="text" name="name" id="name">
+      </div>
+      <div class="form-group">
+        <label for="email" class="text-justify w-100">البريد الالكترونى</label>
+        <input class="form-control" type="text" name="email" id="email">
+      </div>
+      <div class="form-group">
+        <label for="phone" class="text-justify w-100">رقم الجوال</label>
+        <input class="form-control" type="text" name="phone" id="phone">
+      </div>
+      <div class="form-group">
+        <label for="password" class="text-justify w-100">كلمة المرور</label>
+        <input class="form-control" type="password" name="password" id="password">
+      </div>
+      <div class="text-justify pb-30">
+          <p>الفئة</p>
+          <input type="radio" name="addUser" value="admin" id="admin">
+          <label class="mLabel" for="admin">الادارة</label>
+          <input type="radio" name="addUser" value="member" id="member">
+          <label class="mLabel" for="member">عضو</label>
+          <input type="radio" name="addUser" value="user" id="user">
+          <label class="mLabel" for="user">مستخدم</label>
+      </div>
+      <div class="form-group">
+        <input class="w-100 btn-main" type="submit" value="اضافة">
+      </div>
+    </form>
+  </div>
+</section>

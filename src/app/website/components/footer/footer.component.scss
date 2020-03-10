@@ -1,0 +1,42 @@
+@import "variables";
+// @import 'global';
+@import 'mixin';
+@import 'responsive';
+
+
+/* - footer-section - start
+==================================================================================================== */
+.main-footer {
+  background-color: #000;
+  color: #fff;
+  .footer-logo {
+      height: 200px;
+      display: flex;
+      align-items: center;
+  }
+  .footer-info, .footer-services, .footer-branche {
+      a {
+          color: #fff;
+      }
+  }
+  ul {
+      padding-top: 20px;
+      li {
+          padding-bottom: 10px;
+          i {
+              margin-left: 15px;
+          }
+      }
+  }
+  .copyright {
+      background-color: #242424;
+      p {
+          margin-bottom: 0;
+          a {
+              color: $mainColor;
+          }
+      }
+  }
+}
+/* - footer-section - end
+==================================================================================================== */

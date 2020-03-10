@@ -1,0 +1,26 @@
+@import "variables";
+@import 'mixin';
+@import 'responsive';
+
+
+/* Start Contact Us Section */
+.contact-us {
+  .contact-info {
+      padding-top: 20px;
+      .icon {
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          background-color: #ddd;
+          border-radius: 50%;
+          text-align: center;
+          margin-left: 25px;
+          margin-bottom: 20px;
+      }
+      p {
+          padding-top: 10px;
+          font-size: 20px;
+      }
+  }
+}
+/* End Contact Us Section */

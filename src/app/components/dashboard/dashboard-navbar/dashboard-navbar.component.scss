@@ -1,0 +1,33 @@
+@import "variables";
+@import 'mixin';
+@import 'responsive';
+
+.topbar {
+  background-color: $secondColor;
+  color: #fff;
+  padding: 15px 0;
+
+  .notifications {
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 25px;
+
+    &:hover {
+      cursor: pointer;
+      color: $mainColor;
+    }
+  }
+
+  .btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    background-color: #fff;
+    font-size: 14px;
+    transition: 0.3s;
+  &:hover {
+      background-color: $mainColor;
+    }
+  }
+}

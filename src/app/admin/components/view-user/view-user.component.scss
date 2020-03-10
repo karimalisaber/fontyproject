@@ -1,0 +1,43 @@
+.view-user {
+  .user-info {
+    margin-bottom: 30px;
+    .user-details {
+      padding: 10px;
+      border: 1px solid #b1abab;
+      border-radius: 5px;
+      background-color: #fbfbfb;
+      p {
+        margin: 0;
+      }
+    }
+  }
+  .orders {
+    width: 100%;
+    border: 1px solid #b1abab;
+    border-radius: 5px;
+    background-color: #fbfbfb;
+    text-align: center;
+    padding: 25px;
+    margin: 28px 0;
+    span {
+      font: {
+        size: 30px;
+        weight: bold;
+      }
+    }
+  }
+  .category {
+    width: 100%;
+    border: 1px solid #b1abab;
+    border-radius: 5px;
+    background-color: #fbfbfb;
+    text-align: center;
+    padding: 25px;
+    span {
+      font: {
+        size: 20px;
+        weight: bold;
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@import "variables";
+@import 'responsive';
+
+//local variable
+$containerWidth: calc(100% - 250px);
+
+/* -------------------------------------------------
+  start layout
+------------------------------------------------- */
+
+// right menu
+app-rightmenu{
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2000;
+  width: 250px;
+  height: 100vh;
+  background-color: blue($color: #000000);
+}
+
+// navbar
+app-dashboard-navbar{
+  width: $containerWidth;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 84px;
+  z-index: 1000;
+}
+
+.main-content{
+  position: relative;
+  right: 250px;
+  top:84px;
+  width: $containerWidth;
+  padding: 30px;
+}
+/* -------------------------------------------------
+  end layout
+------------------------------------------------- */

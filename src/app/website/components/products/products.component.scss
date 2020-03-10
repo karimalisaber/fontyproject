@@ -1,0 +1,45 @@
+@import "variables";
+@import 'mixin';
+@import 'responsive';
+
+/* Start Our Products Section*/
+
+.our-products {
+  background-image: url(../../../../assets/images/products-img.jpg);
+  .products {
+      .products-item {
+          width: 100%;
+          position: relative;
+          cursor: pointer;
+          &:hover {
+              .item-overlay {
+                  transform: scale(1);
+              }
+          }
+          .item-overlay {
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0,0,0,0.5);
+              position: absolute;
+              top: 0;
+              left: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              color: #fff;
+              font-weight: bold;
+              font-size: 20px;
+              transform: scale(0);
+              transition: all ease-in-out 0.3s;
+              a {
+                  color: #fff;
+                  &:hover {
+                      color: $mainColor;
+                  }
+              }
+          }
+      }
+  }
+}
+
+/* End Our Products Section*/

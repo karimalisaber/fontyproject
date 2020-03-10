@@ -1,0 +1,47 @@
+@import "variables";
+@import 'mixin';
+@import 'responsive';
+
+.table-wraper{
+  display: table;
+  width: 100%;
+  color: #fff;
+  height: 48px;
+  border-radius: 10px;
+  padding: 18px 0;
+  margin-bottom: 35px;
+
+  .item{
+    display: table-cell;
+    width: 30px;
+    line-height: 20px;
+    height: 20px;
+    font-family: CodecPro;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+
+  &:not(:last-child){
+    border-left: 1px solid white;
+  }
+  }
+
+}
+
+.main-table{
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.9);
+  background-color: $secondColor;
+}
+
+.items-table{
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fbfbfb;
+  .item{
+    color: $secondColor;
+
+    &:not(:last-child){
+      border-left: 1px solid $secondColor;
+    }
+  }
+}

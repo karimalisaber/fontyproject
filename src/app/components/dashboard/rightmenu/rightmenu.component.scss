@@ -1,0 +1,42 @@
+@import "variables";
+@import 'mixin';
+@import 'responsive';
+
+aside {
+  width: 100%;
+  height: 100%;
+  background-color: $secondColor;
+
+  .menu--logo {
+    padding: 20px 0;
+    img {
+      max-width: 50%;
+    }
+  }
+
+  .menu-links {
+    padding-top: 20px;
+    background-color: $secondColor;
+    li {
+      margin: 0;
+    }
+    a {
+      font-size: 24px;
+      display: inline-block;
+      width: 100%;
+      padding: 10px 0;
+      color: #fff;
+      transition: 0.3s;
+      &:hover {
+        background-color: $mainColor;
+        color: $secondColor;
+      }
+
+      &.active{
+        color: $secondColor;
+        background-color: $mainColor;
+      }
+
+    }
+  }
+}

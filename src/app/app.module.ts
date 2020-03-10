@@ -1,0 +1,105 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { HomeComponent } from './website/components/home/home.component';
+import { AboutComponent } from './website/components/about/about.component';
+import { ProductsComponent } from './website/components/products/products.component';
+import { BranchesComponent } from './website/components/branches/branches.component';
+import { OurServicesComponent } from './website/components/our-services/our-services.component';
+import { NotFoundComponent } from './website/components/not-found/not-found.component';
+import { NavbarComponent } from './website/components/navbar/navbar.component';
+import { FooterComponent } from './website/components/footer/footer.component';
+import { ProductDetailsComponent } from './website/components/product-details/product-details.component';
+import { WebsiteComponent } from './website/website.component';
+import { LoginComponent } from './admin/components/login/login.component';
+import { DashboardComponent } from './components/dashboard/layout/dashboard.component';
+import { AdminComponent } from './admin/admin.component';
+import { RightmenuComponent } from './components/dashboard/rightmenu/rightmenu.component';
+import { AboutSectionComponent } from './admin/components/about-section/about-section.component';
+import { EditBranchesComponent } from './admin/components/edit-branches/edit-branches.component';
+import { EditContactComponent } from './admin/components/edit-contact/edit-contact.component';
+import { MembersComponent as Management } from './components/dashboard/members/members.component';
+import { EditProductsComponent } from './admin/components/edit-products/edit-products.component';
+import { ViewProductsComponent } from './components/dashboard/view-products/view-products.component';
+import { ViewProductComponent } from './admin/components/view-product/view-product.component';
+import { AddUserComponent } from './admin/components/add-user/add-user.component';
+import { ViewUserComponent } from './admin/components/view-user/view-user.component';
+import { AddProductComponent } from './admin/components/add-product/add-product.component';
+import { SearchComponent } from './components/dashboard/search/search.component';
+import { ChartComponent } from './admin/components/chart/chart.component';
+import { DashWrapperComponent } from './components/dashboard/dash-wrapper/dash-wrapper.component';
+import { DashboardNavbarComponent } from './components/dashboard/dashboard-navbar/dashboard-navbar.component';
+import { DashboardCategoriesComponent } from './components/dashboard/dashboard-categories/dashboard-categories.component';
+import { SettingsComponent } from './components/dashboard/settings/settings.component';
+import { SettingItemComponent } from './components/dashboard/setting-item/setting-item.component';
+import { AddItemComponent } from './components/dashboard/add-item/add-item.component';
+import { ItemsWrapperComponent } from './components/dashboard/items-wrapper/items-wrapper.component';
+import { OrdersComponent } from './components/dashboard/orders/orders.component';
+import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
+import { ContactsComponent } from './website/components/contacts/contacts.component';
+import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
+import { ControlPanelIconComponent } from './components/dashboard/control-panel/control-panel-icon/control-panel-icon.component';
+import { RecievedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/recieved-orders/recieved-orders.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    ProductsComponent,
+    BranchesComponent,
+    OurServicesComponent,
+    NotFoundComponent,
+    LoginComponent,
+    NavbarComponent,
+    FooterComponent,
+    WebsiteComponent,
+    DashboardComponent,
+    AdminComponent,
+    ProductDetailsComponent,
+    RightmenuComponent,
+    AboutSectionComponent,
+    EditBranchesComponent,
+    EditContactComponent,
+    Management,
+    EditProductsComponent,
+    ViewProductsComponent,
+    ViewProductComponent,
+    AddUserComponent,
+    ViewUserComponent,
+    AddProductComponent,
+    SearchComponent,
+    ChartComponent,
+    DashWrapperComponent,
+    DashboardNavbarComponent,
+    DashboardCategoriesComponent,
+    SettingsComponent,
+    SettingItemComponent,
+    AddItemComponent,
+    ItemsWrapperComponent,
+    OrdersComponent,
+    ControlPanelComponent,
+    ContactsComponent,
+    SiteSettingsComponent,
+    ControlPanelIconComponent,
+    RecievedOrdersComponent
+  ],
+
+imports: [
+  BrowserModule,
+  BrowserAnimationsModule,
+  AppRoutingModule,
+  FormsModule,
+  // CustomFormsModule,
+  MDBBootstrapModule.forRoot()
+],
+
+providers: [],
+
+bootstrap: [AppComponent]
+})
+export class AppModule { }

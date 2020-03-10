@@ -1,0 +1,37 @@
+
+// Large desktops and laptops 
+@mixin maxMedia {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+// Large desktops and laptops 
+@mixin maxMedia {
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+        @content;
+    }
+}
+
+// Landscape tablets and medium desktops 
+@mixin mediumMedia {
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        @content;
+    }
+}
+
+
+// Portrait tablets and small desktops 
+@mixin smallMedia {
+    @media (min-width: 576px) and (max-width: 767.98px) {
+        @content;
+    }
+}
+
+
+// Landscape phones and portrait tablets
+@mixin exsmallMedia {
+    @media (max-width: 575.98px) {
+        @content;
+    }
+}

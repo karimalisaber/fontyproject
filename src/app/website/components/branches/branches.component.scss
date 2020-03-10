@@ -1,0 +1,27 @@
+@import "variables";
+@import 'mixin';
+@import 'responsive';
+
+
+/* Start Our Branches Section*/
+.our-branches {
+  background-color: $secondColor;
+  .title-section {
+      h2 {
+          color: $mainColor;
+      }
+  }
+  .branche-item {
+      width: 100%;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: 30px;
+      border-bottom-right-radius: 30px;
+      a {
+          font-size: 20px;
+      }
+  }
+}
+/* End Our Branches Section*/

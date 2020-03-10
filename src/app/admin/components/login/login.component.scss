@@ -1,0 +1,66 @@
+@import "variables";
+@import 'mixin';
+@import 'responsive';
+
+.login {
+  width: 100%;
+  height: 100vh;
+  .login-form {
+    width: 30%;
+    padding: 20px;
+    h3 {
+      font-weight: bold;
+    }
+    .form-group {
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 0;
+      &::before {
+        content: '';
+        font: {
+          weight: bold;
+          size: 20px;
+        }
+        position: absolute;
+        top: 6px;
+        right: 5px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: $mainColor;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+      .icon {
+        position: absolute;
+        top: 16px;
+        right: 18px;
+        color: #fff;
+      }
+      .form-control {
+        border-radius: 10px;
+        padding: 25px 50px;
+        background-color: $secondColor;
+        color: #fff;
+      }
+    }
+    .msg {
+      padding-right: 10px;
+      height: 15px;
+      span {
+        color: red;
+        font-size: 13px;
+      }
+    }
+    input[type=submit] {
+      width: 100%;
+      padding: 10px 0;
+      margin-top: 15px;
+      background-color: $mainColor;
+      border-radius: 10px;
+      border: none;
+      font-weight: 500;
+    }
+  }
+}
