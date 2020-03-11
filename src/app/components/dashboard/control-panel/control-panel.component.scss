@@ -1,4 +1,4 @@
-
+@import "variables";
 .nav-wrapper{
   margin: auto;
   width: 90%;
@@ -6,11 +6,21 @@
 
 .nav-item{
   width: 80%;
+  padding-top: 10px;
   border-radius: 10px;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   background-color: #fbfbfb;
   margin: 10px;
+  transition: all .5s;
 
+  &:hover{
+    cursor: pointer;
+    background-color: $mainColor;
+
+    a{
+      color: $thirdColor;
+    }
+  }
   span,
   p{
     font-family: CodecPro;

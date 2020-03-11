@@ -1,0 +1,73 @@
+<form action="">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="form-group">
+        <label for="product-name" class="text-justify w-100">اسم المنتج</label>
+        <input
+          class="form-control"
+          type="text"
+          name="product-name"
+          id="product-name"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="price" class="text-justify w-100">سعر المنتج</label>
+            <input class="form-control" type="text" name="price" id="price" />
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="points" class="text-justify w-100">عدد النقاط</label>
+            <input class="form-control" type="text" name="points" id="points" />
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="ingredients" class="text-justify w-100">المكونات</label>
+        <textarea class="form-control" name="ingredients" id="ingredients" ></textarea>
+      </div>
+
+      <div class="text-justify pb-30">
+        <p class="cat">الفئة</p>
+
+        <input type="radio" name="category" value="sandwich" id="sandwich" />
+        <label class="mLabel" for="sandwich">ساندوتش</label>
+
+        <input
+          type="radio"
+          name="category"
+          value="main-dishes"
+          id="main-dishes"
+        />
+        <label class="mLabel" for="main-dishes">أطباق رئيسية</label>
+
+        <input type="radio" name="category" value="pasta" id="pasta" />
+        <label class="mLabel" for="pasta">باستا</label>
+
+        <input type="radio" name="category" value="drinks" id="drinks" />
+        <label class="mLabel" for="drinks">مشروبات</label>
+      </div>
+
+      <div class="form-group">
+        <input class="add w-100 btn-main" type="submit" [value]="type" />
+      </div>
+  </div>
+    <!-- end of right section -->
+    <!-- end of right section -->
+<div class="col-md">
+   <div class="prview-img" style="background-image: url('assets/images/25.jpg');"></div>
+      <div class="upload-btn-wrapper">
+        <button class="btn">اضافة صورة
+          <input type="file" name="myfile" />
+        </button>
+      </div>
+    </div>
+    <!-- end of left section -->
+  </div>
+  <!-- end of row -->
+</form>

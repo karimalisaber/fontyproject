@@ -22,13 +22,11 @@ import { RightmenuComponent } from './components/dashboard/rightmenu/rightmenu.c
 import { AboutSectionComponent } from './admin/components/about-section/about-section.component';
 import { EditBranchesComponent } from './admin/components/edit-branches/edit-branches.component';
 import { EditContactComponent } from './admin/components/edit-contact/edit-contact.component';
-import { MembersComponent as Management } from './components/dashboard/members/members.component';
-import { EditProductsComponent } from './admin/components/edit-products/edit-products.component';
+import { EditProductsComponent } from './components/dashboard/view-products/edit-products/edit-products.component';
 import { ViewProductsComponent } from './components/dashboard/view-products/view-products.component';
-import { ViewProductComponent } from './admin/components/view-product/view-product.component';
 import { AddUserComponent } from './admin/components/add-user/add-user.component';
 import { ViewUserComponent } from './admin/components/view-user/view-user.component';
-import { AddProductComponent } from './admin/components/add-product/add-product.component';
+import { AddProductComponent } from './components/dashboard/view-products/add-product/add-product.component';
 import { SearchComponent } from './components/dashboard/search/search.component';
 import { ChartComponent } from './admin/components/chart/chart.component';
 import { DashboardNavbarComponent } from './components/dashboard/dashboard-navbar/dashboard-navbar.component';
@@ -47,6 +45,12 @@ import { OrdersComponent } from './components/dashboard/control-panel/contro-pan
 import { CancelleOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/cancelle-orders/cancelle-orders.component';
 import { FinishedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/finished-orders/finished-orders.component';
 import { PreparingStageOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/preparing-stage-orders/preparing-stage-orders.component';
+import { BranchesSettingsComponent } from './components/dashboard/management/branches-settings/branches-settings.component';
+import { UsersSettingsComponent } from './components/dashboard/management/users-settings/users-settings.component';
+import { AdminsSettingsComponent } from './components/dashboard/management/admins-settings/admins-settings.component';
+import { ManagementComponent } from './components/dashboard/management/management.component';
+import { EditOrAddProductComponent } from './components/dashboard/view-products/edit-or-add-product/edit-or-add-product.component';
+import { EditProductComponent } from './components/dashboard/view-products/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -68,10 +72,8 @@ import { PreparingStageOrdersComponent } from './components/dashboard/control-pa
     AboutSectionComponent,
     EditBranchesComponent,
     EditContactComponent,
-    Management,
     EditProductsComponent,
     ViewProductsComponent,
-    ViewProductComponent,
     AddUserComponent,
     ViewUserComponent,
     AddProductComponent,
@@ -92,7 +94,13 @@ import { PreparingStageOrdersComponent } from './components/dashboard/control-pa
     OrdersComponent,
     CancelleOrdersComponent,
     FinishedOrdersComponent,
-    PreparingStageOrdersComponent
+    PreparingStageOrdersComponent,
+    BranchesSettingsComponent,
+    UsersSettingsComponent,
+    AdminsSettingsComponent,
+    ManagementComponent,
+    EditOrAddProductComponent,
+    EditProductComponent
   ],
 
 imports: [
