@@ -17,7 +17,6 @@
 
 .view-porducts {
   .search {
-    padding-bottom: 25px;
     position: relative;
     &:before {
       content: "\f002";
@@ -66,12 +65,12 @@
     }
 
     td{
-      line-height: 80px;
+      line-height: 70px;
       font-weight: 700;
     }
 
     .item-wrapper{
-      height: 70px;
+      height: 60px;
       border-radius: 12px;
       box-shadow: 5px 5px 6px 5px rgba(0, 0, 0, 0.16);
       background-color: #fbfbfb;

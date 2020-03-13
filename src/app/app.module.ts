@@ -32,9 +32,6 @@ import { ChartComponent } from './admin/components/chart/chart.component';
 import { DashboardNavbarComponent } from './components/dashboard/dashboard-navbar/dashboard-navbar.component';
 import { DashboardCategoriesComponent } from './components/dashboard/dashboard-categories/dashboard-categories.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
-import { SettingItemComponent } from './components/dashboard/setting-item/setting-item.component';
-import { AddItemComponent } from './components/dashboard/add-item/add-item.component';
-import { ItemsWrapperComponent } from './components/dashboard/items-wrapper/items-wrapper.component';
 import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
 import { ContactsComponent } from './website/components/contacts/contacts.component';
 import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
@@ -82,9 +79,6 @@ import { EditProductComponent } from './components/dashboard/view-products/edit-
     DashboardNavbarComponent,
     DashboardCategoriesComponent,
     SettingsComponent,
-    SettingItemComponent,
-    AddItemComponent,
-    ItemsWrapperComponent,
     ControlPanelComponent,
     ContactsComponent,
     SiteSettingsComponent,

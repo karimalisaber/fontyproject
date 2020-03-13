@@ -1,0 +1,64 @@
+@import "variables";
+
+.cat-wrapper{
+  height: 85px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  background-color: #fbfbfb;
+  width: 80%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 0 19px;
+  margin-bottom: 30px;
+
+.title{
+  font-family: CodecPro;
+  font-size: 25px;
+  font-weight: bold;
+  line-height: 85px;
+  letter-spacing: normal;
+  text-align: right;
+  color: #000;
+}
+
+  img{
+    width: 20px;
+    height: 85px;
+    margin: 0;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+
+
+.add-cat{
+  width: 80px;
+  height: 60px;
+  border-radius: 10px;
+  background-color: $mainColor;
+
+  span{
+    font-family: CodecPro;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: calc(60px / 2);
+  }
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.form-group{
+  padding-top: 15px;
+  input{
+    width: 92%;
+    height: 66px;
+  border-radius: 10px;
+  border: solid 1px #707070;
+  }
+
+  small{
+    margin-top: 7px;
+  }
+}
