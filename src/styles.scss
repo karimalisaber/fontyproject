@@ -158,7 +158,7 @@ input[type=password] {
 }
 
 .custom-file-input:lang(en) ~ .custom-file-label::after {
-  content: "تحميل الصورة";
+  content: "تغيير الصورة";
   font-size: 16.5px;
   width: 100%;
   text-align: center;
@@ -235,8 +235,7 @@ input[type=password] {
   display: inline-block;
 }
 
-.btn {
-  border: 1px solid #ddd;
+.btn {  border: 1px solid #ddd;
   color: gray;
   background-color: white;
   padding: 8px 20px;
@@ -283,4 +282,14 @@ textarea:active , textarea:focus{
     color: $thirdColor;
     background-color: $mainColor;
   }
+}
+
+.title-section{
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.fa-times-circle{
+  color: red;
+  font-size: 1.5rem;
 }

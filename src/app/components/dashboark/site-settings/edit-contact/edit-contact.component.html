@@ -1,0 +1,157 @@
+<h2 class="title-section text-center mb-40">تواصل معنا</h2>
+    
+<div class="row">
+   <div class="col-12 col-md-6 contact-form">
+          <form #form="ngForm" (ngSubmit)="addContacts(form)">
+            <div class="form-group">
+              <label class="text-justify w-100">إضافة عنوان</label>
+              <input #address [(ngModel)]="newContacts.address" class="form-control" type="text" name="address" id="address">
+            </div>
+
+            <div class="form-group">
+              <label class="text-justify w-100">اضافة رقم الهاتف</label>
+              <input #phone [(ngModel)]="newContacts.phone" class="form-control" type="text" name="phone" id="phone">
+            </div>
+
+            <div class="form-group">
+              <label class="text-justify w-100">اضافة البريد الالكترونى</label>
+              <input #email [(ngModel)]="newContacts.email" class="form-control" type="text" name="email" id="email">
+            </div>
+
+            <div class="form-group">
+              <input class="w-100 btn-main" type="submit" value="اضافة">
+            </div>
+          </form>
+   </div>
+
+      <div class="col-12 col-md-6">
+        <div class="contact-info">
+          <ul class="list-wrapper ">
+            <li class="row text-right">
+              <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
+              <p class="col"> {{newContacts.address}} </p>
+            </li>
+
+            <li class="row text-right">
+              <div class="col icon"><i class="fas fa-phone-alt"></i></div>
+              <p class="col">{{newContacts.phone}}</p>
+            </li>
+
+            <li class="row text-right">
+              <div class="col icon"><i class="far fa-envelope"></i></div>
+              <p class="col"> {{newContacts.email}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+</div>
+
+<!-- ture contacts -->
+<h2 class="title-section text-center mt-30 mb-40">العناوين</h2>
+
+<div class="row">
+
+  <div class="col-12 col-md-6">
+    <div class="contact-info">
+      <ul class="list-wrapper ">
+        <li class="row text-right">
+          <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
+          <p class="col"> {{newContacts.address}} </p>
+        </li>
+  
+        <li class="row text-right">
+          <div class="col icon"><i class="fas fa-phone-alt"></i></div>
+          <p class="col">{{newContacts.phone}}</p>
+        </li>
+  
+        <li class="row text-right">
+          <div class="col icon"><i class="far fa-envelope"></i></div>
+          <p class="col"> {{newContacts.email}}</p>
+        </li>
+  
+        <div class="button-wrapper clearfix">
+          <button class="btn float-right">تعديل</button>
+          <button class="btn float-right">حذف</button>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <div class="contact-info">
+      <ul class="list-wrapper ">
+        <li class="row text-right">
+          <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
+          <p class="col"> {{newContacts.address}} </p>
+        </li>
+  
+        <li class="row text-right">
+          <div class="col icon"><i class="fas fa-phone-alt"></i></div>
+          <p class="col">{{newContacts.phone}}</p>
+        </li>
+  
+        <li class="row text-right">
+          <div class="col icon"><i class="far fa-envelope"></i></div>
+          <p class="col"> {{newContacts.email}}</p>
+        </li>
+  
+        <div class="button-wrapper clearfix">
+          <button class="btn float-right">تعديل</button>
+          <button class="btn float-right">حذف</button>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <div class="contact-info">
+      <ul class="list-wrapper ">
+        <li class="row text-right">
+          <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
+          <p class="col"> {{newContacts.address}} </p>
+        </li>
+  
+        <li class="row text-right">
+          <div class="col icon"><i class="fas fa-phone-alt"></i></div>
+          <p class="col">{{newContacts.phone}}</p>
+        </li>
+  
+        <li class="row text-right">
+          <div class="col icon"><i class="far fa-envelope"></i></div>
+          <p class="col"> {{newContacts.email}}</p>
+        </li>
+  
+        <div class="button-wrapper clearfix">
+          <button class="btn float-right">تعديل</button>
+          <button class="btn float-right">حذف</button>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6">
+    <div class="contact-info">
+      <ul class="list-wrapper ">
+        <li class="row text-right">
+          <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
+          <p class="col"> {{newContacts.address}} </p>
+        </li>
+  
+        <li class="row text-right">
+          <div class="col icon"><i class="fas fa-phone-alt"></i></div>
+          <p class="col">{{newContacts.phone}}</p>
+        </li>
+  
+        <li class="row text-right">
+          <div class="col icon"><i class="far fa-envelope"></i></div>
+          <p class="col"> {{newContacts.email}}</p>
+        </li>
+  
+        <div class="button-wrapper clearfix">
+          <button class="btn float-right">تعديل</button>
+          <button class="btn float-right">حذف</button>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

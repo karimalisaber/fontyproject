@@ -19,9 +19,9 @@ import { LoginComponent } from './admin/components/login/login.component';
 import { DashboardComponent } from './components/dashboard/layout/dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { RightmenuComponent } from './components/dashboard/rightmenu/rightmenu.component';
-import { AboutSectionComponent } from './admin/components/about-section/about-section.component';
-import { EditBranchesComponent } from './admin/components/edit-branches/edit-branches.component';
-import { EditContactComponent } from './admin/components/edit-contact/edit-contact.component';
+import { AboutSectionComponent } from './components/dashboard/site-settings/about-section/about-section.component';
+import { EditBranchesComponent } from './components/dashboard/site-settings/edit-branches/edit-branches.component';
+import { EditContactComponent } from './components/dashboark/site-settings/edit-contact/edit-contact.component';
 import { EditProductsComponent } from './components/dashboard/view-products/edit-products/edit-products.component';
 import { ViewProductsComponent } from './components/dashboard/view-products/view-products.component';
 import { AddUserComponent } from './admin/components/add-user/add-user.component';
@@ -48,6 +48,12 @@ import { AdminsSettingsComponent } from './components/dashboard/management/admin
 import { ManagementComponent } from './components/dashboard/management/management.component';
 import { EditOrAddProductComponent } from './components/dashboard/view-products/edit-or-add-product/edit-or-add-product.component';
 import { EditProductComponent } from './components/dashboard/view-products/edit-product/edit-product.component';
+import { EditSliderComponent } from './components/dashboard/site-settings/edit-slider/edit-slider.component';
+import { EditServicesComponent } from './components/dashboard/site-settings/edit-services/edit-services.component';
+import { UserPointsComponent } from './components/dashboard/settings/user-points/user-points.component';
+import { BranchDetailsComponent } from './components/management/branches-settings/branch-details/branch-details.component';
+import { OffersComponent } from './components/dashboard/settings/offers/offers.component';
+import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +100,13 @@ import { EditProductComponent } from './components/dashboard/view-products/edit-
     AdminsSettingsComponent,
     ManagementComponent,
     EditOrAddProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    EditSliderComponent,
+    EditServicesComponent,
+    UserPointsComponent,
+    BranchDetailsComponent,
+    OffersComponent,
+    EditOffersComponent
   ],
 
 imports: [

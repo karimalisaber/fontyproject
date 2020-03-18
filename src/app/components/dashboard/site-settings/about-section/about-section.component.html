@@ -1,0 +1,21 @@
+<h2 class="title-section text-center mb-50">تعديل البيانات الأساسية (من نحن)</h2>
+    <form action="" class="about-form ">
+      <div class="form-group">
+        <label class="title-section text-justify w-100">اضافة نبذة</label>
+        <textarea [(ngModel)]="aboutContent.text" class="form-control" name="brief" id="" cols="30" rows="10"></textarea>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="custom-file d-flex justify-content-start">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile"></label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex justify-content-start">
+            <input class="btn-main" type="submit" value="تعديل">
+          </div>
+        </div>
+      </div>
+</form>

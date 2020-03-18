@@ -8,11 +8,18 @@
   background-size: cover;
 }
 
+.upload-btn-wrapper{
+  width: 100%;
+
 .btn {
-  padding: 8px 100px;
+  width: 100%;
+  margin: auto;
+
   input:hover{
     cursor: pointer ;
   }
+  
+}
 }
 
 textarea{
