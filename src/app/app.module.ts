@@ -54,6 +54,10 @@ import { UserPointsComponent } from './components/dashboard/settings/user-points
 import { BranchDetailsComponent } from './components/management/branches-settings/branch-details/branch-details.component';
 import { OffersComponent } from './components/dashboard/settings/offers/offers.component';
 import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
+// import { AuthGuardService } from './services/auth-guard.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { CategoriesService } from './services/categories.service';
 
 @NgModule({
   declarations: [
@@ -114,11 +118,16 @@ imports: [
   BrowserAnimationsModule,
   AppRoutingModule,
   FormsModule,
+  HttpClientModule,
   // CustomFormsModule,
   MDBBootstrapModule.forRoot()
 ],
 
-providers: [],
+providers: [
+  CategoriesService,
+  AuthService,
+  // AuthGuardService 
+],
 
 bootstrap: [AppComponent]
 })

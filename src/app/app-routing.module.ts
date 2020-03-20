@@ -38,9 +38,12 @@ import { EditServicesComponent } from './components/dashboard/site-settings/edit
 import { UserPointsComponent } from './components/dashboard/settings/user-points/user-points.component';
 import { BranchDetailsComponent } from './components/management/branches-settings/branch-details/branch-details.component';
 import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
+import { LoginComponent } from './admin/components/login/login.component';
 
 const routes: Routes = [
-    { path: 'dashboard', component:  DashboardComponent, children: [
+  { path: 'login', component: LoginComponent },
+
+    { path: 'dashboard', component: DashboardComponent ,children: [
       { path: '', component: ControlPanelComponent},
         { path: 'received-orders', component: RecievedOrdersComponent },
         { path: 'all-orders', component: AllOrdersComponent },

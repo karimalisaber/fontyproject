@@ -1,0 +1,21 @@
+import { async, TestBed } from '@angular/core/testing';
+import { DashboardNavbarComponent } from './dashboard-navbar.component';
+describe('DashboardNavbarComponent', () => {
+    let component;
+    let fixture;
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [DashboardNavbarComponent]
+        })
+            .compileComponents();
+    }));
+    beforeEach(() => {
+        fixture = TestBed.createComponent(DashboardNavbarComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+});
+//# sourceMappingURL=dashboard-navbar.component.spec.js.map

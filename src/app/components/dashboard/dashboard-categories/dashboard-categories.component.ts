@@ -1,50 +1,54 @@
-import { Categories } from './../../../interfaces/categories.interface';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+import {  UserCat, PostCategoriesResponse } from 'src/app/interfaces/categories-response';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'app-dashboard-categories',
   templateUrl: './dashboard-categories.component.html',
   styleUrls: ['./dashboard-categories.component.scss']
 })
+
 export class DashboardCategoriesComponent implements OnInit {
-  userInput ="بيسشب" ; // add section input
-  categories: Array<Categories> = [
-       {id: 1, title: 'سندوتشات'}, 
-       {id: 2, title: 'فراخ'},
-       {id: 3, title: 'لحمة'},
-       {id: 4, title: 'جمبري'},
-       {id: 5, title: 'خيار'}, 
-  ]; 
+  userInput ="" ; // add section input
+  categories: Array<UserCat> =[];
 
-  constructor() {
+  constructor(private http: HttpClient,  private cat: CategoriesService) {
 
   }
 
-  ngOnInit() {
+
+ngOnInit() {
     // get categories as observable
-  }
+      this.cat.getCategoris().subscribe(response=>{
+       response.data.forEach(element => {
+       this.categories.push({id: element.id , name: element.name});       
+     });
+  });
+}
+
 
   delete(id){
-    // 1- delete item
-    this.categories.splice(id-1, 1);
-    // 2- post the deletion  
+    let url = `http://fonty.ieeeshasb.org/api/web/delete_category/${id}`;
+    this.http.delete(url).subscribe(data=> {
+      let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
+      this.categories.splice(itemIndex, 1);
+    });
   }
 
-  addItem(title){
-    // 1- check value
-    if(this.userInput.length > 3 ){
-      // 2- get the id then push item
-      let id = this.categories.length +1 ;
-      let newItem = {id, title };
-      this.categories.push(newItem);
+  addItem(name){
+      let url = "http://fonty.ieeeshasb.org/api/web/add_category";
+      
+      this.http.post(url, {name}).subscribe((res:PostCategoriesResponse)=>{
+      this.categories.push({id: res.data.id , name: res.data.name});
+    });
+    // 3- cleanup the inputs 
+    (<HTMLInputElement>document.getElementById('cat-name')).value = null;
+    (<HTMLInputElement>document.getElementById('cat-name')).blur();
+    this.userInput = null;
 
-      // 3- cleanup the inputs 
-      (<HTMLInputElement>document.getElementById('cat-name')).value = "";
-      this.userInput = "";
-      // 4- cleanup the errors
-        
-    }
+    // 4- cleanup the errors
+    // window.location.reload();
   }
-
-
 }
