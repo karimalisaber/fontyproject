@@ -39,6 +39,7 @@ import { UserPointsComponent } from './components/dashboard/settings/user-points
 import { BranchDetailsComponent } from './components/management/branches-settings/branch-details/branch-details.component';
 import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
 import { LoginComponent } from './admin/components/login/login.component';
+import { ViewProductsCategoriesComponent } from './components/dashboard/view-products/view-products-categories/view-products-categories.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -51,11 +52,15 @@ const routes: Routes = [
         { path: 'preparing-stage-orders', component: PreparingStageOrdersComponent },
         { path: 'cancelled-orders', component: CancelleOrdersComponent },
 
+        { path: 'add-admin', component: AddUserComponent },
+
 
       { path: 'categories', component: DashboardCategoriesComponent },
-      { path: 'products', component: ViewProductsComponent },
-        { path: 'products/add-product', component: AddProductComponent },
-        { path: 'products/edit-product', component: EditProductComponent },
+       { path: 'products-categories', component: ViewProductsCategoriesComponent },
+       { path: 'view-products/:id', component: ViewProductsComponent },
+       { path: 'edit-product/:productId', component: EditProductComponent },
+
+        { path: 'add-product/:id', component: AddProductComponent },
       { path: 'management', component: ManagementComponent},
         { path: 'management/admins', component: AdminsSettingsComponent },
         { path: 'management/branches', component: BranchesSettingsComponent },

@@ -1,4 +1,4 @@
-<a routerLink="add-product" class="d-block text-center item-setting-global"> إضافة منتج </a>
+<a [routerLink] ="['/dashboard/add-product', catId] " class="d-block text-center item-setting-global-small"> إضافة منتج </a>
 
 <section class="view-porducts">
   <div class="search">
@@ -35,7 +35,7 @@
           </a>
         </td>
         <td>
-          <a routerLink="edit-product">
+          <a [routerLink]="['/dashboard/edit-product/', catId]">
             <i class="fas fa-cog"></i>
           </a>
         </td>

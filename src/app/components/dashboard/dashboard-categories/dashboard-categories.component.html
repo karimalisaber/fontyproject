@@ -1,19 +1,19 @@
 <div class="row no-gutters">
   <div class="col-md-6"> <!--right section-->
-    <div *ngFor="let cat of categories" class="row cat-wrapper">
+   <div *ngFor="let cat of categories" class="row cat-wrapper">
       <div class="col-8">
-        <p class="title"> {{cat.name}}</p>
-      </div>
+        <input (keyup.enter) ="updateItem($event.target.value, cat.id)" [disabled] ="!update" class="d-block title" type="text" [value] ="cat.name" [id]="'item-' + cat.id">  
+     </div>
 
-  <div class="icons-wrapper row col no-gutters">
+     <div class="icons-wrapper row col no-gutters">
       <div  class="trash col">
-        <img (click)="delete(cat.id)" class="img-fluid" src="assets/svgs/trash.svg" alt="">
+        <img (click)="deleteItem(cat.id)" class="img-fluid" src="assets/svgs/trash.svg" alt="">
       </div>
 
       <div class="settings col">
-      <img class="img-fluid" src="assets/svgs/settings.svg" alt="">
+      <img (click) ="enableUpdateItem(cat.id)"  class="img-fluid" src="assets/svgs/settings.svg" alt="">
       </div>
-    </div>
+     </div>
   </div>
 
 </div>

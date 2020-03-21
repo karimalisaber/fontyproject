@@ -284,6 +284,28 @@ textarea:active , textarea:focus{
   }
 }
 
+.item-setting-global-small{
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 20px;
+  transition: all .5s;
+  color: $secondColor;
+  font-weight: bold;
+  border-radius: 15px;
+  box-shadow: 5px 3px 6px 4px rgba(0, 0, 0, 0.16);
+  background-color: #fbfbfb;
+  background-color: $mainColor;
+
+  &:hover{
+    cursor: pointer;
+    color: $mainColor;
+    background-color: $secondColor;
+  }
+}
+
 .title-section{
   font-size: 2rem;
   font-weight: bold;

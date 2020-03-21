@@ -58,6 +58,8 @@ import { EditOffersComponent } from './components/dashboard/settings/edit-offers
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { CategoriesService } from './services/categories.service';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ViewProductsCategoriesComponent } from './components/dashboard/view-products/view-products-categories/view-products-categories.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +112,8 @@ import { CategoriesService } from './services/categories.service';
     UserPointsComponent,
     BranchDetailsComponent,
     OffersComponent,
-    EditOffersComponent
+    EditOffersComponent,
+    ViewProductsCategoriesComponent
   ],
 
 imports: [
@@ -119,6 +122,7 @@ imports: [
   AppRoutingModule,
   FormsModule,
   HttpClientModule,
+  NgbModule,
   // CustomFormsModule,
   MDBBootstrapModule.forRoot()
 ],

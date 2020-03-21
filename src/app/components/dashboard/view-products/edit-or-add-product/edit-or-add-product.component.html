@@ -42,22 +42,13 @@
       <div class="text-justify pb-30">
         <p class="cat">الفئة</p>
 
-        <input type="radio" name="category" value="sandwich" id="sandwich" />
-        <label class="mLabel" for="sandwich">ساندوتش</label>
-
-        <input
-          type="radio"
-          name="category"
-          value="main-dishes"
-          id="main-dishes"
-        />
-        <label class="mLabel" for="main-dishes">أطباق رئيسية</label>
-
-        <input type="radio" name="category" value="pasta" id="pasta" />
-        <label class="mLabel" for="pasta">باستا</label>
-
-        <input type="radio" name="category" value="drinks" id="drinks" />
-        <label class="mLabel" for="drinks">مشروبات</label>
+        <select  class="cat-wrapper form-controll">
+          <option value="">اختار الفئة</option>
+          <option
+            *ngFor="let cat of categories$ | async" name="category" value="{{cat.name}}" id="cat.id">
+            {{cat.name}}
+          </option>
+        </select>
       </div>
 
       <div class="form-group">

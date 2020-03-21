@@ -1,40 +1,72 @@
-<section class="add-user p-50 pt-120">
-  <div class="title-section text-justify">
-    <h2>اضافة مستخدم</h2>
-  </div>
-  <div class="add-user-form">
-    <form>
-      <div class="form-group">
-        <label for="name" class="text-justify w-100">الاسم</label>
-        <input class="form-control" type="text" name="name" id="name">
-      </div>
+<h2 class="title-section text-justify mt-20">اضافة مستخدم</h2>
 
-      <div class="form-group">
-        <label for="email" class="text-justify w-100">البريد الالكترونى</label>
-        <input class="form-control" type="text" name="email" id="email">
-      </div>
+<div class="add-user-form container">
+  <form #userForm="ngForm" (ngSubmit)="submit(userForm.value)">
+    <div class="form-group">
+      <label for="name" class="text-justify w-100">الاسم</label>
+      <input ngModel #userName="ngModel" required minlength="5"
+      [ngClass]="{ 'is-invalid': userName.invalid && userName.touched , 'is-valid': !userName.invalid && userName.touched}"
+      class="form-control" type="text" name="name" id="name">
 
-      <div class="form-group">
-        <label for="phone" class="text-justify w-100">رقم الجوال</label>
-        <input class="form-control" type="text" name="phone" id="phone">
+      <div *ngIf="!userName.valid && userName.touched" class="" >
+        <div class="alert alert-danger text-right" *ngIf="userName.errors.required">من فضلك أدخل الاسم </div>
+        <div class="alert alert-danger text-right" *ngIf="userName.errors.minlength">من فضلك أدخل اسم أكثر من خمسة أحرف </div>
       </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="email" class="text-justify w-100">البريد الالكترونى</label>
+      <input ngModel required email #email ="ngModel"
+      [ngClass]="{ 'is-invalid': email.invalid && email.touched , 'is-valid': !email.invalid && email.touched}"
+      class="form-control" type="text" name="email" id="email" >
+
+      <div *ngIf="!email.valid && email.touched" class="" >
+        <div class="alert alert-danger text-right" *ngIf="email.errors.required">من فضلك أدخل الاسم </div>
+        <div class="alert alert-danger text-right" *ngIf="email.errors.email">من فضلك أدخل الايميل بالطريفة الصحيحة</div>
+      </div>
+    </div>
       
-      <div class="form-group">
-        <label for="password" class="text-justify w-100">كلمة المرور</label>
-        <input class="form-control" type="password" name="password" id="password">
+
+    <div class="form-group">
+      <label for="phone" class="text-justify w-100">رقم الجوال</label>
+      <input phone ngModel required #password ="ngModel" #phone="ngModel"
+      [ngClass]="{ 'is-invalid': phone.invalid && phone.touched, 'is-valid': !phone.invalid && phone.touched}"
+      class="form-control" type="number" name="phone" id="phone" pattern="[0-9 ]{7,}">
+      
+      <div *ngIf="!phone.valid && phone.touched" class="" >
+        <div class="alert alert-danger text-right" *ngIf="phone.errors.required"> رقم الهاتف مطلوب </div>
+        <div class="alert alert-danger text-right" *ngIf="phone.errors.pattern"> من فضلك أدخل الهاتف بطريقة صحيحة </div>
       </div>
-      <div class="text-justify pb-30">
-          <p>الفئة</p>
-          <input type="radio" name="addUser" value="admin" id="admin">
-          <label class="mLabel" for="admin">الادارة</label>
-          <input type="radio" name="addUser" value="member" id="member">
-          <label class="mLabel" for="member">عضو</label>
-          <input type="radio" name="addUser" value="user" id="user">
-          <label class="mLabel" for="user">مستخدم</label>
+    </div>
+    
+    <div class="form-group">
+      <label for="password" class="text-justify w-100">كلمة المرور</label>
+      <input ngModel required minlength="6" #password="ngModel"
+      [ngClass]="{ 'is-invalid': password.invalid && password.touched , 'is-valid': !password.invalid && password.touched}"
+      class="form-control" type="password" name="password" id="password">
+
+      <div *ngIf="!password.valid && password.touched" class="" >
+        <div class="alert alert-danger text-right" *ngIf="password.errors.required"> من فضلك أدخل الرقم السري </div>
+        <div class="alert alert-danger text-right" *ngIf="password.errors.minlength"> الرقم السري يجب أن يكون أكثر من 6 أحرف </div>
       </div>
-      <div class="form-group">
-        <input class="w-100 btn-main" type="submit" value="اضافة">
+    </div>
+<!-- 
+    <div class="form-group">
+      <label for="password" class="text-justify w-100">تأكيد كلمة المرور</label>
+      <input ngModel required #confirmPassword="ngModel"
+      [ngClass]="{ 'is-invalid': confirmPassword.invalid && confirmPassword.touched}"
+      class="form-control" type="password" name="password" id="password">
+
+      
+      <div *ngIf="!confirmPassword.valid && confirmPassword.touched" class="" >
+        <div class="alert alert-danger text-right" *ngIf="confirmPassword.errors.required"> من فضلك أعد ادخال الرقم السري </div>
+        <div class="alert alert-danger text-right" *ngIf="confirmPassword.errors.minlength"> الرقم السري يجب أن يكون متطابق </div>
       </div>
-    </form>
-  </div>
-</section>
+    </div> -->
+    
+    <button class="btn-main float-right" type="submit" [disabled]="!userForm.valid"> اضافة </button>
+  </form>
+  <button class="btn-main float-right" routerLink="/dashboard/management/admins"> رجوع </button>
+
+</div>

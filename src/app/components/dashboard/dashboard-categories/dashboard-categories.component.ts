@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 import {  UserCat, PostCategoriesResponse } from 'src/app/interfaces/categories-response';
 import { CategoriesService } from 'src/app/services/categories.service';
 
@@ -11,8 +10,11 @@ import { CategoriesService } from 'src/app/services/categories.service';
 })
 
 export class DashboardCategoriesComponent implements OnInit {
+ apiUrl = 'http://fonty.ieeeshasb.org/api/web/';
+ 
   userInput ="" ; // add section input
   categories: Array<UserCat> =[];
+  update: boolean =false; // update specific category
 
   constructor(private http: HttpClient,  private cat: CategoriesService) {
 
@@ -21,24 +23,44 @@ export class DashboardCategoriesComponent implements OnInit {
 
 ngOnInit() {
     // get categories as observable
-      this.cat.getCategoris().subscribe(response=>{
-       response.data.forEach(element => {
-       this.categories.push({id: element.id , name: element.name});       
+      this.cat.getCategories().subscribe(response=>{
+        this.categories = response;
      });
-  });
 }
 
 
-  delete(id){
-    let url = `http://fonty.ieeeshasb.org/api/web/delete_category/${id}`;
-    this.http.delete(url).subscribe(data=> {
+  deleteItem(id){
+    let deleteUrl = `${this.apiUrl}delete_category/${id}`;
+    this.http.delete(deleteUrl).subscribe(data=> {
       let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
       this.categories.splice(itemIndex, 1);
     });
   }
 
+  private getUpdateItemId(id){
+    let element = document.getElementById('item-' + id);
+    element.classList.toggle('update');
+    this.update = !this.update;
+    return element;
+  }
+
+  private enableUpdateItem(id){
+    let element =  this.getUpdateItemId(id);
+    if (this.update) setTimeout( () =>  element.focus() ,100);
+  }
+
+  private updateItem(value , id){
+    let element =  this.getUpdateItemId(id);
+       
+    let updateUrl = `${this.apiUrl}edit_category`;
+    this.http.put(updateUrl, {id, name: value}).subscribe(data=> {
+      let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
+      this.categories.splice(itemIndex, 1, {id, name: value}); 
+    });
+  }
+
   addItem(name){
-      let url = "http://fonty.ieeeshasb.org/api/web/add_category";
+      let url = `${this.apiUrl}add_category`;
       
       this.http.post(url, {name}).subscribe((res:PostCategoriesResponse)=>{
       this.categories.push({id: res.data.id , name: res.data.name});

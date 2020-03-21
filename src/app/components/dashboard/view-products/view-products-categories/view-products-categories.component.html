@@ -1,0 +1,5 @@
+<div   class="setting-wrapper row">
+    <a *ngFor ="let cat of categories$ | async" [routerLink]="['/dashboard/view-products/', cat.id ]" 
+    class="item-setting-global d-block text-center">{{cat.name}}</a>
+</div>
+  
