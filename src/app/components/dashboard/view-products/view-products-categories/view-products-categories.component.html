@@ -1,5 +1,50 @@
 <div   class="setting-wrapper row">
+<a routerLink ="add-product" class="ml-auto d-block text-center item-setting-global-small"> إضافة منتج </a>
     <a *ngFor ="let cat of categories$ | async" [routerLink]="['/dashboard/view-products/', cat.id ]" 
-    class="item-setting-global d-block text-center">{{cat.name}}</a>
+    class=" item-setting-global-small d-block text-center">{{cat.name}}</a>
 </div>
   
+<section class="view-porducts">
+  <div class="search">
+    <form action="">
+      <input type="search" name="" id="" placeholder="بحث">
+      <button class="btn-search">  بحث </button>
+    </form>
+  </div>
+
+<table class="table text-center">
+    <thead class="thead-dark">
+      <tr>
+        <th>الصورة</th>
+        <th>الاسم</th>
+        <th>المكونات</th>
+        <th>السعر</th>
+        <th>القسم</th>
+        <th>حذف</th>
+        <th>تعديل</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let product of products" class="item-wrapper">
+        <td>
+          <img class="product-img img-fluid" [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img ">
+        </td>
+        <td>{{product.name}}</td>
+        <td>{{product.body}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.catogery_id}}</td>
+        <td>
+          <a>
+            <i (click)="deleteProduct(product.id)" class="far fa-trash-alt"></i>
+          </a>
+        </td>
+        <td>
+          <a [routerLink]="['/dashboard/products/edit-product/', product.id]">
+            <i class="fas fa-cog"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

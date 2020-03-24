@@ -9,7 +9,6 @@ import { NotFoundComponent } from './website/components/not-found/not-found.comp
 import { ProductDetailsComponent } from './website/components/product-details/product-details.component';
 import { WebsiteComponent } from './website/website.component';
 import { DashboardComponent } from './components/dashboard/layout/dashboard.component';
-import { ViewProductsComponent } from './components/dashboard/view-products/view-products.component';
 import { AddUserComponent } from './admin/components/add-user/add-user.component';
 import { ViewUserComponent } from './admin/components/view-user/view-user.component';
 import { AddProductComponent } from './components/dashboard/view-products/add-product/add-product.component';
@@ -40,32 +39,44 @@ import { BranchDetailsComponent } from './components/management/branches-setting
 import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
 import { LoginComponent } from './admin/components/login/login.component';
 import { ViewProductsCategoriesComponent } from './components/dashboard/view-products/view-products-categories/view-products-categories.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
     { path: 'dashboard', component: DashboardComponent ,children: [
-      { path: '', component: ControlPanelComponent},
-        { path: 'received-orders', component: RecievedOrdersComponent },
-        { path: 'all-orders', component: AllOrdersComponent },
-        { path: 'finished-orders', component: FinishedOrdersComponent },
-        { path: 'preparing-stage-orders', component: PreparingStageOrdersComponent },
-        { path: 'cancelled-orders', component: CancelleOrdersComponent },
+      { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'},
+      // start control panel
+      { path: 'control-panel', component: ControlPanelComponent},
+        { path: 'control-panel/received-orders', component: RecievedOrdersComponent },
+        { path: 'control-panel/all-orders', component: AllOrdersComponent },
+        { path: 'control-panel/finished-orders', component: FinishedOrdersComponent },
+        { path: 'control-panel/preparing-stage-orders', component: PreparingStageOrdersComponent },
+        { path: 'control-panel/cancelled-orders', component: CancelleOrdersComponent },
+        // end of controll panel 
 
         { path: 'add-admin', component: AddUserComponent },
+        { path: 'edit-user/:id', component: EditUserComponent },
 
-
+      // categories
       { path: 'categories', component: DashboardCategoriesComponent },
-       { path: 'products-categories', component: ViewProductsCategoriesComponent },
-       { path: 'view-products/:id', component: ViewProductsComponent },
-       { path: 'edit-product/:productId', component: EditProductComponent },
 
-        { path: 'add-product/:id', component: AddProductComponent },
+      // products
+       { path: 'products', component: ViewProductsCategoriesComponent },
+       { path: 'products/add-product', component: AddProductComponent },
+       { path: 'products/edit-product/:productId', component: EditProductComponent },
+      //  { path: 'products/view-products/:id', component: ViewProductsComponent }, 
+      // view products inside category
+
       { path: 'management', component: ManagementComponent},
         { path: 'management/admins', component: AdminsSettingsComponent },
         { path: 'management/branches', component: BranchesSettingsComponent },
         { path: 'management/branch-details', component: BranchDetailsComponent },
-      { path: 'site-settings', component: SiteSettingsComponent },
+        { path: 'management/admins/add-user', component: AddUserComponent },
+      
+
+        { path: 'site-settings', component: SiteSettingsComponent },
         { path: 'site-settings/edit-slider', component: EditSliderComponent },
         { path: 'site-settings/edit-branches', component: EditBranchesComponent },
         { path: 'site-settings/edit-about', component: AboutSectionComponent },
@@ -76,12 +87,12 @@ const routes: Routes = [
       { path: 'chart', component: ChartComponent },
       { path: 'view', component: ViewUserComponent },
       { path: 'settings', component: SettingsComponent },
+        { path: 'settings/app-slider', component: AppSliderComponent },
         { path: 'settings/user-points', component: UserPointsComponent },
         { path: 'settings/users', component: UsersSettingsComponent },
         { path: 'settings/edit-offers', component: EditOffersComponent },
 
       { path: 'addproduct', component: EditProductsComponent },
-      { path: 'add-user', component: AddUserComponent },
       { path: 'view-user', component: ViewUserComponent },
       { path: '**', component: NotFoundComponent }
     ]

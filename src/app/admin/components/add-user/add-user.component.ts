@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-
+import {take} from 'rxjs/operators';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -15,12 +15,13 @@ export class AddUserComponent implements OnInit {
   }
 
   submit(userForm){
-    this.user.postUser(userForm).subscribe();
-      // userForm.value = null //pessmitic update
-    // );    
-  // }
+    this.user.postUser(userForm).pipe(take(1)).subscribe();
+    // location.reload(); //pessmitic update
+      
+    // userForm.reset(); //pessmitic update 
+    document.querySelector('input').blur();
 
-  // this.router.navigate(['/dashboard/management/admins']); // if success only
+  this.router.navigate(['/dashboard/add-user']); // if success only
 }
 
 }

@@ -58,8 +58,12 @@ import { EditOffersComponent } from './components/dashboard/settings/edit-offers
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { CategoriesService } from './services/categories.service';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ViewProductsCategoriesComponent } from './components/dashboard/view-products/view-products-categories/view-products-categories.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ItemsService } from './services/items.service';
+import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
+import { AddOfferComponent } from './components/dashboard/settings/add-offer/add-offer.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +117,10 @@ import { ViewProductsCategoriesComponent } from './components/dashboard/view-pro
     BranchDetailsComponent,
     OffersComponent,
     EditOffersComponent,
-    ViewProductsCategoriesComponent
+    ViewProductsCategoriesComponent,
+    EditUserComponent,
+    AppSliderComponent,
+    AddOfferComponent
   ],
 
 imports: [
@@ -122,7 +129,7 @@ imports: [
   AppRoutingModule,
   FormsModule,
   HttpClientModule,
-  NgbModule,
+  // NgbModule,
   // CustomFormsModule,
   MDBBootstrapModule.forRoot()
 ],
@@ -130,6 +137,7 @@ imports: [
 providers: [
   CategoriesService,
   AuthService,
+  ItemsService
   // AuthGuardService 
 ],
 

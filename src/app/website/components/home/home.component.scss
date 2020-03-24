@@ -3,4 +3,31 @@
 @import 'mixin';
 @import 'responsive';
 
+.carousel-item{
+    position: relative;
 
+    p{
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        font-size: 4rem;
+        font-weight: bold;
+        transform: translateX(-50%);
+        color: green;
+    }
+    span{
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        font-size: 2rem;
+        font-weight: bold;
+        transform: translateX(-50%);
+        color: red;
+    }
+}
+
+.carousel-indicators li{
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+}

@@ -1,46 +1,42 @@
 <div class="row no-gutters">
-  <div class="col-md-6"> <!--right section-->
-   <div *ngFor="let cat of categories" class="row cat-wrapper">
+  <div class="col-md-6">
+    <!--right section-->
+    <div *ngFor="let cat of categories" class="row cat-wrapper">
       <div class="col-8">
-        <input (keyup.enter) ="updateItem($event.target.value, cat.id)" [disabled] ="!update" class="d-block title" type="text" [value] ="cat.name" [id]="'item-' + cat.id">  
-     </div>
-
-     <div class="icons-wrapper row col no-gutters">
-      <div  class="trash col">
-        <img (click)="deleteItem(cat.id)" class="img-fluid" src="assets/svgs/trash.svg" alt="">
+        <input (keyup.enter)="updateItem($event.target.value, cat.id)" [disabled]="!update" class="d-block title"
+          type="text" [value]="cat.name" [id]="'item-' + cat.id">
       </div>
 
-      <div class="settings col">
-      <img (click) ="enableUpdateItem(cat.id)"  class="img-fluid" src="assets/svgs/settings.svg" alt="">
+      <div class="icons-wrapper row col no-gutters">
+        <div class="trash col">
+          <img (click)="deleteItem(cat.id)" class="img-fluid" src="assets/svgs/trash.svg" alt="">
+        </div>
+
+        <div class="settings col">
+          <img (click)="enableUpdateItem(cat.id)" class="img-fluid" src="assets/svgs/settings.svg" alt="">
+        </div>
       </div>
-     </div>
+    </div>
   </div>
 
-</div>
+  <div class="col-md-6">
+    <!--left section-->
+    <button form="add-item" type="submit" [disabled]="userForm.invalid" class="add-cat d-block">
 
-  <div  class="col-md-6"> <!--left section-->
-    <button 
-    form="add-item"
-    type="submit"
-    (click) = "addItem(catName.value)" 
-    [disabled]="userForm.invalid"
-    class="add-cat d-block" >
-    
       <span class="d-block text-center">+</span>
       <span class="d-block text-center">اضافة قسم</span>
     </button>
 
-<form #userForm ="ngForm" class="form-group" id="add-item">
+    <form (ngSubmit)="addItem(catName.value); userForm.reset();" #userForm="ngForm" class="form-group" id="add-item">
+      <label class="d-block text-right" for="cat-name"> اسم القسم </label>
+      <input type="text" class="form-control" id="cat-name" name="catName" #catName="ngModel" [(ngModel)]="userInput"
+        required minlength="3">
 
-  <label class ="d-block text-right" for="cat-name"> اسم القسم </label>
-  <input type="text" class="form-control" id ="cat-name" name="catName"
-  #catName = "ngModel" [(ngModel)] ="userInput" required minlength="3">
-
-  <div class="error-handler" *ngIf="catName.errors && catName.touched">
-     <small class="text-danger text-right d-block" *ngIf="catName.errors?.required">   من فضلك أدخل اسم القسم </small>
-     <small class="text-danger text-right d-block" *ngIf="catName.errors?.minlength">  من فضلك اسم القسم أكثر من ثلاثة أحرف  </small>
-  </div>
-</form>
-
+      <div class="error-handler" *ngIf="catName.errors && catName.touched">
+        <small class="text-danger text-right d-block" *ngIf="catName.errors?.required"> من فضلك أدخل اسم القسم </small>
+        <small class="text-danger text-right d-block" *ngIf="catName.errors?.minlength"> من فضلك اسم القسم أكثر من ثلاثة
+          أحرف </small>
+      </div>
+    </form>
   </div>
 </div>

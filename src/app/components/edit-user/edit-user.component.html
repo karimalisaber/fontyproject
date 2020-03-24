@@ -1,10 +1,10 @@
-<h2 class="title-section text-justify mt-20">اضافة عضو</h2>
+<h2 class="title-section text-justify mt-20">تعديل عضو</h2>
 
 <div class="add-user-form container">
   <form #userForm="ngForm" (ngSubmit)="submit(userForm.value); userForm.reset();">
     <div class="form-group">
       <label for="name" class="text-justify w-100">الاسم</label>
-      <input ngModel #userName="ngModel" required minlength="5"
+      <input [(ngModel)]="userFormData.name" #userName="ngModel" required minlength="5"
       [ngClass]="{ 'is-invalid': userName.invalid && userName.touched , 'is-valid': !userName.invalid && userName.touched}"
       class="form-control" type="text" name="name" id="name">
 
@@ -14,10 +14,9 @@
       </div>
     </div>
 
-
     <div class="form-group">
       <label for="email" class="text-justify w-100">البريد الالكترونى</label>
-      <input ngModel required email #email ="ngModel"
+      <input [(ngModel)]="userFormData.email" required email #email ="ngModel"
       [ngClass]="{ 'is-invalid': email.invalid && email.touched , 'is-valid': !email.invalid && email.touched}"
       class="form-control" type="text" name="email" id="email" >
 
@@ -27,10 +26,9 @@
       </div>
     </div>
       
-
     <div class="form-group">
       <label for="phone" class="text-justify w-100">رقم الجوال</label>
-      <input phone ngModel required #password ="ngModel" #phone="ngModel"
+      <input phone [(ngModel)]="userFormData.phone" required #password ="ngModel" #phone="ngModel"
       [ngClass]="{ 'is-invalid': phone.invalid && phone.touched, 'is-valid': !phone.invalid && phone.touched}"
       class="form-control" type="number" name="phone" id="phone" pattern="[0-9 ]{7,}">
       
@@ -42,7 +40,7 @@
     
     <div class="form-group">
       <label for="password" class="text-justify w-100">كلمة المرور</label>
-      <input ngModel required minlength="6" #password="ngModel"
+      <input [(ngModel)]="userFormData.password" required minlength="6" #password="ngModel"
       [ngClass]="{ 'is-invalid': password.invalid && password.touched , 'is-valid': !password.invalid && password.touched}"
       class="form-control" type="password" name="password" id="password">
 
@@ -51,22 +49,8 @@
         <div class="alert alert-danger text-right" *ngIf="password.errors.minlength"> الرقم السري يجب أن يكون أكثر من 6 أحرف </div>
       </div>
     </div>
-<!-- 
-    <div class="form-group">
-      <label for="password" class="text-justify w-100">تأكيد كلمة المرور</label>
-      <input ngModel required #confirmPassword="ngModel"
-      [ngClass]="{ 'is-invalid': confirmPassword.invalid && confirmPassword.touched}"
-      class="form-control" type="password" name="password" id="password">
 
-      
-      <div *ngIf="!confirmPassword.valid && confirmPassword.touched" class="" >
-        <div class="alert alert-danger text-right" *ngIf="confirmPassword.errors.required"> من فضلك أعد ادخال الرقم السري </div>
-        <div class="alert alert-danger text-right" *ngIf="confirmPassword.errors.minlength"> الرقم السري يجب أن يكون متطابق </div>
-      </div>
-    </div> -->
-    
-    <button class="btn-main float-right" type="submit" [disabled]="!userForm.valid"> اضافة </button>
+    <button class="btn-main float-right" type="submit" [disabled]="!userForm.valid"> تعديل </button>
   </form>
   <button class="btn-main float-right" routerLink="/dashboard/management/admins"> رجوع </button>
-
 </div>

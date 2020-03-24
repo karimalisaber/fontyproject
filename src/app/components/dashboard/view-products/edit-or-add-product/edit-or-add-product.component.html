@@ -1,71 +1,102 @@
-<form action="">
+<form #userForm ="ngForm" (ngSubmit) ="addProduct(userForm.value); userForm.reset()" action="">
   <div class="row">
     <div class="col-md-8">
       <div class="form-group">
-        <label for="product-name" class="text-justify w-100">اسم المنتج</label>
-        <input
-          class="form-control"
-          type="text"
-          name="product-name"
-          id="product-name"
-        />
+        <label for="name" class="text-justify w-100 label">اسم المنتج</label>
+        <input [(ngModel)]="localForm.name" #name="ngModel" required minlength="3"
+        [ngClass]="{ 'is-invalid': name.invalid && name.touched , 'is-valid': !name.invalid && name.touched}"
+        class="form-control" type="text" name="name" id="name">
+  
+        <div *ngIf="!name.valid && name.touched" class="" >
+          <div class="alert alert-danger text-right" *ngIf="name.errors.required">من فضلك أدخل اسم المنتج </div>
+          <div class="alert alert-danger text-right" *ngIf="name.errors.minlength">من فضلك أدخل اسم أكثر من ثلاثة أحرف </div>
+        </div>
       </div>
-
+    
       <div class="row">
         <div class="col-md">
           <div class="form-group">
             <label for="price" class="text-justify w-100">سعر المنتج</label>
-            <input class="form-control" type="text" name="price" id="price" />
+            <input [(ngModel)]="localForm.price" #price="ngModel" required min="0" step="1"
+            [ngClass]="{ 'is-invalid': price.invalid && price.touched , 'is-valid': !price.invalid && price.touched}"
+            class="form-control" type="number" name="price" id="price">
+      
+            <div *ngIf="!price.valid && price.touched" class="" >
+              <div class="alert alert-danger text-right" *ngIf="price.errors.required">من فضلك أدخل سعر المنتج بالريال </div>
+            </div>
           </div>
         </div>
 
         <div class="col-md">
           <div class="form-group">
-            <label for="points" class="text-justify w-100">عدد النقاط</label>
-            <input class="form-control" type="text" name="points" id="points" />
-          </div>
+            <label for="points" class="text-justify w-100">النقاط</label>
+            <input [(ngModel)]="localForm.points" #points="ngModel" required min="0"
+            [ngClass]="{ 'is-invalid': points.invalid && points.touched , 'is-valid': !points.invalid && points.touched}"
+            class="form-control" type="number" name="points" id="points">
+      
+            <div *ngIf="!points.valid && points.touched" class="" >
+              <div class="alert alert-danger text-right" *ngIf="points.errors.required">من فضلك أدخل عدد النقاط</div>
+            </div>
+          </div>        
         </div>
 
         <div class="col-md">
           <div class="form-group">
-            <label for="points" class="text-justify w-100">الخصم</label>
-            <input class="form-control" type="text" name="discount" id="points" />
+            <label for="descound" class="text-justify w-100">الخصم</label>
+            <input [(ngModel)]="localForm.descound" #descound="ngModel" required min="0" pattern="^[0-9]$|^[1-9][0-9]$|^(100)$"
+            [ngClass]="{ 'is-invalid': descound.invalid && descound.touched , 'is-valid': !descound.invalid && descound.touched}"
+            class="form-control" type="number"  name="descound" id="descound">
+      
+            <div *ngIf="!descound.valid && descound.touched" class="" >
+              <div class="alert alert-danger text-right" *ngIf="descound.errors.pattern">من فضلك أدخل قيمة الخصم نسبة مئوية من 0 إلى 100  </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="ingredients" class="text-justify w-100">المكونات</label>
-        <textarea class="form-control" name="ingredients" id="ingredients" ></textarea>
-      </div>
+        <label for="body" class="text-justify w-100">المكونات</label>
+        <textarea [(ngModel)]="localForm.body" #body="ngModel" required
+        [ngClass]="{'is-invalid': body.invalid && body.touched, 'is-valid': !body.invalid && body.touched}"
+        class="form-control" type="textArea"  name="body" id="body">
+        </textarea>
 
+        <div *ngIf="!body.valid && body.touched" class="" >
+          <div class="alert alert-danger text-right" *ngIf="body.errors.required">من فضلك أدخل المكونات </div>
+        </div>
+      </div>
+      
       <div class="text-justify pb-30">
         <p class="cat">الفئة</p>
 
-        <select  class="cat-wrapper form-controll">
-          <option value="">اختار الفئة</option>
+        <select #category="ngModel" ngModel name="category" required class="cat-wrapper form-controll"
+        [ngClass]="{ 'is-invalid': category.invalid && category.touched , 'is-valid': !category.invalid && body.touched}"
+        >
           <option
-            *ngFor="let cat of categories$ | async" name="category" value="{{cat.name}}" id="cat.id">
+            *ngFor="let cat of categories$ | async" name="category" value="{{cat.id}}" id="cat.id">
             {{cat.name}}
           </option>
         </select>
       </div>
 
       <div class="form-group">
-        <input class="add w-100 btn-main" type="submit" [value]="type" />
+        <input [disabled] ="userForm.invalid" class="add w-100 btn-main" type="submit" [value]="type" />
       </div>
   </div>
     <!-- end of right section -->
-    <!-- end of right section -->
-<div class="col-md">
-   <div class="prview-img" style="background-image: url('assets/images/25.jpg');"></div>
-      <div class="upload-btn-wrapper">
-        <button class="btn">اضافة صورة
-          <input type="file" name="myfile" />
-        </button>
-      </div>
-    </div>
+
+    <!-- start  of left section -->
+  <div class="col-md">
+     <img class="prview-img img-fluid" [src]="imgUrl">
+        <div class="upload-btn-wrapper">
+          <button class="btn">اضافة صورة
+          <input (change)="imageUpload($event)" #image="ngModel" required ngModel
+          class="form-control" name="image" id="image"
+          type="file"/>
+          </button>
+        </div>
+  </div>
     <!-- end of left section -->
-  </div>
+ </div>
   <!-- end of row -->
 </form>

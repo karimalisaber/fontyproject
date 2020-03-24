@@ -1,45 +1,92 @@
-<!-- <div class="row">
-    <div class="col">
-        <div class="slider-img row">
-            <div class="img-wrapper col-md-10" style="background-image: url('assets/images/slider-1.jpg');"> </div>
-        </div>
-        <div class="slider-details row">
-            <h5 class="col text-center">اسم السلايدر</h5>
-            <p class="col text-center">محتوى الاعلان</p>
-        </div>
-    </div>
-    <div class="col"></div>
-</div> -->
+<h2 class="title-section text-center mb-50"> تعديل صور السلايدر </h2>
 
-<h2 class="title-section text-center mb-50">تعديل صور السلايدر</h2>
-
-<div class="clearfix">
-    <div class="row">
-        <div class="col">
-            <div class="img">
-                <img class="img-fluid img-wrapper" src="assets/images/slider-1.jpg" alt="">
-            </div>
-            <button class="btn btn-danger float-right">حذف</button>
-        </div>
-        <div class="col">
-            <div class="img">
-                <img class="img-fluid img-wrapper" src="assets/images/slider-1.jpg" alt="">
-            </div>
-            <button class="btn btn-danger float-right">حذف</button>
-        </div>
-    </div>
-        
+<div class="card">
+  <img src="assets/images/slider-1.jpg" class="card-img-top img-fluid" alt="slider-1">
+  <div class="card-body">
+    <h5 class="card-title text-center">عنوان الإعلان </h5>
+    <p class="card-text text-right">
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+    </p>
+  </div>
+  <div class="submit text-right">
+    <input type="submit" class="btn btn-primary ml-10" value="تعديل">
+    <input type="submit" class="btn btn-danger" value="حذف">
+  </div>
 </div>
 
-<div class="custom-file d-flex justify-content-start">
-    <input type="file" class="custom-file-input" id="customFile">
-    <label class="custom-file-label" for="customFile"></label>
+
+<div class="card">
+  <img src="assets/images/slider-1.jpg" class="card-img-top img-fluid" alt="slider-1">
+  <div class="card-body">
+    <h5 class="card-title text-center">عنوان الإعلان </h5>
+    <p class="card-text text-right">
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+      محتوى الاعلان محتوى الاعلان
+    </p>
+  </div>
+  <div class="submit text-right">
+    <input type="submit" class="btn btn-primary ml-10" value="تعديل">
+    <input type="submit" class="btn btn-danger" value="حذف">
+  </div>
+</div>
+
+<div class="upload-img">
+  <p class="text-right">اضافة سلايدر جديد</p>
+  <div class="uploaded-img clearfix">
+    <img class="img-fluid float-right " [src]="imgUrl" alt="">
   </div>
 
-<div class="img">
-    <img class="img-wrapper" src="" alt="">
-</div>
+  <form #userForm="ngForm" action="" (ngSubmit)="addSlider(userForm.value); userForm.reset();">
+    <div class="custom-file d-flex justify-content-start">
+      <input #image="ngModel" ngModel name="image" required
+      (change) = "imageUpload(event)"
+      type="file" class="custom-file-input" id="customFile">
+      <label class="custom-file-label" for="customFile">
+      </label>
+    </div>
+  
+    <div class="form-group">
+      <label for="title" class="d-block text-right"> عنوان الاعلان</label>
+      <input ngModel #title="ngModel" required minlength="5" name="title"
+        [ngClass]="{ 'is-invalid': title.invalid && title.touched , 'is-valid': !title.invalid && title.touched}"
+        type="text" id="title" class="form-control">
 
-<div class="img">
-    <img class="img-wrapper" src="" alt="">
-</div> 
+      <div *ngIf="!title.valid && title.touched">
+        <div class="alert alert-danger text-right" *ngIf="title.errors.required"> من فضلك أدخل عنوان الاعلان </div>
+        <div class="alert alert-danger text-right" *ngIf="title.errors.minlength"> عنوان الاعلان يجب أن يكون أكثر من 6
+          أحرف
+         </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="content" class=" d-block text-right"> محتوى الاعلان</label>
+      <textarea ngModel #content="ngModel" required minlength="5" name="content"
+        [ngClass]="{ 'is-invalid': content.invalid && content.touched , 'is-valid': !content.invalid && content.touched}"
+        name="content" id="" cols="30" rows="10" class="form-control">
+         </textarea>
+
+      <div *ngIf="!content.valid && content.touched" class="">
+        <div class="alert alert-danger text-right" *ngIf="content.errors.required"> من فضلك أدخل محتوى الاعلان </div>
+        <div class="alert alert-danger text-right" *ngIf="content.errors.minlength"> محتوى الاعلان يجب أن يكون أكثر من 6
+          أحرف </div>
+      </div>
+    </div>
+
+    <div class="submit float-right">
+      <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary ml-10"> اضافة سلايدر</button>
+      <button class="btn btn-danger" routerLink="/dashboard/site-settings"> تراجع</button>
+    </div>
+  </form>
+</div>

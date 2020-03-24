@@ -61,6 +61,8 @@ a {
 .mb-30 {margin-bottom: 30px;}
 .mt-50 {margin-top: 50px;}
 .mt-30 {margin-top: 30px;}
+.ml-10 {margin-left: 10px;}
+.mr-10 {margin-right: 10px;}
 .mLabel {margin: 0 4px 0 29px;}
 .slider-arrow-left, .slider-arrow-right {
     position: absolute;
@@ -290,6 +292,7 @@ textarea:active , textarea:focus{
   line-height: 50px;
   font-size: 1rem;
   margin: 0;
+  margin-left: 10px;
   margin-bottom: 20px;
   transition: all .5s;
   color: $secondColor;

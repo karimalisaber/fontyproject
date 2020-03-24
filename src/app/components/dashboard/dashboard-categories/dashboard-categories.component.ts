@@ -31,9 +31,12 @@ ngOnInit() {
 
   deleteItem(id){
     let deleteUrl = `${this.apiUrl}delete_category/${id}`;
+    
     this.http.delete(deleteUrl).subscribe(data=> {
       let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
-      this.categories.splice(itemIndex, 1);
+      this.categories.splice(itemIndex, 1);    
+    }, error=> { 
+
     });
   }
 
