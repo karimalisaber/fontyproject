@@ -3,6 +3,7 @@
 @import 'mixin';
 @import 'responsive';
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~@angular\material\prebuilt-themes\pink-bluegrey.css';
 
 /* - 1 - fonts-load - start
 ==================================================================================================== */
@@ -318,3 +319,5 @@ textarea:active , textarea:focus{
   color: red;
   font-size: 1.5rem;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -64,6 +64,11 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ItemsService } from './services/items.service';
 import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
 import { AddOfferComponent } from './components/dashboard/settings/add-offer/add-offer.component';
+import { SettingService } from './services/setting.service';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogComponent } from './components/assets/dialog/dialog.component';
+import { ErrorDialogComponent } from './components/assets/error-dialog/error-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -120,8 +125,14 @@ import { AddOfferComponent } from './components/dashboard/settings/add-offer/add
     ViewProductsCategoriesComponent,
     EditUserComponent,
     AppSliderComponent,
-    AddOfferComponent
+    AddOfferComponent,
+    DialogComponent,
+    ErrorDialogComponent
   ],
+entryComponents: [
+  DialogComponent,
+  ErrorDialogComponent
+],
 
 imports: [
   BrowserModule,
@@ -129,6 +140,7 @@ imports: [
   AppRoutingModule,
   FormsModule,
   HttpClientModule,
+  MatDialogModule,
   // NgbModule,
   // CustomFormsModule,
   MDBBootstrapModule.forRoot()
@@ -137,7 +149,8 @@ imports: [
 providers: [
   CategoriesService,
   AuthService,
-  ItemsService
+  ItemsService,
+  SettingService
   // AuthGuardService 
 ],
 

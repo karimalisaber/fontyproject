@@ -69,7 +69,7 @@ categories$: Observable<UserCat[]>;
       this.item.append("catogery_id", product.category);
       this.item.append("points", product.points);
       this.item.append("body", product.body);
-      this.item.append("img", this.imageFile, this.imageFile.name );
+      this.item.append("img", this.imageFile, this.imageFile.name);
       
       // if(this.updateStatus) this.items.editProduct(this.item).subscribe(res=>console.log(res));
       
