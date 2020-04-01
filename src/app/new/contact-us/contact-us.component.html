@@ -1,0 +1,107 @@
+<div class="container mt-60">
+    <h3 class="title-dashboard-section text-center">تواصل معنا</h3>
+    <p class="text-center">رأيك يهنا لتحسين خدماتنا</p>
+    <hr class="full">
+
+    <form class="text-center" #userForm="ngForm" (ngSubmit)="addUser(userForm.value); userForm.reset();">
+        <div class="form">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-user fa-fw"></i>
+                </span>
+                <input ngModel #name="ngModel" required minlength="2" name="name"
+                    [ngClass]="{ 'is-invalid': name.invalid && name.touched , 'is-valid': !name.invalid && name.touched}"
+                    class="form-control" type="text" placeholder="الاسم">
+
+            </div>
+
+            <div *ngIf="!name.valid && name.touched">
+                <div class="alert alert-danger text-right" *ngIf="name.errors.required">من فضلك أدخل الاسم </div>
+                <div class="alert alert-danger text-right" *ngIf="name.errors.minlength">أقل عدد مسموح من الحروف هو
+                    حرفين </div>
+            </div>
+
+
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="far fa-envelope fa-fw"></i>
+
+                </span>
+                <input ngModel required email #email="ngModel" name="email"
+                    [ngClass]="{ 'is-invalid': email.invalid && email.touched , 'is-valid': !email.invalid && email.touched}"
+                    class="form-control" type="text" placeholder="البريد الالكتروني">
+            </div>
+            <div *ngIf="!email.valid && email.touched" class="">
+                <div class="alert alert-danger text-right" *ngIf="email.errors.required">من فضلك أدخل الاسم </div>
+                <div class="alert alert-danger text-right" *ngIf="email.errors.email">من فضلك أدخل الايميل بالطريفة
+                    الصحيحة</div>
+            </div>
+
+
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-tags fa-fw"></i>
+                </span>
+                <input ngModel required="ngModel" #phone="ngModel" name="phone"
+                    [ngClass]="{ 'is-invalid': phone.invalid && phone.touched, 'is-valid': !phone.invalid && phone.touched}"
+                    class="number form-control" type="number" placeholder="رقم الهاتف">
+
+            </div>
+            <div *ngIf="!phone.valid && phone.touched" class="">
+                <div class="alert alert-danger text-right" *ngIf="phone.errors.required"> من فضلك أدخل رقم الهاتف
+                </div>
+                <div class="alert alert-danger text-right" *ngIf="phone.errors.pattern"> من فضلك أدخل الهاتف بطريقة
+                    صحيحة </div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon">
+                <i class="far fa-comments"></i>
+            </span>
+            <textarea name="message" required minlength="5" #message="ngModel" ngModel
+                [ngClass]="{ 'is-invalid': message.invalid && message.touched, 'is-valid': !message.invalid && message.touched}"
+                class="form-control" rows="6" type="text" placeholder="رسالتك"></textarea>
+
+        </div>
+        <div *ngIf="!message.valid && message.touched" class="">
+            <div class="alert alert-danger text-right" *ngIf="message.errors.required"> من فضلك أدخل رسالتك </div>
+            <div class="alert alert-danger text-right" *ngIf="message.errors.minlength"> أقل عدد من الحروف هو خمسة
+                احرف </div>
+        </div>
+
+        <input [disabled]="userForm.invalid" class="btn btn-primary send mb" type="submit" value="إرسال ">
+    </form>
+
+
+    <ul class="text-center socials-icons">
+        <li>
+            <a href="#" class="facebook">
+                <i class="fab fa-facebook"></i></a>
+        </li>
+        <li>
+            <a href="#" class="twitter">
+                <i class="fab fa-twitter"></i></a>
+        </li>
+        <li>
+            <a href="#" class="google-plus">
+                <i class="fab fa-google-plus"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://instagram.com/fonte4me?igshid=nfjaq41bsapm" class="instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="pinterest">
+                <i class="fab fa-pinterest"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="skype">
+                <i class="fab fa-skype"></i>
+            </a>
+        </li>
+    </ul>
+</div>

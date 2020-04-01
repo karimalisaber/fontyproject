@@ -1,64 +1,16 @@
 <!-- Start Our Services Page-->
-<section class="our-services pb-50 ptx-170">
+<section class="section-wrapper our-services ">
   <div class="container">
-    <div class="title-section text-center mb-40">
-      <h2>خدماتنا</h2>
-    </div>
+    <h2 class="title-section text-center">خدماتنا</h2>
+  
     <div class="row">
-      <div class="col-12 col-md-3">
+      <div *ngFor="let service of services$ | async" class="col-12 col-md-3">
         <div class="services-content">
-          <div class="services-content-img"><img src="assets/images/services-1.png" alt="Our services"/></div>
-          <div class="services-title text-center ptb-20"><a href="services-details.html">
-              <h4>أسم الخدمة</h4></a></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="services-content">
-          <div class="services-content-img"><img src="assets/images/services-1.png" alt="Our services"/></div>
-          <div class="services-title text-center ptb-20"><a href="services-details.html">
-              <h4>أسم الخدمة</h4></a></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="services-content">
-          <div class="services-content-img"><img src="assets/images/services-1.png" alt="Our services"/></div>
-          <div class="services-title text-center ptb-20"><a href="services-details.html">
-              <h4>أسم الخدمة</h4></a></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="services-content">
-          <div class="services-content-img"><img src="assets/images/services-1.png" alt="Our services"/></div>
-          <div class="services-title text-center ptb-20"><a href="services-details.html">
-              <h4>أسم الخدمة</h4></a></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="services-content">
-          <div class="services-content-img"><img src="assets/images/services-1.png" alt="Our services"/></div>
-          <div class="services-title text-center ptb-20"><a href="services-details.html">
-              <h4>أسم الخدمة</h4></a></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="services-content">
-          <div class="services-content-img"><img src="assets/images/services-1.png" alt="Our services"/></div>
-          <div class="services-title text-center ptb-20"><a href="services-details.html">
-              <h4>أسم الخدمة</h4></a></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="services-content">
-          <div class="services-content-img"><img src="assets/images/services-1.png" alt="Our services"/></div>
-          <div class="services-title text-center ptb-20"><a href="services-details.html">
-              <h4>أسم الخدمة</h4></a></div>
-        </div>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="services-content">
-          <div class="services-content-img"><img src="assets/images/services-1.png" alt="Our services"/></div>
-          <div class="services-title text-center ptb-20"><a href="services-details.html">
-              <h4>أسم الخدمة</h4></a></div>
+          <div class="services-content-img" [style.background] ="'url(http://fonty.ieeeshasb.org/public/wslider/' + service.img + ')'">
+          </div>
+          <div class="services-title ptb-20">
+            <h4>{{service.name}}</h4>
+          </div>
         </div>
       </div>
     </div>

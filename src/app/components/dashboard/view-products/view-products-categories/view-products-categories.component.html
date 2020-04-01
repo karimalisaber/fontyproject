@@ -1,13 +1,27 @@
-<div   class="setting-wrapper row">
+<div   class="setting-wrapper row no-gutters">
 <a routerLink ="add-product" class="ml-auto d-block text-center item-setting-global-small"> إضافة منتج </a>
-    <a *ngFor ="let cat of categories$ | async" [routerLink]="['/dashboard/view-products/', cat.id ]" 
-    class=" item-setting-global-small d-block text-center">{{cat.name}}</a>
+    
+    <mat-menu style="margin-top: 30px;" #catMenu>
+      <button  (click) ="allCategories()"
+      class="cat-item cat-main-item" mat-menu-item>كل الأقسام</button>
+
+      <button *ngFor ="let cat of categories$ | async" #btn (click) ="filteredCategory(cat.id, $event.target.innerText)"
+      mat-menu-item class="cat-item" >{{cat.name}}</button>
+    </mat-menu>
+    
+    <button mat-icon-button [matMenuTriggerFor]="catMenu">
+      {{selectedCategory}}
+      <i class="fa fa-angle-down"></i>
+    </button>
 </div>
   
 <section class="view-porducts">
   <div class="search">
     <form action="">
-      <input type="search" name="" id="" placeholder="بحث">
+      <input 
+      #search
+      (keyup) = "filter(search.value)"
+      type="search" name="" id="" placeholder="بحث">
       <button class="btn-search">  بحث </button>
     </form>
   </div>
@@ -26,7 +40,7 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let product of products" class="item-wrapper">
+      <tr *ngFor="let product of filteredProducts" class="item-wrapper">
         <td>
           <img class="product-img img-fluid" [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img ">
         </td>
@@ -36,7 +50,7 @@
         <td>{{product.catogery_id}}</td>
         <td>
           <a>
-            <i (click)="deleteProduct(product.id)" class="far fa-trash-alt"></i>
+            <i (click)="deleteAlert(product.id)" class="far fa-trash-alt"></i>
           </a>
         </td>
         <td>

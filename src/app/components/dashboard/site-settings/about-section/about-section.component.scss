@@ -5,3 +5,52 @@
 .edit-about {
   padding: 20px;
 }
+@import "variables";
+
+.img-wrapper{
+    background-image: url('/assets/images/slider-1.jpg');
+}
+.slider{
+    margin-bottom: 20px;
+    max-height: 550px;
+}
+
+.custom-file{
+    width: 150px;
+    margin-top: 15px;
+}
+
+.custom-file-label::after {
+    content: "اضافة صورة" !important;
+    color: $mainColor;
+    background-color: white;
+}
+
+.img{
+    margin: auto;
+    margin-bottom: 10px;
+
+}
+
+.btn{
+    border:1px solid rgba($color: #000000, $alpha: .5)
+}
+  
+hr{
+    margin-top: 35px;
+    width: 80%;
+    opacity: .8;
+}
+.upload-img{
+    margin-bottom: 15px;
+
+    p { 
+        margin-top: 30px;
+        opacity: .8;
+        color: #111; 
+        font-family: 'Helvetica Neue', sans-serif; 
+        font-size: 40px; 
+        font-weight: bold; 
+        letter-spacing: -1px; 
+    }
+}

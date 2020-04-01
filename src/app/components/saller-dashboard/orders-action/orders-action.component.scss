@@ -1,0 +1,22 @@
+@import "variables";
+.card{
+  margin-bottom: 20px;
+  min-height: 200px;
+.card-title{
+    font-size: 1.8rem;
+    margin-bottom: 0 !important;
+}
+
+.card-body {
+
+    span{
+    color: $mainColor;
+    font-size: .9rem;
+    font-weight: bold;
+    }
+    .card-text{
+        margin-top: 12px;
+        font-size: 1.1rem;
+    }
+}
+}

@@ -6,7 +6,6 @@ import { OurServicesComponent } from './website/components/our-services/our-serv
 import { ProductsComponent } from './website/components/products/products.component';
 import { BranchesComponent } from './website/components/branches/branches.component';
 import { NotFoundComponent } from './website/components/not-found/not-found.component';
-import { ProductDetailsComponent } from './website/components/product-details/product-details.component';
 import { WebsiteComponent } from './website/website.component';
 import { DashboardComponent } from './components/dashboard/layout/dashboard.component';
 import { AddUserComponent } from './admin/components/add-user/add-user.component';
@@ -22,8 +21,6 @@ import { FinishedOrdersComponent } from './components/dashboard/control-panel/co
 import { PreparingStageOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/preparing-stage-orders/preparing-stage-orders.component';
 import { CancelleOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/cancelle-orders/cancelle-orders.component';
 import { ManagementComponent } from './components/dashboard/management/management.component';
-import { AdminsSettingsComponent } from './components/dashboard/management/admins-settings/admins-settings.component';
-import { BranchesSettingsComponent } from './components/dashboard/management/branches-settings/branches-settings.component';
 import { UsersSettingsComponent } from './components/dashboard/management/users-settings/users-settings.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { EditProductsComponent } from './components/dashboard/view-products/edit-products/edit-products.component';
@@ -35,15 +32,17 @@ import { AboutSectionComponent } from './components/dashboard/site-settings/abou
 import { EditSliderComponent } from './components/dashboard/site-settings/edit-slider/edit-slider.component';
 import { EditServicesComponent } from './components/dashboard/site-settings/edit-services/edit-services.component';
 import { UserPointsComponent } from './components/dashboard/settings/user-points/user-points.component';
-import { BranchDetailsComponent } from './components/management/branches-settings/branch-details/branch-details.component';
 import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
 import { LoginComponent } from './admin/components/login/login.component';
 import { ViewProductsCategoriesComponent } from './components/dashboard/view-products/view-products-categories/view-products-categories.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
+import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
+import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+  { path: 'log', component: EditProductsComponent },
 
     { path: 'dashboard', component: DashboardComponent ,children: [
       { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'},
@@ -70,12 +69,8 @@ const routes: Routes = [
       // view products inside category
 
       { path: 'management', component: ManagementComponent},
-        { path: 'management/admins', component: AdminsSettingsComponent },
-        { path: 'management/branches', component: BranchesSettingsComponent },
-        { path: 'management/branch-details', component: BranchDetailsComponent },
-        { path: 'management/admins/add-user', component: AddUserComponent },
+        { path: 'management/add-user', component: AddUserComponent },
       
-
         { path: 'site-settings', component: SiteSettingsComponent },
         { path: 'site-settings/edit-slider', component: EditSliderComponent },
         { path: 'site-settings/edit-branches', component: EditBranchesComponent },
@@ -83,7 +78,6 @@ const routes: Routes = [
         { path: 'site-settings/edit-services', component: EditServicesComponent },
         { path: 'site-settings/edit-contacts', component: EditContactComponent },
         
-
       { path: 'chart', component: ChartComponent },
       { path: 'view', component: ViewUserComponent },
       { path: 'settings', component: SettingsComponent },
@@ -92,8 +86,12 @@ const routes: Routes = [
         { path: 'settings/users', component: UsersSettingsComponent },
         { path: 'settings/edit-offers', component: EditOffersComponent },
 
+        { path: 'feedback', component: FeedbackComponent },
+    
+        { path: 'orders-action', component: OrdersActionComponent},
+
       { path: 'addproduct', component: EditProductsComponent },
-      { path: 'view-user', component: ViewUserComponent },
+      // { path: 'view-user', component: ViewUserComponent },
       { path: '**', component: NotFoundComponent }
     ]
     },
@@ -103,8 +101,7 @@ const routes: Routes = [
         { path: 'about', component: AboutComponent },
         { path: 'our-services', component: OurServicesComponent },
         { path: 'our-products', component: ProductsComponent },
-        { path: 'our-branches', component: BranchesComponent },
-        { path: 'product-details', component: ProductDetailsComponent },
+        { path: 'our-branches', component: BranchesComponent }, 
         { path: 'contact', component: ContactsComponent },
         { path: '**', component: NotFoundComponent }
       ]

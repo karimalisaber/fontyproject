@@ -69,19 +69,21 @@
       <div class="text-justify pb-30">
         <p class="cat">الفئة</p>
 
-        <select #category="ngModel" ngModel name="category" required class="cat-wrapper form-controll"
+        <select #category="ngModel" [(ngModel)]="localForm.catogery_id" name="category" required class="cat-wrapper form-controll"
         [ngClass]="{ 'is-invalid': category.invalid && category.touched , 'is-valid': !category.invalid && body.touched}"
         >
-          <option
+          <option 
             *ngFor="let cat of categories$ | async" name="category" value="{{cat.id}}" id="cat.id">
             {{cat.name}}
           </option>
         </select>
       </div>
 
-      <div class="form-group">
-        <input [disabled] ="userForm.invalid" class="add w-100 btn-main" type="submit" [value]="type" />
-      </div>
+    <div class="form-group text-right">
+      <input [disabled] ="userForm.invalid" class="btn btn-main ml-10" type="submit" [value]="type" />
+      <button routerLink="/dashboard/products" class="btn btn-danger">الرجوع مع الحفظ </button>  
+    </div>
+      
   </div>
     <!-- end of right section -->
 
@@ -89,10 +91,14 @@
   <div class="col-md">
      <img class="prview-img img-fluid" [src]="imgUrl">
         <div class="upload-btn-wrapper">
-          <button class="btn">اضافة صورة
-          <input (change)="imageUpload($event)" #image="ngModel" required ngModel
-          class="form-control" name="image" id="image"
-          type="file"/>
+          <button class="btn">{{imgTitle}}
+            <input *ngIf="!updateStatus" (change)="imageUpload($event)" #image="ngModel" required ngModel
+             class="form-control" name="image" id="image"
+             type="file"/>
+
+             <input *ngIf="updateStatus" (change)="imageUpload($event)"
+             class="form-control" name="image" id="image"
+             type="file"/>
           </button>
         </div>
   </div>

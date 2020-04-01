@@ -59,3 +59,38 @@
       background-color: #fbfbfb;
     }
   }
+
+.cat-item{
+  font-size: 1.5rem;
+  padding: 2px 40px
+}
+
+.cat-main-item{
+  color: rgba($mainColor, 0.8);
+  font-weight: bold;
+}
+
+.mat-icon-button{
+  font-size: 1.3rem;
+  text-align: right;
+  border: none;
+  font-weight: 550;
+  letter-spacing: .05em;
+  color: #fff;
+  background: $mainColor;
+  height: 50px;
+  padding: 3px 20px 3px 10px;
+  min-width: 140px;
+  cursor: pointer;
+  -webkit-border-radius: 6px;
+  -moz-border-radius-topright: 6px;
+  border-radius: 6px;
+  -webkit-transition: border-radius .2s linear;
+  transition: border-radius .2s linear;
+
+  .fa-angle-down,
+  .fa-angle-up {
+    float: left;
+    line-height: 40px;
+  }
+}

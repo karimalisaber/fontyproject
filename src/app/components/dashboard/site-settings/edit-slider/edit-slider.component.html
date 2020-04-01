@@ -1,44 +1,13 @@
-<h2 class="title-section text-center mb-50"> تعديل صور السلايدر </h2>
-
-<div class="card">
-  <img src="assets/images/slider-1.jpg" class="card-img-top img-fluid" alt="slider-1">
+<div *ngFor="let slider of  sliders" class="card">
+  <img [src]="'http://fonty.ieeeshasb.org/public/wslider/' + slider.img" class="card-img-top img-fluid" alt="slider-1">
   <div class="card-body">
-    <h5 class="card-title text-center">عنوان الإعلان </h5>
-    <p class="card-text text-right">
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-    </p>
-  </div>
-  <div class="submit text-right">
-    <input type="submit" class="btn btn-primary ml-10" value="تعديل">
-    <input type="submit" class="btn btn-danger" value="حذف">
+    <h5 class="card-title text-center"> {{slider.title}}  </h5>
+
+  <div class="submit text-right mt-10">
+    <input type="submit" (click)="enableEdit(slider.id)" class="btn btn-primary ml-10" value="تعديل">
+    <input (click) ="deleteAlert(slider.id)" type="submit" class="btn btn-danger" value="حذف">
   </div>
 </div>
-
-
-<div class="card">
-  <img src="assets/images/slider-1.jpg" class="card-img-top img-fluid" alt="slider-1">
-  <div class="card-body">
-    <h5 class="card-title text-center">عنوان الإعلان </h5>
-    <p class="card-text text-right">
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-      محتوى الاعلان محتوى الاعلان
-    </p>
-  </div>
-  <div class="submit text-right">
-    <input type="submit" class="btn btn-primary ml-10" value="تعديل">
-    <input type="submit" class="btn btn-danger" value="حذف">
-  </div>
 </div>
 
 <!-- add new slider -->
@@ -51,7 +20,7 @@
   <form #userForm="ngForm" action="" (ngSubmit)="addSlider(userForm.value); userForm.reset();">
     <div class="custom-file d-flex justify-content-start">
       <input #image="ngModel" ngModel name="image" required
-      (change) = "imageUpload(event)"
+      (change) = "imageUpload($event)" 
       type="file" class="custom-file-input" id="customFile">
       <label class="custom-file-label" for="customFile">
       </label>
@@ -71,7 +40,7 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label for="content" class=" d-block text-right"> محتوى الاعلان</label>
       <textarea ngModel #content="ngModel" required minlength="5" name="content"
         [ngClass]="{ 'is-invalid': content.invalid && content.touched , 'is-valid': !content.invalid && content.touched}"
@@ -83,11 +52,12 @@
         <div class="alert alert-danger text-right" *ngIf="content.errors.minlength"> محتوى الاعلان يجب أن يكون أكثر من 6
           أحرف </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="submit float-right">
       <button [disabled]="userForm.invalid" type="submit" class="btn btn-primary ml-10"> اضافة سلايدر</button>
-      <button class="btn btn-danger" routerLink="/dashboard/site-settings"> تراجع</button>
+      <button class="btn btn-danger" routerLink="/dashboard/site-settings"> الرجوع مع الحفظ
+    </button>
     </div>
   </form>
 </div>

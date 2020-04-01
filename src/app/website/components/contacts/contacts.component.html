@@ -1,46 +1,23 @@
 <!-- Start Contact Us Section-->
-<section class="contact-us pb-50 ptx-170">
+<section class="">
   <div class="container">
-    <div class="title-section text-center mb-40">
-      <h2>تواصل معنا</h2>
-    </div>
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <div class="contact-info mb-30">
-          <ul class="list-unstyled ">
-            <li class="d-flex">
-              <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-              <p> <a href="#!">{{newContacts.address}}</a></p>
-            </li>
-            <li class="d-flex">
-              <div class="icon"><i class="fas fa-phone-alt"></i></div>
-              <p>{{newContacts.phone}}</p>
-            </li>
-            <li class="d-flex">
-              <div class="icon"><i class="far fa-envelope"></i></div>
-              <p> <a href="#!">{{newContacts.email}}</a></p>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-12 col-md-6">
-        <div class="contact-info mb-30">
-          <ul class="list-unstyled ">
-            <li class="d-flex">
-              <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-              <p> <a href="#!">Lorem ipsum dolor sit amet.</a></p>
-            </li>
-            <li class="d-flex">
-              <div class="icon"><i class="fas fa-phone-alt"></i></div>
-              <p>123456789</p>
-            </li>
-            <li class="d-flex">
-              <div class="icon"><i class="far fa-envelope"></i></div>
-              <p> <a href="#!">info@example.com</a></p>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <h2 class="title-section text-center  mt-40 mb-40">تواصل معنا</h2>
+    
+    <div *ngIf="contacts" class="contact-info mb-30">
+      <ul  class="list-unstyled ">
+        <li class="contact-item d-flex mb-10">
+          <div class="icon"><i class="ml-20 fas fa-map-marker-alt"></i></div>
+          <p> {{contacts.address}}</p>
+        </li>
+        <li class="contact-item d-flex mb-10">
+          <div class="icon"><i class="ml-20 fas fa-phone-alt"></i></div>
+          <p>{{contacts.phone}}</p>
+        </li>
+        <li class="contact-item d-flex mb-10">
+          <div class="icon"><i class="ml-20 far fa-envelope"></i></div>
+          <p> {{contacts.email}}</p>
+        </li>
+      </ul>
     </div>
   </div>
 </section>

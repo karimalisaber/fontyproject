@@ -31,3 +31,10 @@
     width: 12px;
     height: 12px;
 }
+
+.img-wrapper{
+    width: 100vw !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    height: calc(100vh + 100px);
+}

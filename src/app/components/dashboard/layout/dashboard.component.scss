@@ -2,8 +2,8 @@
 @import 'responsive';
 
 //local variable
-$containerWidth: calc(100% - 250px);
-
+$sideBarWidth: 220px;
+$containerWidth: calc(100% - 220px);
 /* -------------------------------------------------
   start layout
 ------------------------------------------------- */
@@ -14,7 +14,7 @@ app-rightmenu{
   top: 0;
   right: 0;
   z-index: 2000;
-  width: 250px;
+  width: $sideBarWidth;
   height: 100vh;
   background-color: blue($color: #000000);
 }
@@ -31,7 +31,7 @@ app-dashboard-navbar{
 
 .main-content{
   position: relative;
-  right: 250px;
+  right: $sideBarWidth;
   top:84px;
   width: $containerWidth;
   padding: 30px;

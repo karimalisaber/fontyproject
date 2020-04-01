@@ -1,51 +1,13 @@
-  <!-- Start Our Branches Section-->
-  <section class="our-branches pt-170 pb-50 bg-white">
-    <div class="title-section text-center mb-40">
-      <h2>فروعنا</h2>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="branche-item mb-30 item-color-main">
-            <a href="branches-details.html">اسم الفرع</a>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="branche-item mb-30 item-color-main">
-            <a href="branches-details.html">اسم الفرع</a>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="branche-item mb-30 item-color-main">
-            <a href="branches-details.html">اسم الفرع</a>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="branche-item mb-30 item-color-main">
-            <a href="branches-details.html">اسم الفرع</a>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="branche-item mb-30 item-color-main">
-            <a href="branches-details.html">اسم الفرع</a>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="branche-item mb-30 item-color-main">
-            <a href="branches-details.html">اسم الفرع</a>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="branche-item mb-30 item-color-main">
-            <a href="branches-details.html">اسم الفرع</a>
-          </div>
-        </div>
-        <div class="col-12 col-sm-6 col-md-3">
-          <div class="branche-item mb-30 item-color-main">
-            <a href="branches-details.html">اسم الفرع</a>
-          </div>
+<section class="section-wrapper our-branches bg-white">
+  <h2 class="title-section text-center">فروعنا</h2>
+
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let branch of branches$ | async" class="col-sm-6 col-md-3">
+        <div class="branche-item mb-30 item-color-main">
+          <p>{{branch.name}}</p>
         </div>
       </div>
     </div>
-  </section>
-  <!-- End Our Branches Section-->
+  </div>
+</section>

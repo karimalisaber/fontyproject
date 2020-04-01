@@ -6,9 +6,19 @@
 
 .our-products {
   background-image: url(../../../../assets/images/products-img.jpg);
+  background-attachment: fixed;
   .products {
+
+    .product-wrapper{
+        height: 220px;
+        overflow: hidden;
+        margin-bottom: 15px;
+
       .products-item {
           width: 100%;
+          height: 100%;
+
+
           position: relative;
           cursor: pointer;
           &:hover {
@@ -16,6 +26,7 @@
                   transform: scale(1);
               }
           }
+
           .item-overlay {
               width: 100%;
               height: 100%;
@@ -40,6 +51,7 @@
           }
       }
   }
+}
 }
 
 /* End Our Products Section*/

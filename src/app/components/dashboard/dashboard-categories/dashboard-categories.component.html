@@ -33,7 +33,6 @@
         required minlength="3">
 
       <div class="error-handler" *ngIf="catName.errors && catName.touched">
-        <small class="text-danger text-right d-block" *ngIf="catName.errors?.required"> من فضلك أدخل اسم القسم </small>
         <small class="text-danger text-right d-block" *ngIf="catName.errors?.minlength"> من فضلك اسم القسم أكثر من ثلاثة
           أحرف </small>
       </div>

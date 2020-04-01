@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactsService } from 'src/app/services/contacts.service';
 import { NgForm } from '@angular/forms';
+import { SiteService } from 'src/app/services/site.service';
+import { MatDialog } from '@angular/material';
+import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
+import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
 
 @Component({
   selector: 'app-edit-contact',
@@ -8,24 +11,18 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./edit-contact.component.scss']
 })
 export class EditContactComponent implements OnInit {
+ contacts$;
 
-  newContacts = {
-    address: '',
-    phone: '',
-    email: ''
-  };
-
-  constructor(private contactsServices: ContactsService) { }
+ constructor(private site: SiteService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.contactsServices.currentContacts.subscribe(newContacts => newContacts = newContacts);
+    this.contacts$ = this.site.getContacts();
   }
 
-  addContacts(form: NgForm) {
-    console.log(this.newContacts);
-    this.newContacts.address = form.value;
-    this.newContacts.phone = form.value;
-    this.newContacts.email = form.value;
+  updateContacts(form: NgForm) {
+   this.site.updateContacts(form)
+   .subscribe(
+     res=> this.dialog.open(SuccesPostDialogComponent), 
+     error=> this.dialog.open(ErrorDialogComponent));
   }
-
 }

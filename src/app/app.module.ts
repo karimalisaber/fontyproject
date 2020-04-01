@@ -13,7 +13,6 @@ import { OurServicesComponent } from './website/components/our-services/our-serv
 import { NotFoundComponent } from './website/components/not-found/not-found.component';
 import { NavbarComponent } from './website/components/navbar/navbar.component';
 import { FooterComponent } from './website/components/footer/footer.component';
-import { ProductDetailsComponent } from './website/components/product-details/product-details.component';
 import { WebsiteComponent } from './website/website.component';
 import { LoginComponent } from './admin/components/login/login.component';
 import { DashboardComponent } from './components/dashboard/layout/dashboard.component';
@@ -42,16 +41,13 @@ import { OrdersComponent } from './components/dashboard/control-panel/contro-pan
 import { CancelleOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/cancelle-orders/cancelle-orders.component';
 import { FinishedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/finished-orders/finished-orders.component';
 import { PreparingStageOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/preparing-stage-orders/preparing-stage-orders.component';
-import { BranchesSettingsComponent } from './components/dashboard/management/branches-settings/branches-settings.component';
 import { UsersSettingsComponent } from './components/dashboard/management/users-settings/users-settings.component';
-import { AdminsSettingsComponent } from './components/dashboard/management/admins-settings/admins-settings.component';
 import { ManagementComponent } from './components/dashboard/management/management.component';
 import { EditOrAddProductComponent } from './components/dashboard/view-products/edit-or-add-product/edit-or-add-product.component';
 import { EditProductComponent } from './components/dashboard/view-products/edit-product/edit-product.component';
 import { EditSliderComponent } from './components/dashboard/site-settings/edit-slider/edit-slider.component';
 import { EditServicesComponent } from './components/dashboard/site-settings/edit-services/edit-services.component';
 import { UserPointsComponent } from './components/dashboard/settings/user-points/user-points.component';
-import { BranchDetailsComponent } from './components/management/branches-settings/branch-details/branch-details.component';
 import { OffersComponent } from './components/dashboard/settings/offers/offers.component';
 import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
 // import { AuthGuardService } from './services/auth-guard.service';
@@ -65,9 +61,23 @@ import { ItemsService } from './services/items.service';
 import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
 import { AddOfferComponent } from './components/dashboard/settings/add-offer/add-offer.component';
 import { SettingService } from './services/setting.service';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogComponent } from './components/assets/dialog/dialog.component';
 import { ErrorDialogComponent } from './components/assets/error-dialog/error-dialog.component';
+import { SuccessDialogComponent} from './components/assets/success-dialog/success-dialog.component';
+import { AssetsService } from './services/assets.service';
+import { EditDialogComponent } from './components/assets/edit-dialog/edit-dialog.component';
+import { SuccesPostDialogComponent } from './components/assets/succes-post-dialog/succes-post-dialog.component';
+import { MatMenuModule, MatButtonModule } from '@angular/material';
+import { ContactUsComponent } from './new/contact-us/contact-us.component';
+import { SliderComponent } from './new/slider/slider.component';
+import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
+import { SalerDashboardComponent } from './components/saler-dashboard/saler-dashboard.component';
+import { SallerDashboardComponent } from './components/saller-dashboard/saller-dashboard.component';
+import { RecieveOrdersComponent } from './components/saller-dashboard/recieve-orders/recieve-orders.component';
+import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
+import {NgxTypedJsModule} from 'ngx-typed-js';
+import { ProductViewDialogComponent } from './components/assets/product-view-dialog/product-view-dialog.component';
 
 
 @NgModule({
@@ -85,7 +95,6 @@ import { ErrorDialogComponent } from './components/assets/error-dialog/error-dia
     WebsiteComponent,
     DashboardComponent,
     AdminComponent,
-    ProductDetailsComponent,
     RightmenuComponent,
     AboutSectionComponent,
     EditBranchesComponent,
@@ -110,16 +119,13 @@ import { ErrorDialogComponent } from './components/assets/error-dialog/error-dia
     CancelleOrdersComponent,
     FinishedOrdersComponent,
     PreparingStageOrdersComponent,
-    BranchesSettingsComponent,
     UsersSettingsComponent,
-    AdminsSettingsComponent,
     ManagementComponent,
     EditOrAddProductComponent,
     EditProductComponent,
     EditSliderComponent,
     EditServicesComponent,
     UserPointsComponent,
-    BranchDetailsComponent,
     OffersComponent,
     EditOffersComponent,
     ViewProductsCategoriesComponent,
@@ -127,11 +133,26 @@ import { ErrorDialogComponent } from './components/assets/error-dialog/error-dia
     AppSliderComponent,
     AddOfferComponent,
     DialogComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    SuccessDialogComponent,
+    EditDialogComponent,
+    SuccesPostDialogComponent,
+    ContactUsComponent,
+    SliderComponent,
+    FeedbackComponent,
+    SalerDashboardComponent,
+    SallerDashboardComponent,
+    RecieveOrdersComponent,
+    OrdersActionComponent,
+    ProductViewDialogComponent
   ],
 entryComponents: [
+  SuccesPostDialogComponent,
   DialogComponent,
-  ErrorDialogComponent
+  SuccessDialogComponent,
+  ErrorDialogComponent,
+  EditDialogComponent,
+  ProductViewDialogComponent
 ],
 
 imports: [
@@ -141,8 +162,11 @@ imports: [
   FormsModule,
   HttpClientModule,
   MatDialogModule,
+  MatMenuModule,
+  MatButtonModule,
   // NgbModule,
   // CustomFormsModule,
+  NgxTypedJsModule,
   MDBBootstrapModule.forRoot()
 ],
 
@@ -150,7 +174,8 @@ providers: [
   CategoriesService,
   AuthService,
   ItemsService,
-  SettingService
+  SettingService,
+  AssetsService
   // AuthGuardService 
 ],
 

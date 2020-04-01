@@ -2,7 +2,6 @@ export interface Sales {
     data: Array<SalesElement>,
 }
 
-
 export interface SalesElement{
     id: number,
     user_id: string,
@@ -22,7 +21,8 @@ export interface userData{
         id: number,
         name: string,
         email: string,
-        phone: number
+        phone: number,
+        password: string
     }
 }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteService } from 'src/app/services/site.service';
 
 @Component({
   selector: 'app-branches',
@@ -6,37 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./branches.component.scss']
 })
 export class BranchesComponent implements OnInit {
-
-  // ourBranches = [
-  //   {
-  //     branchName: 'Riyadh',
-  //     branchAddress: '87 st KSA'
-  //   },
-  //   {
-  //     branchName: 'Dammam',
-  //     branchAddress: '155 st KSA'
-  //   },
-  //   {
-  //     branchName: 'Makkah',`
-  //     branchAddress: 'KSA'
-  //   },
-  //   {
-  //     branchName: 'Riyadh 2',
-  //     branchAddress: '87 st KSA'
-  //   },
-  //   {
-  //     branchName: 'Dammam 3',
-  //     branchAddress: '155 st KSA'
-  //   },
-  //   {
-  //     branchName: 'Makkah 4',
-  //     branchAddress: 'KSA'
-  //   }
-  // ];
-
-  constructor() { }
+branches$;
+  constructor(private site: SiteService) { }
 
   ngOnInit() {
+   this.branches$ = this.site.getbranches();
   }
 
 }

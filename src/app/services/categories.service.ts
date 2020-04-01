@@ -9,7 +9,7 @@ import { getCategoriesUrl, deleteCategoryUrl, updateCategoryUrl, addCategoryUrl 
 })
 export class CategoriesService {
   
-  constructor(private http: HttpClient) { }
+constructor(private http: HttpClient) { }
 
   getCategories(){
     return this.http.get<GetCategoriesResponse>(getCategoriesUrl).pipe(map(response => {

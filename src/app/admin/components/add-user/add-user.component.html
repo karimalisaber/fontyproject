@@ -1,7 +1,7 @@
-<h2 class="title-section text-justify mt-20">اضافة عضو</h2>
+<h2 class="title-dashboard-section text-justify mt-20">اضافة عضو</h2>
 
-<div class="add-user-form container">
-  <form #userForm="ngForm" (ngSubmit)="submit(userForm.value); userForm.reset();">
+<div class="add-user-form ">
+  <form #userForm="ngForm" (ngSubmit)="addUser(userForm.value); userForm.reset();">
     <div class="form-group">
       <label for="name" class="text-justify w-100">الاسم</label>
       <input ngModel #userName="ngModel" required minlength="5"
@@ -13,7 +13,6 @@
         <div class="alert alert-danger text-right" *ngIf="userName.errors.minlength">من فضلك أدخل اسم أكثر من خمسة أحرف </div>
       </div>
     </div>
-
 
     <div class="form-group">
       <label for="email" class="text-justify w-100">البريد الالكترونى</label>
@@ -30,7 +29,7 @@
 
     <div class="form-group">
       <label for="phone" class="text-justify w-100">رقم الجوال</label>
-      <input phone ngModel required #password ="ngModel" #phone="ngModel"
+      <input ngModel required ="ngModel" #phone="ngModel"
       [ngClass]="{ 'is-invalid': phone.invalid && phone.touched, 'is-valid': !phone.invalid && phone.touched}"
       class="form-control" type="number" name="phone" id="phone" pattern="[0-9 ]{7,}">
       
@@ -51,13 +50,13 @@
         <div class="alert alert-danger text-right" *ngIf="password.errors.minlength"> الرقم السري يجب أن يكون أكثر من 6 أحرف </div>
       </div>
     </div>
-<!-- 
+
+    <!-- 
     <div class="form-group">
       <label for="password" class="text-justify w-100">تأكيد كلمة المرور</label>
       <input ngModel required #confirmPassword="ngModel"
       [ngClass]="{ 'is-invalid': confirmPassword.invalid && confirmPassword.touched}"
       class="form-control" type="password" name="password" id="password">
-
       
       <div *ngIf="!confirmPassword.valid && confirmPassword.touched" class="" >
         <div class="alert alert-danger text-right" *ngIf="confirmPassword.errors.required"> من فضلك أعد ادخال الرقم السري </div>
@@ -65,8 +64,8 @@
       </div>
     </div> -->
     
-    <button class="btn-main float-right" type="submit" [disabled]="!userForm.valid"> اضافة </button>
+    <button class="float-right btn btn-primary ml-10" type="submit" [disabled]="!userForm.valid"> اضافة </button>
   </form>
-  <button class="btn-main float-right" routerLink="/dashboard/management/admins"> رجوع </button>
+  <button class="float-right btn btn-danger" routerLink="../"> رجوع </button>
 
 </div>

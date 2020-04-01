@@ -1,80 +1,49 @@
-<h2 class="title-section text-center mb-40">تواصل معنا</h2>
-    
-<div class="row">
-   <div class="col-12 col-md-6 contact-form">
-          <form #form="ngForm" (ngSubmit)="addContacts(form)">
-            <div class="form-group">
-              <label class="text-justify w-100">إضافة عنوان</label>
-              <input #address [(ngModel)]="newContacts.address" class="form-control" type="text" name="address" id="address">
-            </div>
+<div *ngIf="(contacts$ | async) as Contacts" class="row">
+  <div class="col-12 col-md-6 contact-form">
+    <form #userForm="ngForm" (ngSubmit)="updateContacts(userForm.value)">
+      <div class="form-group">
+        <label class="text-justify w-100">تعديل العنوان</label>
+        <textarea required minlength="6"
+        [ngClass]="{ 'is-invalid': address.invalid, 'is-valid': !address.invalid}"
+         #address="ngModel" [(ngModel)]="Contacts.address" class="form-control" name="address" id="address">
+         </textarea>
+        <div *ngIf="!address.valid && address.touched" class="" >
+          <div class="alert alert-danger text-right" *ngIf="address.errors.required"> العنوان مطلوب </div>
+          <div class="alert alert-danger text-right" *ngIf="address.errors.minlength"> من فضلك أدخل العنوان أكثر من ستة أحرف </div>
+        </div>
 
-            <div class="form-group">
-              <label class="text-justify w-100">اضافة رقم الهاتف</label>
-              <input #phone [(ngModel)]="newContacts.phone" class="form-control" type="text" name="phone" id="phone">
-            </div>
+      </div>
 
-            <div class="form-group">
-              <label class="text-justify w-100">اضافة البريد الالكترونى</label>
-              <input #email [(ngModel)]="newContacts.email" class="form-control" type="text" name="email" id="email">
-            </div>
 
-            <div class="form-group">
-              <input class="w-100 btn-main" type="submit" value="اضافة">
-            </div>
-          </form>
-   </div>
+      <div class="form-group">
+        <label class="text-justify w-100">تعديل رقم الهاتف</label>
+        <input #phone="ngModel" required pattern="[0-9 ]{7,}"
+        [ngClass]="{ 'is-invalid': phone.invalid, 'is-valid': !phone.invalid}"
+         [(ngModel)]="Contacts.phone" class="form-control" type="number" name="phone" id="phone">
+      
+         
+        <div *ngIf="!phone.valid && phone.touched" class="" >
+          <div class="alert alert-danger text-right" *ngIf="phone.errors.required"> رقم الهاتف مطلوب </div>
+          <div class="alert alert-danger text-right" *ngIf="phone.errors.pattern"> من فضلك أدخل الهاتف بطريقة صحيحة </div>
+        </div>  
+      </div>
 
-      <div class="col-12 col-md-6">
-        <div class="contact-info">
-          <ul class="list-wrapper ">
-            <li class="row text-right">
-              <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
-              <p class="col"> {{newContacts.address}} </p>
-            </li>
+      <div class="form-group">
+        <label class="text-justify w-100">تعديل البريد الالكترونى</label>
+        <input 
+        [ngClass]="{ 'is-invalid': email.invalid, 'is-valid': !email.invalid}"
+        #email="ngModel" required email [(ngModel)]="Contacts.email" class="form-control" type="text" name="email" id="email">
 
-            <li class="row text-right">
-              <div class="col icon"><i class="fas fa-phone-alt"></i></div>
-              <p class="col">{{newContacts.phone}}</p>
-            </li>
-
-            <li class="row text-right">
-              <div class="col icon"><i class="far fa-envelope"></i></div>
-              <p class="col"> {{newContacts.email}}</p>
-            </li>
-          </ul>
+        <div *ngIf="!email.valid && email.touched" class="" >
+          <div class="alert alert-danger text-right" *ngIf="email.errors.required">من فضلك أدخل الاسم </div>
+          <div class="alert alert-danger text-right" *ngIf="email.errors.email">من فضلك أدخل الايميل بالطريفة الصحيحة</div>
         </div>
       </div>
-</div>
 
-<!-- ture contacts -->
-<h2 class="title-section text-center mt-30 mb-40">العناوين</h2>
-
-<div class="row">
-
-  <div class="col-12 col-md-6">
-    <div class="contact-info">
-      <ul class="list-wrapper ">
-        <li class="row text-right">
-          <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
-          <p class="col"> {{newContacts.address}} </p>
-        </li>
-  
-        <li class="row text-right">
-          <div class="col icon"><i class="fas fa-phone-alt"></i></div>
-          <p class="col">{{newContacts.phone}}</p>
-        </li>
-  
-        <li class="row text-right">
-          <div class="col icon"><i class="far fa-envelope"></i></div>
-          <p class="col"> {{newContacts.email}}</p>
-        </li>
-  
-        <div class="button-wrapper clearfix">
-          <button class="btn float-right">تعديل</button>
-          <button class="btn float-right">حذف</button>
-        </div>
-      </ul>
-    </div>
+      <div class="form-group">
+        <input [disabled] ="userForm.invalid" class="w-100 btn btn-main" type="submit" value="تعديل العنوان">
+      </div>
+    </form>
   </div>
 
   <div class="col-12 col-md-6">
@@ -82,76 +51,22 @@
       <ul class="list-wrapper ">
         <li class="row text-right">
           <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
-          <p class="col"> {{newContacts.address}} </p>
+          <p class="col"> {{Contacts.address}} </p>
         </li>
-  
-        <li class="row text-right">
-          <div class="col icon"><i class="fas fa-phone-alt"></i></div>
-          <p class="col">{{newContacts.phone}}</p>
-        </li>
-  
-        <li class="row text-right">
-          <div class="col icon"><i class="far fa-envelope"></i></div>
-          <p class="col"> {{newContacts.email}}</p>
-        </li>
-  
-        <div class="button-wrapper clearfix">
-          <button class="btn float-right">تعديل</button>
-          <button class="btn float-right">حذف</button>
-        </div>
-      </ul>
-    </div>
-  </div>
 
-  <div class="col-12 col-md-6">
-    <div class="contact-info">
-      <ul class="list-wrapper ">
-        <li class="row text-right">
-          <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
-          <p class="col"> {{newContacts.address}} </p>
-        </li>
-  
         <li class="row text-right">
           <div class="col icon"><i class="fas fa-phone-alt"></i></div>
-          <p class="col">{{newContacts.phone}}</p>
+          <p class="col">{{Contacts.phone}}</p>
         </li>
-  
-        <li class="row text-right">
-          <div class="col icon"><i class="far fa-envelope"></i></div>
-          <p class="col"> {{newContacts.email}}</p>
-        </li>
-  
-        <div class="button-wrapper clearfix">
-          <button class="btn float-right">تعديل</button>
-          <button class="btn float-right">حذف</button>
-        </div>
-      </ul>
-    </div>
-  </div>
 
-  <div class="col-12 col-md-6">
-    <div class="contact-info">
-      <ul class="list-wrapper ">
-        <li class="row text-right">
-          <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
-          <p class="col"> {{newContacts.address}} </p>
-        </li>
-  
-        <li class="row text-right">
-          <div class="col icon"><i class="fas fa-phone-alt"></i></div>
-          <p class="col">{{newContacts.phone}}</p>
-        </li>
-  
         <li class="row text-right">
           <div class="col icon"><i class="far fa-envelope"></i></div>
-          <p class="col"> {{newContacts.email}}</p>
+          <p class="col"> {{Contacts.email}}</p>
         </li>
-  
-        <div class="button-wrapper clearfix">
-          <button class="btn float-right">تعديل</button>
-          <button class="btn float-right">حذف</button>
-        </div>
       </ul>
     </div>
   </div>
 </div>
+
+<button class="btn btn-danger float-right mt-20 " routerLink="/dashboard/site-settings"> الرجوع مع الحفظ</button>
+<div class="clearfix"></div>

@@ -1,57 +1,35 @@
-<div class="branches-form">
-  <div class="container">
-    <div class="title-section pb-30">
-      <h2 class="text-justify">اضافة فرع</h2>
-    </div>
+<div class="branches-form container">
+  <h2 class="title-dashboard-section text-justify">اضافة فرع</h2>
 
-    
-    <form action="">
-          <label class="text-justify w-100">اسم الفرع</label>
-          <div class="form-group">
-            <input class="form-control" type="text" name="title" id="">
-          </div>
-          
-            <div class="form-group d-flex justfy-content-start">
-              <input class="btn-main mt-30" type="submit" value="اضافة">
-            </div>
-    </form>
-    
-    <div class="branches-view pt-40 row">
-          <div class="col-sm-4">
-            <div class="branches__view--items">
-              <div class="branches-title">
-                <h4>اسم الفرع</h4>
-              </div>
-              <div class="branches-control">
-                <button class="btn btn-primary">تعديل</button>
-                <button class="btn btn-danger">حذف</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <div class="branches__view--items">
-              <div class="branches-title">
-                <h4>اسم الفرع</h4>
-              </div>
-              <div class="branches-control">
-                <button class="btn btn-primary">تعديل</button>
-                <button class="btn btn-danger">حذف</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-sm-4">
-            <div class="branches__view--items">
-              <div class="branches-title">
-                <h4>اسم الفرع</h4>
-              </div>
-              <div class="branches-control">
-                <button class="btn btn-primary">تعديل</button>
-                <button class="btn btn-danger">حذف</button>
-              </div>
-            </div>
-          </div>
-        </div>
+  <form action="" #userForm="ngForm" (ngSubmit)="addBranch(userForm.value)">
+    <label class="text-justify w-100">اسم الفرع</label>
+    <div class="form-group">
+      <input ngModel required minlength="3" #name ="ngModel" name="name" id="branch-name" class="form-control" type="text" id="">
+      
+      <div class="error-handler" *ngIf="name.errors && name.touched">
+        <small class="text-danger text-right d-block" *ngIf="name.errors?.minlength"> من فضلك اسم القسم أكثر من ثلاثة
+          أحرف </small>
       </div>
     </div>
+
+    <div class="form-group d-flex justfy-content-start">
+      <input [disabled] ="userForm.invalid" class="btn btn-primary" type="submit" value="اضافة">
+    </div>
+  </form>
+
+  <div class="branches-view pt-40 row no-gutters">
+    <div *ngFor="let branch of branches" class="branches col-sm-4 pb-40">
+    <div  class="branches__view--items">
+      <input (keyup.enter)="updateItem($event.target.value, branch.id)" 
+      [id]="'item-' + branch.id"
+      [disabled]="!update" class="branches-title" [value]="branch.name">
+
+      <div class="branches-control">
+        <button (click)="enableUpdateItem(branch.id)" class="btn btn-primary">تعديل</button>
+        <button (click)="deleteAlert(branch.id)" class="btn btn-danger">حذف</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <button routerLink="../" class="btn btn-primary d-block text-right">العودة مع الحفظ</button>
+</div>

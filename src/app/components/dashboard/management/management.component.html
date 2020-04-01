@@ -1,6 +1,49 @@
-<div class="management-wrapper">
+<!-- <div class="management-wrapper">
   <a routerLink="admins" class="item-setting-global d-block text-center">الإدارة</a>
 
   <a routerLink="branches" class="item-setting-global d-block text-center">الفروع</a>
 
-</div>
+</div> -->
+<!-- old version -->
+
+<a routerLink ="add-user" class="d-block text-center item-setting-global-small">  إضافة عضو </a>
+
+<section class="members">
+  <div class="search">
+    <form action="">
+      <input #search
+      (keyup) = "filter(search.value)"
+       type="search" name="" id="" placeholder="بحث">
+      <input class="btn-search" type="submit" value="بحث">
+    </form>
+  </div>
+  
+    <table class="table text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th>الاسم</th>
+          <th>رقم الجوال</th>
+          <th>البريد الالكترونى</th>
+          <th>حذف</th>
+          <th>تعديل</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{user.sales?.name}}</td>
+          <td></td>
+          <!-- <td>{{user.sales.phone}}</td> -->
+          <td>{{user.sales?.email}}</td>
+        <td>
+           <i  (click)="deleteAlert(user.id)" class="far fa-trash-alt"></i>
+        </td>
+       <td>
+         <a [routerLink]="['/dashboard/edit-user', user.id]">
+            <i class="fas fa-cog"></i>
+         </a>   
+       </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

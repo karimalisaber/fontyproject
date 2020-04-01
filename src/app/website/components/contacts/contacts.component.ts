@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactsService } from 'src/app/services/contacts.service';
+import { SiteService } from 'src/app/services/site.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-contacts',
@@ -7,14 +8,12 @@ import { ContactsService } from 'src/app/services/contacts.service';
   styleUrls: ['./contacts.component.scss']
 })
 export class ContactsComponent implements OnInit {
+contacts;
 
-  newContacts = this.contactsServices.contacts;
-
-
-  constructor(private contactsServices: ContactsService) { }
+  constructor(private site: SiteService) { }
 
   ngOnInit() {
-    this.contactsServices.currentContacts.subscribe(newContacts => newContacts = newContacts);
+    this.site.getContacts().pipe(take(1))
+    .subscribe(  res=>  this.contacts = res );
   }
-
 }

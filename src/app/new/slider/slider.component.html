@@ -1,0 +1,14 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li *ngFor="let slider of sliders; let i = index" id="indicator" 
+      data-target="#carouselExampleIndicators" data-slide-to=i></li>
+    </ol>
+
+    <div class="carousel-inner">
+      <div *ngFor="let slider of sliders" id="carousel-item" class="carousel-item">
+        <div class="img-wrapper d-block w-100" [style.background]="'url(http://fonty.ieeeshasb.org/public/wslider/' + slider.img +')'" alt="slider"></div>
+        
+         <p class="slider-add typing">{{slider.title}} </p>
+      </div>
+    </div>
+</div>

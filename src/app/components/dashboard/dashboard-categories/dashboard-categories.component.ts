@@ -2,10 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {  UserCat, PostCategoriesResponse } from 'src/app/interfaces/categories-response';
 import { CategoriesService } from 'src/app/services/categories.service';
 import {MatDialog} from '@angular/material/dialog';
-import { DialogComponent } from '../../assets/dialog/dialog.component';
-import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { ErrorDialogComponent } from '../../assets/error-dialog/error-dialog.component';
+import { AssetsService } from 'src/app/services/assets.service';
+import { SuccesPostDialogComponent } from '../../assets/succes-post-dialog/succes-post-dialog.component';
 
 @Component({
   selector: 'app-dashboard-categories',
@@ -14,8 +14,6 @@ import { ErrorDialogComponent } from '../../assets/error-dialog/error-dialog.com
 })
 
 export class DashboardCategoriesComponent implements OnInit , OnDestroy{
- apiUrl = 'http://fonty.ieeeshasb.org/api/web/';
- 
   userInput ="" ; // add section input
   categories: Array<UserCat> =[];
   update: boolean =false; // update specific category
@@ -23,7 +21,8 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
   getCategoriesSubscription: Subscription;
 
   constructor(
-    private dialog: MatDialog,  
+    private dialog: MatDialog, 
+    private assets: AssetsService, 
     private cat: CategoriesService) {}
 
   ngOnInit() {
@@ -34,16 +33,12 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
   }
 
   deleteAlert(id){
-    this.dialog.open(DialogComponent)
-    .afterClosed().pipe(take(1))
-    .subscribe(res=>{
-      if(res === "yes") this.deleteItem(id);
-    });
+     this.assets.deleteAlert(id).subscribe(res=> res? this.deleteItem(id):false) ;
   }
 
   private deleteItem(id){
     // optimistic update
-    let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
+    let itemIndex = this.assets.findIndex(this.categories, id); //findindex
     var deletedItem = this.categories.splice(itemIndex, 1);
     
     this.cat.deleteCategory(id).subscribe(
@@ -51,7 +46,6 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
           
     }, error=> {
       this.categories.push(deletedItem[0]);
-
       this.dialog.open(ErrorDialogComponent);
     });
   }
@@ -68,21 +62,22 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
     if (this.update) setTimeout( () =>  element.focus() ,100);
   }
 
-  private updateItem(value , id){
+  updateItem(name , id){
     let element =  this.getUpdateItemId(id);
 
-    let cat = {id, name: value} ;
-    this.cat.updateCategory(cat).subscribe(
+    let item = {id, name} ;
+    this.cat.updateCategory(item).subscribe(
       data=> {
         let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
-        this.categories.splice(itemIndex, 1, {id, name: value});
-    },error => this.dialog.open(ErrorDialogComponent) );
+        this.categories.splice(itemIndex, 1, item);
+        this.dialog.open(SuccesPostDialogComponent);
+    },error => this.dialog.open(ErrorDialogComponent));
   }
 
   addItem(name){
       let newCat ={name};
-      this.cat.addCategory(newCat).subscribe((
-        res:PostCategoriesResponse) => this.categories.push({id: res.data.id , name: res.data.name}),
+      this.cat.addCategory(newCat).subscribe((  
+      res:PostCategoriesResponse) => this.categories.push({id: res.data.id , name: res.data.name}),
        error => this.dialog.open(ErrorDialogComponent) );
 
     // 3- cleanup the inputs

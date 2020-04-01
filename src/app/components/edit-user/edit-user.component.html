@@ -1,6 +1,6 @@
-<h2 class="title-section text-justify mt-20">تعديل عضو</h2>
+<h2 class="title-dashboard-section text-justify mt-20">تعديل عضو</h2>
 
-<div class="add-user-form container">
+<div class="add-user-form ">
   <form #userForm="ngForm" (ngSubmit)="submit(userForm.value); userForm.reset();">
     <div class="form-group">
       <label for="name" class="text-justify w-100">الاسم</label>
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <button class="btn-main float-right" type="submit" [disabled]="!userForm.valid"> تعديل </button>
+    <button class="float-right btn btn-primary ml-10" type="submit" [disabled]="userForm.invalid"> تعديل </button>
   </form>
-  <button class="btn-main float-right" routerLink="/dashboard/management/admins"> رجوع </button>
+  <button class="float-right btn btn-danger" routerLink="../"> رجوع </button>
 </div>

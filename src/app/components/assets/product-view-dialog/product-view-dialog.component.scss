@@ -1,0 +1,37 @@
+@import 'variables' ;
+
+.product-wrapper{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    
+    .close{
+        position: sticky;
+        left: 10%;
+        top: 3%;
+        z-index: 10000;
+    }
+    .img-wrapper{
+        padding-top: 5%;
+        
+        img{
+            width: 500px;
+            height: 500px;
+            max-height: 500px;
+        }
+    }
+
+    .description{
+      padding-top: 5%;
+
+      p{
+          font-size: 2rem;
+          font-weight: bold;
+          margin-right: 20px;
+          color: $mainColor;  
+          span{
+            color: $secondColor;
+          }
+      }
+    }
+}

@@ -1,12 +1,10 @@
-<h2 class="title-section text-center mb-50"> تعديل صور السلايدر الخاصة بالأبلكيشن</h2>
-
 <div class="clearfix">
     <div class="row">
-        <div *ngFor="let slider of sliders" class="col-md-6">
+        <div *ngFor="let slider of sliders" class="slider col-md-6">
             <div class="img">
-                <img class="img-fluid img-wrapper" [src]="''" alt="mobile-slider">
+                <img class="img-fluid img-wrapper" [src]="'http://fonty.ieeeshasb.org/public/slider/' + slider.name" alt="mobile-slider">
             </div>
-            <button (click)="deleteSlider(slider.id)" class="btn btn-danger float-right">حذف</button>
+            <button (click)="deleteAlert(slider.id)" class="btn btn-danger float-right mr-10">حذف</button>
         </div>
     </div>
 </div>

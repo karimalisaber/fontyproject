@@ -15,12 +15,38 @@ export const getItemsUrl = 'http://fonty.ieeeshasb.org/api/web/items';
 export const postItemUrl =  'http://fonty.ieeeshasb.org/api/web/add_item';
 export const deleteItemUrl =  'http://fonty.ieeeshasb.org/api/web/delete_item/';
 export const getItemUrl =  'http://fonty.ieeeshasb.org/api/web/item_data/';
-export const editItemUrl =  'http://fonty.ieeeshasb.org/api/web/item_data/';
+export const updateItemUrl =  'http://fonty.ieeeshasb.org/api/web/update_item/';
 
 
-export const addSliderUrl =  'http://fonty.ieeeshasb.org/api/web/dashboard/add_slider';
 
 
 export const addAppSliderUrl =  'http://fonty.ieeeshasb.org/api/web/add_slider';
 export const getAppSlidersUrl =  'http://fonty.ieeeshasb.org/api/web/mobile_sliders';
 export const deleteAppSliderUrl =  'http://fonty.ieeeshasb.org/api/web/delete_slider/';
+
+// dashboard
+//branches
+export const getBranchesUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_branches';
+export const addBranchUrl =  'http://fonty.ieeeshasb.org/api/dashboard/add_branch';
+export const deleteBranchUrl =  'http://fonty.ieeeshasb.org/api/dashboard/delete_branch/';
+export const updateBranchUrl =  'http://fonty.ieeeshasb.org/api/dashboard/update_branch/';
+
+//services
+export const getServicesUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_services';
+export const addServiceUrl =  'http://fonty.ieeeshasb.org/api/dashboard/add_service';
+export const deleteServiceUrl =  'http://fonty.ieeeshasb.org/api/dashboard/delete_service/';
+export const updateServiceUrl =  'http://fonty.ieeeshasb.org/api/dashboard/update_service/';
+
+
+
+// sliders
+export const getSlidersUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_sliders';
+export const addSliderUrl =  'http://fonty.ieeeshasb.org/api/dashboard/add_slider';
+export const deleteSliderUrl =  'http://fonty.ieeeshasb.org/api/dashboard/delete_slider/';
+export const updateSliderUrl =  'http://fonty.ieeeshasb.org/api/dashboard/update_slider/';
+export const getSpecificSliderUrl =  'http://fonty.ieeeshasb.org/api/dashboard/spesific_slider/';
+
+
+
+export const getContactsUrl =  'http://fonty.ieeeshasb.org/api/dashboard/get_content_us';
+export const updateContactsUrl =  'http://fonty.ieeeshasb.org/api/dashboard/content_us';

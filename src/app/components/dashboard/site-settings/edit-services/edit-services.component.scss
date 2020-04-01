@@ -5,6 +5,12 @@
 
 .card{
     border: 1px solid rgba($color: #000000, $alpha: .3);
+   
+    .img-wrapper{
+        overflow: hidden;
+        max-height: 350px;
+        height: 350px;
+    }
 
     .services-name{
         margin: 20px auto;
