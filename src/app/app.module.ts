@@ -32,7 +32,6 @@ import { DashboardNavbarComponent } from './components/dashboard/dashboard-navba
 import { DashboardCategoriesComponent } from './components/dashboard/dashboard-categories/dashboard-categories.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
-import { ContactsComponent } from './website/components/contacts/contacts.component';
 import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
 import { ControlPanelIconComponent } from './components/dashboard/control-panel/control-panel-icon/control-panel-icon.component';
 import { RecievedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/recieved-orders/recieved-orders.component';
@@ -74,9 +73,8 @@ import { SliderComponent } from './new/slider/slider.component';
 import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
 import { SalerDashboardComponent } from './components/saler-dashboard/saler-dashboard.component';
 import { SallerDashboardComponent } from './components/saller-dashboard/saller-dashboard.component';
-import { RecieveOrdersComponent } from './components/saller-dashboard/recieve-orders/recieve-orders.component';
 import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
-import {NgxTypedJsModule} from 'ngx-typed-js';
+// import {NgxTypedJsModule} from 'ngx-typed-js';
 import { ProductViewDialogComponent } from './components/assets/product-view-dialog/product-view-dialog.component';
 
 
@@ -110,7 +108,6 @@ import { ProductViewDialogComponent } from './components/assets/product-view-dia
     DashboardCategoriesComponent,
     SettingsComponent,
     ControlPanelComponent,
-    ContactsComponent,
     SiteSettingsComponent,
     ControlPanelIconComponent,
     RecievedOrdersComponent,
@@ -142,9 +139,8 @@ import { ProductViewDialogComponent } from './components/assets/product-view-dia
     FeedbackComponent,
     SalerDashboardComponent,
     SallerDashboardComponent,
-    RecieveOrdersComponent,
     OrdersActionComponent,
-    ProductViewDialogComponent
+    ProductViewDialogComponent,
   ],
 entryComponents: [
   SuccesPostDialogComponent,
@@ -166,7 +162,7 @@ imports: [
   MatButtonModule,
   // NgbModule,
   // CustomFormsModule,
-  NgxTypedJsModule,
+  // NgxTypedJsModule,
   MDBBootstrapModule.forRoot()
 ],
 

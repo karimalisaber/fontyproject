@@ -1,66 +1,76 @@
-  <!-- Start Header Section-->
-  <header>
-    <div class="main-header d-none d-md-block">
-      <div class="container">
-        <div class="nav-bar">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="d-flex justify-content-center align-items-center">
-                <!-- Nav Bar Links-->
-                <ul class="list-unstyled">
-                  <li class="list-inline-item"><a routerLink="">الرئيسية</a></li>
-                  <li class="list-inline-item"><a routerLink="/about">من نحن</a></li>
-                  <li class="list-inline-item"><a routerLink="/our-products">منتجاتنا</a></li>
-                </ul>
-              </div>
+
+
+<!-- Start Header Section-->
+<header>
+  <div class="main-header d-none d-md-block">
+      
+    <div class="container">
+      <div class="nav-bar">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <!-- Nav Bar Links-->
+              <ul class="list-unstyled">
+                <li class="list-inline-item"><a routerLink="">{{navItems[0]}}</a></li>
+                <li class="list-inline-item"><a routerLink="/about">{{navItems[1]}}</a></li>
+                <li class="list-inline-item"><a routerLink="/our-products">{{navItems[2]}}</a></li>
+              </ul>
             </div>
-            <div class="col-md-4">
-              <div class="d-flex justify-content-center align-items-center">
-                <img src="assets/images/logo.png" alt="Our Logo" />
-              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <img src="assets/images/logo.png" alt="Our Logo" />
             </div>
-            <div class="col-md-4">
-              <div class="d-flex justify-content-center align-items-center">
-                <!-- Nav Bar Links-->
-                <ul class="list-unstyled">
-                  <li class="list-inline-item"><a routerLink="/our-branches">فروعنا</a></li>
-                  <li class="list-inline-item"><a routerLink="/our-services">خدماتنا</a></li>
-                  <li class="list-inline-item"><a routerLink="/contact">تواصل معنا</a></li>
-                </ul>
-              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="d-flex justify-content-center align-items-center">
+              <!-- Nav Bar Links-->
+              <ul class="list-unstyled">
+                <li class="list-inline-item"><a routerLink="/our-branches">{{navItems[3]}}</a></li>
+                <li class="list-inline-item"><a routerLink="/our-services">{{navItems[4]}}</a></li>
+                <li class="list-inline-item"><a routerLink="/contact">{{navItems[5]}}</a></li>
+                <!-- <li class="d-inline-block">
+                  <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                    <label class="custom-control-label" for="customSwitch1">en</label>
+                  </div>
+                </li> -->
+              </ul>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Start Header Mobile-->
-    <div class="header-mobile d-block d-md-none">
-      <div class="container">
-        <div class="mobile-nav">
-          <div class="row">
-            <div class="col-6">
-              <div (click)="navShow()" class="nav-links d-flex justify-content-start" id="nav-links">
-                <i class="fas fa-bars"></i>
-              </div>
+  </div>
+
+  <!-- Start Header Mobile-->
+  <div class="header-mobile d-block d-md-none">
+    <div class="container">
+      <div class="mobile-nav">
+        <div class="row">
+          <div class="col-6">
+            <div (click)="navShow()" class="nav-links d-flex justify-content-start" id="nav-links">
+              <i class="fas fa-bars"></i>
             </div>
-            <div class="col-6">
-              <div class="mobile-logo"><img src="assets/images/logo.png" alt="Our Logo" /></div>
-            </div>
+          </div>
+          <div class="col-6">
+            <div class="mobile-logo"><img src="assets/images/logo.png" alt="Our Logo" /></div>
           </div>
         </div>
       </div>
-      <div class="menu-right text-justify" [class.nav-show]="isOpen" id="menu-right">
-        <!-- Nav Bar Links-->
-        <ul class="list-unstyled">
-          <li><a (click)="navShow()" routerLink="">الرئيسية</a></li>
-          <li><a (click)="navShow()" routerLink="/about">من نحن</a></li>
-          <li><a (click)="navShow()" routerLink="/our-products">منتجاتنا</a></li>
-          <li><a (click)="navShow()" routerLink="/our-branches">فروعنا</a></li>
-          <li><a (click)="navShow()" routerLink="/our-services">خدماتنا</a></li>
-          <li><a (click)="navShow()" routerLink="/contact">تواصل معنا</a></li>
-        </ul>
-      </div>
     </div>
-    <!-- End Header Mobile-->
-  </header>
-  <!-- End Header Section-->
+    <div class="menu-right text-justify" [class.nav-show]="isOpen" id="menu-right">
+      <!-- Nav Bar Links-->
+      <ul class="list-unstyled">
+        <li><a (click)="navShow()" routerLink="">الرئيسية</a></li>
+        <li><a (click)="navShow()" routerLink="/about">من نحن</a></li>
+        <li><a (click)="navShow()" routerLink="/our-products">منتجاتنا</a></li>
+        <li><a (click)="navShow()" routerLink="/our-branches">فروعنا</a></li>
+        <li><a (click)="navShow()" routerLink="/our-services">خدماتنا</a></li>
+        <li><a (click)="navShow()" routerLink="/contact">تواصل معنا</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- End Header Mobile-->
+</header>
+<!-- End Header Section-->

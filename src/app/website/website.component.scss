@@ -2,3 +2,7 @@
 @import 'global';
 @import 'mixin';
 @import 'responsive';
+
+website-wrapper{
+    direction: ltr !important;
+}

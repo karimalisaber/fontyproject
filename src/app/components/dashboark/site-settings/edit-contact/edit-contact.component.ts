@@ -12,7 +12,8 @@ import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post
 })
 export class EditContactComponent implements OnInit {
  contacts$;
-
+ arabic: boolean = true;
+ 
  constructor(private site: SiteService, private dialog: MatDialog) { }
 
   ngOnInit() {

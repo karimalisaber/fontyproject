@@ -5,7 +5,6 @@ import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/err
 import { Subscription } from 'rxjs';
 import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
 import { AssetsService } from 'src/app/services/assets.service';
-import { EditDialogComponent } from 'src/app/components/assets/edit-dialog/edit-dialog.component';
 import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
 
 @Component({
@@ -14,7 +13,7 @@ import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post
   styleUrls: ['./edit-branches.component.scss']
 })
 export class EditBranchesComponent implements OnInit, OnDestroy {
-
+  arabic: boolean =true;
   branches;
   subscription: Subscription;
   update: boolean = false;

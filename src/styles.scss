@@ -87,6 +87,31 @@ a {
 .mt-90 {margin-top: 90px;}
 .mt-100 {margin-top: 100px;}
 
+.mr-10 {margin-right: 40px;}
+.mr-20 {margin-right: 10px;}
+.mr-20 {margin-right: 20px;}
+.mr-30 {margin-right: 30px;}
+.mr-40 {margin-right: 40px;}
+.mr-50 {margin-right: 50px;}
+.mr-60 {margin-right: 60px;}
+.mr-70 {margin-right: 70px;}
+.mr-80 {margin-right: 80px;}
+.mr-90 {margin-right: 90px;}
+.mr-100 {margin-right: 100px;}
+
+.ml-10 {margin-left: 40px;}
+.ml-20 {margin-left: 10px;}
+.ml-20 {margin-left: 20px;}
+.ml-30 {margin-left: 30px;}
+.ml-40 {margin-left: 40px;}
+.ml-50 {margin-left: 50px;}
+.ml-60 {margin-left: 60px;}
+.ml-70 {margin-left: 70px;}
+.ml-80 {margin-left: 80px;}
+.ml-90 {margin-left: 90px;}
+.ml-100 {margin-left: 100px;}
+
+
 .ml-10 {margin-left: 10px;}
 .ml-20 {margin-left: 20px;}
 .ml-30 {margin-left: 30px;}
@@ -188,13 +213,28 @@ input[type=password] {
 }
 
 .btn-main:hover{
-  background-color: $mainColor !important;
-  border: $mainColor !important;
+  background-color: #007bff !important;
+  border: 1px solid #007bff !important;
 }
 
 .btn-main:disabled{
   background-color: $mainColor !important;
   border: $mainColor !important;
+}
+.btn-secondary:not(:disabled):not(.disabled).active{
+   color: #fff;
+   background-color: $mainColor;
+   border-color: $mainColor;
+}
+
+ .btn-secondary:hover{
+  background-color: $mainColor;
+  border: 1px solid $mainColor;
+}
+
+.btn-secondary.active:active, .btn-secondary.active:focus, .btn-secondary:focus, .btn-secondary:active{
+  box-shadow: none !important;
+  outline: 0 !important;
 }
 
 .custom-file-input:lang(en) ~ .custom-file-label::after {
@@ -285,7 +325,7 @@ input[type=password] {
 }
 
 .btn-primary:hover{
-  border: $mainColor;
+  border: 1px solid $mainColor;
   background-color: $mainColor;
 }
 
@@ -367,7 +407,7 @@ textarea:active , textarea:focus{
 .section-wrapper{
   // margin-top: 110px ;
   // margin-bottom: 50px ;
-  padding-top: 120px;
+  padding-top: 170px;
   padding-bottom: 50px;
 }
 
@@ -440,4 +480,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: $mainColor;
     font-weight: bold;
   }
+}
+.lang{
+  font-size: 1.7rem !important;
 }

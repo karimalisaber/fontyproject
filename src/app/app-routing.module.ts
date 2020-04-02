@@ -25,7 +25,6 @@ import { UsersSettingsComponent } from './components/dashboard/management/users-
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { EditProductsComponent } from './components/dashboard/view-products/edit-products/edit-products.component';
 import { EditProductComponent } from './components/dashboard/view-products/edit-product/edit-product.component';
-import { ContactsComponent } from './website/components/contacts/contacts.component';
 import { EditContactComponent } from './components/dashboark/site-settings/edit-contact/edit-contact.component';
 import { EditBranchesComponent } from './components/dashboard/site-settings/edit-branches/edit-branches.component';
 import { AboutSectionComponent } from './components/dashboard/site-settings/about-section/about-section.component';
@@ -39,12 +38,14 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
 import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
 import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
+import { ContactUsComponent } from './new/contact-us/contact-us.component';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'log', component: EditProductsComponent },
 
-    { path: 'dashboard', component: DashboardComponent ,children: [
+    { path: 'dashboard', component: DashboardComponent, children: [
       { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'},
       // start control panel
       { path: 'control-panel', component: ControlPanelComponent},
@@ -102,7 +103,7 @@ const routes: Routes = [
         { path: 'our-services', component: OurServicesComponent },
         { path: 'our-products', component: ProductsComponent },
         { path: 'our-branches', component: BranchesComponent }, 
-        { path: 'contact', component: ContactsComponent },
+        { path: 'contact', component: ContactUsComponent },
         { path: '**', component: NotFoundComponent }
       ]
     }

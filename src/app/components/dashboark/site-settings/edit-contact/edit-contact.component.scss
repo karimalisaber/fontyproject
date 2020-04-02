@@ -35,6 +35,10 @@
     border: 1px solid rgba($color: #000000, $alpha: .2)
 }
 
+.list-wrapper.english{
+    direction: ltr;
+    text-align: left !important;
+}
 .btn{
     margin: 0px 7px;
 }

@@ -5,12 +5,10 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { ItemsService } from 'src/app/services/items.service';
 import { Product } from 'src/app/interfaces/products';
-import { ItemData, Items, updateItem } from 'src/app/interfaces/items';
+import { updateItem } from 'src/app/interfaces/items';
 import { MatDialog } from '@angular/material';
-import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
 import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
-
 
 @Component({
   selector: 'edit-or-add-product',
@@ -20,6 +18,8 @@ import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post
 
 export class EditOrAddProductComponent implements OnInit {
 @Input('type') type // for know its edit or add;
+
+arabic: boolean=true;
 
 imgUrl = 'assets/images/upload-image.png'
 productId: string = null; // for edit item
@@ -42,6 +42,10 @@ changeImage: boolean = false;
 
 categories$: Observable<UserCat[]>;
 
+Arabic(){
+  console.log(this.arabic);
+  
+}
 constructor(private cat: CategoriesService,
   private route: ActivatedRoute,
   private items: ItemsService,
@@ -112,5 +116,4 @@ constructor(private cat: CategoriesService,
      render.onload = (event: any) =>  this.imgUrl = event.target.result;
   }
 }
-    
 }

@@ -21,7 +21,7 @@
 }
 
 .custom-file-label::after {
-    content: "اضافة صورة" !important;
+    content: "تعديل الصورة" !important;
     color: $mainColor;
     background-color: white;
 }
@@ -41,8 +41,15 @@ hr{
     width: 80%;
     opacity: .8;
 }
+
 .upload-img{
     margin-bottom: 15px;
+    overflow: hidden;
+    
+    img{
+        height: 400px;
+        width: 400px;
+    }
 
     p { 
         margin-top: 30px;
@@ -52,5 +59,20 @@ hr{
         font-size: 40px; 
         font-weight: bold; 
         letter-spacing: -1px; 
+    }
+}
+
+.view-wrapper{
+    width: 100%;
+    border: 1px solid rgba($color: gray, $alpha: .5);
+    min-height: 251px;
+    box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: .5);
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    
+    p{
+        color: $mainColor;
+        font-weight: bold;
+        font-size: 1.4rem;
     }
 }

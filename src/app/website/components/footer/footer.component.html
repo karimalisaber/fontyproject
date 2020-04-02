@@ -5,51 +5,72 @@
         <div class="footer-logo"><img src="assets/images/logo.png" /></div>
       </div>
 
-      <div class="col-sm-3 col-xs-12">
-        <div class="single_widget">
-          <h4 class="footer_title">خدماتنا</h4>
-          <div class="separator"></div>
-          <ul>
-            <li *ngFor="let service of services$ | async">{{service.name}}</li>
-          </ul>
+      <div class="col row">
+        <div class="col-sm-3 col-xs-12">
+          <div class="single_widget">
+            <h4 class="footer_title">{{items[0]}}</h4>
+            <div class="separator"></div>
+            <ul>
+              <li *ngFor="let service of services$ | async"> <p> {{service.name}} </p></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-3 col-xs-12">
+          <div class="single_widget">
+            <h4 class="footer_title">{{items[1]}}</h4>
+            <div class="separator"></div>
+            <ul>
+              <li *ngFor="let branch of branches$ | async"><p> {{branch.name}}</p> </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-4 col-xs-12">
+          <div class="single_widget">
+            <h4 class="footer_title">{{items[2]}}</h4>
+            <div class="separator"></div>
+            <ul *ngIf="(contacts$ | async) as contacts">
+              <li>
+                <p class="contact">
+                  <i class="fa fa-envelope">
+                  </i> {{contacts.email}} </p>
+              </li>
+
+              <li>
+                <p class="contact"><i class="fa fa-phone">
+                  </i> {{contacts.phone}}</p>
+              </li>
+
+              <li>
+                <p class="contact">
+                  <i class="fa fa-map-marker"></i>
+                  {{contacts.address}}
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-sm-2 col-xs-12">
+          <div class="single_widget">
+            <h4 class="footer_title">{{items[3]}}</h4>
+            <div class="separator"></div>
+            <ul>
+              <li>
+                <p class="contact">
+                  <a href="">العربية </a>  
+                </p>
+              </li>
+
+              <li>
+                <p class="contact"> <a href=""> الانجليزية </a> </p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div class="col-sm-3 col-xs-12">
-        <div class="single_widget">
-          <h4 class="footer_title">فروعنا</h4>
-          <div class="separator"></div>
-          <ul>
-            <li *ngFor="let branch of branches$ | async">{{branch.name}}</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-sm-3 col-xs-12">
-        <div class="single_widget">
-          <h4 class="footer_title">معلومات الاتصال</h4>
-          <div class="separator"></div>
-          <ul *ngIf="(contacts$ | async) as contacts">
-            <li>
-              <p class="contact">
-                <i class="fa fa-envelope">
-                </i> {{contacts.email}} </p>
-            </li>
-
-            <li>
-              <p class="contact"><i class="fa fa-phone">
-                </i> {{contacts.phone}}</p>
-            </li>
-
-            <li>
-              <p class="contact">
-                <i class="fa fa-map-marker"></i>
-                {{contacts.address}}
-              </p>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -61,12 +82,13 @@
 
         <div class="col-sm-6 col-xs-12">
           <div class="copyright_text">
-            <p>تصميم وبرمجة شركة <a target="_blank" href="https://www.clicktopass.com/">Clicktopass</a>2020. جميع الحقوق محفوظة</p>
+            <p>تصميم وبرمجة شركة <a target="_blank" href="https://www.clicktopass.com/">Clicktopass</a>2020. جميع الحقوق
+              محفوظة</p>
           </div>
         </div>
 
         <div class="col-sm-6 col-xs-12">
-          <div class="text-left footer_socail">
+          <div [ngClass]="{'text-left': arabic}" class="footer_socail">
             <a target="_blank" href="#"><i class="fab fa-facebook"></i></a>
 
             <a target="_blank" href="https://instagram.com/fonte4me?igshid=nfjaq41bsapm">
@@ -74,9 +96,9 @@
             </a>
 
             <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
-          
+
             <a target="_blank" href="#"><i class="fab fa-google-plus"></i></a>
-          
+
             <a target="_blank" href="#"><i class="fa fa-rss"></i></a>
           </div>
         </div>

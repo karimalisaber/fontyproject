@@ -10,6 +10,7 @@ import { ProductViewDialogComponent } from 'src/app/components/assets/product-vi
 })
 export class ProductsComponent implements OnInit {
 products$;
+arabic: boolean = true;
   constructor(private item: ItemsService, private dialog: MatDialog) { }
 
   ngOnInit() {

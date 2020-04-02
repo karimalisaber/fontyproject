@@ -8,6 +8,8 @@ import { SiteService } from 'src/app/services/site.service';
 })
 export class OurServicesComponent implements OnInit {
 services$;
+arabic: boolean = true;
+
   constructor(private service: SiteService) { }
 
   ngOnInit() {

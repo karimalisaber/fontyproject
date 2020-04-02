@@ -1,18 +1,37 @@
 <div class="branches-form container">
   <h2 class="title-dashboard-section text-justify">اضافة فرع</h2>
 
-  <form action="" #userForm="ngForm" (ngSubmit)="addBranch(userForm.value)">
+  <form class="w-50" action="" #userForm="ngForm" (ngSubmit)="addBranch(userForm.value)">
     <label class="text-justify w-100">اسم الفرع</label>
     <div class="form-group">
-      <input ngModel required minlength="3" #name ="ngModel" name="name" id="branch-name" class="form-control" type="text" id="">
+      <input class="text-left"
+      [ngClass]="{ 'is-invalid': name.invalid && name.touched ,
+      'is-valid': !name.invalid && name.touched, 'text-left': !arabic}"      
+      ngModel required minlength="3" #name ="ngModel" name="name" id="branch-name" class="form-control" type="text" id="">
       
       <div class="error-handler" *ngIf="name.errors && name.touched">
         <small class="text-danger text-right d-block" *ngIf="name.errors?.minlength"> من فضلك اسم القسم أكثر من ثلاثة
           أحرف </small>
       </div>
     </div>
+    
+  <!-- start language -->
+  <div class="form-group">
+    <h2 class="lang text-justify w-100">اختر اللغة</h2>
+    <div class="btn-group float-right btn-group-toggle mb-10" data-toggle="buttons">
 
-    <div class="form-group d-flex justfy-content-start">
+      <label class="btn btn-secondary active text-right">
+        <input (click)="arabic=true;" type="radio" name="options" id="option1" checked> عربي
+      </label>
+      <label class="btn btn-secondary">
+        <input (click)="arabic=false;" type="radio" name="options" id="option2"> إنجليزي
+      </label>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <!-- end language -->
+
+    <div class="form-group d-flex justfy-content-start mt-10">
       <input [disabled] ="userForm.invalid" class="btn btn-primary" type="submit" value="اضافة">
     </div>
   </form>
@@ -25,7 +44,7 @@
       [disabled]="!update" class="branches-title" [value]="branch.name">
 
       <div class="branches-control">
-        <button (click)="enableUpdateItem(branch.id)" class="btn btn-primary">تعديل</button>
+        <button (click)="enableUpdateItem(branch.id)" class="btn btn-main">تعديل</button>
         <button (click)="deleteAlert(branch.id)" class="btn btn-danger">حذف</button>
       </div>
     </div>

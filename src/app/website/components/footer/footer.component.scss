@@ -1,5 +1,7 @@
+@import 'variables';
+
 *{
-    text-align: right;
+    // text-align: right;
 }
 
 li{
@@ -17,22 +19,35 @@ li{
 .separator {
     height: 2px;
     width: 30px;
-    margin:10px 0px;
+    margin:10px 0px 20px;
     background: #5e9a28;
 }
 
 li {
+    font-size: 1.7rem;
     display: block;
     padding: 3px 0 3px;
     transition: color 0.2s linear;
+    
+    p{
+        font-size: 1.7rem;
+    
+   a{
+    font-size: 1.7rem;  
+    font-weight: bold;
+    transition: all .5s ;
+    &:hover{
+        color: $mainColor;
+    }
+  }
 }
-
+}
 .footer_title_left{
     margin-bottom:70px;
 }
 
 .footer_title{
-    text-align: right;
+    // text-align: right;
     font-size: 1.5rem
 }
 
@@ -48,9 +63,9 @@ li {
 
 .footer-wrapper p{
     color:#797979;
-    font-size:0.875rem;
-    max-width: 80%;
-    line-height: 1.325rem;
+    font-size:.9rem;
+    line-height: 1.7rem;
+    margin-bottom: 0;
 }
 
 .single_widget{

@@ -1,6 +1,14 @@
-<div class="container mt-60">
-    <h3 class="title-dashboard-section text-center">تواصل معنا</h3>
-    <p class="text-center">رأيك يهنا لتحسين خدماتنا</p>
+<div class="container pt-170">
+   
+    <div *ngIf="arabic" class="arab">
+        <h3 class="title-dashboard-section text-center">تواصل معنا</h3>
+        <p class="text-center">رأيك يهنا لتحسين خدماتنا</p>    
+    </div>
+    
+    <div *ngIf="!arabic" class="english">
+        <h3 class="title-dashboard-section text-center">Contact Us</h3>
+        <p class="text-center">Stay Connected with Us</p>
+    </div>
     <hr class="full">
 
     <form class="text-center" #userForm="ngForm" (ngSubmit)="addUser(userForm.value); userForm.reset();">
@@ -11,13 +19,13 @@
                 </span>
                 <input ngModel #name="ngModel" required minlength="2" name="name"
                     [ngClass]="{ 'is-invalid': name.invalid && name.touched , 'is-valid': !name.invalid && name.touched}"
-                    class="form-control" type="text" placeholder="الاسم">
+                    class="form-control" type="text" [placeholder]="items[0]">
 
             </div>
 
             <div *ngIf="!name.valid && name.touched">
-                <div class="alert alert-danger text-right" *ngIf="name.errors.required">من فضلك أدخل الاسم </div>
-                <div class="alert alert-danger text-right" *ngIf="name.errors.minlength">أقل عدد مسموح من الحروف هو
+                <div class="alert alert-danger" [ngClass] = "{'text-right': arabic}" *ngIf="name.errors.required">من فضلك أدخل الاسم </div>
+                <div class="alert alert-danger" [ngClass] = "{'text-right': arabic}" *ngIf="name.errors.minlength">أقل عدد مسموح من الحروف هو
                     حرفين </div>
             </div>
 
@@ -29,11 +37,11 @@
                 </span>
                 <input ngModel required email #email="ngModel" name="email"
                     [ngClass]="{ 'is-invalid': email.invalid && email.touched , 'is-valid': !email.invalid && email.touched}"
-                    class="form-control" type="text" placeholder="البريد الالكتروني">
+                    class="form-control" type="text" [placeholder]="items[1]">
             </div>
             <div *ngIf="!email.valid && email.touched" class="">
-                <div class="alert alert-danger text-right" *ngIf="email.errors.required">من فضلك أدخل الاسم </div>
-                <div class="alert alert-danger text-right" *ngIf="email.errors.email">من فضلك أدخل الايميل بالطريفة
+                <div class="alert alert-danger" [ngClass] = "{'text-right': arabic}" *ngIf="email.errors.required">من فضلك أدخل الاسم </div>
+                <div class="alert alert-danger" [ngClass] = "{'text-right': arabic}" *ngIf="email.errors.email">من فضلك أدخل الايميل بالطريفة
                     الصحيحة</div>
             </div>
 
@@ -44,13 +52,13 @@
                 </span>
                 <input ngModel required="ngModel" #phone="ngModel" name="phone"
                     [ngClass]="{ 'is-invalid': phone.invalid && phone.touched, 'is-valid': !phone.invalid && phone.touched}"
-                    class="number form-control" type="number" placeholder="رقم الهاتف">
+                    class="number form-control" type="number" [placeholder]="items[3]">
 
             </div>
             <div *ngIf="!phone.valid && phone.touched" class="">
-                <div class="alert alert-danger text-right" *ngIf="phone.errors.required"> من فضلك أدخل رقم الهاتف
+                <div class="alert alert-danger" [ngClass] = "{'text-right': arabic}" *ngIf="phone.errors.required"> من فضلك أدخل رقم الهاتف
                 </div>
-                <div class="alert alert-danger text-right" *ngIf="phone.errors.pattern"> من فضلك أدخل الهاتف بطريقة
+                <div class="alert alert-danger" [ngClass] = "{'text-right': arabic}" *ngIf="phone.errors.pattern"> من فضلك أدخل الهاتف بطريقة
                     صحيحة </div>
             </div>
         </div>
@@ -65,12 +73,13 @@
 
         </div>
         <div *ngIf="!message.valid && message.touched" class="">
-            <div class="alert alert-danger text-right" *ngIf="message.errors.required"> من فضلك أدخل رسالتك </div>
-            <div class="alert alert-danger text-right" *ngIf="message.errors.minlength"> أقل عدد من الحروف هو خمسة
+            <div class="alert alert-danger" [ngClass] = "{'text-right': arabic}" *ngIf="message.errors.required"> من فضلك أدخل رسالتك </div>
+            <div class="alert alert-danger" [ngClass] = "{'text-right': arabic}" *ngIf="message.errors.minlength"> أقل عدد من الحروف هو خمسة
                 احرف </div>
         </div>
 
-        <input [disabled]="userForm.invalid" class="btn btn-primary send mb" type="submit" value="إرسال ">
+        <input *ngIf="arabic" [disabled]="userForm.invalid" class="btn btn-primary send mb" type="submit" value="ارسال ">
+        <input *ngIf="!arabic" [disabled]="userForm.invalid" class="btn btn-primary send mb" type="submit" value="send">
     </form>
 
 

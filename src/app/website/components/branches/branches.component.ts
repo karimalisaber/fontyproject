@@ -8,6 +8,7 @@ import { SiteService } from 'src/app/services/site.service';
 })
 export class BranchesComponent implements OnInit {
 branches$;
+arabic: boolean = true;
   constructor(private site: SiteService) { }
 
   ngOnInit() {

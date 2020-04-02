@@ -14,6 +14,7 @@ import { EditDialogComponent } from 'src/app/components/assets/edit-dialog/edit-
   styleUrls: ['./edit-slider.component.scss']
 })
 export class EditSliderComponent implements OnInit {
+  arabic: boolean =true;
   sliders;
   imgUrl = 'assets/images/default-slider.png';
   imageFile: any = null; // for uploaded image

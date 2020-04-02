@@ -12,6 +12,7 @@ import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post
   styleUrls: ['./edit-services.component.scss']
 })
 export class EditServicesComponent implements OnInit {
+arabic: boolean = true; 
 services;
 imageFile: File;
 imgUrl = 'assets/images/upload-image.png';

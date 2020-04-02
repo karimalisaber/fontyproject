@@ -10,13 +10,22 @@ export class FooterComponent implements OnInit {
   services$;
   branches$;
   contacts$;
+  arabic: boolean = true;
 
-  constructor(private site: SiteService) { }
+  arabFooter = ['خدماتنا', 'فروعنا' , 'معلومات الاتصال' , 'اللغة'];
+  englishFooter = ['services', 'branches' , 'contacts', 'languages' ];
+  
+  items = [...this.arabFooter];
+
+  constructor(private site: SiteService) {
+    
+   }
 
   ngOnInit() {
     this. services$ = this.site.getServices();
     this.branches$ = this.site.getbranches();
     this.contacts$ = this.site.getContacts();
   }
+
 
 }

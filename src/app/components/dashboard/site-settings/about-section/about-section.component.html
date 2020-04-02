@@ -1,38 +1,50 @@
-
 <form action="" class="about-form ">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label class="title-dashboard-section text-justify w-100">تعديل الفقرة</label>
-        <textarea ngModel class="form-control" name="brief" id="" cols="30" rows="10"></textarea>
-      </div>    
-    </div>
+  <label class="title-dashboard-section d-block text-justify w-100">تعديل الفقرة</label>
+  <div class="form-group">
+    <textarea [ngClass] ="{'text-left': !arabic}" ngModel class="form-control" name="brief" id="" cols="30" rows="10"></textarea>
+  </div>
 
-    <div class="col-md-6">
-      <p>
 
-      </p>
+  <div [ngClass] ="{'text-right': arabic}" class="view-wrapper">
+    <p>
+      karim karim kairm
+    </p>
+
+  </div>
+
+  <!-- start language -->
+  <div class="form-group">
+    <h2 class="lang text-justify w-100">اختر اللغة</h2>
+    <div class="btn-group float-right btn-group-toggle mb-10" data-toggle="buttons">
+
+      <label class="btn btn-secondary active text-right">
+        <input (click)="arabic=true; langChanged()" type="radio" name="options" id="option1" checked> عربي
+      </label>
+      <label class="btn btn-secondary">
+        <input (click)="arabic=false; lanChanged()" type="radio" name="options" id="option2"> إنجليزي
+      </label>
     </div>
   </div>
- 
-<!-- image preview -->
-<!-- <div class="upload-img">
-  <p class="text-right">اضافة صورة سلايدر جديدة</p>
-  <div class="uploaded-img clearfix">
+  <div class="clearfix"></div>
+  <!-- end language -->
+
+  <div class="upload-img">
+    <p class="text-right">تعديل الصورة</p>
+    <div class="uploaded-img">
       <img class="img-fluid float-right " [src]="imgUrl" alt="">
-  </div>
-  <form #userForm="ngForm" id="userForm"
-       class="custom-file d-flex justify-content-start">
-      <input required ngModel name ="image" (change) = "imageUpload($event)"
-       type="file" class="custom-file-input" id="customFile">
+    </div>
+    <div class="clearfix"></div>
+
+    <form #userForm="ngForm" id="userForm" class="custom-file d-flex justify-content-start">
+      <input required ngModel name="image" (change)="imageUpload($event)" type="file" class="custom-file-input"
+        id="customFile">
       <label class="custom-file-label" for="customFile"></label>
-  </form>
-</div>    
+    </form>
+  </div>
 
-<div class="submit float-right">
-  <input (click)="addSlider(); userForm.reset();" [disabled]="userForm.invalid" type="submit" class="btn btn-primary ml-10" value="حفظ التعديلات" >
-  <input type="submit" class="btn btn-danger" value="تراجع" >
-</div> -->
-  
-
+  <div class="submit float-right">
+    <input (click)="addSlider(); userForm.reset();" [disabled]="userForm.invalid" type="submit"
+      class="btn btn-primary ml-10" value="حفظ التعديلات">
+    <input type="submit" class="btn btn-danger" value="تراجع">
+  </div>
 </form>

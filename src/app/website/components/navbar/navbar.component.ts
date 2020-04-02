@@ -7,16 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NavbarComponent implements OnInit {
+arabic: boolean = true;
+navArab= ['الرئيسية', 'من نحن' , 'منتجاتنا' , 'فروعنا', 'خدماتنا', 'تواصل معنا'];
+navEnglish= ['home', 'about' , 'products', 'branches', 'services', 'contact us' ];
+  
+navItems = [...this.navArab];
 
-  isOpen: boolean = false;
+isOpen: boolean = false;
 
-  constructor() { }
+  constructor() {
+   }
 
   ngOnInit() {
   }
 
-  navShow() {
+  navShow() { // for mobiles
     this.isOpen = !this.isOpen;
-  }
+  } 
 
+  getLang(){
+    this.arabic = true;
+
+    this.navItems= this.arabic? this.navArab : this.navEnglish;
+  }
 }

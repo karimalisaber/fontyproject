@@ -11,8 +11,7 @@ export class AuthService {
 
   login(form){
     let url = 'http://fonty.ieeeshasb.org/api/auth/admin_login';
-    let email = form.value.email;
-    let password = form.value.password;
-    return this.http.post(url, {email, password });
+    
+    return this.http.post(url, form);
   }
 }
