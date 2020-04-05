@@ -324,9 +324,9 @@ input[type=password] {
   font-weight: bold;
 }
 
-.btn-primary:hover{
-  border: 1px solid $mainColor;
-  background-color: $mainColor;
+.btn-primary:hover, .btn-primary:active{
+  border: 1px solid $mainColor !important;
+  background-color: $mainColor !important;
 }
 
 .btn-primary:disabled{
