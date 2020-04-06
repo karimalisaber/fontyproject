@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -7,6 +8,7 @@ import { SiteService } from 'src/app/services/site.service';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+ lang: string = "1";
   services$;
   branches$;
   contacts$;
@@ -17,15 +19,20 @@ export class FooterComponent implements OnInit {
   
   items = [...this.arabFooter];
 
-  constructor(private site: SiteService) {
+  constructor(private site: SiteService, private router: Router) {
     
-   }
+  }
 
   ngOnInit() {
     this. services$ = this.site.getServices();
     this.branches$ = this.site.getbranches();
     this.contacts$ = this.site.getContacts();
+
+    
   }
 
-
+  setLang(lang){   
+    this.site.setLang(lang);
+    location.reload();
+  }
 }

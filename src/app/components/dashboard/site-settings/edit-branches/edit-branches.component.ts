@@ -29,7 +29,7 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
 
   addBranch(branch){
     this.branches.push(branch);
-    this.site.addBranch(branch)
+    this.site.addBranch({branch, lang: 1})
     .subscribe(
       res=> this.dialog.open(SuccesPostDialogComponent),
       err=> {

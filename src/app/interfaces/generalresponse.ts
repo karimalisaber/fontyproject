@@ -1,5 +1,5 @@
 export interface GeneralResponse {
-    data: Array<any>,
+    data: {arabic : Array<any>, english : Array<any>},
     status: string,
     error: string
 }

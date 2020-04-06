@@ -15,6 +15,7 @@ import { EditDialogComponent } from 'src/app/components/assets/edit-dialog/edit-
 })
 export class EditSliderComponent implements OnInit {
   arabic: boolean =true;
+  lang: string = "1";
   sliders;
   imgUrl = 'assets/images/default-slider.png';
   imageFile: any = null; // for uploaded image
@@ -27,11 +28,12 @@ export class EditSliderComponent implements OnInit {
     this.subscription = this.site.getSliders().subscribe(res => this.sliders = res);
   }
 
-
   addSlider(slider){
+
     this.item.append("title", slider.title);
-      this.item.append("des", "null");
-      this.item.append("img", this.imageFile, this.imageFile.name );
+    this.item.append("lang", this.lang);
+    this.item.append("des", "null");
+    this.item.append("img", this.imageFile, this.imageFile.name );
       
     this.site.addSlider(this.item)
     .subscribe(
@@ -42,7 +44,6 @@ export class EditSliderComponent implements OnInit {
          error=> this.dialog.open(ErrorDialogComponent));
   }
   
-
   deleteAlert(id){
     this.assets.deleteAlert(id).subscribe(res=> res? this.deleteSlider(id):false) ;
   }

@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './website/components/home/home.component';
 import { AboutComponent } from './website/components/about/about.component';
 import { ProductsComponent } from './website/components/products/products.component';
 import { BranchesComponent } from './website/components/branches/branches.component';
@@ -81,7 +80,6 @@ import { ProductViewDialogComponent } from './components/assets/product-view-dia
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     AboutComponent,
     ProductsComponent,
     BranchesComponent,
