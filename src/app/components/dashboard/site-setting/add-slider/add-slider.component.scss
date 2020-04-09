@@ -1,0 +1,40 @@
+@import 'variables';
+
+.upload-img{
+    margin-bottom: 15px;
+    width: 100%;
+    img{
+        width: 100%;
+    }
+
+    p { 
+        margin-top: 30px;
+        opacity: .8;
+        color: #111; 
+        font-family: 'Helvetica Neue', sans-serif; 
+        font-size: 40px; 
+        font-weight: bold; 
+        letter-spacing: -1px; 
+    }
+}
+
+.custom-file{
+    width: 150px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+
+}
+
+form{
+    margin-top: 20px;
+}
+
+.custom-file-label::after {
+    content: "اضافة صورة" !important;
+    color: $mainColor;
+    background-color: white;
+}
+
+form label:not(.custom-file-label){
+    font-size: 1.5rem;
+}

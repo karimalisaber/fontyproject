@@ -1,16 +1,13 @@
   <div class="text-content container section-wrapper">
-    <div class="row">
+    <div *ngIf="about$ | async as about" class="row">
         <div class="col-md-6">
-            <h1 *ngIf="arabic" class="about-title text-center"> من نحن </h1>
-            <h1 *ngIf="!arabic" class="about-title text-center"> من نحن </h1>
-            <i class="fab fa-cutlery mb-sm fa-2x d-block"></i>
+            <h1 *ngIf="lang === '1'" class="mb-30 about-title text-center"> من نحن </h1>
+            <h1 *ngIf="lang === '2'" class="mb-30 about-title text-center"> About Us </h1>
+            <!-- <i class="fab fa-cutlery mb-sm fa-2x d-block"></i> -->
             
-            <p class="desc-text">
-              مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك
-              أن تولد مثل هذا النص أو العديد من النصوص الأخرى إضافة إلى زيادة عدد الحروف التى يولدها التطبيق.ا كنت تحتاج
-              إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي
-              أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن
-              يطلع على صورة حقيقية لتصميم الموقع.</p>
+            <p class="desc-text" [ngClass]="{'text-right' : lang ==='1'}">
+              {{about.body}}
+            </p>
         </div>
         <div class="col-md-6">
           <div class="img-wrapper">

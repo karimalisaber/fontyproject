@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ItemsService } from 'src/app/services/items.service';
 import { MatDialog } from '@angular/material';
 import { ProductViewDialogComponent } from 'src/app/components/assets/product-view-dialog/product-view-dialog.component';
+import { SiteService } from 'src/app/services/site.service';
 
 @Component({
   selector: 'app-products',
@@ -10,8 +11,9 @@ import { ProductViewDialogComponent } from 'src/app/components/assets/product-vi
 })
 export class ProductsComponent implements OnInit {
 products$;
-arabic: boolean = true;
-  constructor(private item: ItemsService, private dialog: MatDialog) { }
+lang: string = this.site.getLangNumber();
+
+  constructor(private site: SiteService, private item: ItemsService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.products$ = this.item.getItems();
@@ -19,7 +21,7 @@ arabic: boolean = true;
 
   viewProduct(id){
     this.dialog.open(ProductViewDialogComponent, {
-      data: id
+      data: {id, lang: this.lang}
     })
   }
 

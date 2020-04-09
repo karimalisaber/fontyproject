@@ -7,28 +7,27 @@ import { Router } from '@angular/router';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
+
 export class FooterComponent implements OnInit {
- lang: string = "1";
+lang: string = this.site.getLangNumber();
+ 
   services$;
   branches$;
   contacts$;
-  arabic: boolean = true;
-
+  
   arabFooter = ['خدماتنا', 'فروعنا' , 'معلومات الاتصال' , 'اللغة'];
   englishFooter = ['services', 'branches' , 'contacts', 'languages' ];
   
-  items = [...this.arabFooter];
+  items = (this.lang ==='1')? [...this.arabFooter] : [...this.englishFooter];
 
   constructor(private site: SiteService, private router: Router) {
     
   }
 
   ngOnInit() {
-    this. services$ = this.site.getServices();
-    this.branches$ = this.site.getbranches();
-    this.contacts$ = this.site.getContacts();
-
-    
+    this. services$ = this.site.getSpecificLangServices();
+    this.branches$ = this.site.getSpecificLangbranches();
+    this.contacts$ = this.site.getContacts(this.lang);
   }
 
   setLang(lang){   

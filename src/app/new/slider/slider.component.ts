@@ -12,19 +12,19 @@ export class SliderComponent implements OnInit {
   sliders;
   subscription: Subscription;
   
-    constructor(private cdRef: ChangeDetectorRef, private site: SiteService) { }
+  constructor(private cdRef: ChangeDetectorRef, private site: SiteService) { }
   
-    ngOnInit() {
-     this.subscription = this.site.getSliders().subscribe(res=> {
-        this.sliders = res;
-        setTimeout(() => {
-          document.querySelector('#carousel-item').classList.add('active');
-          document.querySelector('#indicator').classList.add('active');
-        }, 200)
-      });
-    }
+  ngOnInit() {
+    this.subscription = this.site.getSpecificLangSliders().subscribe(res=> {
+      this.sliders = res;
+      setTimeout(() => {
+        document.querySelector('#carousel-item').classList.add('active');
+        document.querySelector('#indicator').classList.add('active');
+      }, 200)
+    });
+  }
   
-    ngOnDestroy(){
-      this.subscription.unsubscribe();
-    }
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
 }

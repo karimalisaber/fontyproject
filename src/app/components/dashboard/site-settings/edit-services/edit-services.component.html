@@ -29,7 +29,7 @@
         <div class="w-100"></div>
 
         <!-- start language -->
-        <div class="form-group">
+        <!-- <div class="form-group">
             <h2 class="lang text-justify w-100">اختر اللغة</h2>
             <div class="btn-group float-right btn-group-toggle mb-10" data-toggle="buttons">
 
@@ -41,20 +41,20 @@
                 </label>
             </div>
         </div>
-        <div class="clearfix"></div>
+        <div class="clearfix"></div> -->
         <!-- end language -->
-        <div class="w-100"></div>
+        <!-- <div class="w-100"></div> -->
 
         <div class="form-group d-flex justfy-content-start">
             <input [disabled]="userForm.invalid" class="btn btn-primary ml-10 mb-30" type="submit" value="اضافة خدمة" />
         </div>
     </form>
 
-    <h2 [ngClass]="{'text-left': !arabic}" class="title-dashboard-section mb-30 text-center"> خدامتنا</h2>
+    <!-- <h2 [ngClass]="{'text-left': !arabic}" class="title-dashboard-section mb-30 text-center"> خدامتنا</h2> -->
 
     <div class="row no-gutters">
         <div *ngFor="let service of services" class="card col-12 col-md-4">
-            <h5 class="services-name text-center">{{service.name}}}</h5>
+            <h5 class="services-name text-center">{{service.name}}</h5>
 
             <div class="img-wrapper">
                 <img [src]="'http://fonty.ieeeshasb.org/public/wslider/' + service.img " class="img-fluid card-img-top"
@@ -63,13 +63,13 @@
 
             <div class="card-body">
                 <div class="branches-control clearfix">
-                    <button class="btn btn-primary float-right">تعديل</button>
+                    <button (click)="enableEdit(service.id)" class="btn btn-primary float-right">تعديل</button>
                     <button (click)="deleteAlert(service.id)" class="btn btn-danger float-right">حذف</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <button class="btn btn-danger float-right mt-20 " routerLink="/dashboard/site-settings"> الرجوع مع الحفظ</button>
+    <button class="btn btn-danger float-right mt-20" routerLink="/dashboard/site-settings"> الرجوع مع الحفظ</button>
     <div class="clearfix"></div>
 </section>

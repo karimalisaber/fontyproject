@@ -1,17 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { getBranchesUrl, addBranchUrl, deleteBranchUrl, updateBranchUrl, getServicesUrl, addServiceUrl, deleteServiceUrl, updateServiceUrl, addSliderUrl, getSlidersUrl, deleteSliderUrl, getContactsUrl, updateContactsUrl, getSpecificSliderUrl, updateSliderUrl } from '../environment/environment';
+import { getBranchesUrl, addBranchUrl, deleteBranchUrl, updateBranchUrl, getServicesUrl, addServiceUrl, deleteServiceUrl, updateServiceUrl, addSliderUrl, getSlidersUrl, deleteSliderUrl, getContactsUrl, updateContactsUrl, getSpecificSliderUrl, updateSliderUrl, getAboutUrl, updateAboutUrl, getSpecificServiceUrl } from '../environment/environment';
 import { map, take } from 'rxjs/operators';
 import { GeneralResponse } from '../interfaces/generalresponse';
+import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SiteService {
 
-constructor(private http: HttpClient) { }
+constructor(private http: HttpClient, private route: ActivatedRoute) {
+  
+}
+ 
  lang = (window.localStorage.getItem('lang')) || "arabic" ; // language of the site
+ 
+ getLangNumber(): string{ // for main website only decision only
+   let langNumber = (this.lang === "arabic")? '1' : '2';
+   return langNumber;
+ }
 
+ getLangNameInsideDashboard(lang){
+   let langName = (lang === '1')? 'arabic' : 'english' ;
+   return langName;
+ }
+
+ 
  setLang(langNumber){
   if(langNumber==="1"){ 
     this.lang = "arabic";
@@ -26,11 +41,16 @@ constructor(private http: HttpClient) { }
   return this.lang;
 }
   // branches
-  getbranches() {
+  getSpecificLangbranches() {
     return this.http.get(getBranchesUrl).pipe(map((res: GeneralResponse) => res.data[this.lang]));
   }
 
+  getBranches(lang) {
+    return this.http.get(getBranchesUrl).pipe(map((res: GeneralResponse) => res.data[this.getLangNameInsideDashboard(lang)]));
+  }
+
   addBranch(branch) {
+  
     return this.http.post(addBranchUrl, branch).pipe(take(1));
   }
 
@@ -43,12 +63,20 @@ constructor(private http: HttpClient) { }
   }
 
   // services 
-  getServices() {
+  getSpecificLangServices() {
     return this.http.get(getServicesUrl).pipe(map((res: GeneralResponse) => res.data[this.lang]));
   }
 
-  addService(Service) {
-    return this.http.post(addServiceUrl, Service).pipe(take(1));
+  getServices(lang) {
+    return this.http.get(getServicesUrl).pipe(map((res: GeneralResponse) => res.data[this.getLangNameInsideDashboard(lang)]));
+  }
+  
+  getSpecificService(id) {
+    return this.http.get(getSpecificServiceUrl + id).pipe(map((res: { data }) => res.data), take(1));
+  }
+
+  addService(service: FormData) {
+    return this.http.post(addServiceUrl, service).pipe(take(1));
   }
 
   deleteService(id) {
@@ -56,20 +84,37 @@ constructor(private http: HttpClient) { }
   }
 
   updateService(id, Service) {
-    return this.http.put(updateServiceUrl + Service, Service).pipe(take(1));
+    return this.http.post(updateServiceUrl + Service, Service).pipe(take(1));
+  }
+
+  // about 
+  getSpecificLangAbout(lang) {
+    return this.http.get(getAboutUrl+lang).pipe(map((res: GeneralResponse) => res.data), take(1));
+  }
+
+  getAbout(lang) {
+    return this.http.get(getAboutUrl+lang).pipe(map((res: GeneralResponse) => res.data), take(1));
+  }
+
+  updateAbout(about) {
+    return this.http.post(updateAboutUrl, about).pipe(take(1));
   }
 
   // sliders   
-  getSliders() {
+  getSpecificLangSliders() {
     return this.http.get(getSlidersUrl).pipe(map((res: { data }) => res.data[this.lang]));
   }
 
+  getSliders(lang) {
+    return this.http.get(getSlidersUrl).pipe(map((res: { data }) => res.data[this.getLangNameInsideDashboard(lang)]));
+  }
+
   getSpecificSlider(id) {
-    return this.http.get(getSpecificSliderUrl + id).pipe(map((res: { data }) => res.data[this.lang]), take(1));
+    return this.http.get(getSpecificSliderUrl + id).pipe(map((res: { data }) => res.data), take(1));
   }
 
   updateSlider(id, slider) {
-    return this.http.post(updateSliderUrl + id, slider).pipe(map((res: { data }) => res.data[this.lang]), take(1));
+    return this.http.post(updateSliderUrl + id, slider).pipe(take(1));
   }
 
   addSlider(slider) {
@@ -81,11 +126,11 @@ constructor(private http: HttpClient) { }
   }
 
   // contacts
-  getContacts() {
-    return this.http.get(getContactsUrl).pipe(map((res: { data }) => res.data[this.lang]));
+  getContacts(lang) {
+    return this.http.get(getContactsUrl + lang).pipe(map((res: { data }) => res.data));
   }
 
   updateContacts(contacts) {
-    return this.http.put(updateContactsUrl, contacts).pipe(take(1));
+    return this.http.put(updateContactsUrl, contacts ).pipe(take(1));
   }
 }

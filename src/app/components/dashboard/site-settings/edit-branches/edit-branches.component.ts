@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
 import { AssetsService } from 'src/app/services/assets.service';
 import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-branches',
@@ -13,15 +14,16 @@ import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post
   styleUrls: ['./edit-branches.component.scss']
 })
 export class EditBranchesComponent implements OnInit, OnDestroy {
-  arabic: boolean =true;
+  lang: string = this.route.snapshot.paramMap.get('lang'); // you need it to pass to the dialog box
+  
   branches;
   subscription: Subscription;
   update: boolean = false;
 
-  constructor(private site: SiteService, private dialog: MatDialog, private assets: AssetsService) { }
+  constructor(private route: ActivatedRoute, private site: SiteService, private dialog: MatDialog, private assets: AssetsService) { }
 
   ngOnInit() {
-   this.subscription = this.site.getbranches()
+   this.subscription = this.site.getBranches(this.lang)
     .subscribe(
       res=> this.branches =res,
       error=> this.dialog.open(ErrorDialogComponent));
@@ -29,7 +31,8 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
 
   addBranch(branch){
     this.branches.push(branch);
-    this.site.addBranch({branch, lang: 1})
+    branch.lang = this.lang;
+    this.site.addBranch(branch)
     .subscribe(
       res=> this.dialog.open(SuccesPostDialogComponent),
       err=> {
@@ -72,7 +75,7 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
   updateItem(name , id){
    let element = this.getUpdatedItemId(id); // toggle class update 
     
-    let item = {name};
+    let item = {name, lang: this.lang};
 
     this.site.updateBranch(id, item).subscribe(
       data=> {
@@ -81,7 +84,6 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
         this.dialog.open(SuccesPostDialogComponent);
     },error => this.dialog.open(ErrorDialogComponent) );
   }
-
 
   ngOnDestroy(){
     this.subscription.unsubscribe();

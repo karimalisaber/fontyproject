@@ -7,6 +7,7 @@ import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/err
 import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
 import { AssetsService } from 'src/app/services/assets.service';
 import { EditDialogComponent } from 'src/app/components/assets/edit-dialog/edit-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-slider',
@@ -14,36 +15,21 @@ import { EditDialogComponent } from 'src/app/components/assets/edit-dialog/edit-
   styleUrls: ['./edit-slider.component.scss']
 })
 export class EditSliderComponent implements OnInit {
-  arabic: boolean =true;
-  lang: string = "1";
+  lang: string = this.route.snapshot.paramMap.get('lang'); // you need it to pass to the dialog box
+  
   sliders;
-  imgUrl = 'assets/images/default-slider.png';
-  imageFile: any = null; // for uploaded image
-  item: FormData = new FormData();
+  arabicSliders;
+  englishSliders;
   subscription: Subscription;
   
-  constructor(private site: SiteService, private dialog: MatDialog,private assets: AssetsService) { }
+  constructor(private route: ActivatedRoute, private site: SiteService, private dialog: MatDialog,private assets: AssetsService) { }
 
   ngOnInit() {
-    this.subscription = this.site.getSliders().subscribe(res => this.sliders = res);
+    this.subscription = this.site.getSliders(this.lang).subscribe(res => {
+      this.sliders = res;
+    });
   }
 
-  addSlider(slider){
-
-    this.item.append("title", slider.title);
-    this.item.append("lang", this.lang);
-    this.item.append("des", "null");
-    this.item.append("img", this.imageFile, this.imageFile.name );
-      
-    this.site.addSlider(this.item)
-    .subscribe(
-         res=> { 
-           this.resetInputs(); // reset inputs
-           this.dialog.open(SuccesPostDialogComponent);
-          },
-         error=> this.dialog.open(ErrorDialogComponent));
-  }
-  
   deleteAlert(id){
     this.assets.deleteAlert(id).subscribe(res=> res? this.deleteSlider(id):false) ;
   }
@@ -58,24 +44,9 @@ export class EditSliderComponent implements OnInit {
     }, error=> this.dialog.open(ErrorDialogComponent));
   }
 
-  private resetInputs(){
-    this.imgUrl = 'assets/images/default-slider.png';
-    this.imageFile = null;
-  }
-
-  imageUpload(event){
-    if(event.target.files){
-     this.imageFile = event.target.files[0];
-    
-     var render = new FileReader();    
-     render.readAsDataURL(this.imageFile);
-     render.onload = (event: any) =>  this.imgUrl = event.target.result ;
-  }
-}
-
   enableEdit(id){
    this.dialog.open(EditDialogComponent, {
-     data: id
+     data: {id, lang: this.lang}
    })
    .afterClosed().subscribe(()=> location.reload());
   }

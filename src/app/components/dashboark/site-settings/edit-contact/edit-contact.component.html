@@ -1,9 +1,10 @@
-<div *ngIf="(contacts$ | async) as Contacts" class="row">
+<div *ngIf="contacts$ | async as Contacts" class="row">
   <div class="col-12 col-md-6 contact-form">
     <form #userForm="ngForm" (ngSubmit)="updateContacts(userForm.value)">
       <div class="form-group">
         <label class="text-justify w-100">تعديل العنوان</label>
-        <textarea required minlength="6" [ngClass]="{ 'is-invalid': address.invalid, 'is-valid': !address.invalid, 'text-left': !arabic}"
+        <textarea required minlength="6" 
+        [ngClass]="{ 'is-invalid': address.invalid, 'is-valid': !address.invalid,'english-dir': lang === '2', 'text-left': lang==='2'}"
           #address="ngModel" [(ngModel)]="Contacts.address" class="form-control" name="address" id="address">
          </textarea>
         <div *ngIf="!address.valid && address.touched" class="">
@@ -16,7 +17,8 @@
       <div class="form-group">
         <label class="text-justify w-100">تعديل رقم الهاتف</label>
         <input #phone="ngModel" required pattern="[0-9 ]{7,}"
-          [ngClass]="{ 'is-invalid': phone.invalid, 'is-valid': !phone.invalid, 'text-left': !arabic}" [(ngModel)]="Contacts.phone"
+          [ngClass]="{ 'is-invalid': phone.invalid, 'is-valid': !phone.invalid,'english-dir': lang === '2', 'text-left': lang ==='2'}" 
+          [(ngModel)]="Contacts.phone"
           class="form-control" type="number" name="phone" id="phone">
 
         <div *ngIf="!phone.valid && phone.touched" class="">
@@ -28,7 +30,7 @@
 
       <div class="form-group">
         <label class="text-justify w-100">تعديل البريد الالكترونى</label>
-        <input [ngClass]="{ 'is-invalid': email.invalid, 'is-valid': !email.invalid, 'text-left': !arabic}" #email="ngModel" required email
+        <input [ngClass]="{ 'english-dir': (lang === '2'), 'is-invalid': email.invalid, 'is-valid': !email.invalid, 'text-left': lang==='2'}" #email="ngModel" required email
           [(ngModel)]="Contacts.email" class="form-control" type="text" name="email" id="email">
 
         <div *ngIf="!email.valid && email.touched" class="">
@@ -46,7 +48,7 @@
 
   <div class="col-12 col-md-6">
     <div class="contact-info">
-      <ul class="list-wrapper text-right" [ngClass]="{'english': !arabic}">
+      <ul class="list-wrapper text-right" [ngClass]="{'english': lang==='2'}">
         <li class="row">
           <div class="col icon"><i class="fas fa-map-marker-alt"></i></div>
           <p class="col"> {{Contacts.address}} </p>
@@ -67,7 +69,7 @@
 </div>
 
 <!-- start language -->
-<div class="form-group">
+<!-- <div class="form-group">
   <h2 class="lang text-justify w-100">اختر اللغة</h2>
   <div class="btn-group float-right btn-group-toggle mb-10" data-toggle="buttons">
 
@@ -79,7 +81,7 @@
     </label>
   </div>
 </div>
-<div class="clearfix"></div>
+<div class="clearfix"></div> -->
 <!-- end language -->
 <div class="w-100 mb-20"></div>
 

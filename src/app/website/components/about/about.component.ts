@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteService } from 'src/app/services/site.service';
 
 @Component({
   selector: 'app-about',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-arabic: boolean = true;
+about$;
+lang: string = this.site.getLangNumber(); 
 
-  constructor() { }
+  constructor(private site: SiteService) { }
 
   ngOnInit() {
+  
+  this.about$ = this.site.getSpecificLangAbout(this.lang);
   }
 
 }

@@ -5,25 +5,25 @@ import { SuccesPostDialogComponent } from '../succes-post-dialog/succes-post-dia
 import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
-  selector: 'app-edit-dialog',
-  templateUrl: './edit-dialog.component.html',
-  styleUrls: ['./edit-dialog.component.scss']
+  selector: 'app-edit-service-dialog',
+  templateUrl: './edit-service-dialog.component.html',
+  styleUrls: ['./edit-service-dialog.component.scss']
 })
-export class EditDialogComponent implements OnInit {
+export class EditServiceDialogComponent implements OnInit {
   imgUrl;
   imageFile: any = null; // for uploaded image
   imgChanged: boolean = false;
-  slider;
+  service;
 
   item: FormData = new FormData();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public sliderDetails: {id,lang}, private site: SiteService, private dialog: MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA) public serviceDetails: {id,lang}, private site: SiteService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.site.getSpecificSlider(this.sliderDetails.id).subscribe(res => {
-      this.slider = res;
-      this.imgUrl = 'http://fonty.ieeeshasb.org/public/wslider/' + this.slider.img
+    this.site.getSpecificService(this.serviceDetails.id).subscribe(res => {
+      this.service = res;
+      this.imgUrl = 'http://fonty.ieeeshasb.org/public/wslider/' + this.service.img
     });
   }
 
@@ -38,20 +38,22 @@ export class EditDialogComponent implements OnInit {
     }
   }
 
-  updateSlider(slider) {
+  updateService(service) {
+  
     if (this.imgChanged) {
       this.item.append("img", this.imageFile, this.imageFile.name);
-      var item = { title: slider.title, des: slider.title, update_img: this.item.get("img"), lang: this.sliderDetails.lang }
+      var item = { title: service.title, des: service.title, update_img: this.item.get("img"), lang: this.serviceDetails.lang }
     }
 
     else {
-      var item = { title: slider.title, des: slider.title, update_img: this.item.get("img"), lang: this.sliderDetails.lang }
+      var item = { title: service.title, des: service.title, update_img: this.item.get("img"), lang: this.serviceDetails.lang }
     }
     
-    this.site.updateSlider(this.sliderDetails.id, item)
+    this.site.updateService(this.serviceDetails.id, item)
       .subscribe(
         () => this.dialog.open(SuccesPostDialogComponent),
         () => this.dialog.open(ErrorDialogComponent)
       );
   }
+
 }

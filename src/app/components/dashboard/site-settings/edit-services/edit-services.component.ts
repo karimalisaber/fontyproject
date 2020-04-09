@@ -5,6 +5,9 @@ import { AssetsService } from 'src/app/services/assets.service';
 import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
 import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
 import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
+import { ActivatedRoute } from '@angular/router';
+import { EditDialogComponent } from 'src/app/components/assets/edit-dialog/edit-dialog.component';
+import { EditServiceDialogComponent } from 'src/app/components/assets/edit-service-dialog/edit-service-dialog.component';
 
 @Component({
   selector: 'app-edit-services',
@@ -12,30 +15,32 @@ import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post
   styleUrls: ['./edit-services.component.scss']
 })
 export class EditServicesComponent implements OnInit {
-arabic: boolean = true; 
+lang: string = this.route.snapshot.paramMap.get('lang');
+
 services;
 imageFile: File;
 imgUrl = 'assets/images/upload-image.png';
 item: FormData = new FormData();
 
-  constructor(private setting: SiteService, private dialog: MatDialog, private assets: AssetsService) { }
+
+  constructor(private route: ActivatedRoute, private setting: SiteService, private dialog: MatDialog, private assets: AssetsService) { }
 
   ngOnInit() {
-    this.setting.getServices().subscribe( res => this.services = res );
+    this.setting.getServices(this.lang).subscribe( res => this.services = res );
   }
 
   addService(service){
-    console.log(service);
     
     this.item.append("name", service.title);
     this.item.append("img", this.imageFile, this.imageFile.name);
-   
+    this.item.append('lang', this.lang);
     // reset the form here
       this.imgUrl = 'assets/images/upload-image.png';
       this.imageFile = null;
 
     this.setting.addService(this.item).subscribe(
-      res=> {
+      (res: any)=> {
+        this.services.push(res.data);
         this.dialog.open(SuccesPostDialogComponent);        
       },
       error=> this.dialog.open(ErrorDialogComponent));
@@ -64,4 +69,12 @@ item: FormData = new FormData();
      render.onload = (event: any) =>  this.imgUrl = event.target.result ;
   }
 }
+
+enableEdit(id){
+  this.dialog.open(EditServiceDialogComponent, {
+    data: {id, lang: this.lang}
+  })
+  .afterClosed().subscribe(()=> location.reload());
+ }
+
 }

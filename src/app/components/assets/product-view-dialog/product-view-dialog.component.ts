@@ -9,10 +9,10 @@ import { ItemsService } from 'src/app/services/items.service';
 })
 export class ProductViewDialogComponent implements OnInit {
 item$;
-  constructor(@Inject(MAT_DIALOG_DATA) private id, private item: ItemsService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) private productDetails, private item: ItemsService) { }
 
   ngOnInit() {
-    this.item$ = this.item.getItem(this.id);
+    this.item$ = this.item.getItem(this.productDetails.id);
   }
 
 }

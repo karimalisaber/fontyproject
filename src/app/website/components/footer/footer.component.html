@@ -1,7 +1,7 @@
-<section class="footer-wrapper">
+<section class="footer-wrapper" [ngClass] ="{'arabic-wrapper': lang ==='1'}">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-3">
+      <div class="mb-40 col-md-12 col-lg-3">
         <div class="footer-logo"><img src="assets/images/logo.png" /></div>
       </div>
 
@@ -56,7 +56,7 @@
           <div class="single_widget">
             <h4 class="footer_title">{{items[3]}}</h4>
             <div class="separator"></div>
-            <ul>
+            <ul *ngIf="lang==='1'">
               <li>
                 <p class="contact">
                   <a (click)="setLang('1')">العربية </a>  
@@ -67,10 +67,21 @@
                 <p class="contact"> <a (click)="setLang('2')"> الانجليزية </a> </p>
               </li>
             </ul>
+
+            <ul *ngIf="lang==='2'">
+              <li>
+                <p class="contact">
+                  <a (click)="setLang('1')">Arabic </a>  
+                </p>
+              </li>
+
+              <li>
+                <p class="contact"> <a (click)="setLang('2')"> English </a> </p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -82,13 +93,16 @@
 
         <div class="col-sm-6 col-xs-12">
           <div class="copyright_text">
-            <p>تصميم وبرمجة شركة <a target="_blank" href="https://www.clicktopass.com/">Clicktopass</a>2020. جميع الحقوق
+            <p *ngIf="lang==='1'" class="text-right">تصميم وبرمجة شركة <a target="_blank" href="https://www.clicktopass.com/">Clicktopass</a>2020. جميع الحقوق
               محفوظة</p>
+
+           <p *ngIf="lang==='2'">designed by <a target="_blank" href="https://www.clicktopass.com/">Clicktopass</a> All Rights Reserved</p>
+            
           </div>
         </div>
 
         <div class="col-sm-6 col-xs-12">
-          <div [ngClass]="{'text-left': arabic}" class="footer_socail">
+          <div [ngClass]="{'text-left': lang==='1'}" class="footer_socail">
             <a target="_blank" href="#"><i class="fab fa-facebook"></i></a>
 
             <a target="_blank" href="https://instagram.com/fonte4me?igshid=nfjaq41bsapm">

@@ -1,13 +1,13 @@
 <!-- Start Our products Section-->
 <section class="our-products section-wrapper">
   <div class="container">
-    <h2 *ngIf="arabic" class="title-section text-center">منتجاتنا</h2>
-    <h2 *ngIf="!arabic" class="title-section text-center">Our Products</h2>
+    <h2 *ngIf="lang ==='1'" class="title-section text-center">منتجاتنا</h2>
+    <h2 *ngIf="lang ==='2'" class="title-section text-center">Our Products</h2>
 
     <div class="products">
       <div class="row">
         <!-- Start Products Item-->
-        <div *ngFor="let product of products$ |async" class="product-wrapper col-12 col-sm-6 col-md-3">
+        <div *ngFor="let product of products$ |async" class="product-wrapper col-12 col-sm-6 col-md-4">
           <div (click)="viewProduct(product.id)" class="products-item mb-30">
             <img [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img">
             <div class="item-overlay">

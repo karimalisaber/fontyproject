@@ -39,6 +39,7 @@ import { FeedbackComponent } from './components/dashboard/feedback/feedback.comp
 import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
 import { ContactUsComponent } from './new/contact-us/contact-us.component';
 import { AuthService } from './services/auth.service';
+import { AddSliderComponent } from './components/dashboard/site-setting/add-slider/add-slider.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -72,11 +73,12 @@ const routes: Routes = [
         { path: 'management/add-user', component: AddUserComponent },
       
         { path: 'site-settings', component: SiteSettingsComponent },
-        { path: 'site-settings/edit-slider', component: EditSliderComponent },
-        { path: 'site-settings/edit-branches', component: EditBranchesComponent },
-        { path: 'site-settings/edit-about', component: AboutSectionComponent },
-        { path: 'site-settings/edit-services', component: EditServicesComponent },
-        { path: 'site-settings/edit-contacts', component: EditContactComponent },
+        { path: 'site-settings/edit-slider/:lang', component: EditSliderComponent },
+        { path: 'site-settings/edit-branches/:lang', component: EditBranchesComponent },
+        { path: 'site-settings/edit-about/:lang', component: AboutSectionComponent },
+        { path: 'site-settings/edit-services/:lang', component: EditServicesComponent },
+        { path: 'site-settings/edit-contacts/:lang', component: EditContactComponent },
+        { path: 'site-settings/edit-slider/:lang/add-slider', component: AddSliderComponent },
         
       { path: 'chart', component: ChartComponent },
       { path: 'view', component: ViewUserComponent },
@@ -97,7 +99,6 @@ const routes: Routes = [
     },
 
     { path: '', component: WebsiteComponent, children: [
-
         { path: 'about', component: AboutComponent },
         { path: 'our-services', component: OurServicesComponent },
         { path: 'our-products', component: ProductsComponent },

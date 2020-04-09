@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteService } from 'src/app/services/site.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,15 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class NavbarComponent implements OnInit {
-arabic: boolean = true;
+
+lang: string = this.site.getLangNumber();
+
 navArab= ['الرئيسية', 'من نحن' , 'منتجاتنا' , 'فروعنا', 'خدماتنا', 'تواصل معنا'];
 navEnglish= ['home', 'about' , 'products', 'branches', 'services', 'contact us' ];
   
-navItems = [...this.navArab];
+navItems = (this.lang ==='1')? [...this.navArab] : [...this.navEnglish] ;
 
 isOpen: boolean = false;
 
-  constructor() {
+  constructor(private site: SiteService) {
    }
 
   ngOnInit() {
@@ -24,10 +27,4 @@ isOpen: boolean = false;
   navShow() { // for mobiles
     this.isOpen = !this.isOpen;
   } 
-
-  getLang(){
-    this.arabic = true;
-
-    this.navItems= this.arabic? this.navArab : this.navEnglish;
-  }
 }

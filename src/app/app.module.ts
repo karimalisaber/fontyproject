@@ -75,6 +75,8 @@ import { SallerDashboardComponent } from './components/saller-dashboard/saller-d
 import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
 // import {NgxTypedJsModule} from 'ngx-typed-js';
 import { ProductViewDialogComponent } from './components/assets/product-view-dialog/product-view-dialog.component';
+import { AddSliderComponent } from './components/dashboard/site-setting/add-slider/add-slider.component';
+import { EditServiceDialogComponent } from './components/assets/edit-service-dialog/edit-service-dialog.component';
 
 
 @NgModule({
@@ -139,6 +141,8 @@ import { ProductViewDialogComponent } from './components/assets/product-view-dia
     SallerDashboardComponent,
     OrdersActionComponent,
     ProductViewDialogComponent,
+    AddSliderComponent,
+    EditServiceDialogComponent,
   ],
 entryComponents: [
   SuccesPostDialogComponent,
@@ -146,7 +150,8 @@ entryComponents: [
   SuccessDialogComponent,
   ErrorDialogComponent,
   EditDialogComponent,
-  ProductViewDialogComponent
+  ProductViewDialogComponent,
+  EditServiceDialogComponent
 ],
 
 imports: [

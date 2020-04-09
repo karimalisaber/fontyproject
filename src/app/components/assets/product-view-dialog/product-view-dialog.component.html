@@ -1,3 +1,5 @@
+<section [ngClass]="{'english-dir': productDetails.lang==='2'}">
+    
 <i  mat-dialog-close class="close" class="far fa-times-circle"></i>
 
 <div class="product-wrapper">
@@ -7,7 +9,7 @@
             <img class="img-thumbnail" [src]="'http://fonty.ieeeshasb.org/public/items/' + item.data.img " alt="">
         </div>
 
-        <div class="description text-right col-md-7">
+        <div class="description col-md-7 text-right " *ngIf ="productDetails.lang==='1'">
             <p>
                 اسم المنتج : 
                 <span>
@@ -29,6 +31,27 @@
                 </span>
             </p>
         </div>
+
+        
+        <div class="description col-md-7" *ngIf="productDetails.lang==='2'">
+            <p> Prodcut name : 
+                <span>
+                    {{item.data.name}}
+                </span>
+            </p>
+
+            <p> Ingredients : 
+                <span>
+                    {{item.data.body}}
+                </span>
+            </p>
+
+            <p>  price : 
+                <span>
+                    {{item.data.price}}
+                </span>
+            </p>
+        </div>
     </div>
-    
 </div>
+</section>

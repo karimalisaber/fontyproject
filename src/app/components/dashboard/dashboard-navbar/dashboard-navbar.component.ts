@@ -40,11 +40,19 @@ title;
       case '/dashboard/management': this.title = 'الإدارة' ; break;
       case '/dashboard/chart': this.title = 'المبيعات' ; break;
       case '/dashboard/site-settings': this.title = 'إعدادات الموقع' ; break;
-      case '/dashboard/site-settings/edit-slider': this.title = 'اعدادات الموقع (السلايدر)' ; break;
-      case '/dashboard/site-settings/edit-about': this.title = 'إعدادات الموقع (من نحن)' ; break;
-      case '/dashboard/site-settings/edit-contacts': this.title = 'إعدادات الموقع (تواصل معنا)' ; break;
-      case '/dashboard/site-settings/edit-branches': this.title = 'إعدادات الموقع (فروعنا)' ; break;
-      case '/dashboard/site-settings/edit-services': this.title = 'إعدادات الموقع (خداماتنا)' ; break;
+      case '/dashboard/site-settings/edit-slider/1': this.title = 'اعدادات الموقع (السلايدر)' ; break;
+      case '/dashboard/site-settings/edit-about/1': this.title = 'إعدادات الموقع (من نحن)' ; break;
+      case '/dashboard/site-settings/edit-contacts/1': this.title = 'إعدادات الموقع (تواصل معنا)' ; break;
+      case '/dashboard/site-settings/edit-branches/1': this.title = 'إعدادات الموقع (فروعنا)' ; break;
+      case '/dashboard/site-settings/edit-services/1': this.title = 'إعدادات الموقع (خداماتنا)' ; break;
+     // english site settings
+     case '/dashboard/site-settings/edit-slider/2': this.title = 'site settings(slider)' ; break;
+     case '/dashboard/site-settings/edit-about/2': this.title = 'site settings(About us)' ; break;
+     case '/dashboard/site-settings/edit-contacts/2': this.title = 'site settings(Contacts)' ; break;
+     case '/dashboard/site-settings/edit-branches/2': this.title = 'site settings(Branches)' ; break;
+     case '/dashboard/site-settings/edit-services/2': this.title = 'site settings(Services)' ; break;
+     
+    
       
       case '/dashboard/settings': this.title = 'الإعدادات' ; break;
       case '/dashboard/settings/app-slider': this.title = 'تعديل السلايدر في الأبلكيشن' ; break;

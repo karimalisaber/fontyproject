@@ -8,11 +8,12 @@ import { SiteService } from 'src/app/services/site.service';
 })
 export class BranchesComponent implements OnInit {
 branches$;
-arabic: boolean = true;
+lang: string = this.site.getLangNumber();
+
   constructor(private site: SiteService) { }
 
   ngOnInit() {
-   this.branches$ = this.site.getbranches();
+   this.branches$ = this.site.getSpecificLangbranches();
   }
 
 }

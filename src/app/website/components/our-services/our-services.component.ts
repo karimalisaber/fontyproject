@@ -8,12 +8,12 @@ import { SiteService } from 'src/app/services/site.service';
 })
 export class OurServicesComponent implements OnInit {
 services$;
-arabic: boolean = true;
+lang: string = this.site.getLangNumber();
 
-  constructor(private service: SiteService) { }
+  constructor(private site: SiteService) { }
 
   ngOnInit() {
-    this.services$ = this.service.getServices();
+    this.services$ = this.site.getSpecificLangServices();
   }
 
 }

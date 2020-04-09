@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { SiteService } from 'src/app/services/site.service';
 import { MatDialog } from '@angular/material';
 import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
 import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-contact',
@@ -12,15 +12,16 @@ import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post
 })
 export class EditContactComponent implements OnInit {
  contacts$;
- arabic: boolean = true;
- 
- constructor(private site: SiteService, private dialog: MatDialog) { }
+ lang: string = this.route.snapshot.paramMap.get('lang');
+
+ constructor(private route: ActivatedRoute, private site: SiteService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.contacts$ = this.site.getContacts();
+    this.contacts$ = this.site.getContacts(this.lang);
   }
 
-  updateContacts(form: NgForm) {
+  updateContacts(form) {
+    form.lang = this.lang; 
    this.site.updateContacts(form)
    .subscribe(
      res=> this.dialog.open(SuccesPostDialogComponent), 

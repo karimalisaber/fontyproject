@@ -7,12 +7,8 @@
 }
 @import "variables";
 
-.img-wrapper{
-    background-image: url('/assets/images/slider-1.jpg');
-}
-.slider{
-    margin-bottom: 20px;
-    max-height: 550px;
+textarea{
+    min-height: 450px;
 }
 
 .custom-file{
@@ -29,7 +25,8 @@
 .img{
     margin: auto;
     margin-bottom: 10px;
-
+    height: 100%;
+    width: 100%;
 }
 
 .btn{
@@ -48,7 +45,6 @@ hr{
     
     img{
         height: 400px;
-        width: 400px;
     }
 
     p { 
@@ -62,17 +58,19 @@ hr{
     }
 }
 
-.view-wrapper{
-    width: 100%;
-    border: 1px solid rgba($color: gray, $alpha: .5);
-    min-height: 251px;
-    box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: .5);
-    padding: 5px 20px;
-    margin-bottom: 10px;
-    
-    p{
-        color: $mainColor;
-        font-weight: bold;
-        font-size: 1.4rem;
-    }
-}
+// .view-wrapper{
+//     width: 100%;
+//     border: 1px solid rgba($color: gray, $alpha: .5);
+//     min-height: 251px;
+//     box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: .5);
+//     padding: 5px 20px;
+//     margin-bottom: 10px;
+//     overflow: hidden;
+//     overflow-y: auto;
+//     p{
+        
+//         color: $mainColor;
+//         font-weight: bold;
+//         font-size: 1.4rem;
+//     }
+// }
