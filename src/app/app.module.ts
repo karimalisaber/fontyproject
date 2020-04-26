@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule, ChartsModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './website/components/about/about.component';
@@ -73,11 +73,16 @@ import { FeedbackComponent } from './components/dashboard/feedback/feedback.comp
 import { SalerDashboardComponent } from './components/saler-dashboard/saler-dashboard.component';
 import { SallerDashboardComponent } from './components/saller-dashboard/saller-dashboard.component';
 import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
+
 // import {NgxTypedJsModule} from 'ngx-typed-js';
 import { ProductViewDialogComponent } from './components/assets/product-view-dialog/product-view-dialog.component';
 import { AddSliderComponent } from './components/dashboard/site-setting/add-slider/add-slider.component';
 import { EditServiceDialogComponent } from './components/assets/edit-service-dialog/edit-service-dialog.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+declare var require: any;
 
 @NgModule({
   declarations: [
@@ -163,6 +168,7 @@ imports: [
   MatDialogModule,
   MatMenuModule,
   MatButtonModule,
+  ChartsModule,
   // NgbModule,
   // CustomFormsModule,
   // NgxTypedJsModule,
@@ -174,8 +180,9 @@ providers: [
   AuthService,
   ItemsService,
   SettingService,
-  AssetsService
-  // AuthGuardService 
+  AssetsService,
+  AuthGuardService,
+  AdminAuthGuardService 
 ],
 
 bootstrap: [AppComponent]

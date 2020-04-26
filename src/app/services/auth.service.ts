@@ -1,17 +1,48 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { loginUrl } from '../environment/environment';
+import { map, take } from 'rxjs/operators';
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-
   constructor(private http: HttpClient) { }
 
-  login(form){
-    let url = 'http://fonty.ieeeshasb.org/api/auth/admin_login';
-    
-    return this.http.post(url, form);
+  login(credentials){
+    return this.http.post(loginUrl, credentials).pipe(take(1),map(
+      (res:any)=> {
+        let result = res;
+        if(result && result.data.token) {
+          localStorage.setItem('token', result.data.token);
+          return true;
+        }
+        return false
+      }));
   }
+
+  get currentUser(){
+    let token = localStorage.getItem('token');
+    if(!token) return null;
+
+    return new JwtHelperService().decodeToken(token);
+  }
+
+  isLogin(){
+    // return tokenNotExpired();
+    const helper = new JwtHelperService();
+    let token = localStorage.getItem('token');
+
+    if(!token) 
+      return false ;
+
+    const isExpired = helper.isTokenExpired(token);
+
+    const expirationDate = helper.getTokenExpirationDate(token); 
+    const decodedToken = helper.decodeToken(token);
+
+    return !isExpired; // true if not expired
+
+  }
+
 }

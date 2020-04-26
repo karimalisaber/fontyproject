@@ -84,7 +84,7 @@ constructor(private http: HttpClient, private route: ActivatedRoute) {
   }
 
   updateService(id, Service) {
-    return this.http.post(updateServiceUrl + Service, Service).pipe(take(1));
+    return this.http.post(updateServiceUrl + id, Service).pipe(take(1));
   }
 
   // about 

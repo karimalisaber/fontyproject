@@ -39,16 +39,24 @@ export class EditDialogComponent implements OnInit {
   }
 
   updateSlider(slider) {
-    if (this.imgChanged) {
-      this.item.append("img", this.imageFile, this.imageFile.name);
-      var item = { title: slider.title, des: slider.title, update_img: this.item.get("img"), lang: this.sliderDetails.lang }
-    }
+    // if (this.imgChanged) {
+      console.log(this.imageFile);
+      
+    this.item.append("title", slider.title);
+    this.item.append("lang", this.sliderDetails.lang);
+    this.item.append("des", "null");
+    this.item.append("img", this.imageFile, this.imageFile.name );
+      
+    console.log(this.imageFile);
 
-    else {
-      var item = { title: slider.title, des: slider.title, update_img: this.item.get("img"), lang: this.sliderDetails.lang }
-    }
+      // var item = { title: slider.title, des: slider.title, update_img: this.item.get("img"), lang: this.sliderDetails.lang }
+    // }
+
+    // else {
+      // var item = { title: slider.title, des: slider.title, update_img: this.item.get("img"), lang: this.sliderDetails.lang }
+    // }
     
-    this.site.updateSlider(this.sliderDetails.id, item)
+    this.site.updateSlider(this.sliderDetails.id, this.item)
       .subscribe(
         () => this.dialog.open(SuccesPostDialogComponent),
         () => this.dialog.open(ErrorDialogComponent)

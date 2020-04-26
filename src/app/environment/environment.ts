@@ -1,3 +1,7 @@
+// login url
+export const loginUrl = 'http://fonty.ieeeshasb.org/api/auth/admin_login'; 
+
+
 export const getCategoriesUrl = 'http://fonty.ieeeshasb.org/api/web/categories';
 export const deleteCategoryUrl = 'http://fonty.ieeeshasb.org/api/web/delete_category/';
 export const updateCategoryUrl = 'http://fonty.ieeeshasb.org/api/web/edit_category';

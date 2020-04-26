@@ -19,13 +19,10 @@ title;
     this.detectTitle(initialUrl);
   
     this.router.events.pipe(filter(e => e instanceof NavigationStart)).subscribe((res: any )=>{ 
-    let url = res.url;
+     let url = res.url;
 
-    this.detectTitle(url);
-
+     this.detectTitle(url);
     });
-
-
   }
 
   
@@ -51,15 +48,18 @@ title;
      case '/dashboard/site-settings/edit-contacts/2': this.title = 'site settings(Contacts)' ; break;
      case '/dashboard/site-settings/edit-branches/2': this.title = 'site settings(Branches)' ; break;
      case '/dashboard/site-settings/edit-services/2': this.title = 'site settings(Services)' ; break;
-     
-    
-      
+           
       case '/dashboard/settings': this.title = 'الإعدادات' ; break;
       case '/dashboard/settings/app-slider': this.title = 'تعديل السلايدر في الأبلكيشن' ; break;
       case '/dashboard/settings/users': this.title = 'العملاء' ; break;
       case '/dashboard/settings/user-points': this.title = 'نقاط العملاء' ; break;
     }
-    
   }
   
+
+  logOut(){
+    localStorage.removeItem('token');
+    
+    this.router.navigate(['/login']);
+  }
 }

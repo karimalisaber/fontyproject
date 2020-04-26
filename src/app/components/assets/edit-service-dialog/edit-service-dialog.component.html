@@ -16,13 +16,13 @@
     
       <div class="form-group">
         <label for="name" class="d-block text-right mt-10">اسم الخدمة</label>
-        <input [(ngModel)]="service.name" #name="ngModel" required minlength="5" name="name"
+        <input [(ngModel)]="service.name" #name="ngModel" required minlength="3" name="name"
           [ngClass]="{'english-dir': (serviceDetails.lang === '2'), 'text-left': (serviceDetails.lang === '2'), 'is-invalid': name.invalid && name.touched , 'is-valid': !name.invalid && name.touched}"
           type="text" id="name" class="form-control">
   
         <div *ngIf="!name.valid && name.touched">
           <div class="alert alert-danger text-right" *ngIf="name.errors.required"> من فضلك أدخل اسم الخدمة </div>
-          <div class="alert alert-danger text-right" *ngIf="name.errors.minlength"> اسم الخدمة يجب أن يكون أكثر من 6
+          <div class="alert alert-danger text-right" *ngIf="name.errors.minlength"> اسم الخدمة يجب أن يكون أكثر من 3
             أحرف
            </div>
         </div>

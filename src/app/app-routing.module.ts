@@ -38,17 +38,17 @@ import { AppSliderComponent } from './components/dashboard/settings/app-slider/a
 import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
 import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
 import { ContactUsComponent } from './new/contact-us/contact-us.component';
-import { AuthService } from './services/auth.service';
 import { AddSliderComponent } from './components/dashboard/site-setting/add-slider/add-slider.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'log', component: EditProductsComponent },
 
-    { path: 'dashboard', component: DashboardComponent, children: [
-      { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'},
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService], children: [
+      { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'}, // admin
       // start control panel
-      { path: 'control-panel', component: ControlPanelComponent},
+      { path: 'control-panel', component: ControlPanelComponent },
         { path: 'control-panel/received-orders', component: RecievedOrdersComponent },
         { path: 'control-panel/all-orders', component: AllOrdersComponent },
         { path: 'control-panel/finished-orders', component: FinishedOrdersComponent },

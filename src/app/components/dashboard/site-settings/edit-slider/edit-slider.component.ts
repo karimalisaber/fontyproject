@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material';
-import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
 import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
 import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
 import { AssetsService } from 'src/app/services/assets.service';
