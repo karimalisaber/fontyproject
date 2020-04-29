@@ -66,7 +66,7 @@ import { SuccessDialogComponent} from './components/assets/success-dialog/succes
 import { AssetsService } from './services/assets.service';
 import { EditDialogComponent } from './components/assets/edit-dialog/edit-dialog.component';
 import { SuccesPostDialogComponent } from './components/assets/succes-post-dialog/succes-post-dialog.component';
-import { MatMenuModule, MatButtonModule } from '@angular/material';
+import { MatMenuModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { ContactUsComponent } from './new/contact-us/contact-us.component';
 import { SliderComponent } from './new/slider/slider.component';
 import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
@@ -81,6 +81,8 @@ import { EditServiceDialogComponent } from './components/assets/edit-service-dia
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AllProductsComponent } from './components/all-products/all-products.component';
+import { OrdersService } from './services/orders.service';
 
 declare var require: any;
 
@@ -148,6 +150,7 @@ declare var require: any;
     ProductViewDialogComponent,
     AddSliderComponent,
     EditServiceDialogComponent,
+    AllProductsComponent,
   ],
 entryComponents: [
   SuccesPostDialogComponent,
@@ -169,6 +172,9 @@ imports: [
   MatMenuModule,
   MatButtonModule,
   ChartsModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
   // NgbModule,
   // CustomFormsModule,
   // NgxTypedJsModule,
@@ -182,7 +188,8 @@ providers: [
   SettingService,
   AssetsService,
   AuthGuardService,
-  AdminAuthGuardService 
+  AdminAuthGuardService,
+  OrdersService 
 ],
 
 bootstrap: [AppComponent]

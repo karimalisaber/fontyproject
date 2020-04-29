@@ -32,8 +32,8 @@
       <tbody>
         <tr *ngFor="let user of filteredUsers">
           <td>{{user.sales?.name}}</td>
-          <td></td>
-          <!-- <td>{{user.sales.phone}}</td> -->
+          <!-- <td></td> -->
+          <td>{{user.sales.phone}}</td>
           <td>{{user.sales?.email}}</td>
         <td>
            <i  (click)="deleteAlert(user.id)" class="far fa-trash-alt"></i>

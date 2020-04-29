@@ -1,6 +1,12 @@
 @import "variables";
 @import 'responsive';
 
+section{
+    overflow: hidden;
+    height: calc(100vh + 100px) !important;
+
+}
+
 .carousel-item{
     position: relative;
 
@@ -37,7 +43,8 @@
     width: 100vw !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
-    height: calc(100vh + 100px);
+    // height: 100% !important;
+    height: calc(100vh + 100px) !important;
 }
 
 .carousel-indicators li{

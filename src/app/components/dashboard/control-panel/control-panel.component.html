@@ -1,37 +1,37 @@
 
 
-<div class="nav-wrapper row">
+<div *ngIf="ordersDetails$ | async as ordersDetails" class="nav-wrapper row">
   <div class="col text-center  nav-item">
     <a class="d-block" routerLink="/dashboard/control-panel/received-orders">
-      <span>10</span>
+      <span>{{ordersDetails.curent}}</span>
       <p>الطلبات المستلمة</p>
     </a>
   </div>
 
   <div class="col text-center  nav-item">
     <a class="d-block" routerLink="/dashboard/control-panel/all-orders">
-      <span>10</span>
+      <span>{{ordersDetails.curent + ordersDetails.in_progress + ordersDetails.closed + ordersDetails.done}}</span>
       <p>مجموع الطلبات</p>
     </a>
   </div>
 
   <div class="col text-center  nav-item">
     <a class="d-block" routerLink="/dashboard/control-panel/finished-orders">
-      <span>10</span>
+      <span>{{ ordersDetails.done}}</span>
       <p>تم تسليمه</p>
     </a>
   </div>
 
   <div class="col text-center  nav-item">
     <a class="d-block" routerLink="/dashboard/control-panel/preparing-stage-orders">
-      <span>10</span>
+      <span>{{ordersDetails.in_progress}}</span>
       <p>مرحلة التجهيز</p>
     </a>
   </div>
 
   <div class="col text-center  nav-item">
     <a class="d-block" routerLink="/dashboard/control-panel/cancelled-orders">
-      <span>10</span>
+      <span>{{ordersDetails.closed }}</span>
       <p> الطلبات الملغاه</p>
     </a>
   </div>

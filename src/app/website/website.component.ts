@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { SiteService } from '../services/site.service';
 
 @Component({
@@ -9,10 +9,16 @@ import { SiteService } from '../services/site.service';
 export class WebsiteComponent implements OnInit {
   lang: string = this.site.getLangNumber();
 
+
   constructor(private site: SiteService) { }
 
   ngOnInit() {
     
+  }
+
+  scroll(event){
+    let el = document.getElementById(event);
+    el.scrollIntoView({behavior:"smooth"});
   }
 
 }

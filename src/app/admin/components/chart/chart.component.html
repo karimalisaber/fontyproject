@@ -1,5 +1,5 @@
-<div style="display: block">
-  <canvas mdbChart
+<!-- <div style="display: block">
+  <canvas id="myChart" mdbChart
       [chartType]="chartType"
       [datasets]="chartDatasets"
       [labels]="chartLabels"
@@ -8,5 +8,10 @@
       [legend]="false"
       (chartHover)="chartHovered($event)"
       (chartClick)="chartClicked($event)">
+  </canvas>
+</div> -->
+
+<div  style="display: block">
+  <canvas [dir]="'rtl'" id="myChart" >
   </canvas>
 </div>

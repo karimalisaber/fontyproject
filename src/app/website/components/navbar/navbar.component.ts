@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { SiteService } from 'src/app/services/site.service';
 })
 
 export class NavbarComponent implements OnInit {
+  @Output('linkClicked') linkClicked = new EventEmitter();
+
 
 lang: string = this.site.getLangNumber();
 
@@ -26,5 +28,12 @@ isOpen: boolean = false;
 
   navShow() { // for mobiles
     this.isOpen = !this.isOpen;
-  } 
+  }
+  
+  scrollTo(e){
+    let scrollTarget = e.target.attributes['data-to'].value;
+
+    this.linkClicked.emit(scrollTarget)
+  
+  }
 }

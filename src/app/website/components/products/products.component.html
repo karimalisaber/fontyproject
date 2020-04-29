@@ -7,7 +7,7 @@
     <div class="products">
       <div class="row">
         <!-- Start Products Item-->
-        <div *ngFor="let product of products$ |async" class="product-wrapper col-12 col-sm-6 col-md-4">
+        <div *ngFor="let product of products" class="product-wrapper col-12 col-sm-6 col-md-4">
           <div (click)="viewProduct(product.id)" class="products-item mb-30">
             <img [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img">
             <div class="item-overlay">
@@ -16,9 +16,15 @@
             <!-- <img class="img-fluid" [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img" alt=""/> -->
           </div>
         </div>
-        <!-- End Products Item-->
+        <!-- End Products Item-->     
+      </div>
+      
+      <div class="text-center" >
+        <button *ngIf="lang ==='1'" (click) ="loadMore()" class="load-more btn btn-primary">مشاهدة المزيد</button>
+        <button *ngIf="lang ==='2'" (click) ="loadMore()" class="load-more btn btn-primary">Show More</button>
       </div>
     </div>
   </div>
 </section>
 <!-- End Our products Section-->
+

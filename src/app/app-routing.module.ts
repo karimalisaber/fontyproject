@@ -1,9 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from './website/components/about/about.component';
-import { OurServicesComponent } from './website/components/our-services/our-services.component';
-import { ProductsComponent } from './website/components/products/products.component';
-import { BranchesComponent } from './website/components/branches/branches.component';
 import { NotFoundComponent } from './website/components/not-found/not-found.component';
 import { WebsiteComponent } from './website/website.component';
 import { DashboardComponent } from './components/dashboard/layout/dashboard.component';
@@ -41,6 +37,7 @@ import { ContactUsComponent } from './new/contact-us/contact-us.component';
 import { AddSliderComponent } from './components/dashboard/site-setting/add-slider/add-slider.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { AllProductsComponent } from './components/all-products/all-products.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -97,13 +94,9 @@ const routes: Routes = [
       { path: '**', component: NotFoundComponent }
     ]
     },
+    { path: 'all-products', component: AllProductsComponent },
 
-    { path: '', component: WebsiteComponent, children: [
-        { path: 'about', component: AboutComponent },
-        { path: 'our-services', component: OurServicesComponent },
-        { path: 'our-products', component: ProductsComponent },
-        { path: 'our-branches', component: BranchesComponent }, 
-        { path: 'contact', component: ContactUsComponent },
+    { path: '', component: WebsiteComponent, children: [    
         { path: '**', component: NotFoundComponent }
       ]
     }

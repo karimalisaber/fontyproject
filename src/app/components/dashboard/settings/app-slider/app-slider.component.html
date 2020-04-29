@@ -1,14 +1,19 @@
 <div class="clearfix">
     <div class="row">
-        <div *ngFor="let slider of sliders" class="slider col-md-6">
-            <div class="img">
+        <div *ngFor="let slider of sliders" class="col-md-6">
+            <div class="slider">
+             <div class="img">
                 <img class="img-fluid img-wrapper" [src]="'http://fonty.ieeeshasb.org/public/slider/' + slider.name" alt="mobile-slider">
+             </div>
+             <div class="text-right">
+               <button (click)="deleteAlert(slider.id)" class="btn btn-danger text-right">حذف</button>
+             </div>
             </div>
-            <button (click)="deleteAlert(slider.id)" class="btn btn-danger float-right mr-10">حذف</button>
         </div>
+
     </div>
 </div>
-<hr>
+<!-- <hr> -->
 
 <!-- app new slider image -->
 <div class="upload-img">
@@ -16,6 +21,7 @@
     <div class="uploaded-img clearfix">
         <img class="img-fluid float-right " [src]="imgUrl" alt="">
     </div>
+
     <form #userForm="ngForm" id="userForm"
          class="custom-file d-flex justify-content-start">
         <input required ngModel name ="image" (change) = "imageUpload($event)"
@@ -24,9 +30,7 @@
     </form>
 </div>    
 
-<div class="submit float-right">
+<div class="submit text-right">
     <input (click)="addSlider(); userForm.reset();" [disabled]="userForm.invalid" type="submit" class="btn btn-primary ml-10" value="رفع الصورة" >
     <a class="btn btn-danger" routerLink="../" > تراجع </a>
 </div>
-   
-<div class="clearfix"></div>

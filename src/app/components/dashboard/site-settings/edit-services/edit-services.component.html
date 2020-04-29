@@ -18,7 +18,7 @@
             <label class="text-justify w-100">اسم الخدمة</label>
             <input id="name-input" class="form-control" required #name="ngModel" minlength="3" ngModel type="text"
                 name="title" [ngClass]="{ 'is-invalid': name.invalid && name.touched ,
-                 'is-valid': !name.invalid && name.touched, 'text-left': !arabic}">
+                 'is-valid': !name.invalid && name.touched, 'text-right': arabic}">
 
             <div *ngIf="!name.valid && name.touched" class="">
                 <div class="alert alert-danger text-right" *ngIf="name.errors.required">من فضلك أدخل اسم الخدمة </div>

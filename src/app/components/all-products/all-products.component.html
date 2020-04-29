@@ -1,0 +1,44 @@
+<div [ngClass]="{'ltr': lang ==='2'}">
+    <app-navbar (linkClicked)="scroll($event)"></app-navbar>
+
+    <!-- Start Our products Section-->
+<section class="our-products section-wrapper">
+    <div class="container">
+      <h2 *ngIf="lang ==='1'" class="title-section text-center">منتجاتنا</h2>
+      <h2 *ngIf="lang ==='2'" class="title-section text-center">Our Products</h2>
+  
+      <div class="products">
+        <div class="row">
+          <!-- Start Products Item-->
+          <div *ngFor="let product of products" class="product-wrapper col-12 col-sm-6 col-md-4">
+            <div (click)="viewProduct(product.id)" class="products-item mb-30">
+              <img [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img">
+              <div class="item-overlay">
+                <a (click)="viewProduct(product.id)">{{product.name}}</a>
+              </div>
+              <!-- <img class="img-fluid" [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img" alt=""/> -->
+            </div>
+          </div>
+          <!-- End Products Item-->     
+        </div>
+        <div class="text-center" *ngIf="checkLenght()" >
+          <button *ngIf="lang ==='1'" (click) ="loadMore()" class="load-more btn btn-primary">تحميل المزيد</button>
+          <button *ngIf="lang ==='2'" (click) ="loadMore()" class="load-more btn btn-primary">load More</button>
+        </div>
+  
+  
+      </div>
+    </div>
+  </section>
+  <!-- End Our products Section-->
+
+
+    <app-footer></app-footer>
+</div>
+
+
+<div class="socials-icons">
+    <a href="https://instagram.com/fonte4me?igshid=nfjaq41bsapm" class="instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+</div>

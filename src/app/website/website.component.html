@@ -1,10 +1,18 @@
 <div [ngClass]="{'ltr': lang ==='2'}">
-    <app-navbar></app-navbar>
+    <app-navbar (linkClicked)="scroll($event)"></app-navbar>
     <app-slider></app-slider>
-    <app-about></app-about>
-    <app-products></app-products>
-    <app-branches></app-branches>
-    <app-our-services></app-our-services>
-    <app-contact-us></app-contact-us>
+    <div class="clearfix"></div>
+    <app-about id="about"></app-about>
+    <app-products id="products"></app-products>
+    <app-branches id="branches"></app-branches>
+    <app-our-services id="services"></app-our-services>
+    <app-contact-us id="contacts"></app-contact-us>
     <app-footer></app-footer>
+</div>
+
+
+<div class="socials-icons">
+    <a href="https://instagram.com/fonte4me?igshid=nfjaq41bsapm" class="instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
 </div>

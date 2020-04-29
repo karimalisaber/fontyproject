@@ -6,7 +6,7 @@
     <div class="form-group">
       <input class="text-left"
       [ngClass]="{ 'is-invalid': name.invalid && name.touched ,
-      'is-valid': !name.invalid && name.touched, 'text-left': !arabic}"      
+      'is-valid': !name.invalid && name.touched, 'text-right': arabic}"      
       ngModel required minlength="3" #name ="ngModel" name="name" id="branch-name" class="form-control" type="text" id="">
       
       <div class="error-handler" *ngIf="name.errors && name.touched">
