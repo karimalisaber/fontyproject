@@ -33,7 +33,6 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
 import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
 import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
-import { ContactUsComponent } from './new/contact-us/contact-us.component';
 import { AddSliderComponent } from './components/dashboard/site-setting/add-slider/add-slider.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
@@ -42,7 +41,7 @@ import { AllProductsComponent } from './components/all-products/all-products.com
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService], children: [
+    { path: 'dashboard', component: DashboardComponent ,  children: [
       { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'}, // admin
       // start control panel
       { path: 'control-panel', component: ControlPanelComponent },

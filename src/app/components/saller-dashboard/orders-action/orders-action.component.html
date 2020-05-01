@@ -1,52 +1,51 @@
 <div class="feedback-wrapper">
     <div class="search">
-        <form action="">
-          <input 
+      <form action="">
+        <input 
           #search
-          (keyup) = "filter(search.value)"
-          type="search" name="" id="" placeholder="بحث">
-          <button class="btn-search">  بحث </button>
-        </form>
+          (keyup) = "customFilter(search.value)"
+          type="search" name="" id="" placeholder="بحث باسم العميل">
+        <button class="btn-search">  بحث </button>
+      </form>
     </div>
     
     <div class="row">
-        <div class="col-md-6 text-right">
+        <div *ngFor="let order of filteredOrders" class="col-md-6 text-right">
             <div class="card">
               <div class="card-header">
-                  <h5 class="card-title">كريم</h5>
-                  <div class="row">
-                    <span class="col-md-7 card-email">kairm@gmail.com</span>
-                    <span class="col-md  card-phone">01097628565</span>
-                  </div>
+                  <h5 class="card-title">{{order.order_user.name}}</h5>
                   
+                  <div class="row">
+                    <span class="col-md-7 card-email">{{order.order_user.email}}</span>
+                    <span class="col-md  card-phone">{{order.order_user.phone}}</span>
+                  </div>
               </div>
-                <div class="card-body">
 
-                  <div class="orders">
-                    <div class="order">
+              <div class="card-body">
+                  <div *ngFor="let orderItem of order.order_items" class="orders">
                       <div class="row">
-                        <div class="col-7">
-                          
-                          <h5 class="text-right card-title">
-                            <img  src="assets/images/25.jpg" alt="" class="product-img rounded-circle"> برجر
-                          </h5>
-               
-                            <p class="text-small-title">المكونات <span>بامية + لحمة + خبز + ملوخية</span></p>
+                        <div class="col-7">                          
+                         <h5 class="text-right card-title">
+                           <img  src="assets/images/25.jpg" alt="" class="product-img rounded-circle"> برجر
+                         </h5>
+
+                          <p class="text-small-title">المكونات <span>بامية + لحمة + خبز + ملوخية</span></p>
                         </div>
-                        <div class="col ext-left">
-                          <p class="text-small-title">السعر: <span>10 ريال</span></p>
-                          <p class="text-small-title">العدد:  <span>10</span></p>      
+
+                        <div class="col">
+                          <p class="text-small-title"> السعر: <span> ريال</span></p>
+                          <p class="text-small-title">العدد:  <span>{{orderItem.count}}</span></p>      
                         </div>
                       </div>
-                    </div>
+                    <hr>
                   </div>
-                  <hr>
-                  <p class="text-small-title"> السعر الكلي: <span>10 ريال</span></p>
 
-                  <button class="btn btn-primary ml-10">قبول</button>
-                  <button class="btn btn-danger">رفض</button>
-                </div>
+                  <!-- <hr class="big-seperator"> -->
+                  <p class="text-small-title"> السعر الكلي: <span>10 ريال</span></p>
+                  <button (click) ="acceptOrder(order.id)" class="btn btn-primary ml-10">قبول</button>
+                  <button (click)="refuseOrder(order.id)" class="btn btn-danger">رفض</button>
               </div>
+            </div>
         </div>
     </div>
 </div>

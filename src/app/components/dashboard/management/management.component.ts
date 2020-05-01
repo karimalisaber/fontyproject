@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatTable, MatPaginator, MatTableDataSource } from '@angular/material';
 import { UsersService } from 'src/app/services/users.service';
 import { HttpClient } from '@angular/common/http';
 import { DialogComponent } from '../../assets/dialog/dialog.component';
 import { take } from 'rxjs/operators';
 import { ErrorDialogComponent } from '../../assets/error-dialog/error-dialog.component';
+import { SuccessDialogComponent } from '../../assets/success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-management',
@@ -12,15 +13,24 @@ import { ErrorDialogComponent } from '../../assets/error-dialog/error-dialog.com
   styleUrls: ['./management.component.scss']
 })
 export class ManagementComponent implements OnInit {
-  users;
-  filteredUsers;
+  users = new MatTableDataSource ();
+  filteredUsers = new MatTableDataSource ();
+  
+  displayedColumns: string[] = ['name', 'phone', 'email', 'delete', 'edit'];
+
+  @ViewChild(MatTable,{static:true}) table: MatTable<any>;
+  @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
 
   constructor(private dialog: MatDialog, private user: UsersService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.user.getUsers().subscribe(res=> {
-     this.filteredUsers = this.users = res;
+    this.paginator._intl.itemsPerPageLabel = 'عدد العناصر في كل صفحة';
+
+    this.user.getUsers().subscribe((res: any)=> {
+      this.filteredUsers.data = this.users.data = res;
     });
+
+    this.filteredUsers.paginator = this.paginator;
   }
 
   deleteAlert(id){
@@ -33,24 +43,25 @@ export class ManagementComponent implements OnInit {
 
   private deleteUser(id){
     // optimistic update
-    let itemIndex = this.users.findIndex( item =>{ return item.id === id });
-    var deletedItem = this.users.splice(itemIndex, 1);
-    
+    let itemIndex = this.users.data.findIndex( (item:any) =>{ return item.id === id });
+    var deletedItem = this.users.data.splice(itemIndex, 1);
+    this.filteredUsers.data = this.users.data;
+
     this.user.deleteUser(id).subscribe(
     data=> {
-          
+      this.dialog.open(SuccessDialogComponent);    
     }, error=> {
-      this.users.splice(itemIndex, 0, deletedItem[0]);
+      this.users.data.splice(itemIndex, 0, deletedItem[0]);
 
       this.dialog.open(ErrorDialogComponent);
     });
   }
-
   
   filter(value){
-    this.filteredUsers = (value) ?
-    this.users.filter(p => p.sales.name.toLowerCase().includes(value.toLowerCase())) : this.users ; 
+    this.filteredUsers.data = (value) ?
+    this.users.data.filter( (p:any) => p.sales.name.toLowerCase().includes(value.trim().toLowerCase())) : this.users.data ; 
+    
+    this.table.renderRows();
   }
-
 
 }

@@ -21,7 +21,6 @@ import { AboutSectionComponent } from './components/dashboard/site-settings/abou
 import { EditBranchesComponent } from './components/dashboard/site-settings/edit-branches/edit-branches.component';
 import { EditContactComponent } from './components/dashboark/site-settings/edit-contact/edit-contact.component';
 import { EditProductsComponent } from './components/dashboard/view-products/edit-products/edit-products.component';
-import { ViewProductsComponent } from './components/dashboard/view-products/view-products.component';
 import { AddUserComponent } from './admin/components/add-user/add-user.component';
 import { ViewUserComponent } from './admin/components/view-user/view-user.component';
 import { AddProductComponent } from './components/dashboard/view-products/add-product/add-product.component';
@@ -66,7 +65,7 @@ import { SuccessDialogComponent} from './components/assets/success-dialog/succes
 import { AssetsService } from './services/assets.service';
 import { EditDialogComponent } from './components/assets/edit-dialog/edit-dialog.component';
 import { SuccesPostDialogComponent } from './components/assets/succes-post-dialog/succes-post-dialog.component';
-import { MatMenuModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatMenuModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule } from '@angular/material';
 import { ContactUsComponent } from './new/contact-us/contact-us.component';
 import { SliderComponent } from './new/slider/slider.component';
 import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
@@ -105,7 +104,6 @@ declare var require: any;
     EditBranchesComponent,
     EditContactComponent,
     EditProductsComponent,
-    ViewProductsComponent,
     AddUserComponent,
     ViewUserComponent,
     AddProductComponent,
@@ -175,6 +173,8 @@ imports: [
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
+  MatFormFieldModule,
+  
   // NgbModule,
   // CustomFormsModule,
   // NgxTypedJsModule,

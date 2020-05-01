@@ -1,5 +1,5 @@
 export interface Orders {
-    data: Array<OrderData>
+    data: OrderData[];
 }
 
 export interface OrderData{
@@ -9,7 +9,7 @@ export interface OrderData{
     status: Number | null,
 
     order_items: Array<OrderItems>,
-    order_user: OrderUsers
+    order_user: OrderUser
 }
 
 export interface OrderItems{
@@ -20,7 +20,7 @@ export interface OrderItems{
     status: Number | null,        
 }
 
-export interface OrderUsers{
+export interface OrderUser{
     id: 1,
     name: String,
     email: String,

@@ -1,5 +1,5 @@
-<div   class="setting-wrapper row no-gutters">
-<a routerLink ="add-product" class="ml-auto d-block text-center item-setting-global-small"> إضافة منتج </a>
+<div class="setting-wrapper row no-gutters">
+  <a routerLink ="add-product" class="ml-auto d-block text-center item-setting-global-small"> إضافة منتج </a>
     
     <mat-menu style="margin-top: 30px;" #catMenu>
       <button  (click) ="allCategories()"
@@ -14,67 +14,24 @@
       <i class="fa fa-angle-down"></i>
     </button>
 </div>
-  <!-- end categories -->
-
+  
 <section class="view-porducts">
   <div class="search">
     <form action="">
-      <input 
-      #search
-      (keyup) = "filter(search.value)"
-      type="search" name="" id="" placeholder="بحث">
+    <input type="search" (keyup)="applyFilter($event.target.value)" matInput placeholder="بحث">
       <button class="btn-search">  بحث </button>
     </form>
   </div>
-<!-- end search -->
-
-<table class="table text-center">
-    <thead class="thead-dark">
-      <tr>
-        <th>الصورة</th>
-        <th>الاسم</th>
-        <th>المكونات</th>
-        <th>السعر</th>
-        <th>القسم</th>
-        <th>حذف</th>
-        <th>تعديل</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <tr *ngFor="let product of filteredProducts" class="item-wrapper">
-        <td>
-          <img class="product-img img-fluid" [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img ">
-        </td>
-        <td>{{product.name}}</td>
-        <td>{{product.body}}</td>
-        <td>{{product.price}}</td>
-        <td>{{product.catogery_id}}</td>
-        <td>
-          <a>
-            <i (click)="deleteAlert(product.id)" class="far fa-trash-alt"></i>
-          </a>
-        </td>
-        <td>
-          <a [routerLink]="['/dashboard/products/edit-product/', product.id]">
-            <i class="fas fa-cog"></i>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
- 
+<table mat-table [dataSource] ="filteredProducts" class="table mat-elevation-z8 text-center">
   <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
 
   <!-- Position Column -->
   <ng-container matColumnDef="image">
     <th mat-header-cell *matHeaderCellDef> الصورة </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <td mat-cell *matCellDef="let element"> 
+      <img class="product-img img-fluid" [src]="'http://fonty.ieeeshasb.org/public/items/' + element.img ">
+    </td>
   </ng-container>
 
   <!-- Name Column -->
@@ -86,35 +43,45 @@
   <!-- Weight Column -->
   <ng-container matColumnDef="body">
     <th mat-header-cell *matHeaderCellDef> المكونات </th>
-    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.body}} </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="price">
     <th mat-header-cell *matHeaderCellDef> السعر </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
   </ng-container>
 
-  
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="category">
+  <ng-container matColumnDef="catogery_id">
     <th mat-header-cell *matHeaderCellDef> القسم </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.catogery_id}} </td>
   </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="delete">
-    <th mat-header-cell *matHeaderCellDef> حذف </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef> تعديل </th>
-    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    <td mat-cell *matCellDef="let element">
+      <a [routerLink]="['/dashboard/products/edit-product/', element.id]">
+        <i class="fas fa-cog"></i>
+      </a>
+
+    </td>
   </ng-container>
 
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> حذف </th>
+    <td mat-cell *matCellDef="let element">
+      <a>
+        <i (click)="deleteAlert(element.id)" class="far fa-trash-alt"></i>
+      </a> 
+    </td>
+  </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr class="thead-dark" mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr class="item-wrapper" mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<mat-paginator 
+
+[pageSize]="10"
+[pageSizeOptions]="[5, 10, 25, 30]" ShowFirstLastButtons></mat-paginator>
+</section>

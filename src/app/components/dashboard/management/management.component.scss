@@ -1,3 +1,29 @@
+@import "variables";
+
 i:hover{
     cursor: pointer;
+}
+
+.search input{
+    padding-left: 15px;
+}
+
+.table{
+    background-color: #fff;
+    line-height: 50px;
+    
+
+    th{
+        font-size: 1.1rem;
+        text-align: center !important;
     }
+
+
+    td{
+        padding-top: 8px;
+        line-height: 40px;
+        border-bottom: 1px solid rgba($color: #000000, $alpha: .4);
+        color: $secondColor;
+
+    }
+}
