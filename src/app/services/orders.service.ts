@@ -21,6 +21,11 @@ export class OrdersService {
     ));
   }
 
+  getAllOrders(): Observable<OrderData[]>{
+    return this.http.get<Orders>(getOrdersUrl).pipe(map((res)=> res.data));
+   }
+ 
+
   updateStatus(id, status){
     return this.http.put(updateOrderStatusUrl+id +'/' +status, {})
   }

@@ -11,15 +11,19 @@
     
     <div class="row">
         <div *ngFor="let order of filteredOrders" class="col-md-6 text-right">
-            <div class="card">
-              <div class="card-header">
+          <div class="card">
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+               <div class="card-header">
                   <h5 class="card-title">{{order.order_user.name}}</h5>
                   
                   <div class="row">
                     <span class="col-md-7 card-email">{{order.order_user.email}}</span>
                     <span class="col-md  card-phone">{{order.order_user.phone}}</span>
                   </div>
-              </div>
+               </div>
+              </mat-expansion-panel-header>
 
               <div class="card-body">
                   <div *ngFor="let orderItem of order.order_items" class="orders">
@@ -30,7 +34,7 @@
                           {{orderItem.item_data.name}}
                          </h5>
 
-                          <p class="text-small-title">المكونات <span>+ لحمة + خبز + ملوخية</span></p>
+                          <!-- <p class="text-small-title">المكونات <span>+ لحمة + خبز + ملوخية</span></p> -->
                         </div>
 
                         <div class="col">
@@ -46,7 +50,10 @@
                   <button (click) ="acceptOrder(order.id)" class="btn btn-primary ml-10">قبول</button>
                   <button (click)="refuseOrder(order.id)" class="btn btn-danger">رفض</button>
               </div>
-            </div>
+          
+            </mat-expansion-panel>
+          </mat-accordion>
         </div>
     </div>
+</div>
 </div>

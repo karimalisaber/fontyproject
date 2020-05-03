@@ -12,6 +12,8 @@ export class OrdersActionComponent implements OnInit {
   allOrders: OrderData[] = [];
   filteredOrders: OrderData[] = [];
   detection = 'accept_orders';
+  panelOpenState = false;
+  displayedColumns: string[] = ['name', 'phone', 'email', 'delete', 'edit'];
 
   constructor(private orders: OrdersService) {}
   
@@ -27,10 +29,8 @@ export class OrdersActionComponent implements OnInit {
     this.orders.updateStatus(id, status);
   }
 
-
   customFilter(value){
     this.filteredOrders = (value) ?
-    this.allOrders.filter( (p:any) => p.order_user.name.toLowerCase().includes(value.trim().toLowerCase())) : this.allOrders ; 
-   
+    this.allOrders.filter( (p:any) => p.order_user.name.toLowerCase().includes(value.trim().toLowerCase())) : this.allOrders;   
   }
 }
