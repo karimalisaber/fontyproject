@@ -24,22 +24,36 @@ li{
 }
 
 li {
-    font-size: 1.7rem;
     display: block;
     padding: 3px 0 3px;
-    transition: color 0.2s linear;
-    
-    p{
-        font-size: 1.7rem;
-    
-   a{
-    font-size: 1.7rem;  
-    font-weight: bold;
-    transition: all .5s ;
+    transition: 0.4s linear;
+
     &:hover{
-        color: $mainColor;
+        cursor: pointer;
+        transform: scale(1.2);
+
+        p{
+            color: $mainColor        
+        }
     }
-  }
+
+    p.contact{
+        span{
+            margin:0 7px;
+        }
+    }
+
+    p{
+        font-size: 1.9rem;
+
+   a{
+        font-size: 1.9rem;  
+        font-weight: bold;
+        transition: all .5s ;
+        &:hover{
+            color: $mainColor;
+        }
+    }
 }
 }
 .footer_title_left{

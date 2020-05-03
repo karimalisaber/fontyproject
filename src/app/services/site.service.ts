@@ -50,7 +50,6 @@ constructor(private http: HttpClient, private route: ActivatedRoute) {
   }
 
   addBranch(branch) {
-  
     return this.http.post(addBranchUrl, branch).pipe(take(1));
   }
 

@@ -11,7 +11,7 @@ import { OrderData } from 'src/app/interfaces/orders';
 export class OrdersActionComponent implements OnInit {
   allOrders: OrderData[] = [];
   filteredOrders: OrderData[] = [];
-  // allItems: ItemData[];
+  detection = 'accept_orders';
 
   constructor(private orders: OrdersService) {}
   
@@ -19,8 +19,6 @@ export class OrdersActionComponent implements OnInit {
     // get new orders
     this.orders.getnewOrders().subscribe(res=>{
       this.filteredOrders = this.allOrders = res;
-
-      // this.allItems.filter(res=> res.id = this.allOrders. )
     })
   }
 

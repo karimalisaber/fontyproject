@@ -25,7 +25,6 @@ import { AddUserComponent } from './admin/components/add-user/add-user.component
 import { ViewUserComponent } from './admin/components/view-user/view-user.component';
 import { AddProductComponent } from './components/dashboard/view-products/add-product/add-product.component';
 import { SearchComponent } from './components/dashboard/search/search.component';
-import { ChartComponent } from './admin/components/chart/chart.component';
 import { DashboardNavbarComponent } from './components/dashboard/dashboard-navbar/dashboard-navbar.component';
 import { DashboardCategoriesComponent } from './components/dashboard/dashboard-categories/dashboard-categories.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
@@ -56,16 +55,13 @@ import { ViewProductsCategoriesComponent } from './components/dashboard/view-pro
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ItemsService } from './services/items.service';
 import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
-import { AddOfferComponent } from './components/dashboard/settings/add-offer/add-offer.component';
 import { SettingService } from './services/setting.service';
-import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DialogComponent } from './components/assets/dialog/dialog.component';
 import { ErrorDialogComponent } from './components/assets/error-dialog/error-dialog.component';
 import { SuccessDialogComponent} from './components/assets/success-dialog/success-dialog.component';
 import { AssetsService } from './services/assets.service';
 import { EditDialogComponent } from './components/assets/edit-dialog/edit-dialog.component';
 import { SuccesPostDialogComponent } from './components/assets/succes-post-dialog/succes-post-dialog.component';
-import { MatMenuModule, MatButtonModule, MatTableModule, MatPaginatorModule, MatSortModule, MatFormFieldModule } from '@angular/material';
 import { ContactUsComponent } from './new/contact-us/contact-us.component';
 import { SliderComponent } from './new/slider/slider.component';
 import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
@@ -79,11 +75,16 @@ import { AddSliderComponent } from './components/dashboard/site-setting/add-slid
 import { EditServiceDialogComponent } from './components/assets/edit-service-dialog/edit-service-dialog.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { OrdersService } from './services/orders.service';
+import { MaterialModule, materialEntryComponents } from './material/material.module';
+import { SalesComponent } from './components/sales/sales.component'; 
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { ChartWrapperComponent } from './components/admin/chart-wrapper/chart-wrapper.component';
+import { HighchartsChartModule }     from 'highcharts-angular';
+import { MatFormFieldControl, MatAccordion } from '@angular/material';
 
-declare var require: any;
+// declare var require: any;
 
 @NgModule({
   declarations: [
@@ -108,7 +109,6 @@ declare var require: any;
     ViewUserComponent,
     AddProductComponent,
     SearchComponent,
-    ChartComponent,
     DashboardNavbarComponent,
     DashboardCategoriesComponent,
     SettingsComponent,
@@ -133,7 +133,6 @@ declare var require: any;
     ViewProductsCategoriesComponent,
     EditUserComponent,
     AppSliderComponent,
-    AddOfferComponent,
     DialogComponent,
     ErrorDialogComponent,
     SuccessDialogComponent,
@@ -149,16 +148,14 @@ declare var require: any;
     AddSliderComponent,
     EditServiceDialogComponent,
     AllProductsComponent,
+    SalesComponent,
+    ChartWrapperComponent
+
   ],
-entryComponents: [
-  SuccesPostDialogComponent,
-  DialogComponent,
-  SuccessDialogComponent,
-  ErrorDialogComponent,
-  EditDialogComponent,
-  ProductViewDialogComponent,
-  EditServiceDialogComponent
-],
+
+  entryComponents: [
+    materialEntryComponents
+  ],
 
 imports: [
   BrowserModule,
@@ -166,15 +163,10 @@ imports: [
   AppRoutingModule,
   FormsModule,
   HttpClientModule,
-  MatDialogModule,
-  MatMenuModule,
-  MatButtonModule,
-  ChartsModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatSortModule,
-  MatFormFieldModule,
-  
+  // ChartModule,
+  HighchartsChartModule,
+  // ChartModule.forRoot(require('highcharts')),
+  MaterialModule,
   // NgbModule,
   // CustomFormsModule,
   // NgxTypedJsModule,
@@ -194,4 +186,6 @@ providers: [
 
 bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
+
+// platformBrowserDynamic().bootstrapModule(AppModule);

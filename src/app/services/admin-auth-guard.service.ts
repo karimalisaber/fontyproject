@@ -11,7 +11,7 @@ export class AdminAuthGuardService implements CanActivate {
   constructor(private router: Router, private auth: AuthService) { }
 
   canActivate(){
-    if (this.auth.currentUser && this.auth.currentUser.sub === 1) return true; // make it 0 not one
+    if (this.auth.isAdmin) return true; // make it 0 not one
     
     this.router.navigate['/not-found'];
     return false ;

@@ -17,6 +17,7 @@ app-rightmenu{
   width: $sideBarWidth;
   height: 100vh;
   background-color: blue($color: #000000);
+  overflow-y: auto;
 }
 
 // navbar

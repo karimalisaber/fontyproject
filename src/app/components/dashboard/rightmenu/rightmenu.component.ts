@@ -14,8 +14,8 @@ export class RightmenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.auth.currentUser)
-    this.admin = (this.auth.currentUser.sub === 0)? true : false;
+    // if (this.auth.currentUser)
+    // this.admin = (this.auth.currentUser.sub === 0)? true : false;
   }
 
 }

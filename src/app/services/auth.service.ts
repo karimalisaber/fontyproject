@@ -15,17 +15,11 @@ export class AuthService {
         let result = res;
         if(result && result.data.token) {
           localStorage.setItem('token', result.data.token);
+          localStorage.setItem('role', result.data.role);
           return true;
         }
         return false
       }));
-  }
-
-  get currentUser(){
-    let token = localStorage.getItem('token');
-    if(!token) return null;
-
-    return new JwtHelperService().decodeToken(token);
   }
 
   isLogin(){
@@ -42,7 +36,15 @@ export class AuthService {
     const decodedToken = helper.decodeToken(token);
 
     return !isExpired; // true if not expired
+  }
 
+  
+  get isAdmin(){
+    let role = localStorage.getItem('role');
+    if (role)
+      return (role === '0') ? true: false;
+    
+    return null;  
   }
 
 }

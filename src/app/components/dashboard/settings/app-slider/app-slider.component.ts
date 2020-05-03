@@ -13,7 +13,7 @@ import { AssetsService } from 'src/app/services/assets.service';
   styleUrls: ['./app-slider.component.scss']
 })
 export class AppSliderComponent implements OnInit , OnDestroy {
-  imgUrl = 'assets/images/default-slider.png';
+  imgUrl = 'assets/images/phone_upload.jpg';
 
   slider: FormData = new FormData();
   sliders;

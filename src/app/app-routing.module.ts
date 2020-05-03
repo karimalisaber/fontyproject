@@ -7,7 +7,6 @@ import { AddUserComponent } from './admin/components/add-user/add-user.component
 import { ViewUserComponent } from './admin/components/view-user/view-user.component';
 import { AddProductComponent } from './components/dashboard/view-products/add-product/add-product.component';
 import { DashboardCategoriesComponent } from './components/dashboard/dashboard-categories/dashboard-categories.component';
-import { ChartComponent } from './admin/components/chart/chart.component';
 import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
 import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
 import { RecievedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/recieved-orders/recieved-orders.component';
@@ -37,11 +36,12 @@ import { AddSliderComponent } from './components/dashboard/site-setting/add-slid
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { AllProductsComponent } from './components/all-products/all-products.component';
+import { SalesComponent } from './components/sales/sales.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
-    { path: 'dashboard', component: DashboardComponent ,  children: [
+    { path: 'dashboard', component: DashboardComponent, children: [
       { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'}, // admin
       // start control panel
       { path: 'control-panel', component: ControlPanelComponent },
@@ -76,7 +76,7 @@ const routes: Routes = [
         { path: 'site-settings/edit-contacts/:lang', component: EditContactComponent },
         { path: 'site-settings/edit-slider/:lang/add-slider', component: AddSliderComponent },
         
-      { path: 'chart', component: ChartComponent },
+      { path: 'sales', component: SalesComponent },
       { path: 'view', component: ViewUserComponent },
       { path: 'settings', component: SettingsComponent },
         { path: 'settings/app-slider', component: AppSliderComponent },
@@ -86,17 +86,19 @@ const routes: Routes = [
 
         { path: 'feedback', component: FeedbackComponent },
     
-        { path: 'orders-action', component: OrdersActionComponent},
+        { path: 'orders/:action', component: OrdersActionComponent},
 
       { path: 'addproduct', component: EditProductsComponent },
+
       // { path: 'view-user', component: ViewUserComponent },
-      { path: '**', component: NotFoundComponent }
+      
+      { path: '**', redirectTo: '/dashboard/control-panel', pathMatch: 'full' }
     ]
     },
     { path: 'all-products', component: AllProductsComponent },
 
     { path: '', component: WebsiteComponent, children: [    
-        { path: '**', component: NotFoundComponent }
+        { path: '**', redirectTo: '/', pathMatch: 'full' }
       ]
     }
 ];

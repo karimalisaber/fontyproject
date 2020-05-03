@@ -39,17 +39,11 @@ export class EditServiceDialogComponent implements OnInit {
   }
 
   updateService(service) {
-  
-    if (this.imgChanged) {
-      this.item.append("img", this.imageFile, this.imageFile.name);
-      var item = { title: service.title, des: service.title, update_img: this.item.get("img"), lang: this.serviceDetails.lang }
-    }
+    this.item.append("name", service.name);
+    this.item.append("lang", this.serviceDetails.lang);  
+    this.item.append("update_img", this.imageFile, this.imageFile.name );
 
-    else {
-      var item = { title: service.title, des: service.title, update_img: this.item.get("img"), lang: this.serviceDetails.lang }
-    }
-    
-    this.site.updateService(this.serviceDetails.id, item)
+    this.site.updateService(this.serviceDetails.id, this.item)
       .subscribe(
         () => this.dialog.open(SuccesPostDialogComponent),
         () => this.dialog.open(ErrorDialogComponent)

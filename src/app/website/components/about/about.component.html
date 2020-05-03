@@ -16,7 +16,7 @@
             <p *ngIf="!less" class="desc-text" [ngClass]="{'text-right' : lang ==='1'}">
               {{about.body}}
 
-              <button *ngIf="lang === '1'" (click) ="less = !less" class="btn btn-primary">قراءة أقل</button>
+              <button  *ngIf="lang === '1'" (click) ="less = !less" class="btn btn-primary">قراءة أقل</button>
               <button *ngIf="lang === '2'" (click) ="less = !less" class="btn btn-primary">Read Less</button>
             </p>
 

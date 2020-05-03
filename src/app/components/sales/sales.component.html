@@ -1,0 +1,25 @@
+<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            مبيعات العام
+        </mat-panel-title>
+        <mat-panel-description class="text-center">
+          {{currentYear}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+        
+        <div *ngFor="let month of currentYearMonths" class="row months text-center no-gutters">
+            <div  class=" month btn-primary col"> {{month}}</div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<div class="month-chart mt-40">
+  <app-chart-wrapper></app-chart-wrapper>
+</div>
+
+
+<div class="week-chart mt-40">
+  <app-chart-wrapper></app-chart-wrapper>
+</div>

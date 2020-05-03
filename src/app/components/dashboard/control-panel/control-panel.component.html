@@ -1,5 +1,4 @@
 
-
 <div *ngIf="ordersDetails$ | async as ordersDetails" class="nav-wrapper row">
   <div class="col text-center  nav-item">
     <a class="d-block" routerLink="/dashboard/control-panel/received-orders">
@@ -39,11 +38,11 @@
 
 <div class="row chart-wrapper">
   <div class="col chart">
-    <chart></chart>
+    <app-chart-wrapper></app-chart-wrapper>
   </div>
 
   <div class="col chart">
-    <chart></chart>
+    <app-chart-wrapper></app-chart-wrapper>
   </div>
 </div>
 
@@ -51,8 +50,6 @@
   <div class="col">
     <control-panel-icon [type] = "'آخر الطلبات'"></control-panel-icon>
   </div>
-
-
 
   <div class="col item">
     <control-panel-icon [type] = "'آخر التسجيلات'" ></control-panel-icon>
