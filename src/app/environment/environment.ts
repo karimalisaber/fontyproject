@@ -29,9 +29,9 @@ export const deleteAppSliderUrl =  'http://fonty.ieeeshasb.org/api/web/delete_sl
 // dashboard
 // all orders
 export const getOrdersUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_orders';
+export const getInProgressOrdersUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_do_orders';
 export const getHomeOrdersDataUrl =  'http://fonty.ieeeshasb.org/api/dashboard/home_order_data';
 export const updateOrderStatusUrl =  'http://fonty.ieeeshasb.org/api/dashboard/update_order_status/';
-
 
 //branches
 export const getBranchesUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_branches';

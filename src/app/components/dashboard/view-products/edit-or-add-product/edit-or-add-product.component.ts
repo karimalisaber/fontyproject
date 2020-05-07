@@ -6,9 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ItemsService } from 'src/app/services/items.service';
 import { Product } from 'src/app/interfaces/products';
 import { updateItem } from 'src/app/interfaces/items';
-import { MatDialog } from '@angular/material';
-import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
-import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'edit-or-add-product',
@@ -48,8 +46,9 @@ Arabic(){
 }
 constructor(private cat: CategoriesService,
   private route: ActivatedRoute,
+  private snackBar: MatSnackBar,
   private items: ItemsService,
-  private dialog: MatDialog) {}
+  ) {}
 
   ngOnInit() {
     this.categories$ = this.cat.getCategories();
@@ -89,9 +88,11 @@ constructor(private cat: CategoriesService,
           res=> {
             this.imgUrl = 'assets/images/upload-image.png';
              // reset the form here
-             this.dialog.open(SuccesPostDialogComponent)}, 
-           error=> this.dialog.open(ErrorDialogComponent));
-      }
+             this.snackBar.open('تم تعديل المنتج بنجاح ', `` , {duration: 1500})
+            },
+          error=> 
+            this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
+     }
 
     else{
       this.items.addProduct(this.item).
@@ -99,8 +100,9 @@ constructor(private cat: CategoriesService,
          res=> {
           this.imgUrl = 'assets/images/upload-image.png';
           // reset the form here
-          this.dialog.open(SuccesPostDialogComponent)}, 
-        error=> this.dialog.open(ErrorDialogComponent));
+          this.snackBar.open('تم اضافة المنتج بنجاح ', `` , {duration: 1500});
+        },
+        error=> this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
     }
 
     this.changeImage = false;

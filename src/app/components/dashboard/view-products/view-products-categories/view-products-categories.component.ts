@@ -4,8 +4,7 @@ import { ItemsService } from 'src/app/services/items.service';
 import { Subscription, Subject } from 'rxjs';
 import { ItemData } from 'src/app/interfaces/items';
 import { AssetsService } from 'src/app/services/assets.service';
-import { MatDialog, MatSort, MatTable, MatPaginator, MatTableDataSource } from '@angular/material';
-import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
+import { MatDialog, MatSort, MatTable, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-view-products-categories',
@@ -31,10 +30,11 @@ export class ViewProductsCategoriesComponent implements OnInit , OnDestroy {
   @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
 
   constructor(
+    private snackBar: MatSnackBar,
     private cat: CategoriesService, 
     private items: ItemsService,
     private assets: AssetsService,
-    private dialog: MatDialog) { }
+    ) { }
 
   ngOnInit() {
     this.paginator._intl.itemsPerPageLabel = 'عدد العناصر في كل صفحة';
@@ -61,8 +61,10 @@ export class ViewProductsCategoriesComponent implements OnInit , OnDestroy {
 
       this.filteredProducts.data = this.filteredProducts.data;
       
-      this.dialog.open(SuccessDialogComponent);      
-    });
+      this.snackBar.open('تم حذف المنتج بنجاح ', `` , {duration: 1500});
+      
+    },
+    error=> this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
  }
 
   filteredCategory(value, catName){

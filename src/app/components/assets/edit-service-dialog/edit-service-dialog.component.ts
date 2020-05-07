@@ -1,8 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { SiteService } from 'src/app/services/site.service';
-import { SuccesPostDialogComponent } from '../succes-post-dialog/succes-post-dialog.component';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-edit-service-dialog',
@@ -17,7 +15,10 @@ export class EditServiceDialogComponent implements OnInit {
 
   item: FormData = new FormData();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public serviceDetails: {id,lang}, private site: SiteService, private dialog: MatDialog) {
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public serviceDetails: {id,lang}, 
+    private site: SiteService, 
+    private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -40,13 +41,15 @@ export class EditServiceDialogComponent implements OnInit {
 
   updateService(service) {
     this.item.append("name", service.name);
-    this.item.append("lang", this.serviceDetails.lang);  
-    this.item.append("update_img", this.imageFile, this.imageFile.name );
+    this.item.append("lang", this.serviceDetails.lang);
+    
+    if (this.imageFile)
+      this.item.append("update_img", this.imageFile, this.imageFile.name );
 
     this.site.updateService(this.serviceDetails.id, this.item)
       .subscribe(
-        () => this.dialog.open(SuccesPostDialogComponent),
-        () => this.dialog.open(ErrorDialogComponent)
+         () =>  this.snackBar.open('تم تعديل الخدمة بنجاح', `` , {duration: 1500}),
+         () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
       );
   }
 

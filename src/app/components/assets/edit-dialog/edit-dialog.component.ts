@@ -1,8 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatSnackBar } from '@angular/material';
 import { SiteService } from 'src/app/services/site.service';
-import { SuccesPostDialogComponent } from '../succes-post-dialog/succes-post-dialog.component';
-import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-edit-dialog',
@@ -17,7 +15,7 @@ export class EditDialogComponent implements OnInit {
 
   item: FormData = new FormData();
 
-  constructor(@Inject(MAT_DIALOG_DATA) public sliderDetails: {id,lang}, private site: SiteService, private dialog: MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA) public sliderDetails: {id,lang}, private site: SiteService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -43,12 +41,15 @@ export class EditDialogComponent implements OnInit {
     this.item.append("title", slider.title);
      this.item.append("lang", this.sliderDetails.lang);
     this.item.append("des", "null");
-    this.item.append("update_img", this.imageFile, this.imageFile.name );
+
+    if(this.imageFile)
+      this.item.append("update_img", this.imageFile, this.imageFile.name );
     
     this.site.updateSlider(this.sliderDetails.id, this.item)
       .subscribe(
-        () => this.dialog.open(SuccesPostDialogComponent),
-        () => this.dialog.open(ErrorDialogComponent)
+        () =>  this.snackBar.open('تم تعديل السلايدر بنجاح', `` , {duration: 1500}),
+        () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
       );
+  
   }
 }

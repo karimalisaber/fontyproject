@@ -9,11 +9,6 @@ import { AddProductComponent } from './components/dashboard/view-products/add-pr
 import { DashboardCategoriesComponent } from './components/dashboard/dashboard-categories/dashboard-categories.component';
 import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
 import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
-import { RecievedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/recieved-orders/recieved-orders.component';
-import { AllOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/all-orders/all-orders.component';
-import { FinishedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/finished-orders/finished-orders.component';
-import { PreparingStageOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/preparing-stage-orders/preparing-stage-orders.component';
-import { CancelleOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/cancelle-orders/cancelle-orders.component';
 import { ManagementComponent } from './components/dashboard/management/management.component';
 import { UsersSettingsComponent } from './components/dashboard/management/users-settings/users-settings.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
@@ -37,6 +32,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { SalesComponent } from './components/sales/sales.component';
+import { RecieveOrderComponent } from './components/recieve-order/recieve-order.component';
+import { InProgressOrderComponent } from './components/in-progress-order/in-progress-order.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -45,11 +42,6 @@ const routes: Routes = [
       { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'}, // admin
       // start control panel
       { path: 'control-panel', component: ControlPanelComponent },
-        { path: 'control-panel/received-orders', component: RecievedOrdersComponent },
-        { path: 'control-panel/all-orders', component: AllOrdersComponent },
-        { path: 'control-panel/finished-orders', component: FinishedOrdersComponent },
-        { path: 'control-panel/preparing-stage-orders', component: PreparingStageOrdersComponent },
-        { path: 'control-panel/cancelled-orders', component: CancelleOrdersComponent },
         // end of controll panel 
 
         { path: 'add-admin', component: AddUserComponent },
@@ -86,7 +78,8 @@ const routes: Routes = [
 
         { path: 'feedback', component: FeedbackComponent },
     
-        { path: 'orders/:action', component: OrdersActionComponent},
+        { path: 'orders/recieve_orders', component: RecieveOrderComponent},
+        { path: 'orders/in_progress', component: InProgressOrderComponent},
 
       { path: 'addproduct', component: EditProductsComponent },
 

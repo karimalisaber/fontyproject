@@ -19,7 +19,7 @@ subscription: Subscription;
 
   ngOnInit() {
      this.subscription = this.item.getItems().subscribe(res=>{
-       let i = 6;
+       let i = 8;
        this.products = res.slice(0,i);
      });
   }

@@ -5,7 +5,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { ErrorDialogComponent } from '../../assets/error-dialog/error-dialog.component';
 import { AssetsService } from 'src/app/services/assets.service';
-import { SuccesPostDialogComponent } from '../../assets/succes-post-dialog/succes-post-dialog.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard-categories',
@@ -21,7 +21,8 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
   getCategoriesSubscription: Subscription;
 
   constructor(
-    private dialog: MatDialog, 
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
     private assets: AssetsService, 
     private cat: CategoriesService) {}
 
@@ -43,10 +44,10 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
     
     this.cat.deleteCategory(id).subscribe(
     data=> {
-          
+       this.snackBar.open('تم حذف القسم بنجاح', `` , {duration: 1500})
     }, error=> {
       this.categories.push(deletedItem[0]);
-      this.dialog.open(ErrorDialogComponent);
+      this.snackBar.open('حدثت مشكلة أثناء حذف القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     });
   }
 
@@ -70,8 +71,10 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
       data=> {
         let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
         this.categories.splice(itemIndex, 1, item);
-        this.dialog.open(SuccesPostDialogComponent);
-    },error => this.dialog.open(ErrorDialogComponent));
+        this.snackBar.open('تم تعديل اسم القسم ', `x` , {duration: 1500})
+
+    },error => this.snackBar.open('حدثت مشكلة أثناء تعديل القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
+    ;
   }
 
   addItem(name){

@@ -1,11 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatTable, MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatTable, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { UsersService } from 'src/app/services/users.service';
-import { HttpClient } from '@angular/common/http';
 import { DialogComponent } from '../../assets/dialog/dialog.component';
 import { take } from 'rxjs/operators';
-import { ErrorDialogComponent } from '../../assets/error-dialog/error-dialog.component';
-import { SuccessDialogComponent } from '../../assets/success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-management',
@@ -21,12 +18,15 @@ export class ManagementComponent implements OnInit {
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
   @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
 
-  constructor(private dialog: MatDialog, private user: UsersService, private http: HttpClient) { }
+  constructor(
+    private dialog: MatDialog, 
+    private user: UsersService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.paginator._intl.itemsPerPageLabel = 'عدد العناصر في كل صفحة';
 
-    this.user.getUsers().subscribe((res: any)=> {
+    this.user.getSalles().subscribe((res: any)=> {
       this.filteredUsers.data = this.users.data = res;
     });
 
@@ -47,13 +47,13 @@ export class ManagementComponent implements OnInit {
     var deletedItem = this.users.data.splice(itemIndex, 1);
     this.filteredUsers.data = this.users.data;
 
-    this.user.deleteUser(id).subscribe(
-    data=> {
-      this.dialog.open(SuccessDialogComponent);    
-    }, error=> {
+    this.user.deleteSaller(id).subscribe(
+    data=>  this.snackBar.open('تم حذف المستخدم بنجاح ', `` , {duration: 1500})
+
+    , error=> {
       this.users.data.splice(itemIndex, 0, deletedItem[0]);
 
-      this.dialog.open(ErrorDialogComponent);
+      error=> this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500});
     });
   }
   
@@ -63,5 +63,4 @@ export class ManagementComponent implements OnInit {
     
     this.table.renderRows();
   }
-
 }

@@ -27,7 +27,7 @@ export class UsersSettingsComponent implements OnInit {
   ngOnInit() {
     this.paginator._intl.itemsPerPageLabel = 'عدد العناصر في كل صفحة';
 
-    this.user.getUsers().subscribe((res: any)=> {
+    this.user.getSalles().subscribe((res: any)=> {
       this.filteredUsers.data = this.users.data = res;
     });
 
@@ -48,7 +48,7 @@ export class UsersSettingsComponent implements OnInit {
     var deletedItem = this.users.data.splice(itemIndex, 1);
     this.filteredUsers.data = this.users.data;
 
-    this.user.deleteUser(id).subscribe(
+    this.user.deleteSaller(id).subscribe(
     data=> {
       this.dialog.open(SuccessDialogComponent);    
     }, error=> {

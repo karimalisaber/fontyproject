@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
-import { MatDialog } from '@angular/material';
-import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
-import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,7 +12,7 @@ export class EditContactComponent implements OnInit {
  contacts$;
  lang: string = this.route.snapshot.paramMap.get('lang');
 
- constructor(private route: ActivatedRoute, private site: SiteService, private dialog: MatDialog) { }
+ constructor(private route: ActivatedRoute, private site: SiteService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.contacts$ = this.site.getContacts(this.lang);
@@ -24,7 +22,7 @@ export class EditContactComponent implements OnInit {
     form.lang = this.lang; 
    this.site.updateContacts(form)
    .subscribe(
-     res=> this.dialog.open(SuccesPostDialogComponent), 
-     error=> this.dialog.open(ErrorDialogComponent));
+     res=>  this.snackBar.open('تم تعديل معلومات التواصل', `` , {duration: 1500}), 
+     () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
   }
 }

@@ -7,7 +7,7 @@
     <div class="products">
       <div class="row">
         <!-- Start Products Item-->
-        <div *ngFor="let product of products" class="product-wrapper col-12 col-sm-6 col-md-4">
+        <div *ngFor="let product of products" class="product-wrapper col-12 col-sm-4 col-md-3">
           <div (click)="viewProduct(product.id)" class="products-item mb-30">
             <img [src]="'http://fonty.ieeeshasb.org/public/items/' + product.img">
             <div class="item-overlay">

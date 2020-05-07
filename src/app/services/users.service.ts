@@ -10,23 +10,30 @@ import { Sales, userData  } from '../interfaces/sales';
 export class UsersService {
 
   constructor(private http: HttpClient) { }
-  postUser(userForm){
+//users
+getUsers(){
+  return this.http.get(getUsersUrl).pipe(map((response: Sales) => response.data));
+}
+
+
+  // sallers 
+  postSaller(userForm){
      return this.http.post(postUsersUrl, userForm);
   }
 
-  getUsers(){
+  getSalles(){
     return this.http.get(getUsersUrl).pipe(map((response: Sales) => response.data));
   }
 
-  getuser(id){
+  getSpecificSaller(id){
     return this.http.get<userData>(getSpecificUserUrl+id);
   }
 
-  updateUser(userData, id){
+  updateSaller(userData, id){
    return this.http.put(updateUserUrl, userData);
   }
 
-  deleteUser(id){
+  deleteSaller(id){
     return this.http.delete(deleteUserUrl + id);
   }
 }

@@ -26,35 +26,33 @@ li{
 li {
     display: block;
     padding: 3px 0 3px;
-    transition: 0.4s linear;
 
-    &:hover{
-        cursor: pointer;
-        transform: scale(1.2);
 
-        p{
-            color: $mainColor        
-        }
-    }
-
-    p.contact{
+    p{
+        display: inline-block;
+        font-size: 1.9rem;    
+        transition: 0.3s linear;
         span{
             margin:0 7px;
+        }
+            
+        &:hover{
+            cursor: pointer;
+            transform: scale(1.2);
+            color: $mainColor;
+    
         }
     }
 
     p{
-        font-size: 1.9rem;
+        
 
-   a{
-        font-size: 1.9rem;  
-        font-weight: bold;
-        transition: all .5s ;
-        &:hover{
-            color: $mainColor;
+        a{   
+            font-size: 1.9rem;  
+            font-weight: bold;
+            transition: all .5s ;
         }
     }
-}
 }
 .footer_title_left{
     margin-bottom:70px;

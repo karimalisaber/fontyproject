@@ -65,17 +65,16 @@ a {
 .pb-40 {padding-bottom: 40px}
 .pb-30 {padding-bottom: 30px}
 
-.mb-10 {margin-bottom: 10px !important;}
-.mb-20 {margin-bottom: 20px !important;}
-.mb-30 {margin-bottom: 30px !important;}
-.mb-40 {margin-bottom: 40px !important;}
-.mb-50 {margin-bottom: 50px !important;}
-.mb-60 {margin-bottom: 60px !important;}
-.mb-70 {margin-bottom: 70px !important;}
-.mb-80 {margin-bottom: 80px !important;}
-.mb-90 {margin-bottom: 90px !important;}
-.mb-100 {margin-bottom: 100px !important;}
-
+.mb-10 {margin-bottom: 10px !important}
+.mb-20 {margin-bottom: 20px !important}
+.mb-30 {margin-bottom: 30px !important}
+.mb-40 {margin-bottom: 40px !important}
+.mb-50 {margin-bottom: 50px !important}
+.mb-60 {margin-bottom: 60px !important}
+.mb-70 {margin-bottom: 70px !important}
+.mb-80 {margin-bottom: 80px !important}
+.mb-90 {margin-bottom: 90px !important}
+.mb-100 {margin-bottom: 100px !important}
 
 .mt-10 {margin-top: 40px;}
 .mt-20 {margin-top: 10px;}
@@ -399,10 +398,10 @@ textarea:active , textarea:focus{
 }
 
 .title-section{
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   color: $secondColor;
-  font-weight: bold;
+  // font-weight: bold;
   margin-bottom: 40px;
 }
 
@@ -616,7 +615,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .products {
 
     .product-wrapper{
-        height: 320px;
+        height: 220px;
         overflow: hidden;
         margin-bottom: 15px;
 

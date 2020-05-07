@@ -15,16 +15,15 @@
       </div>
 
       <div class="form-group">
-        <label class="text-justify w-100">تعديل رقم الهاتف</label>
-        <input #phone="ngModel" required pattern="[0-9 ]{7,}"
+        <label class="text-justify w-100">تعديل بيانات الاتصال</label>
+        <textarea #phone="ngModel" required minlength="10"
           [ngClass]="{ 'is-invalid': phone.invalid, 'is-valid': !phone.invalid,'english-dir': lang === '2', 'text-left': lang ==='2'}" 
           [(ngModel)]="Contacts.phone"
-          class="form-control" type="number" name="phone" id="phone">
+          class="form-control" name="phone" id="phone"> </textarea>
 
         <div *ngIf="!phone.valid && phone.touched" class="">
-          <div class="alert alert-danger text-right" *ngIf="phone.errors.required"> رقم الهاتف مطلوب </div>
-          <div class="alert alert-danger text-right" *ngIf="phone.errors.pattern"> من فضلك أدخل الهاتف بطريقة صحيحة
-          </div>
+          <div class="alert alert-danger text-right" *ngIf="phone.errors.required"> بيانات الاتصال مطلوبة مطلوب </div>
+          <div class="alert alert-danger text-right" *ngIf="phone.errors.minlength"> أقل عدد مسموح به هو عشرة أحرف       </div>
         </div>
       </div>
 

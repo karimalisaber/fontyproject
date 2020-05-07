@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
 import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material';
-import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
-import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { AssetsService } from 'src/app/services/assets.service';
 import { EditDialogComponent } from 'src/app/components/assets/edit-dialog/edit-dialog.component';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +19,12 @@ export class EditSliderComponent implements OnInit {
   englishSliders;
   subscription: Subscription;
   
-  constructor(private route: ActivatedRoute, private site: SiteService, private dialog: MatDialog,private assets: AssetsService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private site: SiteService, 
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private assets: AssetsService) { }
 
   ngOnInit() {
     this.subscription = this.site.getSliders(this.lang).subscribe(res => {
@@ -39,8 +42,9 @@ export class EditSliderComponent implements OnInit {
        res=> {
          let itemIndex = this.sliders.findIndex( item =>{ return item.id === id });
          this.sliders.splice(itemIndex, 1);
-         this.dialog.open(SuccessDialogComponent);
-    }, error=> this.dialog.open(ErrorDialogComponent));
+         () =>  this.snackBar.open('تم حذف السلايدر ', `` , {duration: 1500})
+        },
+         () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
   }
 
   enableEdit(id){

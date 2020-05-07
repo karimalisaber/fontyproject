@@ -24,7 +24,7 @@ userFormData: userFormData ={name:'', email: '', phone: null, password: ''};
 
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));
-    this.user.getuser(this.id).subscribe(response=>{
+    this.user.getSpecificSaller(this.id).subscribe(response=>{
       this.userData = response;
       this.userFormData = {
         name: response.data.name,
@@ -37,7 +37,7 @@ userFormData: userFormData ={name:'', email: '', phone: null, password: ''};
 
   submit(userData){
     userData.id = this.id; 
-    this.user.updateUser(userData, this.id).subscribe(
+    this.user.updateSaller(userData, this.id).subscribe(
       res=> this.dialog.open(SuccesPostDialogComponent),
       error=> this.dialog.open(ErrorDialogComponent)
     );

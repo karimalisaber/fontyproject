@@ -1,10 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SettingService } from 'src/app/services/setting.service';
 import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material';
-import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
-import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
-import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { AssetsService } from 'src/app/services/assets.service';
 
 @Component({
@@ -21,7 +18,7 @@ export class AppSliderComponent implements OnInit , OnDestroy {
 
   imageFile: any = null; // for uploaded image
 
-  constructor(private setting:SettingService, private dialog: MatDialog, private assets: AssetsService) { }
+  constructor(private setting:SettingService, private snackBar: MatSnackBar, private assets: AssetsService) { }
 
   ngOnInit() {
     this.subscription = this.setting.getSliders().subscribe(res => this.sliders = res);
@@ -33,10 +30,10 @@ export class AppSliderComponent implements OnInit , OnDestroy {
       .subscribe((res: {data}) => {
          this.sliders.push(res.data); // push to the view
          this.resetInputs(); // reset inputs
-      
-         this.dialog.open(SuccesPostDialogComponent);
+         this.snackBar.open('تم اضافة سلايدر جديد', `` , {duration: 1500})
 
-    }, error=> this.dialog.open(ErrorDialogComponent));
+    }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+    );
   }
 
   private resetInputs(){
@@ -54,8 +51,9 @@ export class AppSliderComponent implements OnInit , OnDestroy {
        res=> {
          let itemIndex = this.sliders.findIndex( item =>{ return item.id === id });
          this.sliders.splice(itemIndex, 1);
-         this.dialog.open(SuccessDialogComponent);
-    }, error=> this.dialog.open(ErrorDialogComponent));
+         this.snackBar.open('تم حذف السلايدر بنجاح', `` , {duration: 1500});
+    }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+    );
   }
 
   imageUpload(event){

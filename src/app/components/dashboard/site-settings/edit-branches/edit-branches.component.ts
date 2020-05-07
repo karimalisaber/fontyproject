@@ -1,12 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
-import { MatDialog } from '@angular/material';
-import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
 import { Subscription } from 'rxjs';
-import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
 import { AssetsService } from 'src/app/services/assets.service';
-import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit-branches',
@@ -20,13 +17,17 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   update: boolean = false;
 
-  constructor(private route: ActivatedRoute, private site: SiteService, private dialog: MatDialog, private assets: AssetsService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private site: SiteService, 
+    private assets: AssetsService, 
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
    this.subscription = this.site.getBranches(this.lang)
     .subscribe(
       res=> this.branches =res,
-      error=> this.dialog.open(ErrorDialogComponent));
+      () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
   }
 
   addBranch(branch){
@@ -34,9 +35,10 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
     branch.lang = this.lang;
     this.site.addBranch(branch)
     .subscribe(
-      res=> this.dialog.open(SuccesPostDialogComponent),
+      res=> () =>  this.snackBar.open('تمت إضافة فرع بنجاح', `` , {duration: 1500})
+      ,
       err=> {
-        this.dialog.open(ErrorDialogComponent)
+        () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
         this.branches.pop();
       });
   }
@@ -52,11 +54,10 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
     
     this.site.deleteBranch(id).subscribe(
     data=> {
-      this.dialog.open(SuccessDialogComponent);
+      () =>  this.snackBar.open('تم حذف الفرع بنجاح', `` , {duration: 1500});
     }, error=> {
       this.branches.push(deletedItem[0]);
-
-      this.dialog.open(ErrorDialogComponent);
+      () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     });
   }
   
@@ -81,8 +82,9 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
       data=> {
         let itemIndex = this.branches.findIndex( (item: any) =>{ return item.id === id });
         this.branches.splice(itemIndex, 1, item);
-        this.dialog.open(SuccesPostDialogComponent);
-    },error => this.dialog.open(ErrorDialogComponent) );
+        () =>  this.snackBar.open('تم تعديل الفرع بنجاح', `` , {duration: 1500});
+    }, error => () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+    );
   }
 
   ngOnDestroy(){

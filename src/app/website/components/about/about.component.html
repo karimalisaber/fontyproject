@@ -1,9 +1,12 @@
   <div class="text-content container section-wrapper">
-    <div *ngIf="about" class="row">
+    <h2 *ngIf="lang ==='1'" class="title-section text-center">من نحن</h2>
+    <h2 *ngIf="lang ==='2'" class="title-section text-center">About Us</h2>
+
+    <div *ngIf="about" class="row">     
         <div class="col-md-7">
-            <h1 *ngIf="lang === '1'" class="mb-30 about-title text-center"> من نحن </h1>
-            <h1 *ngIf="lang === '2'" class="mb-30 about-title text-center"> About Us </h1>
-            <i class="fas fa-cutlery mb-sm fa-2x d-block"></i>
+            <!-- <h1 *ngIf="lang === '1'" class="mb-30 about-title text-center"> من نحن </h1> -->
+            <!-- <h1 *ngIf="lang === '2'" class="mb-30 about-title text-center"> About Us </h1> -->
+            <!-- <i class="fas fa-cutlery mb-sm fa-2x d-block"></i> -->
             
             <p *ngIf="less" class="desc-text" [ngClass]="{'text-right' : lang ==='1'}">
               {{aboutLess}}
@@ -23,7 +26,7 @@
         </div>
         <div class="col-md-5">
           <div class="img-wrapper">
-            <img class="img-fluid" src="assets/images/about-img.jpeg" alt="" />
+            <img class="img-fluid" [src]="'http://fonty.ieeeshasb.org/public/wslider/' + about.img" alt="about" />
           </div>
         </div>
     </div>

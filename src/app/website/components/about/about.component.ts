@@ -13,7 +13,7 @@ export class AboutComponent implements OnInit {
 
   less:boolean = true;
 
-lang: string = this.site.getLangNumber(); 
+  lang: string = this.site.getLangNumber(); 
 
   constructor(private site: SiteService) { }
 

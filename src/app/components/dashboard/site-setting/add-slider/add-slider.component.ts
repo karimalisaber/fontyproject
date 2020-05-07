@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
-import { MatDialog } from '@angular/material';
-import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
-import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-add-slider',
@@ -17,15 +15,15 @@ export class AddSliderComponent implements OnInit {
   imageFile: any = null; // for uploaded image
   item: FormData = new FormData();
   
-  constructor(private route: ActivatedRoute, private site: SiteService, private dialog: MatDialog) { }
+  constructor(private route: ActivatedRoute, private site: SiteService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
   }
 
   
   addSlider(slider){
-
-    this.item.append("title", slider.title);
+    // this.item.append("title", slider.title);
+    this.item.append("title", "null");
     this.item.append("lang", this.lang);
     this.item.append("des", "null");
     this.item.append("img", this.imageFile, this.imageFile.name );
@@ -34,9 +32,9 @@ export class AddSliderComponent implements OnInit {
     .subscribe(
          res=> { 
            this.resetInputs(); // reset inputs
-           this.dialog.open(SuccesPostDialogComponent);
+            this.snackBar.open('تمت إضافة السلايدر بنجاح ', `` , {duration: 1500});
           },
-         error=> this.dialog.open(ErrorDialogComponent));
+          error=> this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
   }
   
   
@@ -54,5 +52,4 @@ export class AddSliderComponent implements OnInit {
      render.onload = (event: any) =>  this.imgUrl = event.target.result ;
   }
 }
-
 }

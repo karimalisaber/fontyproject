@@ -31,13 +31,6 @@ import { SettingsComponent } from './components/dashboard/settings/settings.comp
 import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
 import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
 import { ControlPanelIconComponent } from './components/dashboard/control-panel/control-panel-icon/control-panel-icon.component';
-import { RecievedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/recieved-orders/recieved-orders.component';
-import { AllOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/all-orders/all-orders.component';
-import { OrdersComponent } from './components/dashboard/control-panel/contro-panel-route/orders/orders.component';
-import { CancelleOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/cancelle-orders/cancelle-orders.component';
-import { FinishedOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/finished-orders/finished-orders.component';
-import { PreparingStageOrdersComponent } from './components/dashboard/control-panel/contro-panel-route/preparing-stage-orders/preparing-stage-orders.component';
-import { UsersSettingsComponent } from './components/dashboard/management/users-settings/users-settings.component';
 import { ManagementComponent } from './components/dashboard/management/management.component';
 import { EditOrAddProductComponent } from './components/dashboard/view-products/edit-or-add-product/edit-or-add-product.component';
 import { EditProductComponent } from './components/dashboard/view-products/edit-product/edit-product.component';
@@ -68,6 +61,7 @@ import { FeedbackComponent } from './components/dashboard/feedback/feedback.comp
 import { SalerDashboardComponent } from './components/saler-dashboard/saler-dashboard.component';
 import { SallerDashboardComponent } from './components/saller-dashboard/saller-dashboard.component';
 import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
+import { NgAlertModule } from '@theo4u/ng-alert';
 
 // import {NgxTypedJsModule} from 'ngx-typed-js';
 import { ProductViewDialogComponent } from './components/assets/product-view-dialog/product-view-dialog.component';
@@ -79,10 +73,11 @@ import { AllProductsComponent } from './components/all-products/all-products.com
 import { OrdersService } from './services/orders.service';
 import { MaterialModule, materialEntryComponents } from './material/material.module';
 import { SalesComponent } from './components/sales/sales.component'; 
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { ChartWrapperComponent } from './components/admin/chart-wrapper/chart-wrapper.component';
 import { HighchartsChartModule }     from 'highcharts-angular';
-import { MatFormFieldControl, MatAccordion } from '@angular/material';
+import { RecieveOrderComponent } from './components/recieve-order/recieve-order.component';
+import { InProgressOrderComponent } from './components/in-progress-order/in-progress-order.component';
+import { UsersSettingsComponent } from './components/dashboard/management/users-settings/users-settings.component';
 
 // declare var require: any;
 
@@ -115,13 +110,6 @@ import { MatFormFieldControl, MatAccordion } from '@angular/material';
     ControlPanelComponent,
     SiteSettingsComponent,
     ControlPanelIconComponent,
-    RecievedOrdersComponent,
-    AllOrdersComponent,
-    OrdersComponent,
-    CancelleOrdersComponent,
-    FinishedOrdersComponent,
-    PreparingStageOrdersComponent,
-    UsersSettingsComponent,
     ManagementComponent,
     EditOrAddProductComponent,
     EditProductComponent,
@@ -130,6 +118,7 @@ import { MatFormFieldControl, MatAccordion } from '@angular/material';
     UserPointsComponent,
     OffersComponent,
     EditOffersComponent,
+    UsersSettingsComponent,
     ViewProductsCategoriesComponent,
     EditUserComponent,
     AppSliderComponent,
@@ -149,7 +138,9 @@ import { MatFormFieldControl, MatAccordion } from '@angular/material';
     EditServiceDialogComponent,
     AllProductsComponent,
     SalesComponent,
-    ChartWrapperComponent
+    ChartWrapperComponent,
+    RecieveOrderComponent,
+    InProgressOrderComponent
 
   ],
 
@@ -167,6 +158,7 @@ imports: [
   HighchartsChartModule,
   // ChartModule.forRoot(require('highcharts')),
   MaterialModule,
+  NgAlertModule,
   // NgbModule,
   // CustomFormsModule,
   // NgxTypedJsModule,

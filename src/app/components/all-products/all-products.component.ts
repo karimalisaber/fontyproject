@@ -14,7 +14,7 @@ export class AllProductsComponent implements OnInit {
   products;
   lang: string = this.site.getLangNumber();
   subscription: Subscription;
-  i: number = 6;
+  i: number = 8;
   allProducts;
   lenght: number;
 
@@ -40,7 +40,7 @@ export class AllProductsComponent implements OnInit {
     }
 
     loadMore(){
-      this.i  +=  6; 
+      this.i  +=  8; 
       this.products = this.allProducts.slice(0,this.i) 
     }
 

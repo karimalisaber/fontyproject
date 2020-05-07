@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialog } from '@angular/material';
-import { SuccesPostDialogComponent } from 'src/app/components/assets/succes-post-dialog/succes-post-dialog.component';
-import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-about-section',
@@ -16,10 +14,10 @@ export class AboutSectionComponent implements OnInit {
   about;
   imageFile: any = null; // for uploaded image
   updateStatus: boolean = false;
-  changeImage: boolean = false;
+  
   item: FormData = new FormData();
 
-  constructor(private dialog: MatDialog, private route: ActivatedRoute, private site: SiteService) { }
+  constructor(private snackBar: MatSnackBar, private route: ActivatedRoute, private site: SiteService) { }
   
   ngOnInit() {
     this.site.getAbout(this.lang).subscribe(res=>{
@@ -30,9 +28,8 @@ export class AboutSectionComponent implements OnInit {
 
   imageUpload(event){
     if(event.target.files){
-      this.changeImage = true;
-      this.imageFile = event.target.files[0];
-    
+      
+     this.imageFile = event.target.files[0];
      var render = new FileReader();    
      render.readAsDataURL(this.imageFile);
      render.onload = (event: any) =>  this.imgUrl = event.target.result;
@@ -42,12 +39,13 @@ export class AboutSectionComponent implements OnInit {
   editAbout(form){
     this.item.append('body', form.brief);
     this.item.append('lang', this.lang);
-    if (this.imageFile) this.item.append("img", this.imageFile, this.imageFile.name);
+   
+    if(this.imageFile)
+     this.item.append("img", this.imageFile, this.imageFile.name);
     
     this.site.updateAbout(this.item)
     .subscribe(
-      ()=> this.dialog.open(SuccesPostDialogComponent),
-      () => this.dialog.open(ErrorDialogComponent) );
+      () =>  this.snackBar.open('تم تعديل البيانات بنجاح', `` , {duration: 1500}),
+      () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
   }
-
 }
