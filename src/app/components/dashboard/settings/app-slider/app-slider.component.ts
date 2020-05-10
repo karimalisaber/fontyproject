@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SettingService } from 'src/app/services/setting.service';
 import { Subscription } from 'rxjs';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { AssetsService } from 'src/app/services/assets.service';
 
 @Component({
@@ -46,14 +46,18 @@ export class AppSliderComponent implements OnInit , OnDestroy {
   }
 
   private deleteSlider(id){
-     this.setting.deleteSlider(id)
+    let itemIndex = this.sliders.findIndex( item =>{ return item.id === id });
+    let item = this.sliders.filter(res=> res.id = id)[0];
+    this.sliders.splice(itemIndex, 1);
+
+    this.setting.deleteSlider(id)
      .subscribe(
-       res=> {
-         let itemIndex = this.sliders.findIndex( item =>{ return item.id === id });
-         this.sliders.splice(itemIndex, 1);
-         this.snackBar.open('تم حذف السلايدر بنجاح', `` , {duration: 1500});
-    }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
-    );
+       res=> this.snackBar.open('تم حذف السلايدر بنجاح', `` , {duration: 1500}),
+        () =>  {
+          this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500});
+          this.sliders.splice(itemIndex, 0, item);
+        }
+      );
   }
 
   imageUpload(event){

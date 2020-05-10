@@ -4,9 +4,9 @@
 
   <div class="container">
     <div class="row">
-      <div *ngFor="let branch of branches$ | async" class="col-sm-6 col-md-3">
+      <div *ngFor="let branch of branches$ | async" class="col-sm-6 col-md-4">
         <div class="branche-item mb-30 item-color-main">
-          <p>{{branch.name}}</p>
+          <p class="text-center">{{branch.name}}</p>
         </div>
       </div>
     </div>

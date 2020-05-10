@@ -20,6 +20,7 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser(userForm){
+    this.blurAllInputs();
     this.user.postSaller(userForm).pipe(take(1))
     .subscribe(
       res=>  this.snackBar.open('تم اضافة أدمن بنجاح ', `` , {duration: 1500}),
@@ -27,5 +28,10 @@ export class AddUserComponent implements OnInit {
     
     // userForm.reset(); //pessmitic update 
     document.querySelector('input').blur();
+  }
+
+  private blurAllInputs(){
+    let elements = document.querySelectorAll("input");
+    elements.forEach((item:any)=> item.blur());
   }
 }

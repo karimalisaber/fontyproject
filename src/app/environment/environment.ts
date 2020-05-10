@@ -7,12 +7,17 @@ export const deleteCategoryUrl = 'http://fonty.ieeeshasb.org/api/web/delete_cate
 export const updateCategoryUrl = 'http://fonty.ieeeshasb.org/api/web/edit_category';
 export const addCategoryUrl = 'http://fonty.ieeeshasb.org/api/web/add_category';
 
+// Sales
+export const postSalesUrl = 'http://fonty.ieeeshasb.org/api/auth/register_sales';
+export const getSalesUrl = 'http://fonty.ieeeshasb.org/api/auth/sales';
+export const getSpecificSalerUrl = 'http://fonty.ieeeshasb.org/api/auth/user_data/';
+export const deleteSallerUrl = 'http://fonty.ieeeshasb.org/api/auth/delete_sales/';
+export const updateSallerUrl = 'http://fonty.ieeeshasb.org/api/auth/update';
+
+
 // users
-export const postUsersUrl = 'http://fonty.ieeeshasb.org/api/auth/register_sales';
-export const getUsersUrl = 'http://fonty.ieeeshasb.org/api/auth/sales';
-export const getSpecificUserUrl = 'http://fonty.ieeeshasb.org/api/auth/user_data/';
+export const getUsersUrl = 'http://fonty.ieeeshasb.org/api/dashboard/all_users';
 export const deleteUserUrl = 'http://fonty.ieeeshasb.org/api/auth/delete_sales/';
-export const updateUserUrl = 'http://fonty.ieeeshasb.org/api/auth/update';
 
 //items
 export const getItemsUrl = 'http://fonty.ieeeshasb.org/api/web/items';

@@ -14,25 +14,28 @@ export class RealTimeOrdersService {
     pusher: {
       key: 'f0c875ab3b9bcdb81b06',
       cluster: 'eu',
+      // useTLS: true
     }
   }
 
   channel: any;
   pusher: any;
   
-  constructor(private http: HttpClient) {
+  constructor() {
+    
+  }
+
+  play(){
     this.pusher = new Pusher(this.environment.pusher.key, {
-      cluster: this.environment.pusher.cluster,
-      // encrypted: true
- 
+    cluster: this.environment.pusher.cluster,
+    // encrypted: true
+    // forceTLS: true
     });
+
     // Pusher.logToConsole = true;
 
     this.channel = this.pusher.subscribe('new_order');
 
-    // this.channel.bind('new_order', data => console.log(data));
-  }
-
-  // any time it is needed we simply call this method
-
+    this.channel.bind('new_order', data => console.log(data));
+   }
 }

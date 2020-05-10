@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AssetsService } from 'src/app/services/assets.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { ElementSchemaRegistry } from '@angular/compiler';
 
 @Component({
   selector: 'app-edit-branches',
@@ -22,6 +23,7 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
     private site: SiteService, 
     private assets: AssetsService, 
     private snackBar: MatSnackBar) { }
+  
 
   ngOnInit() {
    this.subscription = this.site.getBranches(this.lang)
@@ -31,14 +33,17 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
   }
 
   addBranch(branch){
+    let element = (<HTMLInputElement>document.querySelector("input#addBranch"));
+    element.blur();
+    
     this.branches.push(branch);
     branch.lang = this.lang;
     this.site.addBranch(branch)
     .subscribe(
-      res=> () =>  this.snackBar.open('تمت إضافة فرع بنجاح', `` , {duration: 1500})
+      res=> this.snackBar.open('تمت إضافة فرع بنجاح', `` , {duration: 1500})
       ,
       err=> {
-        () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+        this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
         this.branches.pop();
       });
   }
@@ -53,36 +58,38 @@ export class EditBranchesComponent implements OnInit, OnDestroy {
     var deletedItem = this.branches.splice(itemIndex, 1);
     
     this.site.deleteBranch(id).subscribe(
-    data=> {
-      () =>  this.snackBar.open('تم حذف الفرع بنجاح', `` , {duration: 1500});
-    }, error=> {
+    data=> this.snackBar.open('تم حذف الفرع بنجاح', `` , {duration: 1500})
+    , error=> {
       this.branches.push(deletedItem[0]);
-      () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+      this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     });
   }
   
   private getUpdatedItemId(id){
-    let element = document.getElementById('item-' + id);
-    element.classList.toggle('update');
-    this.update = !this.update;
+    let element  = <HTMLInputElement>document.getElementById('item-' + id);
+    element.disabled = false;
     return element ;
   }
 
   enableUpdateItem(id){
+    this.disableOtherInputs();
     let element =  this.getUpdatedItemId(id);
-    if (this.update) setTimeout( () =>  element.focus() ,100);
+    setTimeout( () =>  element.focus() ,100);
   }
 
+  private disableOtherInputs(){
+    let elements = document.querySelectorAll(".branches-view input");
+    elements.forEach((item:any)=> item.disabled = true);
+  }
+  
   updateItem(name , id){
-   let element = this.getUpdatedItemId(id); // toggle class update 
-    
     let item = {name, lang: this.lang};
 
     this.site.updateBranch(id, item).subscribe(
       data=> {
         let itemIndex = this.branches.findIndex( (item: any) =>{ return item.id === id });
         this.branches.splice(itemIndex, 1, item);
-        () =>  this.snackBar.open('تم تعديل الفرع بنجاح', `` , {duration: 1500});
+        this.snackBar.open('تم تعديل الفرع بنجاح', `` , {duration: 1500});
     }, error => () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
   }

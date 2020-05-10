@@ -13,6 +13,7 @@ import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/err
   styleUrls: ['./users-settings.component.scss']
 })
 export class UsersSettingsComponent implements OnInit {
+  pageNumber = 1;
 
   users = new MatTableDataSource ();
   filteredUsers = new MatTableDataSource ();
@@ -31,6 +32,11 @@ export class UsersSettingsComponent implements OnInit {
       this.filteredUsers.data = this.users.data = res;
     });
 
+    this.user.getSomeUsers(this.pageNumber).subscribe((res: any)=> {
+      // this.filteredUsers.data = this.users.data = res;
+      // console.log(res);
+      
+    });
     this.filteredUsers.paginator = this.paginator;
   }
 

@@ -64,8 +64,6 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
   }
 
   updateItem(name , id){
-    let element =  this.getUpdateItemId(id);
-
     let item = {id, name} ;
     this.cat.updateCategory(item).subscribe(
       data=> {
@@ -73,8 +71,7 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
         this.categories.splice(itemIndex, 1, item);
         this.snackBar.open('تم تعديل اسم القسم ', `x` , {duration: 1500})
 
-    },error => this.snackBar.open('حدثت مشكلة أثناء تعديل القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
-    ;
+    },error => this.snackBar.open('حدثت مشكلة أثناء تعديل القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500}));;
   }
 
   addItem(name){

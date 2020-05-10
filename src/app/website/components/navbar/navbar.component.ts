@@ -32,7 +32,6 @@ isOpen: boolean = false;
   
   scrollTo(e){
     let scrollTarget = e.target.attributes['data-to'].value;
-
     this.linkClicked.emit(scrollTarget)
   
   }

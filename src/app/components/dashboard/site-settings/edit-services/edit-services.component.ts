@@ -58,8 +58,8 @@ item: FormData = new FormData();
        res=> {
          let itemIndex = this.services.findIndex( item =>{ return item.id === id });
          this.services.splice(itemIndex, 1);
-         () => this.snackBar.open('تم حذف الخدمة بنجاح', `` , {duration: 1500});
-    }, error=> () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
+         this.snackBar.open('تم حذف الخدمة بنجاح', `` , {duration: 1500});
+    }, () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
   }
 
@@ -79,5 +79,4 @@ enableEdit(id){
   })
   .afterClosed().subscribe(()=> location.reload());
  }
-
 }
