@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs';
 import { AssetsService } from 'src/app/services/assets.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { ElementSchemaRegistry } from '@angular/compiler';
 
 @Component({
   selector: 'app-edit-branches',

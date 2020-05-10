@@ -4,7 +4,7 @@ import { ItemsService } from 'src/app/services/items.service';
 import { Subscription, Subject } from 'rxjs';
 import { ItemData } from 'src/app/interfaces/items';
 import { AssetsService } from 'src/app/services/assets.service';
-import { MatDialog, MatSort, MatTable, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
+import { MatSort, MatTable, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-view-products-categories',

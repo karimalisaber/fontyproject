@@ -1,9 +1,8 @@
+import { RealTimeOrdersService } from './../../services/real-time-orders.service';
 import { Component, OnInit } from '@angular/core';
 import { OrderData } from 'src/app/interfaces/orders';
 import { OrdersService } from 'src/app/services/orders.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
-import { ErrorDialogComponent } from '../assets/error-dialog/error-dialog.component';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-in-progress-order',
@@ -17,14 +16,19 @@ export class InProgressOrderComponent implements OnInit {
   panelOpenState = false;
   displayedColumns: string[] = ['name', 'phone', 'email', 'delete', 'edit'];
 
-  constructor(private orders: OrdersService, private snackBar: MatSnackBar) {}
+  constructor(private orders: OrdersService, private snackBar: MatSnackBar, private pusher: RealTimeOrdersService) {}
   
   ngOnInit() {    
     // get new orders
-    this.orders.getInProgreeOrders().subscribe(res=>{
-      this.filteredOrders = this.allOrders = res;      
-    });
+    this.getAllOrders();  
+    // this.getNewOrders();
   }
+
+  private getAllOrders(){
+    this.orders.getInProgreeOrders().subscribe(res=> this.filteredOrders = this.allOrders = res);
+  }
+
+
 
   orderAction(id, status){
     let item = this.allOrders.filter(res=> res.id === id)[0];

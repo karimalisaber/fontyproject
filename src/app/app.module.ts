@@ -1,21 +1,15 @@
+import { CoreModule } from './modules/core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MDBBootstrapModule, ChartsModule } from 'angular-bootstrap-md';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AboutComponent } from './website/components/about/about.component';
-import { ProductsComponent } from './website/components/products/products.component';
-import { BranchesComponent } from './website/components/branches/branches.component';
-import { OurServicesComponent } from './website/components/our-services/our-services.component';
-import { NotFoundComponent } from './website/components/not-found/not-found.component';
 import { NavbarComponent } from './website/components/navbar/navbar.component';
-import { FooterComponent } from './website/components/footer/footer.component';
 import { WebsiteComponent } from './website/website.component';
 import { LoginComponent } from './admin/components/login/login.component';
 import { DashboardComponent } from './components/dashboard/layout/dashboard.component';
-import { AdminComponent } from './admin/admin.component';
 import { RightmenuComponent } from './components/dashboard/rightmenu/rightmenu.component';
 import { AboutSectionComponent } from './components/dashboard/site-settings/about-section/about-section.component';
 import { EditBranchesComponent } from './components/dashboard/site-settings/edit-branches/edit-branches.component';
@@ -37,64 +31,41 @@ import { EditProductComponent } from './components/dashboard/view-products/edit-
 import { EditSliderComponent } from './components/dashboard/site-settings/edit-slider/edit-slider.component';
 import { EditServicesComponent } from './components/dashboard/site-settings/edit-services/edit-services.component';
 import { UserPointsComponent } from './components/dashboard/settings/user-points/user-points.component';
-import { OffersComponent } from './components/dashboard/settings/offers/offers.component';
-import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
 // import { AuthGuardService } from './services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { CategoriesService } from './services/categories.service';
-// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ViewProductsCategoriesComponent } from './components/dashboard/view-products/view-products-categories/view-products-categories.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { ItemsService } from './services/items.service';
 import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
 import { SettingService } from './services/setting.service';
-import { DialogComponent } from './components/assets/dialog/dialog.component';
-import { ErrorDialogComponent } from './components/assets/error-dialog/error-dialog.component';
-import { SuccessDialogComponent} from './components/assets/success-dialog/success-dialog.component';
 import { AssetsService } from './services/assets.service';
-import { EditDialogComponent } from './components/assets/edit-dialog/edit-dialog.component';
-import { SuccesPostDialogComponent } from './components/assets/succes-post-dialog/succes-post-dialog.component';
-import { ContactUsComponent } from './new/contact-us/contact-us.component';
-import { SliderComponent } from './new/slider/slider.component';
-import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
-import { SalerDashboardComponent } from './components/saler-dashboard/saler-dashboard.component';
-import { SallerDashboardComponent } from './components/saller-dashboard/saller-dashboard.component';
-import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
 import { NgAlertModule } from '@theo4u/ng-alert';
 
-// import {NgxTypedJsModule} from 'ngx-typed-js';
-import { ProductViewDialogComponent } from './components/assets/product-view-dialog/product-view-dialog.component';
 import { AddSliderComponent } from './components/dashboard/site-setting/add-slider/add-slider.component';
-import { EditServiceDialogComponent } from './components/assets/edit-service-dialog/edit-service-dialog.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 import { AllProductsComponent } from './components/all-products/all-products.component';
 import { OrdersService } from './services/orders.service';
-import { MaterialModule, materialEntryComponents } from './material/material.module';
 import { SalesComponent } from './components/sales/sales.component'; 
 import { ChartWrapperComponent } from './components/admin/chart-wrapper/chart-wrapper.component';
 import { HighchartsChartModule }     from 'highcharts-angular';
 import { RecieveOrderComponent } from './components/recieve-order/recieve-order.component';
 import { InProgressOrderComponent } from './components/in-progress-order/in-progress-order.component';
 import { UsersSettingsComponent } from './components/dashboard/management/users-settings/users-settings.component';
+import { materialEntryComponents, MaterialModule } from './modules/material/material.module';
+import { EditDialogComponent } from './modules/material/components/edit-dialog/edit-dialog.component';
+import { DialogComponent } from './modules/material/components/dialog/dialog.component';
+import { ProductViewDialogComponent } from './modules/material/components/product-view-dialog/product-view-dialog.component';
+import { EditServiceDialogComponent } from './modules/material/components/edit-service-dialog/edit-service-dialog.component';
 
 // declare var require: any;
 
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
-    ProductsComponent,
-    BranchesComponent,
-    OurServicesComponent,
-    NotFoundComponent,
-    LoginComponent,
-    NavbarComponent,
-    FooterComponent,
-    WebsiteComponent,
     DashboardComponent,
-    AdminComponent,
     RightmenuComponent,
     AboutSectionComponent,
     EditBranchesComponent,
@@ -103,7 +74,7 @@ import { UsersSettingsComponent } from './components/dashboard/management/users-
     AddUserComponent,
     ViewUserComponent,
     AddProductComponent,
-    SearchComponent,
+    SearchComponent, // shared
     DashboardNavbarComponent,
     DashboardCategoriesComponent,
     SettingsComponent,
@@ -116,32 +87,23 @@ import { UsersSettingsComponent } from './components/dashboard/management/users-
     EditSliderComponent,
     EditServicesComponent,
     UserPointsComponent,
-    OffersComponent,
-    EditOffersComponent,
     UsersSettingsComponent,
     ViewProductsCategoriesComponent,
     EditUserComponent,
     AppSliderComponent,
-    DialogComponent,
-    ErrorDialogComponent,
-    SuccessDialogComponent,
     EditDialogComponent,
-    SuccesPostDialogComponent,
-    ContactUsComponent,
-    SliderComponent,
-    FeedbackComponent,
-    SalerDashboardComponent,
-    SallerDashboardComponent,
-    OrdersActionComponent,
+    DialogComponent,
+    AllProductsComponent, //  core
     ProductViewDialogComponent,
     AddSliderComponent,
     EditServiceDialogComponent,
-    AllProductsComponent,
     SalesComponent,
     ChartWrapperComponent,
     RecieveOrderComponent,
-    InProgressOrderComponent
-
+    InProgressOrderComponent,
+    LoginComponent,
+    WebsiteComponent,
+    NavbarComponent
   ],
 
   entryComponents: [
@@ -154,14 +116,10 @@ imports: [
   AppRoutingModule,
   FormsModule,
   HttpClientModule,
-  // ChartModule,
+  CoreModule,
   HighchartsChartModule,
-  // ChartModule.forRoot(require('highcharts')),
   MaterialModule,
   NgAlertModule,
-  // NgbModule,
-  // CustomFormsModule,
-  // NgxTypedJsModule,
   MDBBootstrapModule.forRoot()
 ],
 
@@ -173,7 +131,7 @@ providers: [
   AssetsService,
   AuthGuardService,
   AdminAuthGuardService,
-  OrdersService 
+  OrdersService
 ],
 
 bootstrap: [AppComponent]

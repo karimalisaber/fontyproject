@@ -1,0 +1,15 @@
+@media(max-width: 576px){
+    .products{
+      .product-wrapper{
+        height: 280px !important;
+      }
+    }
+}
+
+@media(max-width: 350px){
+    .products{
+      .product-wrapper{
+        height: 240px !important;
+      }
+    }
+}

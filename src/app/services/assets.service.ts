@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { DialogComponent } from '../components/assets/dialog/dialog.component';
 import { take, map } from 'rxjs/operators';
+import { DialogComponent } from '../modules/material/components/dialog/dialog.component';
 
 @Injectable({
   providedIn: 'root'

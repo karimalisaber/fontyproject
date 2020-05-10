@@ -22,20 +22,19 @@ export class RealTimeOrdersService {
   pusher: any;
   
   constructor() {
-    
+    this.pusher = new Pusher(this.environment.pusher.key, {
+      cluster: this.environment.pusher.cluster,
+      // secret : "f2722683e602c4a9c340"
+       
+  
+      // encrypted: true
+      // forceTLS: true
+      });
+  
+      // this.pusher.app_Id = ""
+      // Pusher.logToConsole = true;
+  
+      this.channel = this.pusher.subscribe('order');   
   }
 
-  play(){
-    this.pusher = new Pusher(this.environment.pusher.key, {
-    cluster: this.environment.pusher.cluster,
-    // encrypted: true
-    // forceTLS: true
-    });
-
-    // Pusher.logToConsole = true;
-
-    this.channel = this.pusher.subscribe('new_order');
-
-    this.channel.bind('new_order', data => console.log(data));
-   }
 }

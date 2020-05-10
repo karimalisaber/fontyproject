@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import {  MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

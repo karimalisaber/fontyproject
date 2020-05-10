@@ -7,7 +7,7 @@
     #{$property}: $value;
 }
 
-  // Opacity Mixin For All Browsers - Accept Argument => Property - ValueV Example: @include opacity(.5)
+// Opacity Mixin For All Browsers - Accept Argument => Property - ValueV Example: @include opacity(.5)
 
 @mixin opacity($value) {
     zoom: 1;
@@ -67,8 +67,6 @@
     background-position: center center;
     background-repeat: no-repeat;
 }
-
-
 
 // Background Gradient Mixin - Accept No Arguments - Example: @include linear-gradient();
 @mixin linear-gradient($direction, $color-stops, $color-stops-2) {

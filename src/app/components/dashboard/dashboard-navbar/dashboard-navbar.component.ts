@@ -53,7 +53,6 @@ title;
       case '/dashboard/settings/app-slider': this.title = 'تعديل السلايدر في الأبلكيشن' ; break;
       case '/dashboard/settings/users': this.title = 'العملاء' ; break;
       case '/dashboard/settings/user-points': this.title = 'نقاط العملاء' ; break;
-      case '/dashboard/feedback': this.title = 'رسائل العملاء' ; break;
       case '/dashboard/orders/recieve_orders': this.title = 'استلام الطلبات' ; break;
       case '/dashboard/orders/in_progress': this.title = 'مرحلة التجهيز' ; break;
       case '/dashboard/sales': this.title = 'مبيعات' ; break;

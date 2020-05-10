@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { SiteService } from 'src/app/services/site.service';
 import { ItemsService } from 'src/app/services/items.service';
 import { MatDialog } from '@angular/material';
-import { ProductViewDialogComponent } from '../assets/product-view-dialog/product-view-dialog.component';
+import { ProductViewDialogComponent } from 'src/app/modules/material/components/product-view-dialog/product-view-dialog.component';
 
 @Component({
   selector: 'app-all-products',

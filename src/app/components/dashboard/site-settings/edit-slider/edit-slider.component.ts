@@ -3,8 +3,8 @@ import { SiteService } from 'src/app/services/site.service';
 import { Subscription } from 'rxjs';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { AssetsService } from 'src/app/services/assets.service';
-import { EditDialogComponent } from 'src/app/components/assets/edit-dialog/edit-dialog.component';
 import { ActivatedRoute } from '@angular/router';
+import { EditDialogComponent } from 'src/app/modules/material/components/edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-edit-slider',

@@ -3,7 +3,6 @@ import {  UserCat, PostCategoriesResponse } from 'src/app/interfaces/categories-
 import { CategoriesService } from 'src/app/services/categories.service';
 import {MatDialog} from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { ErrorDialogComponent } from '../../assets/error-dialog/error-dialog.component';
 import { AssetsService } from 'src/app/services/assets.service';
 import { MatSnackBar } from '@angular/material';
 
@@ -69,7 +68,7 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
       data=> {
         let itemIndex = this.categories.findIndex( item =>{ return item.id === id });
         this.categories.splice(itemIndex, 1, item);
-        this.snackBar.open('تم تعديل اسم القسم ', `x` , {duration: 1500})
+        this.snackBar.open('تم تعديل اسم القسم ', `x` , {duration: 1500});
 
     },error => this.snackBar.open('حدثت مشكلة أثناء تعديل القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500}));;
   }
@@ -78,7 +77,8 @@ export class DashboardCategoriesComponent implements OnInit , OnDestroy{
       let newCat ={name};
       this.cat.addCategory(newCat).subscribe((  
       res:PostCategoriesResponse) => this.categories.push({id: res.data.id , name: res.data.name}),
-       error => this.dialog.open(ErrorDialogComponent) );
+      error => this.snackBar.open('حدثت مشكلة أثناء اضافة القسم برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
+
 
     // 3- cleanup the inputs
     (<HTMLInputElement>document.getElementById('cat-name')).value = null;

@@ -19,13 +19,19 @@ export class RecieveOrderComponent implements OnInit {
   constructor(private orders: OrdersService, private snackBar: MatSnackBar, private pusher: RealTimeOrdersService) {}
   
   ngOnInit() {
-    // get new orders
-    this.orders.getnewOrders().subscribe(res=>{
-      this.filteredOrders = this.allOrders = res;
-      console.log(this.filteredOrders);
-      
+    this.getAllOrders();
+    this.getNewOrders();
+  }
+
+  private getAllOrders(){
+    this.orders.getNewOrders().subscribe(res=> this.filteredOrders = this.allOrders = res);
+  }
+
+  private getNewOrders(){
+    this.pusher.channel.bind('new_order', res => {
+      this.allOrders.push(res.data);
+      this.filteredOrders = this.allOrders;
     });
-    // this.pusher.play();
   }
 
   orderAction(id, status){
@@ -33,7 +39,7 @@ export class RecieveOrderComponent implements OnInit {
     let index = this.allOrders.indexOf(item);
     this.allOrders.splice(index, 1);
     this.filteredOrders = this.allOrders;
-
+    
     this.orders.updateStatus(id, status)
     .subscribe(
       res=>{}, 

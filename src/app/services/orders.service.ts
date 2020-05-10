@@ -14,7 +14,7 @@ export class OrdersService {
   constructor(private http: HttpClient) {}
 
   
-  getnewOrders(): Observable<OrderData[]>{
+  getNewOrders(): Observable<OrderData[]>{
    return this.http.get<Orders>(getOrdersUrl).pipe(map(
      res => res.data
     ));

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatTable, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { UsersService } from 'src/app/services/users.service';
-import { DialogComponent } from '../../assets/dialog/dialog.component';
 import { take } from 'rxjs/operators';
+import { DialogComponent } from 'src/app/modules/material/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-management',

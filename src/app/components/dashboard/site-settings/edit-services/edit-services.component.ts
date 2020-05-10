@@ -3,7 +3,7 @@ import { SiteService } from 'src/app/services/site.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { AssetsService } from 'src/app/services/assets.service';
 import { ActivatedRoute } from '@angular/router';
-import { EditServiceDialogComponent } from 'src/app/components/assets/edit-service-dialog/edit-service-dialog.component';
+import { EditServiceDialogComponent } from 'src/app/modules/material/components/edit-service-dialog/edit-service-dialog.component';
 
 @Component({
   selector: 'app-edit-services',

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NotFoundComponent } from './website/components/not-found/not-found.component';
 import { WebsiteComponent } from './website/website.component';
 import { DashboardComponent } from './components/dashboard/layout/dashboard.component';
 import { AddUserComponent } from './admin/components/add-user/add-user.component';
@@ -20,13 +19,10 @@ import { AboutSectionComponent } from './components/dashboard/site-settings/abou
 import { EditSliderComponent } from './components/dashboard/site-settings/edit-slider/edit-slider.component';
 import { EditServicesComponent } from './components/dashboard/site-settings/edit-services/edit-services.component';
 import { UserPointsComponent } from './components/dashboard/settings/user-points/user-points.component';
-import { EditOffersComponent } from './components/dashboard/settings/edit-offers/edit-offers.component';
 import { LoginComponent } from './admin/components/login/login.component';
 import { ViewProductsCategoriesComponent } from './components/dashboard/view-products/view-products-categories/view-products-categories.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { AppSliderComponent } from './components/dashboard/settings/app-slider/app-slider.component';
-import { FeedbackComponent } from './components/dashboard/feedback/feedback.component';
-import { OrdersActionComponent } from './components/saller-dashboard/orders-action/orders-action.component';
 import { AddSliderComponent } from './components/dashboard/site-setting/add-slider/add-slider.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
@@ -74,9 +70,6 @@ const routes: Routes = [
         { path: 'settings/app-slider', component: AppSliderComponent },
         { path: 'settings/user-points', component: UserPointsComponent },
         { path: 'settings/users', component: UsersSettingsComponent },
-        { path: 'settings/edit-offers', component: EditOffersComponent },
-
-        { path: 'feedback', component: FeedbackComponent },
     
         { path: 'orders/recieve_orders', component: RecieveOrderComponent},
         { path: 'orders/in_progress', component: InProgressOrderComponent},

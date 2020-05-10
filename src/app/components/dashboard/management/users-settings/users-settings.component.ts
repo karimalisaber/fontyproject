@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatTable, MatPaginator, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatTable, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
 import { UsersService } from 'src/app/services/users.service';
 import { HttpClient } from '@angular/common/http';
-import { DialogComponent } from 'src/app/components/assets/dialog/dialog.component';
 import { take } from 'rxjs/operators';
-import { SuccessDialogComponent } from 'src/app/components/assets/success-dialog/success-dialog.component';
-import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/error-dialog.component';
+import { DialogComponent } from 'src/app/modules/material/components/dialog/dialog.component';
 
 @Component({
   selector: 'app-users-settings',
@@ -13,7 +11,12 @@ import { ErrorDialogComponent } from 'src/app/components/assets/error-dialog/err
   styleUrls: ['./users-settings.component.scss']
 })
 export class UsersSettingsComponent implements OnInit {
-  pageNumber = 1;
+  currentPage:number = 1;
+  firstPage:number = 1;
+  lastPage:number = 1; // any random number
+  isFirstPage: boolean = false;
+  isLastPage: boolean = false;
+  isOnlyOnePage : boolean = false;
 
   users = new MatTableDataSource ();
   filteredUsers = new MatTableDataSource ();
@@ -21,23 +24,12 @@ export class UsersSettingsComponent implements OnInit {
   displayedColumns: string[] = ['name', 'phone', 'email','ordersNumber' , 'pointsNumber' ,  'delete',];
 
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
-  @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
-
-  constructor(private dialog: MatDialog, private user: UsersService, private http: HttpClient) { }
+  
+  constructor(private dialog: MatDialog, private snackBar: MatSnackBar, private user: UsersService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.paginator._intl.itemsPerPageLabel = 'عدد العناصر في كل صفحة';
-
-    this.user.getSalles().subscribe((res: any)=> {
-      this.filteredUsers.data = this.users.data = res;
-    });
-
-    this.user.getSomeUsers(this.pageNumber).subscribe((res: any)=> {
-      // this.filteredUsers.data = this.users.data = res;
-      // console.log(res);
-      
-    });
-    this.filteredUsers.paginator = this.paginator;
+    this.getUsers();
+    this.checkPageStatus();
   }
 
   deleteAlert(id){
@@ -48,6 +40,33 @@ export class UsersSettingsComponent implements OnInit {
     });
   }
 
+  private checkPageStatus(){
+    this.isFirstPage = (this.currentPage === this.firstPage)? true: false;
+
+    this.isLastPage = (this.currentPage === this.lastPage)? true: false;
+    
+    this.isOnlyOnePage = (this.firstPage === this.lastPage) ? true: false;
+  }
+
+  nextPage(){
+    if (this.currentPage < this.lastPage) this.currentPage ++;
+    this.checkPageStatus();
+    this.getUsers();
+  }
+
+  prevPage(){
+    if (this.currentPage > this.firstPage) this.currentPage --;
+    this.checkPageStatus();
+    this.getUsers();
+  }
+
+  private getUsers(){
+    this.user.getSomeUsers(this.currentPage).subscribe((res: any)=> {
+      this.filteredUsers.data = this.users.data = res.data;
+      this.lastPage = res.last_page;    
+    });
+  }
+
   private deleteUser(id){
     // optimistic update
     let itemIndex = this.users.data.findIndex( (item:any) =>{ return item.id === id });
@@ -55,12 +74,10 @@ export class UsersSettingsComponent implements OnInit {
     this.filteredUsers.data = this.users.data;
 
     this.user.deleteSaller(id).subscribe(
-    data=> {
-      this.dialog.open(SuccessDialogComponent);    
-    }, error=> {
+    data=> this.snackBar.open('تم حذف المستخدم بنجاح ', `x` , {duration: 1500})  
+    , error=> {
       this.users.data.splice(itemIndex, 0, deletedItem[0]);
-
-      this.dialog.open(ErrorDialogComponent);
+      error => this.snackBar.open('حدثت مشكلة أثناء حذف المستخدم برجاء المحاولة مرة أخرى', `` , {duration: 1500});
     });
   }
   

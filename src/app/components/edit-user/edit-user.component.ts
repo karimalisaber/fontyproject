@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import {  userData, userFormData } from 'src/app/interfaces/sales';
-import { MatDialog } from '@angular/material';
-import { SuccesPostDialogComponent } from '../assets/succes-post-dialog/succes-post-dialog.component';
-import { ErrorDialogComponent } from '../assets/error-dialog/error-dialog.component';
+import { MatDialog, MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-edit-user',
@@ -17,7 +15,7 @@ userData: userData;
 
 userFormData: userFormData ={name:'', email: '', phone: null, password: ''};
 
-  constructor(private route: ActivatedRoute, private user: UsersService, private router: Router, private dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, private user: UsersService, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar) {
     
     
    }
@@ -36,12 +34,12 @@ userFormData: userFormData ={name:'', email: '', phone: null, password: ''};
   }
 
   submit(userData){
-    userData.id = this.id; 
+    userData.id = this.id;
     this.user.updateSaller(userData, this.id).subscribe(
-      res=> this.dialog.open(SuccesPostDialogComponent),
-      error=> this.dialog.open(ErrorDialogComponent)
+      data=> this.snackBar.open('تم تعديل المستخدم بنجاح ', `x` , {duration: 1500}),
+      
+      error => this.snackBar.open('حدثت مشكلة أثناء تعديل المستخدم برجاء المحاولة مرة أخرى', `` , {duration: 1500})
     );
-    
   }
 
 }
