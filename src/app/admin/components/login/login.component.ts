@@ -1,6 +1,5 @@
+import { AdminAuthGuardService } from './../../../services/admin-auth-guard.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpResponde } from 'src/app/interfaces/http-responde';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -13,7 +12,7 @@ export class LoginComponent implements OnInit {
   
   invalidLogin: boolean = false;
 
-  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute ) { }
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, private adminGuard: AdminAuthGuardService ) { }
 
   ngOnInit() {
   }
@@ -21,12 +20,17 @@ export class LoginComponent implements OnInit {
   login(credentials) {
    this.auth.login(credentials).subscribe(
     resl=>{
-     if(resl){
       let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
+
+     if(resl && this.auth.isAdmin ){
       this.router.navigate([returnUrl || '/dashboard']);
-    }else 
+    
+    }else if(resl && !this.auth.isAdmin ){
       this.invalidLogin = true;
-      
+      console.log('invalid');
+      this.router.navigate([returnUrl || '/dashboard/orders/recieve_orders']);
+    }
+
     }, error => this.invalidLogin = true); 
     
   }

@@ -21,9 +21,12 @@
       class="form-control" type="text" name="email" id="email" >
 
       <div *ngIf="!email.valid && email.touched" class="" >
-        <div class="alert alert-danger text-right" *ngIf="email.errors.required">من فضلك أدخل الاسم </div>
+        <div class="alert alert-danger text-right" *ngIf="email.errors.required">من فضلك أدخل الايميل </div>
         <div class="alert alert-danger text-right" *ngIf="email.errors.email">من فضلك أدخل الايميل بالطريفة الصحيحة</div>
       </div>
+
+      <div class="alert alert-danger text-right" *ngIf="emailExists"> عفوًا هذا البريد الالكتروني مطابق لبريد الكتروني آخر </div>
+
     </div>
       
 

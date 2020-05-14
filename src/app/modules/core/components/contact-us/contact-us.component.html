@@ -10,7 +10,7 @@
     </div>
     <hr class="full">
 
-    <form class="text-center" #userForm="ngForm" (ngSubmit)="addUser(userForm.value); userForm.reset();">
+    <form class="text-center" #userForm="ngForm" (ngSubmit)="postMessage(userForm.value); userForm.reset();">
         <div class="form">
             <div class="input-group">
                 <span class="input-group-addon">
@@ -105,35 +105,36 @@
                 <i class="far fa-comments"></i>
             </span>
 
-            <textarea name="message" required minlength="5" #message="ngModel" ngModel
-                [ngClass]="{ 'is-invalid': message.invalid && message.touched, 'is-valid': !message.invalid && message.touched}"
+            <textarea name="msg" required minlength="5" #msg="ngModel" ngModel
+                [ngClass]="{ 'is-invalid': msg.invalid && msg.touched, 'is-valid': !msg.invalid && msg.touched}"
                 class="form-control" rows="6" type="text" [placeholder]="items[3]">
             </textarea>
         </div>
 
-        <div *ngIf="!message.valid && message.touched" class="">
+        <div *ngIf="!msg.valid && msg.touched" class="">
             <div class="arabic" *ngIf="lang==='1'">
-                <div class="alert alert-danger" [ngClass]="{'text-right': lang ==='1'}" *ngIf="message.errors.required">
+                <div class="alert alert-danger" [ngClass]="{'text-right': lang ==='1'}" *ngIf="msg.errors.required">
                     من فضلك
                     أدخل رسالتك </div>
                 <div class="alert alert-danger" [ngClass]="{'text-right': lang ==='1'}"
-                    *ngIf="message.errors.minlength"> أقل عدد
+                    *ngIf="msg.errors.minlength"> أقل عدد
                     من الحروف هو خمسة
                     احرف
                 </div>
             </div>
 
             <div class="english" *ngIf="lang==='2'">
-                <div class="alert alert-danger" [ngClass]="{'text-left': lang==='2'}" *ngIf="message.errors.required">
-                    Please enter your message </div>
-                <div class="alert alert-danger" [ngClass]="{'text-left': lang==='2'}" *ngIf="message.errors.minlength">
-                    Your message must be 5 charachters at
+                <div class="alert alert-danger" [ngClass]="{'text-left': lang==='2'}" *ngIf="msg.errors.required">
+                    Please enter your msg </div>
+                <div class="alert alert-danger" [ngClass]="{'text-left': lang==='2'}" *ngIf="msg.errors.minlength">
+                    Your msg must be 5 charachters at
                     least </div>
             </div>
         </div>
 
         <input *ngIf="lang ==='1'" [disabled]="userForm.invalid" class="btn btn-primary send mb" type="submit"
             value="ارسال ">
+
         <input *ngIf="lang==='2'" [disabled]="userForm.invalid" class="btn btn-primary send mb" type="submit"
             value="send">
     </form>

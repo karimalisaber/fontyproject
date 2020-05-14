@@ -14,7 +14,7 @@ export class AuthService {
       (res:any)=> {
         let result = res;
         if(result && result.data.token) {
-          localStorage.setItem('token', result.data.token);
+          localStorage  .setItem('token', result.data.token);
           localStorage.setItem('role', result.data.role);
           return true;
         }

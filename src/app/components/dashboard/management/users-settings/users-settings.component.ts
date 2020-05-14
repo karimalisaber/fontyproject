@@ -21,7 +21,7 @@ export class UsersSettingsComponent implements OnInit {
   users = new MatTableDataSource ();
   filteredUsers = new MatTableDataSource ();
   
-  displayedColumns: string[] = ['name', 'phone', 'email','ordersNumber' , 'pointsNumber' ,  'delete',];
+  displayedColumns: string[] = ['name', 'phone', 'email','ordersNumber' ,  'delete',];
 
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
   
@@ -81,11 +81,22 @@ export class UsersSettingsComponent implements OnInit {
     });
   }
   
-  filter(value){
-    this.filteredUsers.data = (value) ?
-    this.users.data.filter( (p:any) => p.sales.name.toLowerCase().includes(value.trim().toLowerCase())) : this.users.data ; 
-    
-    this.table.renderRows();
+  filter(value : string){
+    if (value.length > 0) this.getFilteredUsers(value);
+    else this.getUsers();
   }
 
+  private getFilteredUsers(value){
+    this.user.getSearchUsers(value.trim()).subscribe(res=>{
+      var newResponse = [];
+      res.forEach((response, i )=> {
+        let item = {users:{}};
+        item.users = response;
+        newResponse.push(item)
+      });
+    
+      this.filteredUsers.data = newResponse;
+    })
+
+  }
 }

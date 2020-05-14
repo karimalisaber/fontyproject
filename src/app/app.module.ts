@@ -1,3 +1,4 @@
+import { GraphService } from './services/graph.service';
 import { CoreModule } from './modules/core/core.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,13 +25,11 @@ import { DashboardCategoriesComponent } from './components/dashboard/dashboard-c
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { ControlPanelComponent } from './components/dashboard/control-panel/control-panel.component';
 import { SiteSettingsComponent } from './components/dashboard/site-settings/site-settings.component';
-import { ControlPanelIconComponent } from './components/dashboard/control-panel/control-panel-icon/control-panel-icon.component';
 import { ManagementComponent } from './components/dashboard/management/management.component';
 import { EditOrAddProductComponent } from './components/dashboard/view-products/edit-or-add-product/edit-or-add-product.component';
 import { EditProductComponent } from './components/dashboard/view-products/edit-product/edit-product.component';
 import { EditSliderComponent } from './components/dashboard/site-settings/edit-slider/edit-slider.component';
 import { EditServicesComponent } from './components/dashboard/site-settings/edit-services/edit-services.component';
-import { UserPointsComponent } from './components/dashboard/settings/user-points/user-points.component';
 // import { AuthGuardService } from './services/auth-guard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
@@ -80,13 +79,11 @@ import { EditServiceDialogComponent } from './modules/material/components/edit-s
     SettingsComponent,
     ControlPanelComponent,
     SiteSettingsComponent,
-    ControlPanelIconComponent,
     ManagementComponent,
     EditOrAddProductComponent,
     EditProductComponent,
     EditSliderComponent,
     EditServicesComponent,
-    UserPointsComponent,
     UsersSettingsComponent,
     ViewProductsCategoriesComponent,
     EditUserComponent,
@@ -131,7 +128,8 @@ providers: [
   AssetsService,
   AuthGuardService,
   AdminAuthGuardService,
-  OrdersService
+  OrdersService,
+  GraphService  
 ],
 
 bootstrap: [AppComponent]

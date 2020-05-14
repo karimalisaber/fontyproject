@@ -4,13 +4,28 @@
         <mat-panel-title>
             مبيعات العام
         </mat-panel-title>
-        <mat-panel-description class="text-center">
+        <mat-panel-description  class="text-center">
           {{currentYear}}
         </mat-panel-description>
       </mat-expansion-panel-header>
         
-        <div *ngFor="let month of currentYearMonths" class="row months text-center no-gutters">
-            <div  class=" month btn-primary col"> {{month}}</div>
+        <div class="row months text-center no-gutters">           
+          <button (click) ="getSpecificMonthData(i)" 
+            *ngFor="let month of currentYearMonths; index as i" 
+            class=" month btn-primary col" [matMenuTriggerFor]="menu">
+            
+              {{month}}
+            
+              <mat-menu style="margin-top: 30px;" #menu>
+                <button mat-menu-item>
+                  تم تحقيق مبيعات بقيمة
+                  <span>
+                  {{totlPriceOfSpecificMonth}}
+                </span>
+                  ريال
+                </button>
+              </mat-menu>
+          </button>
         </div>
     </mat-expansion-panel>
 </mat-accordion>
@@ -18,3 +33,4 @@
 <div class="month-chart mt-40">
   <app-chart-wrapper></app-chart-wrapper>
 </div>
+

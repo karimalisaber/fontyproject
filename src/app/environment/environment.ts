@@ -1,5 +1,6 @@
 // login url
 export const loginUrl = 'http://fonty.ieeeshasb.org/api/auth/admin_login'; 
+export const postMessageUrl = 'http://fonty.ieeeshasb.org/api/web/contact_request'; 
 
 
 export const getCategoriesUrl = 'http://fonty.ieeeshasb.org/api/web/categories';
@@ -17,7 +18,13 @@ export const updateSallerUrl = 'http://fonty.ieeeshasb.org/api/auth/update';
 
 // users
 export const getUsersUrl = 'http://fonty.ieeeshasb.org/api/dashboard/all_users';
+export const getUsersSearchUrl = 'http://fonty.ieeeshasb.org/api/dashboard/users_search/';
 export const deleteUserUrl = 'http://fonty.ieeeshasb.org/api/auth/delete_sales/';
+
+// graph data
+export const getCurrentMonthDatahUrl = 'http://fonty.ieeeshasb.org/api/dashboard/graph_data';
+export const getSpecificMonthDataUrl = 'http://fonty.ieeeshasb.org/api/dashboard/month_data/';
+
 
 //items
 export const getItemsUrl = 'http://fonty.ieeeshasb.org/api/web/items';

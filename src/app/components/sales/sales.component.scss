@@ -1,3 +1,4 @@
+@import "_variables";
 mat-expansion-panel-header{
     font-size: 1.5rem;
     height: 60px !important;
@@ -20,4 +21,18 @@ mat-expansion-panel-header{
 
 .mat-form-field + .mat-form-field {
   margin-left: 8px;
+}
+
+mat-menu{
+    width: 400px !important;
+    height: 200px !important;
+}
+
+button.mat-menu-item{
+    width: 700px;
+    text-align: center;
+    font-size: 1.3rem;
+    span{
+        color: $mainColor;
+    }
 }

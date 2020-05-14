@@ -10,12 +10,10 @@ import { AuthService } from 'src/app/services/auth.service';
 export class RightmenuComponent implements OnInit {
   admin: boolean = false ;
 
-  constructor(private auth: AuthService) {
-  }
+  constructor(private auth: AuthService) {}
 
   ngOnInit() {
-    // if (this.auth.currentUser)
-    // this.admin = (this.auth.currentUser.sub === 0)? true : false;
+    this.admin = this.auth.isAdmin ;
   }
 
 }

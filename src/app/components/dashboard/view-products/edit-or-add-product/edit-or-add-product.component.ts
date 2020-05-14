@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserCat } from 'src/app/interfaces/categories-response';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { Observable } from 'rxjs';
@@ -84,6 +84,7 @@ constructor(private cat: CategoriesService,
      if(this.changeImage) this.item.append("img", this.imageFile, this.imageFile.name);
       
       if(this.updateStatus) {
+        this.item.append("update_img", this.imageFile, this.imageFile.name);
         this.items.editProduct(this.item, this.productId).subscribe(
           res=> {
             this.imgUrl = 'assets/images/upload-image.png';

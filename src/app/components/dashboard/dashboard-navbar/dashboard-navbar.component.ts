@@ -63,6 +63,7 @@ title;
 
   logOut(){
     localStorage.removeItem('token');
+    localStorage.removeItem('role');
     
     this.router.navigate(['/login']);
   }

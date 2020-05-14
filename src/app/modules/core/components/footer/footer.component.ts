@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from 'src/app/services/site.service';
 import { Router } from '@angular/router';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class FooterComponent implements OnInit {
 lang: string = this.site.getLangNumber();
- 
+  phone;
   services$;
   branches$;
   contacts$;
@@ -28,6 +29,8 @@ lang: string = this.site.getLangNumber();
     this. services$ = this.site.getSpecificLangServices();
     this.branches$ = this.site.getSpecificLangbranches();
     this.contacts$ = this.site.getContacts(this.lang);
+
+    this.site.getContacts(this.lang).pipe(take(1)).subscribe(res=> this.phone = res.phone.split('\n'));
   }
 
   setLang(lang){   

@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './modules/core/components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WebsiteComponent } from './website/website.component';
@@ -18,7 +19,6 @@ import { EditBranchesComponent } from './components/dashboard/site-settings/edit
 import { AboutSectionComponent } from './components/dashboard/site-settings/about-section/about-section.component';
 import { EditSliderComponent } from './components/dashboard/site-settings/edit-slider/edit-slider.component';
 import { EditServicesComponent } from './components/dashboard/site-settings/edit-services/edit-services.component';
-import { UserPointsComponent } from './components/dashboard/settings/user-points/user-points.component';
 import { LoginComponent } from './admin/components/login/login.component';
 import { ViewProductsCategoriesComponent } from './components/dashboard/view-products/view-products-categories/view-products-categories.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
@@ -34,7 +34,7 @@ import { InProgressOrderComponent } from './components/in-progress-order/in-prog
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
-    { path: 'dashboard', component: DashboardComponent, children: [
+    { path: 'dashboard', component: DashboardComponent,  children: [
       { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'}, // admin
       // start control panel
       { path: 'control-panel', component: ControlPanelComponent },
@@ -50,9 +50,7 @@ const routes: Routes = [
        { path: 'products', component: ViewProductsCategoriesComponent },
        { path: 'products/add-product', component: AddProductComponent },
        { path: 'products/edit-product/:productId', component: EditProductComponent },
-      //  { path: 'products/view-products/:id', component: ViewProductsComponent }, 
-      // view products inside category
-
+    
       { path: 'management', component: ManagementComponent},
         { path: 'management/add-user', component: AddUserComponent },
       
@@ -68,21 +66,25 @@ const routes: Routes = [
       { path: 'view', component: ViewUserComponent },
       { path: 'settings', component: SettingsComponent },
         { path: 'settings/app-slider', component: AppSliderComponent },
-        { path: 'settings/user-points', component: UserPointsComponent },
         { path: 'settings/users', component: UsersSettingsComponent },
-    
-        { path: 'orders/recieve_orders', component: RecieveOrderComponent},
-        { path: 'orders/in_progress', component: InProgressOrderComponent},
-
       { path: 'addproduct', component: EditProductsComponent },
 
       // { path: 'view-user', component: ViewUserComponent },
       
-      { path: '**', redirectTo: '/dashboard/control-panel', pathMatch: 'full' }
     ]
     },
-    { path: 'all-products', component: AllProductsComponent },
 
+    
+    { path: 'dashboard', component: DashboardComponent, children: [ // for sallers
+      { path: '', redirectTo: '/dashboard/orders/recieve_orders', pathMatch: 'full'}, // admin
+        { path: 'orders/recieve_orders', component: RecieveOrderComponent},
+        { path: 'orders/in_progress', component: InProgressOrderComponent},
+        { path: '**', component: NotFoundComponent }
+      ]
+    },
+
+
+    { path: 'all-products', component: AllProductsComponent },
     { path: '', component: WebsiteComponent, children: [    
         { path: '**', redirectTo: '/', pathMatch: 'full' }
       ]

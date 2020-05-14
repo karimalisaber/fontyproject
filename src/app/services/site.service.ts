@@ -1,3 +1,4 @@
+import { postMessageUrl } from './../environment/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { getBranchesUrl, addBranchUrl, deleteBranchUrl, updateBranchUrl, getServicesUrl, addServiceUrl, deleteServiceUrl, updateServiceUrl, addSliderUrl, getSlidersUrl, deleteSliderUrl, getContactsUrl, updateContactsUrl, getSpecificSliderUrl, updateSliderUrl, getAboutUrl, updateAboutUrl, getSpecificServiceUrl } from '../environment/environment';
@@ -131,5 +132,11 @@ constructor(private http: HttpClient, private route: ActivatedRoute) {
 
   updateContacts(contacts) {
     return this.http.put(updateContactsUrl, contacts ).pipe(take(1));
+  }
+
+  // new message 
+
+  postMessage(message){
+    return this.http.post(postMessageUrl, message).pipe(take(1));
   }
 }

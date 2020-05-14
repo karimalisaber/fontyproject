@@ -33,10 +33,46 @@
 
 <div class="control-wrapper row">
   <div class="col">
-    <control-panel-icon [type] = "'آخر الطلبات'"></control-panel-icon>
+    <div class="item text-center">
+      <p class="title"> آخر الطلبات</p>
+      <div *ngFor="let order of allOrders; index as i" class="row no-gutters icon-wrapper">
+        <div class="icon col-md-1">
+          <p class="number">{{i +1}} </p>
+        </div>
+        <div class="icon col-md-4">
+          <p>{{order.order_user.name}} </p>
+        </div>
+  
+        <div class="icon col-md-4">
+          <p>{{order.total_price}} </p>
+        </div>
+  
+        <div class="icon col-md date">
+          <p> {{order.created_at | date : 'shortTime'}} </p>
+        </div>
+      </div>
+    </div>  
   </div>
 
   <div class="col item">
-    <control-panel-icon [type] = "'آخر التسجيلات'" ></control-panel-icon>
+    <div class="item text-center">
+      <p class="title"> آخر التسجيلات</p>
+      <div *ngFor="let user of users; index as i" class="row no-gutters icon-wrapper">
+        <div class="icon col-md-1">
+          <p class="number"> {{i+1}} </p>
+        </div>
+        <div class="icon col-md-4">
+          <p> {{user.users.name}} </p>
+        </div>
+  
+        <div class="icon col-md-4">
+          <p> {{user.users.email}} </p>
+        </div>
+  
+        <div class="icon col-md date">
+          <p> {{user.users.created_at | date : 'short'}} </p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

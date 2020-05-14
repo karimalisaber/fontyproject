@@ -3,7 +3,7 @@
     <img src="assets/images/logo.png" alt="logo">
   </div>
   <div class="menu-links text-center">
-    <ul class="list-unstyled">
+    <ul *ngIf="!admin" class="list-unstyled">
       <li><a routerLinkActive="active" routerLink="/dashboard/control-panel" class="" > لوحة التحكم</a></li>
       <li><a routerLink="categories" class="" routerLinkActive="active"  >الأقسام</a></li>
       <li><a routerLink="products" class="" routerLinkActive="active"  >المنتجات</a></li>
@@ -13,7 +13,7 @@
       <li><a routerLink="settings" class="" routerLinkActive="active"  >الإعدادات</a></li>
     </ul>
 
-    <ul class="list-unstyled">  
+    <ul *ngIf="!admin" class="list-unstyled">  
       <li><a routerLink="orders/recieve_orders" class="" routerLinkActive="active"  >استلام الطلبات</a></li>
       <li><a routerLink="orders/in_progress" class="" routerLinkActive="active"  >مرحلة التجهيز</a></li>
     </ul>

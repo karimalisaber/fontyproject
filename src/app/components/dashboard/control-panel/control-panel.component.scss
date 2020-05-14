@@ -3,7 +3,6 @@
   margin: auto;
   width: 90%;
   margin-bottom: 40px;
-
 .nav-item{
   width: 80%;
   padding-top: 10px;
@@ -34,4 +33,58 @@
 .control-wrapper{
     margin: 40px 0;
 }
+
+// the bottom section
+.item{
+  .icon-wrapper{
+    border-radius: 10px;
+    border: solid 1px #b1abab;
+    background-color: #fbfbfb;
+    margin: 15px 0;
+    
+    .icon{
+      border-left: solid 1px #b1abab;
+      background-color: #fbfbfb;
+      height: 50px;
+
+
+      &:last-child{
+        border-radius: 10px;
+        border-left: none;
+      }
+
+      &:first-child{
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+
+      p{
+        line-height: 50px;
+        font-size: 1.1rem;
+        font-weight: 650;
+      }
+    }
+
+    .icon.date{
+      p{
+        font-size: .8rem ;
+        font-weight: bold;
+        opacity: .8;
+      }
+    }
+  }
+
+  p.title{
+    padding: 15px 0;
+    border-radius: 10px;
+    border: solid 1px #b1abab;
+    background-color: #fbfbfb;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+}
+
 
