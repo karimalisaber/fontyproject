@@ -26,8 +26,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate([returnUrl || '/dashboard']);
     
     }else if(resl && !this.auth.isAdmin ){
-      this.invalidLogin = true;
-      console.log('invalid');
+    
       this.router.navigate([returnUrl || '/dashboard/orders/recieve_orders']);
     }
 

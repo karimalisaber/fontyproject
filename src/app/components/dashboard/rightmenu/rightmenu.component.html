@@ -11,9 +11,11 @@
       <li><a routerLink="sales" class="" routerLinkActive="active"  >مبيعات</a></li>
       <li><a routerLink="site-settings" class="" routerLinkActive="active"  >إعدادات الموقع</a></li>
       <li><a routerLink="settings" class="" routerLinkActive="active"  >الإعدادات</a></li>
+      <li><a routerLink="orders/recieve_orders" class="" routerLinkActive="active"  >استلام الطلبات</a></li>
+      <li><a routerLink="orders/in_progress" class="" routerLinkActive="active"  >مرحلة التجهيز</a></li>
     </ul>
 
-    <ul *ngIf="!admin" class="list-unstyled">  
+    <ul *ngIf="!admin" class="list-unstyled">
       <li><a routerLink="orders/recieve_orders" class="" routerLinkActive="active"  >استلام الطلبات</a></li>
       <li><a routerLink="orders/in_progress" class="" routerLinkActive="active"  >مرحلة التجهيز</a></li>
     </ul>

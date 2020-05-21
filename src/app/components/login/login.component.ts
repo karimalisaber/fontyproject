@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
 
      if(resl && this.auth.isAdmin ){
       this.router.navigate([returnUrl || '/dashboard']);
-    
-    }else if(resl && !this.auth.isAdmin ){
-      this.invalidLogin = true;
-      console.log('invalid');
+    }
+    else if(resl && !this.auth.isAdmin ){
+      // this.invalidLogin = true;
+      console.log(resl);
       this.router.navigate([returnUrl || '/dashboard/orders/recieve_orders']);
     }
 

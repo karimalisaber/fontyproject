@@ -44,7 +44,7 @@ export class AuthService {
     if (role)
       return (role === '0') ? true: false;
     
-    return null;  
+    return null;
   }
 
 }

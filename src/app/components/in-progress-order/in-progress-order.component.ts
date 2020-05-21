@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderData } from 'src/app/interfaces/orders';
 import { MatSnackBar } from '@angular/material';
 import { OrdersService } from 'src/app/modules/shared/services/orders.service';
+import { AuthService } from 'src/app/modules/shared/services/auth.service';
 
 @Component({
   selector: 'app-in-progress-order',
@@ -17,13 +18,15 @@ export class InProgressOrderComponent implements OnInit {
 
   panelOpenState = false;
   displayedColumns: string[] = ['name', 'phone', 'email', 'delete', 'edit'];
-
-  constructor(private orders: OrdersService, private snackBar: MatSnackBar, private pusher: RealTimeOrdersService) {}
+  isAdmin: boolean = true;
+  constructor(private auth: AuthService,private orders: OrdersService, private snackBar: MatSnackBar, private pusher: RealTimeOrdersService) {}
   
-  ngOnInit() {    
+  ngOnInit() {
     // get new orders
     this.getAllOrders();  
     this.getNewOrders();
+    this.isAdmin = this.auth.isAdmin;
+
   }
 
   private getAllOrders(){

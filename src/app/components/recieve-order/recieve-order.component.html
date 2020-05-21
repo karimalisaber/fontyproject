@@ -47,9 +47,11 @@
 
                   <!-- <hr class="big-seperator"> -->
                   <p class="text-small-title"> السعر الكلي: <span>{{order.total_price}}</span></p>
-                  <button (click) ="orderAction(order.id, 1)" class="btn btn-primary ml-10">قبول</button>
-                  <button (click)="orderAction(order.id, 0)" class="btn btn-danger">رفض</button>
-              </div>
+                  <div *ngIf="!isAdmin">
+                    <button (click) ="orderAction(order.id, 1)" class="btn btn-primary ml-10">قبول</button>
+                    <button (click)="orderAction(order.id, 0)" class="btn btn-danger">رفض</button>
+                  </div>  
+                </div>
           
             </mat-expansion-panel>
           </mat-accordion>

@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/modules/shared/services/auth.service';
 import { Subscription } from 'rxjs';
 import { RealTimeOrdersService } from '../../modules/shared/services/real-time-orders.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -17,11 +18,13 @@ export class RecieveOrderComponent implements OnInit,OnDestroy {
   panelOpenState = false;
   displayedColumns: string[] = ['name', 'phone', 'email', 'delete', 'edit'];
   subscription: Subscription
-  constructor(private orders: OrdersService, private snackBar: MatSnackBar, private pusher: RealTimeOrdersService) {}
+  isAdmin: boolean = true;
+  constructor(private auth: AuthService, private orders: OrdersService, private snackBar: MatSnackBar, private pusher: RealTimeOrdersService) {}
   
   ngOnInit() {
     this.getAllOrders();
     this.getNewOrders();
+    this.isAdmin = this.auth.isAdmin;
   }
 
   private getAllOrders(){

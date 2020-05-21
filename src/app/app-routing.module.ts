@@ -34,57 +34,49 @@ import { InProgressOrderComponent } from './components/in-progress-order/in-prog
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService, AdminAuthGuardService],  children: [
-      { path: '', redirectTo: '/dashboard/control-panel', pathMatch: 'full'}, // admin
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService],  children: [
+      { path: '', canActivate: [AdminAuthGuardService],  redirectTo: '/dashboard/control-panel', pathMatch: 'full'}, // admin
       // start control panel
-      { path: 'control-panel', component: ControlPanelComponent },
+      { path: 'control-panel', component: ControlPanelComponent, canActivate: [AdminAuthGuardService] },
         // end of controll panel 
 
-        { path: 'add-admin', component: AddUserComponent },
-        { path: 'edit-user/:id', component: EditUserComponent },
+        { path: 'add-admin', component: AddUserComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'edit-user/:id', component: EditUserComponent, canActivate: [AdminAuthGuardService] },
 
       // categories
-      { path: 'categories', component: DashboardCategoriesComponent },
+      { path: 'categories', component: DashboardCategoriesComponent, canActivate: [AdminAuthGuardService] },
 
       // products
-       { path: 'products', component: ViewProductsCategoriesComponent },
-       { path: 'products/add-product', component: AddProductComponent },
-       { path: 'products/edit-product/:productId', component: EditProductComponent },
+       { path: 'products', component: ViewProductsCategoriesComponent, canActivate: [AdminAuthGuardService] },
+       { path: 'products/add-product', component: AddProductComponent, canActivate: [AdminAuthGuardService] },
+       { path: 'products/edit-product/:productId', component: EditProductComponent, canActivate: [AdminAuthGuardService] },
     
-      { path: 'management', component: ManagementComponent},
-        { path: 'management/add-user', component: AddUserComponent },
+      { path: 'management', component: ManagementComponent, canActivate: [AdminAuthGuardService]},
+        { path: 'management/add-user', component: AddUserComponent, canActivate: [AdminAuthGuardService] },
       
-        { path: 'site-settings', component: SiteSettingsComponent },
-        { path: 'site-settings/edit-slider/:lang', component: EditSliderComponent },
-        { path: 'site-settings/edit-branches/:lang', component: EditBranchesComponent },
-        { path: 'site-settings/edit-about/:lang', component: AboutSectionComponent },
-        { path: 'site-settings/edit-services/:lang', component: EditServicesComponent },
-        { path: 'site-settings/edit-contacts/:lang', component: EditContactComponent },
-        { path: 'site-settings/edit-slider/:lang/add-slider', component: AddSliderComponent },
+        { path: 'site-settings', component: SiteSettingsComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'site-settings/edit-slider/:lang', component: EditSliderComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'site-settings/edit-branches/:lang', component: EditBranchesComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'site-settings/edit-about/:lang', component: AboutSectionComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'site-settings/edit-services/:lang', component: EditServicesComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'site-settings/edit-contacts/:lang', component: EditContactComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'site-settings/edit-slider/:lang/add-slider', component: AddSliderComponent, canActivate: [AdminAuthGuardService] },
         
-      { path: 'sales', component: SalesComponent },
-      { path: 'view', component: ViewUserComponent },
-      { path: 'settings', component: SettingsComponent },
-        { path: 'settings/app-slider', component: AppSliderComponent },
-        { path: 'settings/users', component: UsersSettingsComponent },
-      { path: 'addproduct', component: EditProductsComponent },
-
-      // { path: 'view-user', component: ViewUserComponent },
-      
+      { path: 'sales', component: SalesComponent, canActivate: [AdminAuthGuardService]  },
+      { path: 'view', component: ViewUserComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'settings', component: SettingsComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'settings/app-slider', component: AppSliderComponent, canActivate: [AdminAuthGuardService] },
+        { path: 'settings/users', component: UsersSettingsComponent, canActivate: [AdminAuthGuardService] },
+      { path: 'addproduct', component: EditProductsComponent, canActivate: [AdminAuthGuardService] },
+      // { path: 'view-user', component: ViewUserComponent },      
+    
+      { path: 'orders/recieve_orders', component: RecieveOrderComponent},
+      { path: 'orders/in_progress', component: InProgressOrderComponent},
     ]
     },
 
-    
-    { path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuardService], children: [ // for sallers
-      { path: '', redirectTo: '/dashboard/orders/recieve_orders', pathMatch: 'full'}, // admin
-        { path: 'orders/recieve_orders', component: RecieveOrderComponent},
-        { path: 'orders/in_progress', component: InProgressOrderComponent},
-        { path: '**', component: NotFoundComponent }
-      ]
-    },
-
-
     { path: 'all-products', component: AllProductsComponent },
+    { path: 'not-found', component: NotFoundComponent },
     { path: '', component: WebsiteComponent, children: [    
         { path: '**', redirectTo: '/', pathMatch: 'full' }
       ]
