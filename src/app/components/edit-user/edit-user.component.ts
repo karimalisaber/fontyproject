@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsersService } from 'src/app/services/users.service';
 import {  userData, userFormData } from 'src/app/interfaces/sales';
 import { MatDialog, MatSnackBar } from '@angular/material';
+import { UsersService } from 'src/app/modules/shared/services/users.service';
 
 @Component({
   selector: 'app-edit-user',
@@ -15,10 +15,12 @@ userData: userData;
 
 userFormData: userFormData ={name:'', email: '', phone: null, password: ''};
 
-  constructor(private route: ActivatedRoute, private user: UsersService, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar) {
-    
-    
-   }
+  constructor(
+    private route: ActivatedRoute, 
+    private user: UsersService, 
+    private router: Router, 
+    private dialog: MatDialog, 
+    private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.id = parseInt(this.route.snapshot.paramMap.get("id"));

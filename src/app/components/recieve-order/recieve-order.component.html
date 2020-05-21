@@ -11,7 +11,7 @@
     
     <div class="row">
         <div *ngFor="let order of filteredOrders" class="col-md-6 text-right">
-          <div class="card">
+          <div *ngIf="order.order_user" class="card">
           <mat-accordion>
             <mat-expansion-panel>
               <mat-expansion-panel-header>

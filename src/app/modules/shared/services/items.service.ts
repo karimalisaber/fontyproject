@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { getItemsUrl, deleteItemUrl, postItemUrl, getItemUrl, updateItemUrl } from '../environment/environment';
 import { map, take } from 'rxjs/operators';
-import { Items, ItemData } from '../interfaces/items';
+import { Items, ItemData } from '../../../interfaces/items';
+import { getItemsUrl, getItemUrl, deleteItemUrl, postItemUrl, updateItemUrl } from 'src/app/environment/environment';
 
 @Injectable({
   providedIn: 'root'

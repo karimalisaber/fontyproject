@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SettingService } from 'src/app/services/setting.service';
 import { Subscription } from 'rxjs';
 import { MatSnackBar } from '@angular/material';
-import { AssetsService } from 'src/app/services/assets.service';
+import { SettingService } from 'src/app/modules/shared/services/setting.service';
+import { AssetsService } from 'src/app/modules/shared/services/assets.service';
 
 @Component({
   selector: 'app-app-slider',

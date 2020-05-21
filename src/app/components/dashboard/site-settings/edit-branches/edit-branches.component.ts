@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SiteService } from 'src/app/services/site.service';
 import { Subscription } from 'rxjs';
-import { AssetsService } from 'src/app/services/assets.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
+import { AssetsService } from 'src/app/modules/shared/services/assets.service';
 
 @Component({
   selector: 'app-edit-branches',

@@ -33,20 +33,23 @@
             <ul *ngIf="(contacts$ | async) as contacts">
               <li>
                 <p class="contact">
-                  <i class="fa fa-envelope">
-                  </i> <span> {{contacts.email}} </span> </p>
-              </li>
+                  <i class="fa fa-envelope"></i>
 
-              <li>
-                <i class="fa fa-phone"></i>  
-                
-                <p *ngFor="let phone of phone" class="contact">
-                    <span> {{phone}}</span>
+                  <span class="email-item" > {{contacts.email}} </span> 
                 </p>
               </li>
 
               <li>
-            
+                  
+                
+                <p *ngFor="let phone of phone; index as i" class="contact">
+                  <i *ngIf="i ===0" class="fa fa-phone"></i>
+
+                  <span> {{phone}}</span>
+                </p>
+              </li>
+
+              <li>            
                 <p class="contact">
                   <i class="fa fa-map-marker"></i>
                     <span>
@@ -96,14 +99,12 @@
   <div class="container">
     <div class="main_footer">
       <div class="row">
-
         <div class="col-sm-6 col-xs-12">
           <div class="copyright_text">
             <p *ngIf="lang==='1'" class="text-right">تصميم وبرمجة شركة <a target="_blank" href="https://www.clicktopass.com/">Clicktopass</a>2020. جميع الحقوق
               محفوظة</p>
 
            <p *ngIf="lang==='2'">designed by <a target="_blank" href="https://www.clicktopass.com/">Clicktopass</a> All Rights Reserved</p>
-            
           </div>
         </div>
 

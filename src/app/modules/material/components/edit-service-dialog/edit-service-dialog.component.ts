@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
-import { SiteService } from 'src/app/services/site.service';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
 
 @Component({
   selector: 'app-edit-service-dialog',

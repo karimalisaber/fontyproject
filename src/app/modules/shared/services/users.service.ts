@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { postSalesUrl, getSalesUrl, deleteSallerUrl, getSpecificSalerUrl, updateSallerUrl, getUsersUrl, getUsersSearchUrl } from '../environment/environment';
 import {map, take} from "rxjs/operators";
-import { Sales, userData  } from '../interfaces/sales';
+import { Sales, userData  } from '../../../interfaces/sales';
+import { getUsersUrl, getUsersSearchUrl, postSalesUrl, getSalesUrl, getSpecificSalerUrl, updateSallerUrl, deleteSallerUrl } from 'src/app/environment/environment';
 
 @Injectable({
   providedIn: 'root'

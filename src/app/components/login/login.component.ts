@@ -1,7 +1,7 @@
-import { AdminAuthGuardService } from './../../../services/admin-auth-guard.service';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/modules/shared/services/auth.service';
+import { AdminAuthGuardService } from 'src/app/modules/shared/services/admin-auth-guard.service';
 
 @Component({
   selector: 'app-login',

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { SiteService } from 'src/app/services/site.service';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
 
 @Component({
   selector: 'app-slider',

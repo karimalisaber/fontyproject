@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteService } from 'src/app/services/site.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
 
 @Component({
   selector: 'app-add-slider',

@@ -1,8 +1,9 @@
-import { RealTimeOrdersService } from './../../services/real-time-orders.service';
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { RealTimeOrdersService } from '../../modules/shared/services/real-time-orders.service';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OrderData } from 'src/app/interfaces/orders';
-import { OrdersService } from 'src/app/services/orders.service';
 import { MatSnackBar } from '@angular/material';
+import { OrdersService } from 'src/app/modules/shared/services/orders.service';
 
 @Component({
   selector: 'app-recieve-order',
@@ -10,12 +11,12 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./recieve-order.component.scss']
 })
 
-export class RecieveOrderComponent implements OnInit {
+export class RecieveOrderComponent implements OnInit,OnDestroy {
   allOrders: OrderData[] = [];
   filteredOrders: OrderData[] = [];
   panelOpenState = false;
   displayedColumns: string[] = ['name', 'phone', 'email', 'delete', 'edit'];
-
+  subscription: Subscription
   constructor(private orders: OrdersService, private snackBar: MatSnackBar, private pusher: RealTimeOrdersService) {}
   
   ngOnInit() {
@@ -24,7 +25,7 @@ export class RecieveOrderComponent implements OnInit {
   }
 
   private getAllOrders(){
-    this.orders.getNewOrders().subscribe(res=> this.filteredOrders = this.allOrders = res);
+   this.subscription = this.orders.getNewOrders().subscribe(res=> this.filteredOrders = this.allOrders = res);
   }
 
   private getNewOrders(){
@@ -35,14 +36,17 @@ export class RecieveOrderComponent implements OnInit {
   }
 
   orderAction(id, status){
-    let item = this.filteredOrders.filter(res=> res.id === id)[0];
+    let item = this.allOrders.filter(res=> res.id === id)[0];
     let index = this.allOrders.indexOf(item);
     this.allOrders.splice(index, 1);
+
     this.filteredOrders = this.allOrders;
     
     this.orders.updateStatus(id, status)
     .subscribe(
-      res=>{}, 
+      res=>{
+        
+      },
       () => {
         this.allOrders.splice(index, 0, item);
         this.filteredOrders = this.allOrders;
@@ -54,5 +58,9 @@ export class RecieveOrderComponent implements OnInit {
   customFilter(value){
     this.filteredOrders = (value) ?
     this.allOrders.filter( (p:any) => p.order_user.name.toLowerCase().includes(value.trim().toLowerCase())) : this.allOrders;   
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 }

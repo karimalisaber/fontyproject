@@ -24,10 +24,14 @@ li{
     background: #fff;
 }
 
+
 li {
     display: block;
     padding: 3px 0 3px;
 
+    .contact:hover{
+        
+    }
 
     p{
         display: inline-block;
@@ -45,9 +49,17 @@ li {
                 color: $mainColor;
                 transform: scale(1.3);
             }
+            
+            .fa-phone{
+              color: $mainColor;
+              transform: scale(1.3);
+            }
         }
+
+
     }
 }
+
 
 .footer_title_left{
     margin-bottom:70px;
@@ -59,6 +71,10 @@ li {
 
 .footer_logo{
     margin-bottom: 20px;
+}
+
+.fa-phone{
+    color: #fff;
 }
 
 .footer-wrapper p.footer_title{

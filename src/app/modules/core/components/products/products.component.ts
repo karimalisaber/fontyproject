@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ItemsService } from 'src/app/services/items.service';
 import { MatDialog } from '@angular/material';
-import { SiteService } from 'src/app/services/site.service';
 import { Subscription } from 'rxjs';
 import { ProductViewDialogComponent } from 'src/app/modules/material/components/product-view-dialog/product-view-dialog.component';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
+import { ItemsService } from 'src/app/modules/shared/services/items.service';
 
 @Component({
   selector: 'app-products',

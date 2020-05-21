@@ -57,20 +57,17 @@ hr{
         letter-spacing: -1px; 
     }
 }
-
-// .view-wrapper{
-//     width: 100%;
-//     border: 1px solid rgba($color: gray, $alpha: .5);
-//     min-height: 251px;
-//     box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: .5);
-//     padding: 5px 20px;
-//     margin-bottom: 10px;
-//     overflow: hidden;
-//     overflow-y: auto;
-//     p{
+.edit-section-button-wrapper{
+    position: relative;
+    top: -40px;
+    
+    .edit-section-button{
+        border: 0;
         
-//         color: $mainColor;
-//         font-weight: bold;
-//         font-size: 1.4rem;
-//     }
-// }
+        // padding: 0;
+        background-color: transparent;
+            &:hover{
+            color: $mainColor;
+        }
+    }
+}

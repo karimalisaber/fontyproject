@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteService } from 'src/app/services/site.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
 
 @Component({
   selector: 'app-about-section',
@@ -12,6 +12,7 @@ export class AboutSectionComponent implements OnInit {
   imgUrl = 'assets/images/upload-image.png'
   lang: string =  this.route.snapshot.paramMap.get('lang');
   about;
+  canEdit = false;
   imageFile: any = null; // for uploaded image
   updateStatus: boolean = false;
   
@@ -42,10 +43,17 @@ export class AboutSectionComponent implements OnInit {
    
     if(this.imageFile)
      this.item.append("img", this.imageFile, this.imageFile.name);
-    
+
     this.site.updateAbout(this.item)
     .subscribe(
-      () =>  this.snackBar.open('تم تعديل البيانات بنجاح', `` , {duration: 1500}),
+      () =>  {
+        this.canEdit = false;
+        this.snackBar.open('تم تعديل البيانات بنجاح', `` , {duration: 1500})
+      },
       () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
+  }
+
+  enableEditing(brief){
+    this.canEdit = true;    
   }
 }

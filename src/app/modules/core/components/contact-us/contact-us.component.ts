@@ -1,6 +1,6 @@
 import { MatSnackBar } from '@angular/material';
 import { Component, OnInit } from '@angular/core';
-import { SiteService } from 'src/app/services/site.service';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
 
 @Component({
   selector: 'app-contact-us',

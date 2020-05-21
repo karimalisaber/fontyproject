@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserCat } from 'src/app/interfaces/categories-response';
-import { CategoriesService } from 'src/app/services/categories.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { ItemsService } from 'src/app/services/items.service';
 import { Product } from 'src/app/interfaces/products';
 import { updateItem } from 'src/app/interfaces/items';
 import { MatSnackBar } from '@angular/material';
+import { CategoriesService } from 'src/app/modules/shared/services/categories.service';
+import { ItemsService } from 'src/app/modules/shared/services/items.service';
 
 @Component({
   selector: 'edit-or-add-product',
@@ -16,8 +16,6 @@ import { MatSnackBar } from '@angular/material';
 
 export class EditOrAddProductComponent implements OnInit {
 @Input('type') type // for know its edit or add;
-
-arabic: boolean=true;
 
 imgUrl = 'assets/images/upload-image.png'
 productId: string = null; // for edit item
@@ -40,10 +38,6 @@ changeImage: boolean = false;
 
 categories$: Observable<UserCat[]>;
 
-Arabic(){
-  console.log(this.arabic);
-  
-}
 constructor(private cat: CategoriesService,
   private route: ActivatedRoute,
   private snackBar: MatSnackBar,
@@ -92,7 +86,7 @@ constructor(private cat: CategoriesService,
              this.snackBar.open('تم تعديل المنتج بنجاح ', `` , {duration: 1500})
             },
           error=> 
-            this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
+           this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
      }
 
     else{

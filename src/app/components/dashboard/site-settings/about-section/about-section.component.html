@@ -4,10 +4,15 @@
       <label class="title-dashboard-section d-block text-justify w-100">تعديل الفقرة</label>
 
       <div class="form-group">
-        <textarea [ngClass]="{'text-left': lang === '2', 'english-dir': lang ==='2'}" [(ngModel)]="about.body" 
+        <textarea [disabled] ="!canEdit" [ngClass]="{'text-left': lang === '2', 'english-dir': lang ==='2'}" [(ngModel)]="about.body" 
         class="form-control" #brief="ngModel" name="brief" required minlength="50"
           id="">
+          
         </textarea>
+
+        <div class="edit-section-button-wrapper w-100" [ngClass]="{'text-right': lang ==='1'}">
+          <button *ngIf = "!canEdit" (click)="enableEditing(brief)" type="button" class="edit-section-button btn ml-10">تعديل الفقرة</button>
+        </div>
       </div>
       
       <div *ngIf="!brief.valid && brief.touched">
@@ -33,8 +38,8 @@
     </div>
   </div>
 
-  <div class="submit float-right">
-    <input [disabled]="userForm.invalid" type="submit" class="btn btn-primary ml-10"
+    <div class="submit float-right">
+    <input *ngIf="canEdit" [disabled]="userForm.invalid" type="submit" class="btn btn-primary ml-10"
       value="حفظ التعديلات">
     <input routerLink ="../../" type="submit" class="btn btn-danger" value="تراجع">
   </div>

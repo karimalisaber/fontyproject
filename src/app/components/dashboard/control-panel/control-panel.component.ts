@@ -1,6 +1,6 @@
-import { UsersService } from './../../../services/users.service';
+import { UsersService } from '../../../modules/shared/services/users.service';
 import { Component, OnInit } from '@angular/core';
-import { OrdersService } from 'src/app/services/orders.service';
+import { OrdersService } from 'src/app/modules/shared/services/orders.service';
 
 @Component({
   selector: 'app-control-panel',

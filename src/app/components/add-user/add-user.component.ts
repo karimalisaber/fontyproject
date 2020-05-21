@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService } from 'src/app/services/users.service';
 import {take} from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material';
+import { UsersService } from 'src/app/modules/shared/services/users.service';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',

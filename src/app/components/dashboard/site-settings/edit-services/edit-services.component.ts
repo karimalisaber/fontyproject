@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteService } from 'src/app/services/site.service';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { AssetsService } from 'src/app/services/assets.service';
 import { ActivatedRoute } from '@angular/router';
 import { EditServiceDialogComponent } from 'src/app/modules/material/components/edit-service-dialog/edit-service-dialog.component';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
+import { AssetsService } from 'src/app/modules/shared/services/assets.service';
 
 @Component({
   selector: 'app-edit-services',

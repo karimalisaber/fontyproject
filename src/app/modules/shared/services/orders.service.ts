@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { getOrdersUrl, getHomeOrdersDataUrl, updateOrderStatusUrl, getInProgressOrdersUrl } from '../environment/environment';
-import { Orders, OrderData } from '../interfaces/orders';
+import { Orders, OrderData } from '../../../interfaces/orders';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { getOrdersUrl, getInProgressOrdersUrl, updateOrderStatusUrl, getHomeOrdersDataUrl } from 'src/app/environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,7 @@ import { map } from 'rxjs/operators';
 export class OrdersService {
 
   constructor(private http: HttpClient) {}
-
-  
+ 
   getNewOrders(): Observable<OrderData[]>{
    return this.http.get<Orders>(getOrdersUrl).pipe(map(
      res => res.data

@@ -1,5 +1,5 @@
-import { GraphService } from './../../../services/graph.service';
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { GraphService } from '../../../modules/shared/services/graph.service';
+import { Component, OnInit} from '@angular/core';
 import * as Highcharts from 'highcharts';
 
 @Component({

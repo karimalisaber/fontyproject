@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { take, map } from 'rxjs/operators';
-import { addAppSliderUrl, getAppSlidersUrl, deleteAppSliderUrl } from '../environment/environment';
+import { getAppSlidersUrl, addAppSliderUrl, deleteAppSliderUrl } from 'src/app/environment/environment';
 
 @Injectable({
   providedIn: 'root'

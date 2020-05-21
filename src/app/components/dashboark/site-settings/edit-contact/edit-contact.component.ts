@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteService } from 'src/app/services/site.service';
 import {  MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from '@angular/router';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
 
 @Component({
   selector: 'app-edit-contact',
@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditContactComponent implements OnInit {
  contacts$;
+ canEdit= false;
+
  lang: string = this.route.snapshot.paramMap.get('lang');
 
  constructor(private route: ActivatedRoute, private site: SiteService, private snackBar: MatSnackBar) { }
@@ -19,10 +21,15 @@ export class EditContactComponent implements OnInit {
   }
 
   updateContacts(form) {
+    this.canEdit = false;
     form.lang = this.lang; 
    this.site.updateContacts(form)
    .subscribe(
-     res=>  this.snackBar.open('تم تعديل معلومات التواصل', `` , {duration: 1500}), 
+     ()=>  this.snackBar.open('تم تعديل معلومات التواصل', `` , {duration: 1500}), 
      () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
+  }
+
+  enableEdit(){
+    this.canEdit = true
   }
 }

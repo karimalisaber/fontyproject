@@ -1,6 +1,6 @@
-import { GraphService } from './../../services/graph.service';
+import { GraphService } from '../../modules/shared/services/graph.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatMenuTrigger } from '@angular/material';
+
 @Component({
   selector: 'app-sales',
   templateUrl: './sales.component.html',

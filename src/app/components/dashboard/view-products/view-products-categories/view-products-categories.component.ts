@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
-import { CategoriesService } from 'src/app/services/categories.service';
-import { ItemsService } from 'src/app/services/items.service';
 import { Subscription, Subject } from 'rxjs';
 import { ItemData } from 'src/app/interfaces/items';
-import { AssetsService } from 'src/app/services/assets.service';
 import { MatSort, MatTable, MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
+import { CategoriesService } from 'src/app/modules/shared/services/categories.service';
+import { ItemsService } from 'src/app/modules/shared/services/items.service';
+import { AssetsService } from 'src/app/modules/shared/services/assets.service';
 
 @Component({
   selector: 'app-view-products-categories',

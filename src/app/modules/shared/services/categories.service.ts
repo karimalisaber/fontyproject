@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { GetCategoriesResponse, UserCat } from '../interfaces/categories-response';
+import { GetCategoriesResponse, UserCat } from '../../../interfaces/categories-response';
 import { HttpClient } from '@angular/common/http';
 import {map, take} from 'rxjs/operators';
-import { getCategoriesUrl, deleteCategoryUrl, updateCategoryUrl, addCategoryUrl } from '../environment/environment';
+import { getCategoriesUrl, deleteCategoryUrl, updateCategoryUrl, addCategoryUrl } from 'src/app/environment/environment';
 
 @Injectable({
   providedIn: 'root'

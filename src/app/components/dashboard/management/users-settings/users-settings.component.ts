@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatTable, MatPaginator, MatDialog, MatSnackBar } from '@angular/material';
-import { UsersService } from 'src/app/services/users.service';
+import { MatTableDataSource, MatTable, MatDialog, MatSnackBar } from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { take } from 'rxjs/operators';
 import { DialogComponent } from 'src/app/modules/material/components/dialog/dialog.component';
+import { UsersService } from 'src/app/modules/shared/services/users.service';
 
 @Component({
   selector: 'app-users-settings',

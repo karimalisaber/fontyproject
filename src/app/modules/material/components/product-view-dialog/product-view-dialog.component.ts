@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material';
-import { ItemsService } from 'src/app/services/items.service';
+import { ItemsService } from 'src/app/modules/shared/services/items.service';
 
 @Component({
   selector: 'app-product-view-dialog',

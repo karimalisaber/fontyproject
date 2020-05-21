@@ -2,7 +2,6 @@
 export const loginUrl = 'http://fonty.ieeeshasb.org/api/auth/admin_login'; 
 export const postMessageUrl = 'http://fonty.ieeeshasb.org/api/web/contact_request'; 
 
-
 export const getCategoriesUrl = 'http://fonty.ieeeshasb.org/api/web/categories';
 export const deleteCategoryUrl = 'http://fonty.ieeeshasb.org/api/web/delete_category/';
 export const updateCategoryUrl = 'http://fonty.ieeeshasb.org/api/web/edit_category';
@@ -25,7 +24,6 @@ export const deleteUserUrl = 'http://fonty.ieeeshasb.org/api/auth/delete_sales/'
 export const getCurrentMonthDatahUrl = 'http://fonty.ieeeshasb.org/api/dashboard/graph_data';
 export const getSpecificMonthDataUrl = 'http://fonty.ieeeshasb.org/api/dashboard/month_data/';
 
-
 //items
 export const getItemsUrl = 'http://fonty.ieeeshasb.org/api/web/items';
 export const postItemUrl =  'http://fonty.ieeeshasb.org/api/web/add_item';
@@ -40,7 +38,7 @@ export const deleteAppSliderUrl =  'http://fonty.ieeeshasb.org/api/web/delete_sl
 
 // dashboard
 // all orders
-export const getOrdersUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_orders';
+export const getOrdersUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_new_orders';
 export const getInProgressOrdersUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_do_orders';
 export const getHomeOrdersDataUrl =  'http://fonty.ieeeshasb.org/api/dashboard/home_order_data';
 export const updateOrderStatusUrl =  'http://fonty.ieeeshasb.org/api/dashboard/update_order_status/';

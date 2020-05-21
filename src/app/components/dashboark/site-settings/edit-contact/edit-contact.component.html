@@ -3,7 +3,7 @@
     <form #userForm="ngForm" (ngSubmit)="updateContacts(userForm.value)">
       <div class="form-group">
         <label class="text-justify w-100">تعديل العنوان</label>
-        <textarea required minlength="6" 
+        <textarea [disabled]="!canEdit" required minlength="6" 
         [ngClass]="{ 'is-invalid': address.invalid, 'is-valid': !address.invalid,'english-dir': lang === '2', 'text-left': lang==='2'}"
           #address="ngModel" [(ngModel)]="Contacts.address" class="form-control" name="address" id="address">
          </textarea>
@@ -16,7 +16,7 @@
 
       <div class="form-group">
         <label class="text-justify w-100">تعديل بيانات الاتصال</label>
-        <textarea #phone="ngModel" required minlength="10"
+        <textarea [disabled]="!canEdit" #phone="ngModel" required minlength="10"
           [ngClass]="{ 'is-invalid': phone.invalid, 'is-valid': !phone.invalid,'english-dir': lang === '2', 'text-left': lang ==='2'}" 
           [(ngModel)]="Contacts.phone"
           class="form-control" name="phone" id="phone"> </textarea>
@@ -29,7 +29,7 @@
 
       <div class="form-group">
         <label class="text-justify w-100">تعديل البريد الالكترونى</label>
-        <input [ngClass]="{ 'english-dir': (lang === '2'), 'is-invalid': email.invalid, 'is-valid': !email.invalid, 'text-left': lang==='2'}" #email="ngModel" required email
+        <input [disabled]="!canEdit" [ngClass]="{ 'english-dir': (lang === '2'), 'is-invalid': email.invalid, 'is-valid': !email.invalid, 'text-left': lang==='2'}" #email="ngModel" required email
           [(ngModel)]="Contacts.email" class="form-control" type="text" name="email" id="email">
 
         <div *ngIf="!email.valid && email.touched" class="">
@@ -40,7 +40,9 @@
       </div>
 
       <div class="form-group">
-        <input [disabled]="userForm.invalid" class="w-100 btn btn-primary" type="submit" value="تعديل العنوان">
+        <input *ngIf="!canEdit" (click)="enableEdit()" class="w-100 btn btn-primary" type="button" value="السماح بالتعديل">
+
+        <input *ngIf="canEdit" [disabled]="userForm.invalid" class="w-100 btn btn-primary" type="submit" value="حفظ التعديلات ">
       </div>
     </form>
   </div>
@@ -67,22 +69,8 @@
   </div>
 </div>
 
-<!-- start language -->
-<!-- <div class="form-group">
-  <h2 class="lang text-justify w-100">اختر اللغة</h2>
-  <div class="btn-group float-right btn-group-toggle mb-10" data-toggle="buttons">
-
-    <label class="btn btn-secondary active text-right">
-      <input (click)="arabic=true;" type="radio" name="options" id="option1" checked> عربي
-    </label>
-    <label class="btn btn-secondary">
-      <input (click)="arabic=false;" type="radio" name="options" id="option2"> إنجليزي
-    </label>
-  </div>
-</div>
-<div class="clearfix"></div> -->
-<!-- end language -->
 <div class="w-100 mb-20"></div>
 
-<button class="btn btn-danger float-right mt-20 " routerLink="/dashboard/site-settings"> الرجوع مع الحفظ</button>
-<div class="clearfix"></div>
+<div class="text-right">
+  <button class="btn btn-danger float-right mt-20 " routerLink="/dashboard/site-settings"> الرجوع مع الحفظ</button>
+</div>

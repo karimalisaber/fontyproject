@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteService } from 'src/app/services/site.service';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
+import { SiteService } from 'src/app/modules/shared/services/site.service';
 
 @Component({
   selector: 'app-footer',

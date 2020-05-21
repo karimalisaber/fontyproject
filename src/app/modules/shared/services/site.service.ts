@@ -1,10 +1,9 @@
-import { postMessageUrl } from './../environment/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { getBranchesUrl, addBranchUrl, deleteBranchUrl, updateBranchUrl, getServicesUrl, addServiceUrl, deleteServiceUrl, updateServiceUrl, addSliderUrl, getSlidersUrl, deleteSliderUrl, getContactsUrl, updateContactsUrl, getSpecificSliderUrl, updateSliderUrl, getAboutUrl, updateAboutUrl, getSpecificServiceUrl } from '../environment/environment';
 import { map, take } from 'rxjs/operators';
-import { GeneralResponse } from '../interfaces/generalresponse';
+import { GeneralResponse } from '../../../interfaces/generalresponse';
 import { ActivatedRoute } from '@angular/router';
+import { getBranchesUrl, addBranchUrl, deleteBranchUrl, updateBranchUrl, getServicesUrl, getSpecificServiceUrl, addServiceUrl, deleteServiceUrl, updateServiceUrl, getAboutUrl, updateAboutUrl, getSlidersUrl, getSpecificSliderUrl, updateSliderUrl, addSliderUrl, deleteSliderUrl, getContactsUrl, updateContactsUrl, postMessageUrl } from 'src/app/environment/environment';
 
 @Injectable({
   providedIn: 'root'

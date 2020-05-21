@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { loginUrl } from '../environment/environment';
 import { map, take } from 'rxjs/operators';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { loginUrl } from 'src/app/environment/environment';
 @Injectable({
   providedIn: 'root'
 })

@@ -3,7 +3,7 @@
     <img src="assets/images/logo.png" alt="logo">
   </div>
   <div class="menu-links text-center">
-    <ul *ngIf="!admin" class="list-unstyled">
+    <ul *ngIf="admin" class="list-unstyled">
       <li><a routerLinkActive="active" routerLink="/dashboard/control-panel" class="" > لوحة التحكم</a></li>
       <li><a routerLink="categories" class="" routerLinkActive="active"  >الأقسام</a></li>
       <li><a routerLink="products" class="" routerLinkActive="active"  >المنتجات</a></li>

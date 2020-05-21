@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {  UserCat, PostCategoriesResponse } from 'src/app/interfaces/categories-response';
-import { CategoriesService } from 'src/app/services/categories.service';
 import {MatDialog} from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { AssetsService } from 'src/app/services/assets.service';
 import { MatSnackBar } from '@angular/material';
+import { AssetsService } from 'src/app/modules/shared/services/assets.service';
+import { CategoriesService } from 'src/app/modules/shared/services/categories.service';
 
 @Component({
   selector: 'app-dashboard-categories',
