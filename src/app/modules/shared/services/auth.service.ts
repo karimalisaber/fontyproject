@@ -14,7 +14,7 @@ export class AuthService {
       (res:any)=> {
         let result = res;
         if(result && result.data.token) {
-          localStorage  .setItem('token', result.data.token);
+          localStorage.setItem('token', result.data.token);
           localStorage.setItem('role', result.data.role);
           return true;
         }
@@ -27,13 +27,14 @@ export class AuthService {
     const helper = new JwtHelperService();
     let token = localStorage.getItem('token');
 
-    if(!token) 
+    if(!token)
       return false ;
 
     const isExpired = helper.isTokenExpired(token);
-
-    const expirationDate = helper.getTokenExpirationDate(token); 
-    const decodedToken = helper.decodeToken(token);
+    // console.log(isExpired);
+    
+    // const expirationDate = helper.getTokenExpirationDate(token); 
+    // const decodedToken = helper.decodeToken(token);
 
     return !isExpired; // true if not expired
   }

@@ -18,8 +18,10 @@ export class SliderComponent implements OnInit {
     this.subscription = this.site.getSpecificLangSliders().subscribe(res=> {
       this.sliders = res;
       setTimeout(() => {
-        document.querySelector('#carousel-item').classList.add('active');
-        document.querySelector('#indicator').classList.add('active');
+         let slider = document.querySelector('#carousel-item');
+         if (slider) slider.classList.add('active') ;
+         let indicator = document.querySelector('#indicator');
+         if (indicator) indicator.classList.add('active')
       }, 200)
     });
   }

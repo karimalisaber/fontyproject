@@ -13,10 +13,10 @@ export class AdminAuthGuardService implements CanActivate {
   canActivate(route, state: RouterStateSnapshot){
     if (this.auth.isAdmin) return true; // make it 0 not one
     
-    if (this.auth.isLogin)
+    if (this.auth.isLogin())
       this.router.navigate(['/dashboard/orders/recieve_orders']);
     else 
-      this.router.navigate(['/login'], {queryParams: {returnUrl: state}});
+      this.router.navigate(['/login']);
 
     return false ;
   }
