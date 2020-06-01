@@ -25,8 +25,8 @@ export class EditContactComponent implements OnInit {
     form.lang = this.lang; 
    this.site.updateContacts(form)
    .subscribe(
-     ()=>  this.snackBar.open('تم تعديل معلومات التواصل', `` , {duration: 1500}), 
-     () =>  this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
+     ()=> this.snackBar.open('تم تعديل معلومات التواصل', `` , {duration: 1500}), 
+     () => this.snackBar.open('حدثت مشكلة بالاتصال بالسيرفر برجاء المحاولة مرة أخرى', `` , {duration: 1500}));
   }
 
   enableEdit(){

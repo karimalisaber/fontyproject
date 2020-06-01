@@ -46,6 +46,7 @@ import { EditDialogComponent } from './modules/material/components/edit-dialog/e
 import { DialogComponent } from './modules/material/components/dialog/dialog.component';
 import { ProductViewDialogComponent } from './modules/material/components/product-view-dialog/product-view-dialog.component';
 import { EditServiceDialogComponent } from './modules/material/components/edit-service-dialog/edit-service-dialog.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 // declare var require: any;
 
@@ -53,7 +54,6 @@ import { EditServiceDialogComponent } from './modules/material/components/edit-s
   declarations: [
     AppComponent,
     DashboardComponent,
-    
     EditBranchesComponent,
     EditContactComponent,
     EditProductsComponent,
@@ -103,6 +103,9 @@ imports: [
   MaterialModule,
   NgAlertModule,
   MDBBootstrapModule.forRoot()
+],
+providers:[
+  {provide: LocationStrategy, useClass: HashLocationStrategy}
 ],
 
 bootstrap: [AppComponent]

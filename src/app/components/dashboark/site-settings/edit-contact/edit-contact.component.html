@@ -16,7 +16,7 @@
 
       <div class="form-group">
         <label class="text-justify w-100">تعديل بيانات الاتصال</label>
-        <textarea [disabled]="!canEdit" #phone="ngModel" required minlength="10"
+        <textarea rows="4" [disabled]="!canEdit" #phone="ngModel" required minlength="10"
           [ngClass]="{ 'is-invalid': phone.invalid, 'is-valid': !phone.invalid,'english-dir': lang === '2', 'text-left': lang ==='2'}" 
           [(ngModel)]="Contacts.phone"
           class="form-control" name="phone" id="phone"> </textarea>
