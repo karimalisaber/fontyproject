@@ -14,7 +14,6 @@ export const getSpecificSalerUrl = 'http://fonty.ieeeshasb.org/api/auth/user_dat
 export const deleteSallerUrl = 'http://fonty.ieeeshasb.org/api/auth/delete_sales/';
 export const updateSallerUrl = 'http://fonty.ieeeshasb.org/api/auth/update';
 
-
 // users
 export const getUsersUrl = 'http://fonty.ieeeshasb.org/api/dashboard/all_users';
 export const getUsersSearchUrl = 'http://fonty.ieeeshasb.org/api/dashboard/users_search/';
@@ -61,14 +60,12 @@ export const getAboutUrl =  'http://fonty.ieeeshasb.org/api/dashboard/get_about_
 
 export const updateAboutUrl =  'http://fonty.ieeeshasb.org/api/dashboard/update_about_us';
 
-
 // sliders
 export const getSlidersUrl =  'http://fonty.ieeeshasb.org/api/dashboard/all_sliders';
 export const addSliderUrl =  'http://fonty.ieeeshasb.org/api/dashboard/add_slider';
 export const deleteSliderUrl =  'http://fonty.ieeeshasb.org/api/dashboard/delete_slider/';
 export const updateSliderUrl =  'http://fonty.ieeeshasb.org/api/dashboard/update_slider/';
 export const getSpecificSliderUrl =  'http://fonty.ieeeshasb.org/api/dashboard/spesific_slider/';
-
 
 // contacts
 export const getContactsUrl =  'http://fonty.ieeeshasb.org/api/dashboard/get_content_us/';

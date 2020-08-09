@@ -34,7 +34,7 @@
       <label for="phone" class="text-justify w-100">رقم الجوال</label>
       <input ngModel required ="ngModel" #phone="ngModel"
       [ngClass]="{ 'is-invalid': phone.invalid && phone.touched, 'is-valid': !phone.invalid && phone.touched}"
-      class="form-control" type="number" name="phone" id="phone" pattern="[0-9 ]{7,}">
+      class="form-control" type="number" name="phone" id="phone" pattern="[0-9]{7,}">
       
       <div *ngIf="!phone.valid && phone.touched" class="" >
         <div class="alert alert-danger text-right" *ngIf="phone.errors.required"> رقم الهاتف مطلوب </div>

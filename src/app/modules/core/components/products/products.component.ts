@@ -27,7 +27,7 @@ subscription: Subscription;
   viewProduct(id){
     this.dialog.open(ProductViewDialogComponent, {
       data: {id, lang: this.lang}
-    })
+    });
   }
 
   ngOnDestroy(){

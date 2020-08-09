@@ -47,6 +47,7 @@ import { DialogComponent } from './modules/material/components/dialog/dialog.com
 import { ProductViewDialogComponent } from './modules/material/components/product-view-dialog/product-view-dialog.component';
 import { EditServiceDialogComponent } from './modules/material/components/edit-service-dialog/edit-service-dialog.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+// import { ChangeCatImgDialogComponent } from './components/change-cat-img-dialog/change-cat-img-dialog.component';
 
 // declare var require: any;
 
